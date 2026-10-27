@@ -10,6 +10,10 @@ interface FullWidthProject {
   image: string;
 }
 
+const base = import.meta.env.BASE_URL.endsWith('/') 
+  ? import.meta.env.BASE_URL 
+  : `${import.meta.env.BASE_URL}/`;
+
 const fullWidthProjects: FullWidthProject[] = [
   {
     id: 'ikon',
@@ -17,7 +21,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'IKON TRAILERS',
     category: 'BRAND IDENTITY & LIVERY',
     year: '2025',
-    image: './images/ikontrailers_thumbnail.png'
+    image: `${base}images/ikontrailers_thumbnail.png`
   },
   {
     id: 'aquapet',
@@ -25,7 +29,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'AQUAPET VETERINARY',
     category: 'PACKAGING & BRAND SYSTEM',
     year: '2025',
-    image: './images/aquapet_thumbnail.png'
+    image: `${base}images/aquapet_thumbnail.png`
   },
   {
     id: 'oceanline',
@@ -33,7 +37,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'OCEAN-LINE CARGO',
     category: 'MARITIME DIGITAL PLATFORM',
     year: '2024',
-    image: './images/oceanline_thumbnail.png'
+    image: `${base}images/oceanline_thumbnail.png`
   },
   {
     id: 'fastkat',
@@ -41,7 +45,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'FASTKAT LOGISTICS',
     category: 'COURIER DISPATCH UI/UX',
     year: '2025',
-    image: './images/fastkat_thumbnail.png'
+    image: `${base}images/fastkat_thumbnail.png`
   },
   {
     id: 'iron-acre',
@@ -49,7 +53,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'IRON ACRE LAND CO',
     category: 'BRAND ARCHITECTURE & PRINT',
     year: '2024',
-    image: './images/project-thumb-1.png'
+    image: `${base}images/project-thumb-1.png`
   },
   {
     id: 'green-essentials',
@@ -57,7 +61,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'GREEN ESSENTIALS',
     category: 'ECO BRAND SYSTEM & WEB',
     year: '2024',
-    image: './images/project-thumb-2.png'
+    image: `${base}images/project-thumb-2.png`
   },
   {
     id: 'pelican-social',
@@ -65,7 +69,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'PELICAN SOCIAL',
     category: 'HOSPITALITY BRANDING & SIGNAGE',
     year: '2023',
-    image: './images/project-thumb-3.png'
+    image: `${base}images/project-thumb-3.png`
   },
   {
     id: 'aerauliqa',
@@ -73,7 +77,7 @@ const fullWidthProjects: FullWidthProject[] = [
     title: 'AERAULIQA ENGINEERING',
     category: 'ENTERPRISE AIRFLOW TELEMETRY',
     year: '2024',
-    image: './images/project-thumb-4.png'
+    image: `${base}images/project-thumb-4.png`
   }
 ];
 
