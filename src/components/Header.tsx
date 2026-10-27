@@ -44,15 +44,18 @@ export function Header({
           className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
           style={{ transition: "all 0.6s" }} 
         />
-        <span className={`hidden sm:block font-display font-extrabold text-2xl uppercase tracking-tight leading-none transition-colors duration-500 drop-shadow-md ${open ? "text-black" : "text-white group-hover:text-accent-ink"}`}>
+        <span 
+          className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 ${
+            open 
+              ? "text-black opacity-100 max-w-[300px] translate-x-0" 
+              : scrolled 
+                ? "opacity-0 max-w-0 -translate-x-3 pointer-events-none" 
+                : "text-white group-hover:text-accent-ink opacity-100 max-w-[300px] translate-x-0"
+          }`}
+        >
           ondwari<span className={open ? "text-black/50" : "text-accent-ink"}>obiko</span>
         </span>
       </a>
-
-      <div className={`${open ? "lg:hidden" : ""} hidden lg:flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-ink/60 border border-ink/15 rounded-full px-4 py-2 backdrop-blur bg-surface/40`}>
-        <span className="size-1.5 rounded-full bg-neon animate-pulse" />
-        Available Remotely Worldwide
-      </div>
 
       <div className="flex items-center gap-3">
         <button
