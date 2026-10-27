@@ -17,49 +17,49 @@ const fullWidthProjects: FullWidthProject[] = [
     id: 'ikon',
     title: 'IKON TRAILERS',
     category: 'BRAND IDENTITY & LIVERY',
-    image: `${base}images/ikontrailers_thumbnail.png`
+    image: `${base}images/ikontrailers_thumbnail.webp`
   },
   {
     id: 'aquapet',
     title: 'AQUAPET VETERINARY',
     category: 'PACKAGING & BRAND SYSTEM',
-    image: `${base}images/aquapet_thumbnail.png`
+    image: `${base}images/aquapet_thumbnail.webp`
   },
   {
     id: 'oceanline',
     title: 'OCEAN-LINE CARGO',
     category: 'MARITIME DIGITAL PLATFORM',
-    image: `${base}images/oceanline_thumbnail.png`
+    image: `${base}images/oceanline_thumbnail.webp`
   },
   {
     id: 'fastkat',
     title: 'FASTKAT LOGISTICS',
     category: 'COURIER DISPATCH UI/UX',
-    image: `${base}images/fastkat_thumbnail.png`
+    image: `${base}images/fastkat_thumbnail.webp`
   },
   {
     id: 'iron-acre',
     title: 'IRON ACRE LAND CO',
     category: 'BRAND ARCHITECTURE & PRINT',
-    image: `${base}images/project-thumb-1.png`
+    image: `${base}images/project-thumb-1.webp`
   },
   {
     id: 'green-essentials',
     title: 'GREEN ESSENTIALS',
     category: 'ECO BRAND SYSTEM & WEB',
-    image: `${base}images/project-thumb-2.png`
+    image: `${base}images/project-thumb-2.webp`
   },
   {
     id: 'pelican-social',
     title: 'PELICAN SOCIAL',
     category: 'HOSPITALITY BRANDING & SIGNAGE',
-    image: `${base}images/project-thumb-3.png`
+    image: `${base}images/project-thumb-3.webp`
   },
   {
     id: 'aerauliqa',
     title: 'AERAULIQA ENGINEERING',
     category: 'ENTERPRISE AIRFLOW TELEMETRY',
-    image: `${base}images/project-thumb-4.png`
+    image: `${base}images/project-thumb-4.webp`
   }
 ];
 
@@ -289,7 +289,7 @@ export default function App() {
 
             <div className="flex flex-col sm:flex-row gap-6 items-center">
               <img 
-                src={`${base}images/portrait-bw.png`} 
+                src={`${base}images/portrait-bw.webp`} 
                 alt="Ondwari Obiko" 
                 className="w-28 h-28 rounded-2xl object-cover border border-neutral-800"
               />
@@ -325,18 +325,21 @@ export default function App() {
 
       {/* 8 FULL-WIDTH THUMBNAILS (NO NUMBERS, NO YEARS) */}
       <main className="w-full flex flex-col">
-        {fullWidthProjects.map((project) => (
+        {fullWidthProjects.map((project, idx) => (
           <section 
             key={project.id}
             onClick={() => setActiveImage(project)}
-            className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[400px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer"
+            className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[380px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer"
           >
             {/* Background Full-Width Image */}
             <img 
               src={project.image} 
               alt={project.title}
-              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 contrast-105 group-hover:brightness-100"
-              loading="lazy"
+              width={1920}
+              height={1080}
+              loading={idx < 2 ? "eager" : "lazy"}
+              decoding="async"
+              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 contrast-105 group-hover:brightness-100 transform-gpu will-change-transform"
             />
 
             {/* Subtle Gradient Overlay */}
