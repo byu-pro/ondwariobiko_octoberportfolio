@@ -64,7 +64,7 @@ npm run preview
 
 The repository is already initialized locally on branch `main` with the remote set to:
 ```text
-https://github.com/ondwariobiko/ondwariobiko_octoberportfolio.git
+https://github.com/byu-pro/ondwariobiko_octoberportfolio.git
 ```
 
 ### Next Steps to Push to GitHub:
@@ -72,7 +72,7 @@ https://github.com/ondwariobiko/ondwariobiko_octoberportfolio.git
 1. **Create the repository on GitHub:**
    - Go to [https://github.com/new](https://github.com/new)
    - Repository name: `ondwariobiko_octoberportfolio`
-   - Owner: `ondwariobiko`
+   - Owner: `byu-pro` (or `ondwariobiko`)
    - Leave "Initialize this repository with a README" **unchecked**
    - Click **Create repository**
 
