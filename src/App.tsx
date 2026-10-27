@@ -145,12 +145,12 @@ export default function App() {
       {/* HEADER MATCHING ondwariobiko-portfolio-website */}
       <header 
         data-menu-open={open} 
-        className={`fixed top-0 inset-x-0 z-[60] px-5 md:px-8 flex items-center justify-between transition-all duration-500 ${
+        className={`fixed top-0 inset-x-0 z-[60] px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-500 ${
           open 
-            ? "py-5 bg-transparent" 
+            ? "py-4 sm:py-5 bg-transparent" 
             : scrolled 
-              ? "py-3 bg-surface/80 backdrop-blur-xl border-b border-ink/10" 
-              : "py-5 bg-transparent border-b border-transparent"
+              ? "py-2.5 sm:py-3 bg-surface/80 backdrop-blur-xl border-b border-ink/10" 
+              : "py-4 sm:py-5 bg-transparent border-b border-transparent"
         }`}
       >
         {/* Brand Logo */}
@@ -160,10 +160,10 @@ export default function App() {
             alt="ondwariobiko monogram" 
             width={64} 
             height={64} 
-            className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
+            className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-9 sm:size-11 md:size-12" : "size-10 sm:size-12 md:size-14"}`} 
             style={{ transition: "all 0.6s" }} 
           />
-          <span className={`hidden sm:block font-display text-2xl uppercase tracking-tight leading-none ${open ? "text-black" : "text-ink"}`}>
+          <span className={`hidden sm:block font-display text-xl sm:text-2xl uppercase tracking-tight leading-none ${open ? "text-black" : "text-ink"}`}>
             ondwari<span className={open ? "text-black/50" : "text-accent-ink"}>obiko</span>
           </span>
         </a>
@@ -179,15 +179,15 @@ export default function App() {
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Close menu" : "Open menu"}
-            className="relative z-[60] flex items-center gap-3 group cursor-pointer"
+            className="relative z-[60] flex items-center gap-2 sm:gap-3 group cursor-pointer"
           >
-            <span className={`font-mono text-xs uppercase tracking-[0.25em] transition-colors ${open ? "text-black" : "text-ink group-hover:text-accent-ink"}`}>
+            <span className={`font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] transition-colors ${open ? "text-black" : "text-ink group-hover:text-accent-ink"}`}>
               {open ? "Close" : "Menu"}
             </span>
-            <span className={`size-14 rounded-full grid place-items-center transition-all duration-500 ${open ? "bg-black rotate-90" : "bg-neon group-hover:scale-110"}`}>
-              <span className="relative block w-5 h-3">
-                <span className={`absolute left-0 h-0.5 w-5 transition-all duration-500 ${open ? "top-1.5 rotate-45 bg-neon" : "top-0 bg-black"}`} />
-                <span className={`absolute left-0 h-0.5 transition-all duration-500 ${open ? "top-1.5 w-5 -rotate-45 bg-neon" : "top-2.5 w-3 bg-black"}`} />
+            <span className={`size-11 sm:size-14 rounded-full grid place-items-center transition-all duration-500 ${open ? "bg-black rotate-90" : "bg-neon group-hover:scale-110"}`}>
+              <span className="relative block w-4 sm:w-5 h-3">
+                <span className={`absolute left-0 h-0.5 w-4 sm:w-5 transition-all duration-500 ${open ? "top-1.5 rotate-45 bg-neon" : "top-0 bg-black"}`} />
+                <span className={`absolute left-0 h-0.5 transition-all duration-500 ${open ? "top-1.5 w-4 sm:w-5 -rotate-45 bg-neon" : "top-2.5 w-2.5 sm:w-3 bg-black"}`} />
               </span>
             </span>
           </button>
@@ -200,18 +200,18 @@ export default function App() {
           className="fixed inset-0 z-[55] bg-neon text-black animate-menu-in flex flex-col overflow-y-auto overscroll-contain" 
           onClick={(e) => e.target === e.currentTarget && setOpen(false)}
         >
-          <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-32 pb-12">
+          <div className="flex-1 flex flex-col justify-center px-4 sm:px-10 md:px-16 pt-24 sm:pt-32 pb-8 sm:pb-12">
             <ul>
               {navLinks.map((l, i) => (
                 <li key={l.label} className="overflow-hidden border-b border-black/15">
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-6 py-3 md:py-4 animate-rise"
+                    className="group flex items-baseline gap-3 sm:gap-6 py-2.5 sm:py-3 md:py-4 animate-rise"
                     style={{ animationDelay: `${200 + i * 70}ms` }}
                   >
-                    <span className="font-mono text-xs md:text-sm w-10">0{i + 1}</span>
-                    <span className="font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.8rem,9vw,8rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic">
+                    <span className="font-mono text-xs sm:text-sm w-7 sm:w-10">0{i + 1}</span>
+                    <span className="font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.1rem,7.5vw,7.5rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic break-words">
                       {l.label}
                     </span>
                     <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
@@ -224,12 +224,12 @@ export default function App() {
           </div>
 
           {/* Marquee Ticker at the Bottom of Menu */}
-          <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-4">
-            <div className="flex w-max animate-marquee font-display uppercase text-2xl tracking-tight whitespace-nowrap">
+          <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-3 sm:py-4">
+            <div className="flex w-max animate-marquee font-display uppercase text-lg sm:text-2xl tracking-tight whitespace-nowrap">
               {Array.from({ length: 2 }).map((_, k) => (
                 <span key={k} className="flex">
                   {["Logo Design", "Brand Identity", "UI/UX", "Front-end", "Art Direction", "Remote Worldwide"].map((w) => (
-                    <span key={w} className="px-8">{w} •</span>
+                    <span key={w} className="px-6 sm:px-8">{w} •</span>
                   ))}
                 </span>
               ))}
@@ -238,13 +238,13 @@ export default function App() {
         </div>
       )}
 
-      {/* 8 FULL-WIDTH THUMBNAILS (PURE VISUAL - PROJECT NAME REVEALED ON HOVER) */}
-      <main id="work" className="w-full flex flex-col pt-20 sm:pt-24">
+      {/* 8 FULL-WIDTH THUMBNAILS (PURE VISUAL - PROJECT NAME REVEALED ON HOVER/TOUCH) */}
+      <main id="work" className="w-full flex flex-col pt-16 sm:pt-24">
         {fullWidthProjects.map((project, idx) => (
           <section 
             key={project.id}
             onClick={() => setActiveImage(project)}
-            className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[380px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer"
+            className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation"
           >
             {/* Background Full-Width Image with Cinematic Zoom */}
             <img 
@@ -257,15 +257,15 @@ export default function App() {
               className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
             />
 
-            {/* Dark Bottom Gradient that smoothly fades in on hover to ensure text legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {/* Dark Bottom Gradient that smoothly fades in on hover/touch to ensure text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            {/* Project Name and Category - ONLY Appears on Hover */}
-            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 lg:p-14 z-10 flex flex-col items-start opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
-              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors duration-500 drop-shadow-xl">
+            {/* Project Name and Category - ONLY Appears on Hover / Touch */}
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-8 lg:p-14 z-10 flex flex-col items-start opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
+              <h2 className="text-2xl sm:text-4xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors duration-500 drop-shadow-xl leading-tight">
                 {project.title}
               </h2>
-              <div className="mt-2 text-xs sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2">
+              <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
                 {project.category}
               </div>
@@ -280,20 +280,20 @@ export default function App() {
       {/* FULLSCREEN PREVIEW LIGHTBOX */}
       {activeImage && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex flex-col justify-between p-6 sm:p-12 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex flex-col justify-between p-3 sm:p-8 md:p-12 animate-fadeIn"
           onClick={() => setActiveImage(null)}
         >
           {/* Lightbox Header */}
-          <div className="flex items-center justify-between text-xs font-mono border-b border-neutral-800 pb-4">
-            <div className="flex items-center gap-3">
-              <span className="text-white uppercase font-bold text-base font-display">{activeImage.title}</span>
-              <span className="text-neutral-500">•</span>
-              <span className="text-accent-ink">{activeImage.category}</span>
+          <div className="flex items-center justify-between gap-3 text-xs font-mono border-b border-neutral-800 pb-3 sm:pb-4">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 min-w-0 pr-2">
+              <span className="text-white uppercase font-bold text-sm sm:text-base font-display truncate max-w-[200px] sm:max-w-none">{activeImage.title}</span>
+              <span className="text-neutral-500 hidden sm:inline">•</span>
+              <span className="text-accent-ink text-[11px] sm:text-xs">{activeImage.category}</span>
             </div>
             
             <button 
               onClick={() => setActiveImage(null)}
-              className="p-2 rounded-full border border-neutral-800 hover:border-neon text-neutral-400 hover:text-accent-ink transition-colors cursor-pointer"
+              className="p-2 rounded-full border border-neutral-800 hover:border-neon text-neutral-400 hover:text-accent-ink transition-colors cursor-pointer shrink-0"
               aria-label="Close image"
             >
               <X className="w-5 h-5" />
@@ -301,24 +301,24 @@ export default function App() {
           </div>
 
           {/* Large Image Preview */}
-          <div className="my-auto max-h-[80vh] flex items-center justify-center p-2">
+          <div className="my-auto max-h-[78vh] flex items-center justify-center p-1 sm:p-2">
             <img 
               src={activeImage.image} 
               alt={activeImage.title} 
-              className="max-h-[75vh] w-auto max-w-full object-contain rounded-lg border border-neutral-800 shadow-2xl"
+              className="max-h-[72vh] sm:max-h-[75vh] w-auto max-w-full object-contain rounded-lg border border-neutral-800 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
 
           {/* Lightbox Footer */}
-          <div className="text-center text-xs font-mono text-neutral-500">
-            CLICK ANYWHERE OR PRESS ESC TO CLOSE
+          <div className="text-center text-[10px] sm:text-xs font-mono text-neutral-500">
+            TAP ANYWHERE OR PRESS ESC TO CLOSE
           </div>
         </div>
       )}
 
       {/* LOGO VIDEO ANIMATION SECTION */}
-      <section className="w-full overflow-hidden bg-black h-[280px] sm:h-[350px] md:h-[420px] lg:h-[480px] relative border-0 outline-none -my-px" aria-label="John Obiko logo animation">
+      <section className="w-full overflow-hidden bg-black h-[220px] sm:h-[320px] md:h-[420px] lg:h-[480px] relative border-0 outline-none -my-px" aria-label="John Obiko logo animation">
         <video
           ref={videoRef}
           src={`${base}images/logo-animation.webm`}
@@ -338,12 +338,12 @@ export default function App() {
       </section>
 
       {/* THE FOOTER SECTION AFTER THE VIDEO (MATCHING ondwariobiko-portfolio-website) */}
-      <footer id="contact" className="px-5 md:px-8 pt-20 md:pt-32 pb-28 md:pb-24 border-t border-ink/10 bg-black text-ink">
+      <footer id="contact" className="px-4 sm:px-6 md:px-8 pt-16 sm:pt-24 md:pt-32 pb-24 md:pb-24 border-t border-ink/10 bg-black text-ink">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">Have a vision?</p>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-4 sm:mb-6">Have a vision?</p>
           <a 
             href="mailto:obi22004@byui.edu" 
-            className="group block font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.5rem,11vw,10rem)]"
+            className="group block font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.3rem,10.5vw,10rem)] break-words"
           >
             <span className="block transition-all duration-500 group-hover:text-accent-ink group-hover:translate-x-4">
               Let's build
@@ -361,7 +361,7 @@ export default function App() {
                 <a href="#privacy" className="hover:text-accent-ink transition-colors">Privacy</a>
               </div>
             </div>
-            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-ink/50">
+            <div className="mt-6 flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-3 text-ink/50">
               <a href="mailto:obi22004@byui.edu" className="hover:text-accent-ink transition-colors">Email</a>
               <a href="https://wa.me/254702255575" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">WhatsApp</a>
               <a href="https://www.linkedin.com/in/ondwariobiko/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">LinkedIn</a>
@@ -379,13 +379,13 @@ export default function App() {
         aria-label="Back to top"
         aria-hidden={!backToTopVisible}
         tabIndex={backToTopVisible ? 0 : -1}
-        className={`back-to-top min-h-11 min-w-11 fixed bottom-4 left-4 md:bottom-6 md:left-6 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-surface/60 backdrop-blur-md px-3 py-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink transition-all duration-500 hover:border-neon hover:text-accent-ink cursor-pointer ${
+        className={`back-to-top fixed bottom-4 left-3 sm:left-6 md:bottom-6 md:left-6 z-50 flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-surface/60 backdrop-blur-md size-10 sm:size-auto sm:px-3 sm:py-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink transition-all duration-500 hover:border-neon hover:text-accent-ink cursor-pointer ${
           backToTopVisible
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
-        <span className="grid size-6 place-items-center rounded-full border border-ink/20 leading-none transition-transform duration-500 group-hover:rotate-0 -rotate-45">
+        <span className="grid size-5 sm:size-6 place-items-center rounded-full border border-ink/20 leading-none transition-transform duration-500 group-hover:rotate-0 -rotate-45">
           ↑
         </span>
         <span className="hidden sm:inline">Top</span>
@@ -395,10 +395,10 @@ export default function App() {
       <a 
         href="mailto:obi22004@byui.edu" 
         aria-label="Start a project" 
-        className="floating-consult group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1.5 py-1.5 shadow-sm transition-transform duration-300 hover:scale-105"
+        className="floating-consult group fixed bottom-4 right-3 sm:right-6 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 shadow-sm transition-transform duration-300 hover:scale-105"
       >
         <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">Start a project</span>
-        <span className="size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">
+        <span className="size-7 sm:size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45 text-xs sm:text-base">
           ↗
         </span>
       </a>
