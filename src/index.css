@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  :root {
+    --lime-accent: #ccff00;
+    --lime-dim: #99cc00;
+    --lime-glow: rgba(204, 255, 0, 0.18);
   }
-  
-  h1, h2, h3, h4, .font-display {
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  body {
+    background-color: #000000;
+    color: #f4f4f5;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 }
 
-/* Custom scrollbar */
+.font-syne {
+  font-family: 'Syne', 'Space Grotesk', sans-serif;
+}
+
+/* Custom Lime Glow Utilities */
+.lime-border-glow:hover {
+  border-color: #ccff00;
+  box-shadow: 0 0 30px -5px rgba(204, 255, 0, 0.25);
+}
+
+.lime-tag {
+  border: 1px solid rgba(204, 255, 0, 0.3);
+  color: #ccff00;
+  background-color: rgba(204, 255, 0, 0.05);
+}
+
+.lime-tag:hover {
+  background-color: rgba(204, 255, 0, 0.15);
+  border-color: #ccff00;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #262626;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #ccff00;
 }

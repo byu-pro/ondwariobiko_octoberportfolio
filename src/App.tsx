@@ -1,641 +1,749 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowUpRight, 
   Sparkles, 
-  Layers, 
-  Palette, 
-  Code2, 
-  CheckCircle2, 
+  Eye, 
+  X, 
   Mail, 
   MapPin, 
   Github, 
-  Linkedin, 
   Send,
-  ChevronRight,
-  ExternalLink,
-  PhoneCall,
-  Menu,
-  X
+  CheckCircle2,
+  Clock,
+  Layers,
+  Palette,
+  Code2,
+  Maximize2
 } from 'lucide-react';
 
-interface Project {
+interface ProjectTile {
   id: string;
+  number: string;
   title: string;
+  client: string;
   category: 'Brand Identity' | 'UI/UX Design' | 'Frontend Dev';
-  description: string;
+  year: string;
+  role: string;
+  summary: string;
+  challenge: string;
+  solution: string;
+  deliverables: string[];
   image: string;
   tags: string[];
-  year: string;
 }
 
-const projects: Project[] = [
+const portfolioProjects: ProjectTile[] = [
+  {
+    id: 'ikon-trailers',
+    number: '01',
+    title: 'IKON Trailers',
+    client: 'Ikon Trailer Group',
+    category: 'Brand Identity',
+    year: '2025',
+    role: 'Lead Brand Architect',
+    summary: 'Heavy-duty commercial trailer dealership & manufacturing visual system, vehicle livery, and brand guidelines.',
+    challenge: 'The dealership required a modern, authoritative identity capable of standing out on interstate highways and conveying industrial resilience.',
+    solution: 'Designed a high-contrast geometric monogram, custom industrial typography, and standardized livery systems for heavy haulage fleets.',
+    deliverables: ['Primary & Secondary Marks', 'Livery Graphics', 'Brand Standards Manual', 'Digital Marketing Assets'],
+    image: './images/ikontrailers_thumbnail.png',
+    tags: ['Brand Identity', 'Logo System', 'Vehicle Livery']
+  },
   {
     id: 'aquapet',
-    title: 'Aquapet Veterinary & Care',
+    number: '02',
+    title: 'AquaPet Veterinary',
+    client: 'AquaPet Health & Nutrition',
     category: 'Brand Identity',
-    description: 'Comprehensive brand identity, premium packaging systems, and digital touchpoints for an aquatic veterinary enterprise.',
+    year: '2025',
+    role: 'Brand & Packaging Designer',
+    summary: 'Comprehensive veterinary care identity, premium aquatic medication packaging, and retail shelf presence.',
+    challenge: 'Balancing clinical credibility for aquatic veterinarians with approachable consumer retail packaging for aquarium enthusiasts.',
+    solution: 'Engineered a clean chromatic color hierarchy, fluid wave iconography, and tamper-evident packaging architectures.',
+    deliverables: ['Identity System', 'Product Packaging Suite', 'Retail POS Displays', 'Iconography System'],
     image: './images/aquapet_thumbnail.png',
-    tags: ['Brand Identity', 'Packaging', 'Typography'],
-    year: '2025'
-  },
-  {
-    id: 'fastkat',
-    title: 'FastKat Logistics & Courier',
-    category: 'UI/UX Design',
-    description: 'Next-generation delivery platform identity and user experience interface engineered for speed, reliability, and real-time tracking.',
-    image: './images/fastkat_thumbnail.png',
-    tags: ['UI/UX Design', 'Design System', 'Mobile App'],
-    year: '2025'
-  },
-  {
-    id: 'ikontrailers',
-    title: 'Ikon Heavy Trailers',
-    category: 'Brand Identity',
-    description: 'Industrial heavy-duty brand design, custom typography, vehicle fleet livery, and digital brochure suite.',
-    image: './images/ikontrailers_thumbnail.png',
-    tags: ['Industrial Brand', 'Livery Design', '3D Graphics'],
-    year: '2024'
+    tags: ['Packaging Design', 'Identity System', 'Art Direction']
   },
   {
     id: 'oceanline',
-    title: 'Oceanline Cargo Express',
+    number: '03',
+    title: 'Ocean-Line Cargo',
+    client: 'Ocean-Line Freight Forwarders',
     category: 'Frontend Dev',
-    description: 'Maritime freight enterprise web platform featuring automated rate calculations, tracking dashboards, and responsive design.',
+    year: '2024',
+    role: 'Frontend Engineer & Designer',
+    summary: 'Global maritime freight enterprise brand system, tracking dashboard, and responsive client portal.',
+    challenge: 'Converting complex real-time container logistics telemetry into a rapid, legible client interface for global shipping manifests.',
+    solution: 'Built a high-performance React client portal with instant rate calculators, vessel tracking visualizations, and responsive styling.',
+    deliverables: ['Brand Refresh', 'Client Portal UI', 'React/Tailwind Frontend', 'Rate Calculator Engine'],
     image: './images/oceanline_thumbnail.png',
-    tags: ['Frontend Dev', 'React', 'Tailwind CSS'],
-    year: '2024'
+    tags: ['Web Platform', 'Brand Identity', 'Frontend Dev']
   },
   {
-    id: 'editorial-suite',
-    title: 'Aerauliqa Environmental System',
+    id: 'fastkat',
+    number: '04',
+    title: 'FastKat Logistics',
+    client: 'FastKat Courier Tech',
     category: 'UI/UX Design',
-    description: 'B2B clean-air airflow engineering interface, product configuration dashboard, and enterprise design system.',
-    image: './images/project-thumb-1.png',
-    tags: ['Enterprise UX', 'Design System', 'Figma'],
-    year: '2024'
+    year: '2025',
+    role: 'Lead UI/UX Designer',
+    summary: 'Next-generation on-demand urban courier dispatch platform, mobile driver application, and dispatcher system.',
+    challenge: 'Minimizing driver friction while on transit while maintaining split-second dispatch synchronization for central urban hubs.',
+    solution: 'Crafted a high-contrast dark mode mobile application with large target areas, haptic visual cues, and live telemetry tracking.',
+    deliverables: ['Mobile App UI (iOS & Android)', 'Dispatcher Dashboard', 'Comprehensive Design System', 'Prototyping'],
+    image: './images/fastkat_thumbnail.png',
+    tags: ['Mobile UI/UX', 'Product Strategy', 'Design System']
   },
   {
-    id: 'brand-mark-exploration',
-    title: 'Monogram & Symbol Archive',
+    id: 'iron-acre',
+    number: '05',
+    title: 'Iron Acre Land Co',
+    client: 'Iron Acre Realty Group',
     category: 'Brand Identity',
-    description: 'Curated compilation of geometric marks, minimalist heraldry, and dynamic visual identities crafted across 10 years.',
-    image: './images/logomark_thumbnail.png',
-    tags: ['Iconography', 'Brand Mark', 'Geometry'],
-    year: '2026'
-  }
-];
-
-const services = [
-  {
-    icon: <Palette className="w-8 h-8 text-amber-400" />,
-    title: 'Brand & Logo Identity',
-    description: 'Crafting bespoke, unforgettable visual identities, logos, typography guidelines, and brand systems that scale with authority.'
+    year: '2024',
+    role: 'Brand & Print Designer',
+    summary: 'Premium rural land brokerage brand architecture, bespoke typography, and high-net-worth investor prospectuses.',
+    challenge: 'Establishing a sense of generational permanence and prestige for large-tract land acquisitions across East Africa.',
+    solution: 'Developed an earth-toned architectural heraldry mark, bespoke foil-stamped documentation, and property signage.',
+    deliverables: ['Architectural Mark', 'Investor Books', 'Estate Signage', 'Marketing Guidelines'],
+    image: './images/project-thumb-1.png',
+    tags: ['Brand Identity', 'Editorial Print', 'Typography']
   },
   {
-    icon: <Layers className="w-8 h-8 text-amber-400" />,
-    title: 'UI/UX & Product Design',
-    description: 'Architecting high-converting user interfaces, wireframes, interactive prototypes, and design systems with obsessive detail.'
+    id: 'green-essentials',
+    number: '06',
+    title: 'Green Essentials',
+    client: 'Green Essentials Eco Care',
+    category: 'Brand Identity',
+    year: '2024',
+    role: 'Identity & Web Designer',
+    summary: 'Sustainable lawn care & eco-conscious commercial grounds maintenance visual system and booking website.',
+    challenge: 'Differentiating an eco-first grounds maintenance business from conventional chemically-heavy lawn services.',
+    solution: 'Combined crisp botanical geometry with modern minimalist typography to articulate clean, carbon-neutral landscaping.',
+    deliverables: ['Logo Family', 'Digital Booking Experience', 'Fleet Vehicle Wraps', 'Uniform Guidelines'],
+    image: './images/project-thumb-2.png',
+    tags: ['Eco Branding', 'Logo System', 'Web Design']
   },
   {
-    icon: <Code2 className="w-8 h-8 text-amber-400" />,
-    title: 'Frontend Engineering',
-    description: 'Bringing designs to life with modern React, TypeScript, Tailwind CSS, and ultra-smooth animations built for performance.'
+    id: 'pelican-social',
+    number: '07',
+    title: 'Pelican Social',
+    client: 'Pelican Bar & Grill',
+    category: 'UI/UX Design',
+    year: '2023',
+    role: 'Creative Director',
+    summary: 'High-end coastal hospitality brand identity, architectural neon signage, and digital menu ordering experience.',
+    challenge: 'Translating daytime seaside casual relaxation into vibrant, upscale night-time culinary nightlife.',
+    solution: 'Devised a dynamic color-shifting typography palette, custom illustrated coastal marks, and waterproof tactile menu systems.',
+    deliverables: ['Hospitality Brand System', 'Spatial Signage', 'Editorial Menus', 'Interactive Cocktail App'],
+    image: './images/project-thumb-3.png',
+    tags: ['Hospitality Branding', 'Spatial Signage', 'Menu Design']
   },
   {
-    icon: <Sparkles className="w-8 h-8 text-amber-400" />,
-    title: 'Creative Direction',
-    description: 'Holistic design strategy that bridges strategic business objectives with striking visual aesthetics and memorable storytelling.'
+    id: 'aerauliqa',
+    number: '08',
+    title: 'Aerauliqa Systems',
+    client: 'Aerauliqa Engineering',
+    category: 'Frontend Dev',
+    year: '2024',
+    role: 'UI/UX & Frontend Developer',
+    summary: 'Clean-air HVAC airflow configuration portal, product engineering interface, and interactive telemetry dashboard.',
+    challenge: 'Empowering mechanical engineers to simulate cubic-feet-per-minute airflow and pressure drops within seconds.',
+    solution: 'Engineered an interactive calculation dashboard with SVG flow schematics, responsive spec sheets, and component libraries.',
+    deliverables: ['Configurator Application', 'React Component Library', 'Telemetry Graphs', 'Design Tokens'],
+    image: './images/project-thumb-4.png',
+    tags: ['Enterprise UI/UX', 'React Application', 'Design System']
   }
 ];
 
 export default function App() {
-  const [activeFilter, setActiveFilter] = useState<'All' | 'Brand Identity' | 'UI/UX Design' | 'Frontend Dev'>('All');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [selectedProject, setSelectedProject] = useState<ProjectTile | null>(null);
+  const [currentTime, setCurrentTime] = useState<string>('');
+  const [contactSubmitted, setContactSubmitted] = useState<boolean>(false);
 
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeFilter);
+  useEffect(() => {
+    const updateNairobiTime = () => {
+      const now = new Date();
+      const nairobi = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Africa/Nairobi',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      }).format(now);
+      setCurrentTime(nairobi);
+    };
 
-  const handleSubmit = (e: React.FormEvent) => {
+    updateNairobiTime();
+    const interval = setInterval(updateNairobiTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const filteredProjects = activeCategory === 'All'
+    ? portfolioProjects
+    : portfolioProjects.filter(p => p.category === activeCategory);
+
+  const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
+    setContactSubmitted(true);
+    setTimeout(() => setContactSubmitted(false), 5000);
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-amber-400 selection:text-neutral-950">
-      {/* Top Announcement / Availability Banner */}
-      <div className="bg-gradient-to-r from-amber-500/10 via-amber-400/20 to-amber-500/10 border-b border-amber-500/20 py-2 px-4 text-center text-xs tracking-wider uppercase font-semibold text-amber-300 flex items-center justify-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        Available for Select Q4 & 2027 Design & Engineering Commissions
+    <div className="min-h-screen bg-black text-white selection:bg-[#ccff00] selection:text-black">
+      
+      {/* Top Ticker Bar */}
+      <div className="border-b border-neutral-900 bg-black/90 backdrop-blur-md px-6 py-2.5 text-xs text-neutral-400 flex flex-wrap items-center justify-between gap-4 font-mono">
+        <div className="flex items-center gap-3">
+          <span className="inline-block w-2 h-2 rounded-full bg-[#ccff00] animate-pulse"></span>
+          <span className="text-[#ccff00] font-semibold tracking-wider uppercase">AVAILABLE FOR Q4 / 2027 WORK</span>
+          <span className="hidden sm:inline text-neutral-700">•</span>
+          <span className="hidden sm:inline text-neutral-400">10 YEARS EXPERIENCE</span>
+        </div>
+        
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
+            <Clock className="w-3.5 h-3.5 text-[#ccff00]" />
+            <span>NAIROBI, KE: <strong className="text-white">{currentTime || '12:00:00'}</strong> EAT</span>
+          </div>
+          <a 
+            href="#contact" 
+            className="text-[#ccff00] hover:underline underline-offset-4 font-bold flex items-center gap-1"
+          >
+            LET'S TALK <ArrowUpRight className="w-3 h-3" />
+          </a>
+        </div>
       </div>
 
-      {/* Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-neutral-950/80 border-b border-neutral-800/80 transition-all">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-neutral-950 font-black text-xl shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+      {/* Main Brand & Work Header */}
+      <header className="sticky top-0 z-40 bg-black/95 backdrop-blur-xl border-b border-neutral-900">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+          
+          {/* Logo & Identity */}
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-[#ccff00] text-black font-extrabold flex items-center justify-center text-xl font-syne rounded-lg shadow-[0_0_20px_rgba(204,255,0,0.3)]">
               O
             </div>
             <div>
-              <span className="font-bold text-lg tracking-tight block text-white group-hover:text-amber-400 transition-colors">
-                Ondwari Obiko
-              </span>
-              <span className="text-[11px] text-neutral-400 uppercase tracking-widest font-medium block">
-                Brand & Frontend Designer
+              <a href="#" className="font-extrabold text-lg tracking-tighter text-white hover:text-[#ccff00] transition-colors block leading-tight font-syne">
+                ONDWARI OBIKO
+              </a>
+              <span className="text-[11px] font-mono text-neutral-400 tracking-widest block uppercase">
+                BRAND ARCHITECT • UI/UX • FRONTEND
               </span>
             </div>
-          </a>
+          </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-300">
-            <a href="#work" className="hover:text-amber-400 transition-colors">Selected Work</a>
-            <a href="#services" className="hover:text-amber-400 transition-colors">Capabilities</a>
-            <a href="#about" className="hover:text-amber-400 transition-colors">About & Ethos</a>
-            <a href="#contact" className="hover:text-amber-400 transition-colors">Contact</a>
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest uppercase">
+            <a href="#work" className="text-[#ccff00] font-bold border-b border-[#ccff00] pb-1">
+              // 01 WORK
+            </a>
+            <a href="#about" className="text-neutral-400 hover:text-white transition-colors pb-1">
+              // 02 ABOUT
+            </a>
+            <a href="#contact" className="text-neutral-400 hover:text-white transition-colors pb-1">
+              // 03 CONTACT
+            </a>
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          {/* Right Action */}
+          <div className="flex items-center gap-4">
             <a 
-              href="#contact"
-              className="px-5 py-2.5 rounded-full bg-amber-400 text-neutral-950 font-bold text-sm hover:bg-amber-300 transition-all transform hover:-translate-y-0.5 shadow-md shadow-amber-400/20 flex items-center gap-2"
+              href="#contact" 
+              className="px-5 py-2.5 rounded-full bg-[#ccff00] text-black font-bold text-xs uppercase tracking-wider hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all flex items-center gap-2"
             >
-              Start a Project
+              Start Project
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Mobile Menu Trigger */}
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            className="md:hidden p-2 text-neutral-400 hover:text-white"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
-
-        {/* Mobile Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-neutral-900 border-b border-neutral-800 px-6 py-6 space-y-4">
-            <a 
-              href="#work" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-neutral-200 hover:text-amber-400"
-            >
-              Selected Work
-            </a>
-            <a 
-              href="#services" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-neutral-200 hover:text-amber-400"
-            >
-              Capabilities
-            </a>
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-neutral-200 hover:text-amber-400"
-            >
-              About & Ethos
-            </a>
-            <a 
-              href="#contact" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-neutral-200 hover:text-amber-400"
-            >
-              Contact
-            </a>
-            <div className="pt-2">
-              <a 
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 rounded-xl bg-amber-400 text-neutral-950 font-bold text-center block"
-              >
-                Start a Project
-              </a>
-            </div>
-          </div>
-        )}
       </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-16 pb-24 md:pt-24 md:pb-36 overflow-hidden">
-        {/* Subtle Ambient Background Gradients */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none"></div>
-        <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      {/* WORK HERO: Straight to Work */}
+      <main id="work" className="max-w-[1600px] mx-auto px-6 lg:px-12 pt-12 pb-24">
+        
+        {/* Editorial Work Header */}
+        <div className="border-b border-neutral-900 pb-10 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             
-            {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 text-xs font-semibold uppercase tracking-wider">
-                <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                Based in Nairobi, Kenya • Global Reach
+            <div className="max-w-3xl space-y-4">
+              <div className="inline-flex items-center gap-2 font-mono text-xs text-[#ccff00] uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>
+                SELECTED ARCHIVE // 2016 — 2026
               </div>
 
-              <h1 className="text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.08] text-white">
-                Bold, unforgettable <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">
-                  brand design
-                </span> & precision <br />
-                frontend engineering.
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white uppercase font-syne leading-[0.95]">
+                PRECISION <span className="text-[#ccff00]">WORK</span>.
               </h1>
 
-              <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl font-normal leading-relaxed">
-                I am <strong className="text-white">Ondwari (John) Obiko</strong> — a designer and creative technologist with over a decade of experience crafting distinctive visual identities, intuitive UI/UX systems, and high-impact digital experiences.
+              <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+                Strategic brand identity, packaging design, and production frontend systems engineered for bold founders and enterprise platforms globally.
               </p>
+            </div>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <a 
-                  href="#work"
-                  className="px-8 py-4 rounded-full bg-amber-400 text-neutral-950 font-bold hover:bg-amber-300 transition-all transform hover:-translate-y-0.5 shadow-xl shadow-amber-400/20 flex items-center gap-3 text-base"
-                >
-                  Explore Portfolio
-                  <ChevronRight className="w-5 h-5" />
-                </a>
+            {/* Category Filter Chips & Counter */}
+            <div className="space-y-3">
+              <div className="text-xs font-mono text-neutral-500 uppercase tracking-wider flex items-center justify-between">
+                <span>FILTER DISCIPLINE</span>
+                <span className="text-[#ccff00]">[{filteredProjects.length.toString().padStart(2, '0')} TILES]</span>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { name: 'All', count: '08' },
+                  { name: 'Brand Identity', count: '04' },
+                  { name: 'UI/UX Design', count: '02' },
+                  { name: 'Frontend Dev', count: '02' }
+                ].map(cat => (
+                  <button
+                    key={cat.name}
+                    onClick={() => setActiveCategory(cat.name)}
+                    className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider uppercase transition-all ${
+                      activeCategory === cat.name
+                        ? 'bg-[#ccff00] text-black font-bold shadow-[0_0_20px_rgba(204,255,0,0.3)]'
+                        : 'bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700'
+                    }`}
+                  >
+                    {cat.name} ({cat.count})
+                  </button>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* 2-COLUMN TILES GRID (8 TILES TOTAL) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {filteredProjects.map((tile) => (
+            <article 
+              key={tile.id}
+              onClick={() => setSelectedProject(tile)}
+              className="group cursor-pointer rounded-2xl bg-neutral-950 border border-neutral-900 hover:border-[#ccff00] transition-all duration-500 overflow-hidden flex flex-col lime-border-glow"
+            >
+              {/* Tile Top Metadata Bar */}
+              <div className="px-6 py-4 border-b border-neutral-900 flex items-center justify-between text-xs font-mono">
+                <div className="flex items-center gap-3">
+                  <span className="text-[#ccff00] font-bold text-sm tracking-widest">{tile.number} //</span>
+                  <span className="text-neutral-400 uppercase tracking-wider">{tile.category}</span>
+                </div>
+                <div className="text-neutral-500 flex items-center gap-2">
+                  <span>{tile.year}</span>
+                  <span className="text-neutral-700">•</span>
+                  <span className="text-[#ccff00] group-hover:underline flex items-center gap-1 font-semibold">
+                    VIEW DETAILS
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
+              </div>
+
+              {/* Tile Cinematic Image Container */}
+              <div className="aspect-[16/10] bg-neutral-900 relative overflow-hidden">
+                <img 
+                  src={tile.image} 
+                  alt={tile.title} 
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105 group-hover:brightness-100"
+                  loading="lazy"
+                />
+                
+                {/* Subtle vignette gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                
+                {/* Floating Quick Action Badge */}
+                <div className="absolute bottom-4 right-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                  <span className="px-4 py-2 rounded-full bg-black/90 backdrop-blur-md border border-[#ccff00] text-[#ccff00] text-xs font-mono font-bold tracking-wider flex items-center gap-2 shadow-2xl">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    EXPLORE CASE STUDY
+                  </span>
+                </div>
+              </div>
+
+              {/* Tile Content Footer */}
+              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+                <div>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-[#ccff00] transition-colors tracking-tight font-syne uppercase">
+                      {tile.title}
+                    </h2>
+                    <span className="text-xs font-mono text-neutral-500 whitespace-nowrap">
+                      {tile.role}
+                    </span>
+                  </div>
+
+                  <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
+                    {tile.summary}
+                  </p>
+                </div>
+
+                {/* Deliverables / Tags */}
+                <div className="pt-4 border-t border-neutral-900 flex flex-wrap gap-2">
+                  {tile.tags.map(tag => (
+                    <span 
+                      key={tag}
+                      className="text-[11px] font-mono px-3 py-1 rounded-md bg-black border border-neutral-800 text-neutral-300 group-hover:border-neutral-700 transition-colors"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </main>
+
+      {/* CASE STUDY MODAL OVERLAY */}
+      {selectedProject && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 lg:p-10 animate-fadeIn"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div 
+            className="bg-neutral-950 border border-[#ccff00]/40 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-[0_0_60px_rgba(204,255,0,0.15)] flex flex-col relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Top Bar */}
+            <div className="sticky top-0 z-10 bg-neutral-950/95 backdrop-blur-md px-6 py-5 border-b border-neutral-900 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-[#ccff00]">CASE STUDY // {selectedProject.number}</span>
+                <span className="text-xs font-mono text-neutral-500">•</span>
+                <span className="text-xs font-mono text-white uppercase">{selectedProject.category}</span>
+              </div>
+              
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 hover:border-[#ccff00] text-neutral-400 hover:text-[#ccff00] flex items-center justify-center transition-colors"
+                aria-label="Close case study"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 sm:p-10 space-y-8">
+              
+              {/* Header Title */}
+              <div>
+                <h2 className="text-3xl sm:text-5xl font-black text-white font-syne uppercase tracking-tight">
+                  {selectedProject.title}
+                </h2>
+                <div className="mt-3 flex flex-wrap gap-4 text-xs font-mono text-neutral-400">
+                  <span>CLIENT: <strong className="text-white">{selectedProject.client}</strong></span>
+                  <span>•</span>
+                  <span>YEAR: <strong className="text-white">{selectedProject.year}</strong></span>
+                  <span>•</span>
+                  <span>ROLE: <strong className="text-[#ccff00]">{selectedProject.role}</strong></span>
+                </div>
+              </div>
+
+              {/* Full Image */}
+              <div className="rounded-2xl overflow-hidden border border-neutral-900 bg-black aspect-[16/9]">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Challenge & Solution Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                <div className="p-6 rounded-2xl bg-black border border-neutral-900 space-y-3">
+                  <div className="text-xs font-mono text-[#ccff00] uppercase tracking-wider font-bold">
+                    // 01 THE CHALLENGE
+                  </div>
+                  <p className="text-neutral-300 text-sm leading-relaxed">
+                    {selectedProject.challenge}
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-black border border-neutral-900 space-y-3">
+                  <div className="text-xs font-mono text-[#ccff00] uppercase tracking-wider font-bold">
+                    // 02 THE STRATEGIC SOLUTION
+                  </div>
+                  <p className="text-neutral-300 text-sm leading-relaxed">
+                    {selectedProject.solution}
+                  </p>
+                </div>
+              </div>
+
+              {/* Deliverables List */}
+              <div className="p-6 rounded-2xl bg-neutral-900/40 border border-neutral-800 space-y-4">
+                <div className="text-xs font-mono text-white uppercase tracking-wider font-bold">
+                  KEY DELIVERABLES & ARTIFACTS
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {selectedProject.deliverables.map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-3 text-sm text-neutral-300 font-mono">
+                      <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Modal Bottom CTA */}
+              <div className="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span className="text-xs font-mono text-neutral-400">
+                  Ready to craft a distinctive identity or web platform like this?
+                </span>
                 <a 
                   href="#contact"
-                  className="px-8 py-4 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-200 font-semibold hover:border-neutral-700 hover:bg-neutral-800 transition-all flex items-center gap-3 text-base"
+                  onClick={() => setSelectedProject(null)}
+                  className="px-6 py-3 rounded-full bg-[#ccff00] text-black font-bold text-xs uppercase tracking-wider hover:bg-white transition-all flex items-center gap-2"
                 >
-                  Get in Touch
+                  Inquire For Your Project
+                  <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
 
-              {/* Key Credentials & Numbers */}
-              <div className="pt-8 border-t border-neutral-800/80 grid grid-cols-3 gap-6 max-w-lg">
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* ABOUT & ETHOS SECTION */}
+      <section id="about" className="border-t border-neutral-900 bg-neutral-950 py-24">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Bio Column */}
+            <div className="lg:col-span-7 space-y-8">
+              <div className="inline-flex items-center gap-2 font-mono text-xs text-[#ccff00] uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>
+                // 02 ABOUT ONDWARI OBIKO
+              </div>
+
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-syne uppercase leading-tight">
+                GRAPHIC DESIGNER, BRAND ENGINEER & FRONTEND ARCHITECT.
+              </h2>
+
+              <div className="space-y-4 text-neutral-400 text-base leading-relaxed">
+                <p>
+                  I am a designer and frontend developer based in Nairobi, Kenya, with over <strong className="text-white">10 years of commercial experience</strong>. I specialize in logo systems, brand identities, high-impact UI/UX design, and clean frontend engineering.
+                </p>
+                <p>
+                  My work is driven by brutal clarity, bold contrast, and uncompromising typographic discipline. I don't design for decoration — I build visual identities and digital tools that grant companies undeniable authority in their markets.
+                </p>
+              </div>
+
+              {/* Stats Bar */}
+              <div className="grid grid-cols-3 gap-6 pt-6 border-t border-neutral-900 font-mono">
                 <div>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-white">10+</div>
-                  <div className="text-xs uppercase tracking-wider text-neutral-400 mt-1 font-medium">Years Experience</div>
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#ccff00]">10+</div>
+                  <div className="text-[11px] uppercase tracking-wider text-neutral-500 mt-1">Years Active</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-white">120+</div>
-                  <div className="text-xs uppercase tracking-wider text-neutral-400 mt-1 font-medium">Brand & Web Projects</div>
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#ccff00]">120+</div>
+                  <div className="text-[11px] uppercase tracking-wider text-neutral-500 mt-1">Identities Delivered</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-white">100%</div>
-                  <div className="text-xs uppercase tracking-wider text-neutral-400 mt-1 font-medium">Bespoke Craft</div>
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#ccff00]">100%</div>
+                  <div className="text-[11px] uppercase tracking-wider text-neutral-500 mt-1">Custom Built</div>
+                </div>
+              </div>
+
+              {/* Toolkit Chips */}
+              <div className="pt-4 space-y-2">
+                <div className="text-xs font-mono text-neutral-500 uppercase tracking-widest">CORE TOOLKIT</div>
+                <div className="flex flex-wrap gap-2 text-xs font-mono">
+                  {['Figma', 'Adobe Illustrator', 'Photoshop', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Vite', 'Next.js'].map(tool => (
+                    <span key={tool} className="px-3 py-1.5 rounded-md bg-black border border-neutral-800 text-neutral-300">
+                      {tool}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Right Visual / Portrait Column */}
+            {/* Right Portrait & Manifesto */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md">
-                {/* Visual Frame Backdrop */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-neutral-800/40 rounded-3xl transform rotate-2 scale-102 filter blur-sm"></div>
-                
-                <div className="relative bg-neutral-900 border border-neutral-800/90 rounded-3xl overflow-hidden shadow-2xl">
-                  <div className="aspect-[4/5] overflow-hidden bg-neutral-950 relative group">
-                    <img 
-                      src="./images/portrait-bw.png" 
-                      alt="Ondwari Obiko" 
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent"></div>
-                    
-                    {/* Floating badge inside card */}
-                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-neutral-900/90 backdrop-blur-md border border-neutral-800/80">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-xs font-semibold uppercase tracking-wider text-amber-400">Creative Technologist</div>
-                          <div className="text-sm font-bold text-white mt-0.5">Brand Designer & Front-End Dev</div>
-                        </div>
-                        <div className="w-9 h-9 rounded-full bg-neutral-800 flex items-center justify-center text-amber-400">
-                          <Sparkles className="w-4 h-4" />
-                        </div>
+              <div className="relative w-full max-w-md rounded-2xl bg-black border border-neutral-900 p-4 lime-border-glow">
+                <div className="rounded-xl overflow-hidden aspect-[4/5] bg-neutral-900 relative">
+                  <img 
+                    src="./images/portrait-bw.png" 
+                    alt="Ondwari Obiko" 
+                    className="w-full h-full object-cover object-center grayscale contrast-125"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                  
+                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-black/90 border border-neutral-800 backdrop-blur-md">
+                    <div className="text-[#ccff00] font-mono text-xs font-bold uppercase tracking-wider">
+                      CREATIVE PHILOSOPHY
+                    </div>
+                    <p className="text-xs text-neutral-300 mt-1 italic">
+                      "Make it bold, make it functional, and strip everything that doesn't serve the vision."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* CONTACT SECTION */}
+      <section id="contact" className="border-t border-neutral-900 bg-black py-24">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          
+          <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8 sm:p-14 lg:p-16 relative overflow-hidden">
+            {/* Ambient Lime Glow in Background */}
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#ccff00]/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+              
+              {/* Left Column: Direct Inquiries */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="inline-flex items-center gap-2 font-mono text-xs text-[#ccff00] uppercase tracking-widest">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>
+                  // 03 INITIALIZE COMMISSION
+                </div>
+
+                <h2 className="text-4xl sm:text-5xl font-extrabold text-white font-syne uppercase tracking-tight">
+                  LET'S BUILD SOMETHING <span className="text-[#ccff00]">ICONIC</span>.
+                </h2>
+
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Accepting select brand identity, redesign, and web engineering commissions for businesses ready to command attention.
+                </p>
+
+                <div className="space-y-4 pt-4 font-mono text-xs">
+                  <div className="p-4 rounded-xl bg-black border border-neutral-900 flex items-center gap-4">
+                    <div className="w-9 h-9 rounded-lg bg-[#ccff00]/10 text-[#ccff00] flex items-center justify-center">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-neutral-500">DIRECT EMAIL</div>
+                      <a href="mailto:obi22004@byui.edu" className="text-white font-bold hover:text-[#ccff00] transition-colors text-sm">
+                        obi22004@byui.edu
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-black border border-neutral-900 flex items-center gap-4">
+                    <div className="w-9 h-9 rounded-lg bg-[#ccff00]/10 text-[#ccff00] flex items-center justify-center">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-neutral-500">LOCATION & TIMEZONE</div>
+                      <div className="text-white font-bold text-sm">
+                        Nairobi, Kenya (UTC +3 / EAT)
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* Selected Work Portfolio Section */}
-      <section id="work" className="py-24 bg-neutral-900/40 border-t border-b border-neutral-900 relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div>
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">
-                <Sparkles className="w-3.5 h-3.5" />
-                Featured Portfolio
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
-                Selected Works & Case Studies
-              </h2>
-            </div>
-
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-2 p-1.5 rounded-full bg-neutral-900 border border-neutral-800 self-start md:self-auto">
-              {(['All', 'Brand Identity', 'UI/UX Design', 'Frontend Dev'] as const).map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveFilter(tab)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
-                    activeFilter === tab 
-                      ? 'bg-amber-400 text-neutral-950 shadow-md' 
-                      : 'text-neutral-400 hover:text-white'
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <div 
-                key={project.id}
-                className="group rounded-3xl bg-neutral-900/90 border border-neutral-800 hover:border-amber-400/50 transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1.5 shadow-lg hover:shadow-2xl hover:shadow-amber-500/10"
-              >
-                {/* Image Cover */}
-                <div className="aspect-[16/10] bg-neutral-950 overflow-hidden relative">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-neutral-950/80 backdrop-blur-md text-[11px] font-semibold tracking-wide uppercase text-amber-300 border border-neutral-800">
-                      {project.category}
-                    </span>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="px-2.5 py-1 rounded-full bg-neutral-950/80 backdrop-blur-md text-[11px] font-medium text-neutral-400 border border-neutral-800">
-                      {project.year}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors flex items-center justify-between">
-                      {project.title}
-                      <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </h3>
-                    <p className="mt-3 text-sm text-neutral-400 leading-relaxed font-normal">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-6 border-t border-neutral-800/80 flex flex-wrap gap-2">
-                    {project.tags.map(tag => (
-                      <span 
-                        key={tag}
-                        className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-neutral-800/80 text-neutral-300"
+                  <div className="p-4 rounded-xl bg-black border border-neutral-900 flex items-center gap-4">
+                    <div className="w-9 h-9 rounded-lg bg-[#ccff00]/10 text-[#ccff00] flex items-center justify-center">
+                      <Github className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-neutral-500">GITHUB REPOSITORY</div>
+                      <a 
+                        href="https://github.com/byu-pro/ondwariobiko_octoberportfolio" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-white font-bold hover:text-[#ccff00] transition-colors text-sm flex items-center gap-1"
                       >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services & Capabilities */}
-      <section id="services" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">
-            Core Expertise
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
-            Designed for Impact, Built for Scale
-          </h2>
-          <p className="mt-4 text-neutral-400 text-base">
-            From zero-to-one brand foundations to production-ready frontend architectures, I deliver holistic creative solutions.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 hover:border-amber-400/40 transition-all group hover:-translate-y-1"
-            >
-              <div className="p-3 w-fit rounded-2xl bg-neutral-950 border border-neutral-800 group-hover:border-amber-400/30 transition-colors mb-6">
-                {service.icon}
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-sm text-neutral-400 leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* About & Creative Ethos */}
-      <section id="about" className="py-24 bg-neutral-900/60 border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-400 font-bold">
-                About The Creator
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
-                Crafting visual systems with heart, rigor, and technical precision.
-              </h2>
-              <div className="space-y-4 text-neutral-300 text-base leading-relaxed">
-                <p>
-                  I'm an experienced designer and front-end developer based in Nairobi, Kenya. Over the past 10 years, I've had the privilege of partnering with founders, industry leaders, and global agencies to articulate brand stories and build engaging digital experiences.
-                </p>
-                <p>
-                  My core philosophy is that good design is never merely ornamental — it is strategic communication. Whether developing an identity system for a heavy logistics firm or refining the micro-interactions on a web application, I ensure every single detail serves a clear purpose.
-                </p>
-              </div>
-
-              <div className="pt-4 grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">
-                  <div className="font-bold text-white text-lg">Design Tools</div>
-                  <div className="text-xs text-neutral-400 mt-1">Figma, Adobe Illustrator, Photoshop, InDesign, After Effects</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">
-                  <div className="font-bold text-white text-lg">Tech Stack</div>
-                  <div className="text-xs text-neutral-400 mt-1">React, TypeScript, Vite, Tailwind CSS, Next.js, HTML5/CSS3</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 flex justify-center">
-              <div className="relative rounded-3xl overflow-hidden border border-neutral-800 bg-neutral-950 p-3 max-w-md w-full">
-                <img 
-                  src="./images/portrait.png" 
-                  alt="John Ondwari Obiko" 
-                  className="rounded-2xl w-full h-[460px] object-cover object-top"
-                />
-                <div className="p-5 mt-2 bg-neutral-900 rounded-2xl border border-neutral-800/80">
-                  <blockquote className="text-sm italic text-neutral-300">
-                    "I believe in creative work that stands apart — distinct typography, bold contrast, and code as elegant as the visual aesthetic."
-                  </blockquote>
-                  <div className="mt-3 text-xs font-bold text-amber-400 uppercase tracking-wider">
-                    — Ondwari Obiko
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="rounded-3xl bg-gradient-to-b from-neutral-900 to-neutral-950 border border-neutral-800 p-8 sm:p-14 relative overflow-hidden">
-          
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">
-              Get In Touch
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Let's create something extraordinary together.
-            </h2>
-            <p className="mt-4 text-neutral-400 text-base">
-              Have an upcoming project, brand identity revamp, or web development inquiry? Drop a message and let's explore how we can collaborate.
-            </p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
-            {/* Contact Details */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="p-6 rounded-2xl bg-neutral-950/80 border border-neutral-800/80 space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-neutral-400 font-medium">Direct Email</div>
-                    <a href="mailto:obi22004@byui.edu" className="text-sm font-semibold text-white hover:text-amber-400 transition-colors">
-                      obi22004@byui.edu
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-neutral-400 font-medium">Location</div>
-                    <div className="text-sm font-semibold text-white">
-                      Nairobi, Kenya (UTC +3)
+                        byu-pro/ondwariobiko_octoberportfolio
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
                     </div>
                   </div>
                 </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center">
-                    <Github className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-neutral-400 font-medium">GitHub</div>
-                    <a href="https://github.com/ondwariobiko" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-white hover:text-amber-400 transition-colors">
-                      github.com/ondwariobiko
-                    </a>
-                  </div>
-                </div>
               </div>
-            </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-7">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {formSubmitted && (
-                  <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5" />
-                    Thank you! Your message has been received. I'll get back to you promptly.
-                  </div>
-                )}
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Your Name</label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="Jane Doe"
-                      className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Your Email</label>
-                    <input 
-                      type="email" 
-                      required
-                      placeholder="jane@company.com"
-                      className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors text-sm"
-                    />
-                  </div>
-                </div>
+              {/* Right Column: Contact Form */}
+              <div className="lg:col-span-7">
+                <form onSubmit={handleContactSubmit} className="space-y-4 font-mono text-xs">
+                  {contactSubmitted && (
+                    <div className="p-4 rounded-xl bg-[#ccff00]/10 border border-[#ccff00] text-[#ccff00] text-xs flex items-center gap-3">
+                      <CheckCircle2 className="w-4 h-4" />
+                      INQUIRY TRANSMITTED. I will review and reply within 24 hours.
+                    </div>
+                  )}
 
-                <div>
-                  <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Project Type</label>
-                  <select 
-                    className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-amber-400 transition-colors text-sm"
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-neutral-400 mb-2 uppercase">NAME / COMPANY</label>
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="e.g. Marcus Vance"
+                        className="w-full px-4 py-3.5 rounded-xl bg-black border border-neutral-800 text-white placeholder-neutral-600 focus:outline-none focus:border-[#ccff00] transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-neutral-400 mb-2 uppercase">WORK EMAIL</label>
+                      <input 
+                        type="email" 
+                        required
+                        placeholder="marcus@domain.com"
+                        className="w-full px-4 py-3.5 rounded-xl bg-black border border-neutral-800 text-white placeholder-neutral-600 focus:outline-none focus:border-[#ccff00] transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-neutral-400 mb-2 uppercase">DISCIPLINE REQUIRED</label>
+                    <select 
+                      className="w-full px-4 py-3.5 rounded-xl bg-black border border-neutral-800 text-white focus:outline-none focus:border-[#ccff00] transition-colors"
+                    >
+                      <option>Complete Brand Identity & Logo System</option>
+                      <option>Product UI/UX & Design System</option>
+                      <option>Frontend Engineering (React / Tailwind)</option>
+                      <option>Full-Stack Brand + Digital Package</option>
+                      <option>Design Advisory / Creative Direction</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-neutral-400 mb-2 uppercase">PROJECT SCOPE & OBJECTIVES</label>
+                    <textarea 
+                      rows={4} 
+                      required
+                      placeholder="Briefly outline your timelines, current stage, and goals..."
+                      className="w-full px-4 py-3.5 rounded-xl bg-black border border-neutral-800 text-white placeholder-neutral-600 focus:outline-none focus:border-[#ccff00] transition-colors resize-none"
+                    ></textarea>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#ccff00] text-black font-extrabold uppercase tracking-widest hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all flex items-center justify-center gap-3 cursor-pointer"
                   >
-                    <option>Complete Brand Identity & Logo Design</option>
-                    <option>UI/UX Design & Prototyping</option>
-                    <option>Frontend Web Development</option>
-                    <option>Full-Stack Digital Package</option>
-                    <option>Other / Advisory</option>
-                  </select>
-                </div>
+                    SEND INQUIRY
+                    <Send className="w-4 h-4" />
+                  </button>
+                </form>
+              </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Project Brief</label>
-                  <textarea 
-                    rows={4} 
-                    required
-                    placeholder="Tell me about your goals, timelines, and scope..."
-                    className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors text-sm resize-none"
-                  ></textarea>
-                </div>
-
-                <button 
-                  type="submit"
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-400 text-neutral-950 font-bold hover:bg-amber-300 transition-all flex items-center justify-center gap-2 text-sm shadow-lg shadow-amber-400/20"
-                >
-                  Send Inquiry
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
             </div>
+
           </div>
 
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-neutral-900 bg-neutral-950 text-neutral-500 text-xs">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-white text-sm">Ondwari Obiko</span>
-            <span>•</span>
-            <span>© {new Date().getFullYear()} All rights reserved.</span>
+      {/* Minimal Footer */}
+      <footer className="border-t border-neutral-900 bg-black py-8 text-neutral-600 text-xs font-mono">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            © {new Date().getFullYear()} ONDWARI OBIKO. ALL RIGHTS RESERVED.
           </div>
-
           <div className="flex items-center gap-6">
-            <a href="#work" className="hover:text-amber-400 transition-colors">Work</a>
-            <a href="#services" className="hover:text-amber-400 transition-colors">Capabilities</a>
-            <a href="#about" className="hover:text-amber-400 transition-colors">About</a>
-            <a href="https://github.com/ondwariobiko" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">GitHub</a>
+            <a href="#work" className="hover:text-[#ccff00] transition-colors">// WORK</a>
+            <a href="#about" className="hover:text-[#ccff00] transition-colors">// ABOUT</a>
+            <a href="#contact" className="hover:text-[#ccff00] transition-colors">// CONTACT</a>
+            <a href="#" className="hover:text-[#ccff00] transition-colors">TOP ↑</a>
           </div>
         </div>
       </footer>
+
     </div>
   );
 }
