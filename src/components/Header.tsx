@@ -34,23 +34,23 @@ export function Header({
           onNavigate('work');
           if (open) setOpen(false);
         }} 
-        className="flex items-center gap-2 group cursor-pointer"
+        className="flex items-center gap-2 group cursor-pointer shrink-0"
       >
         <img 
           src={`${base}images/${open ? "logoblack.webp" : "logowhite.webp"}`} 
           alt="ondwariobiko monogram" 
           width={64} 
           height={64} 
-          className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
+          className={`nav-logo object-contain shrink-0 ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
           style={{ transition: "all 0.6s" }} 
         />
         <span 
-          className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 ${
+          className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 pr-2 ${
             open 
-              ? "text-black opacity-100 max-w-[300px] translate-x-0" 
+              ? "text-black opacity-100 max-w-[600px] translate-x-0" 
               : scrolled 
                 ? "opacity-0 max-w-0 -translate-x-3 pointer-events-none" 
-                : "text-white group-hover:text-accent-ink opacity-100 max-w-[300px] translate-x-0"
+                : "text-white group-hover:text-accent-ink opacity-100 max-w-[600px] translate-x-0"
           }`}
         >
           ondwari<span className={open ? "text-black/50" : "text-accent-ink"}>obiko</span>
