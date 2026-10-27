@@ -1,9 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { FullWidthProject } from '../types';
 
 interface WorkPageProps {
   base: string;
+}
+
+const rotatingWords = ["Creative", "Logo", "Brand", "Visual", "UI/UX", "Digital", "Web", "Art"];
+
+function RotatingWord() {
+  const [i, setI] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setI((n) => (n + 1) % rotatingWords.length), 2200);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="relative inline-block overflow-hidden align-bottom h-[0.9em] min-w-[5ch]">
+      <span key={rotatingWords[i]} className="block animate-rise text-accent-ink">
+        {rotatingWords[i]}
+      </span>
+    </span>
+  );
 }
 
 export function WorkPage({ base }: WorkPageProps) {
@@ -100,6 +119,20 @@ export function WorkPage({ base }: WorkPageProps) {
           </section>
         ))}
       </main>
+
+      {/* KINETIC ROTATING HEADLINE (JUST AFTER THE LAST PROJECT BEFORE THE VIDEO) */}
+      <section className="relative py-20 sm:py-28 md:py-36 px-5 md:px-8 overflow-hidden bg-black border-t border-neutral-900">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
+            <span className="text-accent-ink">●</span> Logo · Brand · UI/UX · Front-end — Est. 2016
+          </div>
+          <h2 className="font-display text-[clamp(2.5rem,13.5vw,14rem)] leading-[0.85] tracking-tighter uppercase break-words font-extrabold">
+            <RotatingWord /> <br />
+            <span className="text-stroke">Designer</span>
+            <span className="text-accent-ink inline-block animate-spin-slow ml-2 sm:ml-4">*</span>
+          </h2>
+        </div>
+      </section>
 
       {/* FULLSCREEN PREVIEW LIGHTBOX */}
       {activeImage && (
