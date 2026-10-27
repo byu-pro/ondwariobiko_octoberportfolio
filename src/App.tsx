@@ -148,52 +148,46 @@ export default function App() {
       {/* HEADER MATCHING ondwariobiko-portfolio-website */}
       <header 
         data-menu-open={open} 
-        className={`fixed top-0 inset-x-0 z-[60] px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-500 ${
+        className={`fixed top-0 inset-x-0 z-[60] px-5 md:px-8 flex items-center justify-between transition-all duration-500 ${
           open 
-            ? "py-4 sm:py-5 bg-transparent" 
+            ? "py-5 bg-transparent" 
             : scrolled 
-              ? "py-2.5 sm:py-3 bg-surface/80 backdrop-blur-xl border-b border-ink/10" 
-              : "py-4 sm:py-5 bg-transparent border-b border-transparent"
+              ? "py-3 bg-surface/50 backdrop-blur-xl border-b border-ink/10" 
+              : "py-5 bg-transparent border-b border-transparent"
         }`}
       >
-        {/* Brand Logo */}
         <a href="#" className="flex items-center gap-2 group">
           <img 
             src={`${base}images/${open ? "logoblack.webp" : "logowhite.webp"}`} 
             alt="ondwariobiko monogram" 
             width={64} 
             height={64} 
-            className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-9 sm:size-11 md:size-12" : "size-10 sm:size-12 md:size-14"}`} 
+            className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
             style={{ transition: "all 0.6s" }} 
           />
-          <span 
-            className={`hidden sm:block font-display font-extrabold text-xl sm:text-2xl uppercase tracking-tight leading-none ${open ? "text-black" : "text-ink"}`}
-            style={{ fontFamily: "var(--font-display)" }}
-          >
+          <span className={`hidden sm:block font-display text-2xl uppercase tracking-tight leading-none ${open ? "text-black" : "text-ink"}`}>
             ondwari<span className={open ? "text-black/50" : "text-accent-ink"}>obiko</span>
           </span>
         </a>
 
-        {/* Center Pill */}
         <div className={`${open ? "lg:hidden" : ""} hidden lg:flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-ink/60 border border-ink/15 rounded-full px-4 py-2 backdrop-blur bg-surface/40`}>
           <span className="size-1.5 rounded-full bg-neon animate-pulse" />
           Available Remotely Worldwide
         </div>
 
-        {/* Morphing Neon Menu Button */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Close menu" : "Open menu"}
-            className="relative z-[60] flex items-center gap-2 sm:gap-3 group cursor-pointer"
+            className="relative z-[60] flex items-center gap-3 group"
           >
-            <span className={`font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] transition-colors ${open ? "text-black" : "text-ink group-hover:text-accent-ink"}`}>
+            <span className={`font-mono text-xs uppercase tracking-[0.25em] transition-colors ${open ? "text-black" : "text-ink group-hover:text-accent-ink"}`}>
               {open ? "Close" : "Menu"}
             </span>
-            <span className={`size-11 sm:size-14 rounded-full grid place-items-center transition-all duration-500 ${open ? "bg-black rotate-90" : "bg-neon group-hover:scale-110"}`}>
-              <span className="relative block w-4 sm:w-5 h-3">
-                <span className={`absolute left-0 h-0.5 w-4 sm:w-5 transition-all duration-500 ${open ? "top-1.5 rotate-45 bg-neon" : "top-0 bg-black"}`} />
-                <span className={`absolute left-0 h-0.5 transition-all duration-500 ${open ? "top-1.5 w-4 sm:w-5 -rotate-45 bg-neon" : "top-2.5 w-2.5 sm:w-3 bg-black"}`} />
+            <span className={`size-14 rounded-full grid place-items-center transition-all duration-500 ${open ? "bg-black rotate-90" : "bg-neon group-hover:scale-110"}`}>
+              <span className="relative block w-5 h-3">
+                <span className={`absolute left-0 h-0.5 w-5 transition-all duration-500 ${open ? "top-1.5 rotate-45 bg-neon" : "top-0 bg-black"}`} />
+                <span className={`absolute left-0 h-0.5 transition-all duration-500 ${open ? "top-1.5 w-5 -rotate-45 bg-neon" : "top-2.5 w-3 bg-black"}`} />
               </span>
             </span>
           </button>
@@ -208,24 +202,27 @@ export default function App() {
         >
           <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-32 pb-12">
             <ul>
-              {navLinks.map((l, i) => (
-                <li key={l.label} className="overflow-hidden border-b border-black/15">
-                  <a
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-6 py-2 md:py-3 animate-rise"
-                    style={{ animationDelay: `${200 + i * 70}ms` }}
-                  >
-                    <span className="font-mono text-xs md:text-sm w-10">0{i + 1}</span>
-                    <span className="font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.8rem,9vw,8rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic">
-                      {l.label}
-                    </span>
-                    <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
-                      {l.hint} →
-                    </span>
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((l, i) => {
+                const active = l.href === "#work";
+                return (
+                  <li key={l.label} className="overflow-hidden border-b border-black/15">
+                    <a
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-baseline gap-6 py-2 md:py-3 animate-rise"
+                      style={{ animationDelay: `${200 + i * 70}ms` }}
+                    >
+                      <span className="font-mono text-xs md:text-sm w-10">0{i + 1}</span>
+                      <span className={`font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.8rem,9vw,8rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic ${active ? "text-stroke" : ""}`}>
+                        {l.label}
+                      </span>
+                      <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                        {l.hint} →
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -344,7 +341,7 @@ export default function App() {
       </section>
 
       {/* THE FOOTER SECTION AFTER THE VIDEO (MATCHING ondwariobiko-portfolio-website) */}
-      <footer id="contact" className="px-5 md:px-8 pt-20 md:pt-32 pb-28 md:pb-24 border-t border-ink/10 bg-black text-ink">
+      <footer id="contact" className="px-5 md:px-8 pt-20 md:pt-32 pb-28 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">Have a vision?</p>
           <a 
