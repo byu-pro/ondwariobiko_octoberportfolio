@@ -246,7 +246,7 @@ export default function App() {
             onClick={() => setActiveImage(project)}
             className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[380px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer"
           >
-            {/* Background Full-Width Image */}
+            {/* Background Full-Width Image with Cinematic Zoom */}
             <img 
               src={project.image} 
               alt={project.title}
@@ -254,32 +254,32 @@ export default function App() {
               height={1080}
               loading={idx < 2 ? "eager" : "lazy"}
               decoding="async"
-              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 contrast-105 group-hover:brightness-100 transform-gpu will-change-transform"
+              className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-90 contrast-105 group-hover:brightness-105 group-hover:contrast-100 transform-gpu will-change-transform"
             />
 
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
+            {/* Subtle Gradient Overlay that lightens on hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-85 group-hover:opacity-35 transition-opacity duration-700"></div>
 
-            {/* Clean, Non-intrusive Visual Caption */}
+            {/* Clean, Non-intrusive Visual Caption with Smooth Lateral Glide */}
             <div className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-12 sm:right-12 z-10 flex items-end justify-between gap-4">
-              <div>
-                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors drop-shadow-md">
+              <div className="transition-transform duration-500 ease-out group-hover:translate-x-3">
+                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors duration-500 drop-shadow-md">
                   {project.title}
                 </h2>
-                <div className="mt-2 text-xs sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-neon"></span>
+                <div className="mt-2 text-xs sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse"></span>
                   {project.category}
                 </div>
               </div>
 
-              {/* View Arrow Indicator */}
-              <div className="flex items-center justify-center size-12 sm:size-14 rounded-full bg-black/80 backdrop-blur-md border border-neutral-800 group-hover:border-neon text-white group-hover:text-accent-ink transition-all">
-                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              {/* Morphing Neon View Action Disc */}
+              <div className="flex items-center justify-center size-12 sm:size-14 rounded-full bg-black/70 backdrop-blur-md border border-ink/20 text-ink group-hover:bg-neon group-hover:text-black group-hover:border-neon group-hover:scale-110 shadow-lg group-hover:shadow-[0_0_30px_rgba(204,255,0,0.35)] transition-all duration-500 shrink-0">
+                <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:rotate-45" />
               </div>
             </div>
 
-            {/* Interactive Lime Accent Border on Hover */}
-            <div className="absolute inset-0 border-2 border-transparent group-hover:border-neon/60 pointer-events-none transition-colors duration-300"></div>
+            {/* Razor-thin Neon Sweep Line along the bottom edge */}
+            <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-neon group-hover:w-full transition-all duration-700 ease-out pointer-events-none"></div>
           </section>
         ))}
       </main>
