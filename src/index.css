@@ -1,38 +1,65 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-neon: var(--neon);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-accent-ink: var(--accent-ink);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --neon: oklch(0.9 0.24 131);
+  --surface: #000000;
+  --ink: #ffffff;
+  --accent-ink: var(--neon);
+  --font-display: "Syne", sans-serif;
+  --font-mono: "Space Grotesk", monospace;
+  color-scheme: dark;
+}
+
 @layer base {
-  :root {
-    --lime-accent: #ccff00;
-    --lime-dim: #99cc00;
-    --lime-glow: rgba(204, 255, 0, 0.18);
-  }
-
   body {
-    background-color: #000000;
-    color: #f4f4f5;
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-mono);
   }
 }
 
-.font-syne {
-  font-family: 'Syne', 'Space Grotesk', sans-serif;
+/* Animations from ondwariobiko-portfolio-website */
+@keyframes marquee { 
+  from { transform: translateX(0); } 
+  to { transform: translateX(-50%); } 
 }
 
-/* Custom Lime Glow Utilities */
-.lime-border-glow:hover {
-  border-color: #ccff00;
-  box-shadow: 0 0 30px -5px rgba(204, 255, 0, 0.25);
+@keyframes menu-in { 
+  from { clip-path: circle(0% at calc(100% - 3rem) 3rem); } 
+  to { clip-path: circle(150% at calc(100% - 3rem) 3rem); } 
 }
 
-.lime-tag {
-  border: 1px solid rgba(204, 255, 0, 0.3);
-  color: #ccff00;
-  background-color: rgba(204, 255, 0, 0.05);
+@keyframes rise { 
+  from { transform: translateY(110%); } 
+  to { transform: translateY(0); } 
 }
 
-.lime-tag:hover {
-  background-color: rgba(204, 255, 0, 0.15);
-  border-color: #ccff00;
+@utility animate-marquee { 
+  animation: marquee 24s linear infinite; 
+  will-change: transform; 
+  transform: translateZ(0); 
+}
+
+@utility animate-menu-in { 
+  animation: menu-in 0.7s cubic-bezier(0.76, 0, 0.24, 1) both; 
+}
+
+@utility animate-rise { 
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; 
+}
+
+@utility text-stroke { 
+  -webkit-text-stroke: 1.5px currentColor; 
+  -webkit-text-fill-color: transparent; 
 }
 
 /* Scrollbar */
@@ -47,5 +74,5 @@
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ccff00;
+  background: var(--neon);
 }
