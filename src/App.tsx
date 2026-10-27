@@ -145,15 +145,15 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-neon selection:text-black">
       
-      {/* HEADER MATCHING ondwariobiko-portfolio-website (SOLID BG ON MOBILE) */}
+      {/* HEADER MATCHING ondwariobiko-portfolio-website (BLURRED BG ON MOBILE) */}
       <header 
         data-menu-open={open} 
         className={`fixed top-0 inset-x-0 z-[60] px-5 md:px-8 flex items-center justify-between transition-all duration-500 ${
           open 
             ? "py-5 bg-transparent" 
             : scrolled 
-              ? "py-3 bg-black border-b border-ink/10 md:bg-surface/50 md:backdrop-blur-xl" 
-              : "py-5 bg-black border-b border-ink/10 md:bg-transparent md:border-b-transparent"
+              ? "py-3 bg-surface/70 backdrop-blur-xl border-b border-ink/10 md:bg-surface/50" 
+              : "py-5 bg-surface/70 backdrop-blur-xl border-b border-ink/10 md:bg-transparent md:backdrop-blur-none md:border-b-transparent"
         }`}
       >
         <a href="#" className="flex items-center gap-2 group">
