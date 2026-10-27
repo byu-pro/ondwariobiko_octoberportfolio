@@ -66,7 +66,7 @@ const fullWidthProjects: FullWidthProject[] = [
 const navLinks = [
   { href: "#work", label: "Work", hint: "Selected projects" },
   { href: "#contact", label: "Contact", hint: "Start a project" },
-  { href: "mailto:obi22004@byui.edu", label: "Direct Call", hint: "Email inquiry" }
+  { href: "mailto:obi22004@byui.edu", label: "Direct Call", hint: "1 hour, on me" }
 ] as const;
 
 export default function App() {
@@ -207,7 +207,7 @@ export default function App() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-6 py-2 md:py-3 animate-rise"
+                    className="group flex items-baseline gap-6 py-3 md:py-4 animate-rise"
                     style={{ animationDelay: `${200 + i * 70}ms` }}
                   >
                     <span className="font-mono text-xs md:text-sm w-10">0{i + 1}</span>
@@ -238,8 +238,8 @@ export default function App() {
         </div>
       )}
 
-      {/* 8 FULL-WIDTH THUMBNAILS (NO NUMBERS, NO YEARS) */}
-      <main id="work" className="w-full flex flex-col pt-24 sm:pt-28">
+      {/* 8 FULL-WIDTH THUMBNAILS (PURE VISUAL, MINIMAL LABELS) */}
+      <main id="work" className="w-full flex flex-col pt-20 sm:pt-24">
         {fullWidthProjects.map((project, idx) => (
           <section 
             key={project.id}
@@ -258,10 +258,10 @@ export default function App() {
             />
 
             {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent opacity-85 group-hover:opacity-45 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
 
-            {/* Bottom Caption Bar: Title & Category (No Numbers, No Years) */}
-            <div className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-12 sm:right-12 z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            {/* Clean, Non-intrusive Visual Caption */}
+            <div className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-12 sm:right-12 z-10 flex items-end justify-between gap-4">
               <div>
                 <h2 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors drop-shadow-md">
                   {project.title}
@@ -272,10 +272,9 @@ export default function App() {
                 </div>
               </div>
 
-              {/* View Action Pill */}
-              <div className="self-end sm:self-auto flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/80 backdrop-blur-md border border-neutral-800 group-hover:border-neon text-xs font-mono text-white group-hover:text-accent-ink transition-all">
-                <span>VIEW</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              {/* View Arrow Indicator */}
+              <div className="flex items-center justify-center size-12 sm:size-14 rounded-full bg-black/80 backdrop-blur-md border border-neutral-800 group-hover:border-neon text-white group-hover:text-accent-ink transition-all">
+                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
 
