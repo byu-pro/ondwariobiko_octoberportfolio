@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface FullWidthProject {
   id: string;
@@ -238,7 +238,7 @@ export default function App() {
         </div>
       )}
 
-      {/* 8 FULL-WIDTH THUMBNAILS (PURE VISUAL, MINIMAL LABELS) */}
+      {/* 8 FULL-WIDTH THUMBNAILS (PURE VISUAL - PROJECT NAME REVEALED ON HOVER) */}
       <main id="work" className="w-full flex flex-col pt-20 sm:pt-24">
         {fullWidthProjects.map((project, idx) => (
           <section 
@@ -254,32 +254,25 @@ export default function App() {
               height={1080}
               loading={idx < 2 ? "eager" : "lazy"}
               decoding="async"
-              className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-90 contrast-105 group-hover:brightness-105 group-hover:contrast-100 transform-gpu will-change-transform"
+              className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
             />
 
-            {/* Subtle Gradient Overlay that lightens on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-85 group-hover:opacity-35 transition-opacity duration-700"></div>
+            {/* Dark Bottom Gradient that smoothly fades in on hover to ensure text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            {/* Clean, Non-intrusive Visual Caption with Smooth Lateral Glide */}
-            <div className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-12 sm:right-12 z-10 flex items-end justify-between gap-4">
-              <div className="transition-transform duration-500 ease-out group-hover:translate-x-3">
-                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors duration-500 drop-shadow-md">
-                  {project.title}
-                </h2>
-                <div className="mt-2 text-xs sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse"></span>
-                  {project.category}
-                </div>
-              </div>
-
-              {/* Morphing Neon View Action Disc */}
-              <div className="flex items-center justify-center size-12 sm:size-14 rounded-full bg-black/70 backdrop-blur-md border border-ink/20 text-ink group-hover:bg-neon group-hover:text-black group-hover:border-neon group-hover:scale-110 shadow-lg group-hover:shadow-[0_0_30px_rgba(204,255,0,0.35)] transition-all duration-500 shrink-0">
-                <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:rotate-45" />
+            {/* Project Name and Category - ONLY Appears on Hover */}
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 lg:p-14 z-10 flex flex-col items-start opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors duration-500 drop-shadow-xl">
+                {project.title}
+              </h2>
+              <div className="mt-2 text-xs sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
+                {project.category}
               </div>
             </div>
 
             {/* Razor-thin Neon Sweep Line along the bottom edge */}
-            <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-neon group-hover:w-full transition-all duration-700 ease-out pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-neon group-hover:w-full transition-all duration-700 ease-out pointer-events-none" />
           </section>
         ))}
       </main>

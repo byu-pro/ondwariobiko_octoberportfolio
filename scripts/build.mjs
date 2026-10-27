@@ -8,6 +8,9 @@ fs.copyFileSync('index.dev.html', 'index.html');
 execSync('npx vite build', { stdio: 'inherit' });
 
 // 3. Sync dist outputs to root and docs for GitHub Pages
+if (fs.existsSync('assets')) {
+  fs.rmSync('assets', { recursive: true, force: true });
+}
 fs.cpSync('dist/assets', 'assets', { recursive: true });
 fs.cpSync('dist/images', 'images', { recursive: true });
 fs.cpSync('dist/.nojekyll', '.nojekyll');
