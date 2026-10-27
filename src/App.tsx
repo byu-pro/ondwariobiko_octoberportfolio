@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpRight, X, Mail, Github, MapPin } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 
 interface FullWidthProject {
   id: string;
@@ -65,7 +65,6 @@ const fullWidthProjects: FullWidthProject[] = [
 
 const navLinks = [
   { href: "#work", label: "Work", hint: "Selected projects" },
-  { href: "#about", label: "About", hint: "The designer" },
   { href: "#contact", label: "Contact", hint: "Start a project" },
   { href: "mailto:obi22004@byui.edu", label: "Direct Call", hint: "Email inquiry" }
 ] as const;
@@ -74,7 +73,10 @@ export default function App() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeImage, setActiveImage] = useState<FullWidthProject | null>(null);
+  const [backToTopVisible, setBackToTopVisible] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Keyboard accessibility
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     const onKey = (e: KeyboardEvent) => {
@@ -87,6 +89,7 @@ export default function App() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // Scroll detection for header and back-to-top button
   const scrolledRef = useRef(false);
   useEffect(() => {
     const onScroll = () => {
@@ -95,11 +98,46 @@ export default function App() {
         scrolledRef.current = isPast;
         setScrolled(isPast);
       }
+      const threshold = Math.min(320, window.innerHeight * 0.4);
+      setBackToTopVisible(window.scrollY > threshold);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
+  // Video Intersection Observer for performance
+  useEffect(() => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.muted = true;
+    const playVideo = () => {
+      void element.play().catch(() => {});
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          playVideo();
+        } else {
+          element.pause();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"
+    });
+  };
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-neon selection:text-black">
@@ -287,62 +325,91 @@ export default function App() {
         </div>
       )}
 
-      {/* ABOUT SECTION */}
-      <section id="about" className="border-t border-neutral-900 bg-surface px-6 sm:px-12 py-24">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-accent-ink uppercase tracking-widest">
-            <span className="size-1.5 rounded-full bg-neon"></span>
-            ABOUT ONDWARI OBIKO
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-display uppercase tracking-tight text-white leading-tight">
-            Design that cuts through noise and commands authority.
-          </h2>
-          <p className="text-base sm:text-lg text-neutral-400 font-mono leading-relaxed">
-            I am a brand identity designer, UI/UX architect, and frontend developer based in Nairobi, Kenya with 10 years of commercial experience. I work with founders and enterprise platforms globally to forge memorable brand identities, custom typography, and high-performance digital interfaces.
-          </p>
-        </div>
+      {/* LOGO VIDEO ANIMATION SECTION */}
+      <section className="w-full overflow-hidden bg-black h-[280px] sm:h-[350px] md:h-[420px] lg:h-[480px] relative border-0 outline-none -my-px" aria-label="John Obiko logo animation">
+        <video
+          ref={videoRef}
+          src={`${base}images/logo-animation.webm`}
+          poster={`${base}images/logo-animation-poster.webp`}
+          className="block w-full h-full object-cover pointer-events-none border-0 outline-none"
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls={false}
+          disablePictureInPicture
+          disableRemotePlayback
+          preload="auto"
+          aria-hidden="true"
+          tabIndex={-1}
+        />
       </section>
 
-      {/* MINIMAL FOOTER / CONTACT */}
-      <footer id="contact" className="border-t border-neutral-900 bg-black px-6 sm:px-12 py-16 font-mono text-xs text-neutral-400">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          
-          <div className="space-y-2">
-            <div className="text-white font-display font-extrabold text-xl tracking-tight">
-              ONDWARI OBIKO
-            </div>
-            <div className="text-neutral-500 flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-accent-ink" />
-              NAIROBI, KENYA • AVAILABLE REMOTELY WORLDWIDE
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-6">
-            <a 
-              href="mailto:obi22004@byui.edu" 
-              className="text-white hover:text-accent-ink transition-colors flex items-center gap-1.5 font-bold"
-            >
-              <Mail className="w-4 h-4 text-accent-ink" />
-              obi22004@byui.edu
-            </a>
-            <span className="text-neutral-800">•</span>
-            <a 
-              href="https://github.com/byu-pro/ondwariobiko_octoberportfolio" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-neutral-400 hover:text-accent-ink transition-colors flex items-center gap-1.5"
-            >
-              <Github className="w-4 h-4" />
-              GITHUB
-            </a>
-            <span className="text-neutral-800">•</span>
-            <span className="text-neutral-600">
-              © {new Date().getFullYear()}
+      {/* THE FOOTER SECTION AFTER THE VIDEO (MATCHING ondwariobiko-portfolio-website) */}
+      <footer id="contact" className="px-5 md:px-8 pt-20 md:pt-32 pb-28 md:pb-24 border-t border-ink/10 bg-black text-ink">
+        <div className="max-w-[1400px] mx-auto">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">Have a vision?</p>
+          <a 
+            href="mailto:obi22004@byui.edu" 
+            className="group block font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.5rem,11vw,10rem)]"
+          >
+            <span className="block transition-all duration-500 group-hover:text-accent-ink group-hover:translate-x-4">
+              Let's build
             </span>
-          </div>
+            <span className="block text-stroke group-hover:text-accent-ink transition-all duration-700 group-hover:translate-x-10">
+              something •
+            </span>
+          </a>
 
+          <div className="mt-10 border-t border-ink/15 pt-6 font-mono text-xs uppercase tracking-widest">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-ink/80">
+              <span>© {new Date().getFullYear()} ondwariobiko. All Rights Reserved.</span>
+              <div className="flex gap-6 text-ink">
+                <a href="#terms" className="hover:text-accent-ink transition-colors">Terms</a>
+                <a href="#privacy" className="hover:text-accent-ink transition-colors">Privacy</a>
+              </div>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-ink/50">
+              <a href="mailto:obi22004@byui.edu" className="hover:text-accent-ink transition-colors">Email</a>
+              <a href="https://wa.me/254702255575" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">WhatsApp</a>
+              <a href="https://www.linkedin.com/in/ondwariobiko/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">LinkedIn</a>
+              <a href="https://www.behance.net/johnobiko" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">Behance</a>
+              <a href="#faq" className="hover:text-accent-ink transition-colors">FAQ</a>
+            </div>
+          </div>
         </div>
       </footer>
+
+      {/* FLOATING BACK TO TOP BUTTON (BOTTOM-LEFT, MATCHING ondwariobiko-portfolio-website) */}
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        aria-hidden={!backToTopVisible}
+        tabIndex={backToTopVisible ? 0 : -1}
+        className={`back-to-top min-h-11 min-w-11 fixed bottom-4 left-4 md:bottom-6 md:left-6 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-surface/60 backdrop-blur-md px-3 py-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink transition-all duration-500 hover:border-neon hover:text-accent-ink cursor-pointer ${
+          backToTopVisible
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <span className="grid size-6 place-items-center rounded-full border border-ink/20 leading-none transition-transform duration-500 group-hover:rotate-0 -rotate-45">
+          ↑
+        </span>
+        <span className="hidden sm:inline">Top</span>
+      </button>
+
+      {/* FLOATING CONSULT / START A PROJECT PILL (BOTTOM-RIGHT, MATCHING ondwariobiko-portfolio-website) */}
+      <a 
+        href="mailto:obi22004@byui.edu" 
+        aria-label="Start a project" 
+        className="floating-consult group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1.5 py-1.5 shadow-sm transition-transform duration-300 hover:scale-105"
+      >
+        <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">Start a project</span>
+        <span className="size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">
+          ↗
+        </span>
+      </a>
 
     </div>
   );
