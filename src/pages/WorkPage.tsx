@@ -81,16 +81,16 @@ export function WorkPage({ base }: WorkPageProps) {
               className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
             />
 
-            {/* Bottom Gradient: hidden on mobile, reveals on hover on desktop */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {/* Bottom Gradient: subtle on mobile, reveals on hover on desktop */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            {/* Project Name and Category: hidden on mobile, reveals on hover on desktop */}
-            <div className="hidden md:flex absolute inset-x-0 bottom-0 p-4 sm:p-8 lg:p-14 z-10 flex-col items-start opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
-              <h2 className="text-2xl sm:text-4xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors duration-500 drop-shadow-xl leading-tight">
+            {/* Project Name and Category: visible & compact on mobile, reveals on hover on desktop */}
+            <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 md:p-8 lg:p-14 z-10 flex flex-col items-start opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
+              <h2 className="text-sm sm:text-base md:text-4xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase md:group-hover:text-accent-ink transition-colors duration-500 drop-shadow-lg leading-tight">
                 {project.title}
               </h2>
-              <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
+              <div className="mt-1 sm:mt-1.5 md:mt-2 text-[9px] sm:text-[10px] md:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-1.5">
+                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-neon animate-pulse" />
                 {project.category}
               </div>
             </div>
