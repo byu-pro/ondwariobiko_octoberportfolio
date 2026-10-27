@@ -121,12 +121,9 @@ export function WorkPage({ base }: WorkPageProps) {
       </main>
 
       {/* KINETIC ROTATING HEADLINE (JUST AFTER THE LAST PROJECT BEFORE THE VIDEO) */}
-      <section className="relative py-20 sm:py-28 md:py-36 px-5 md:px-8 overflow-hidden bg-black border-t border-neutral-900">
+      <section className="relative py-14 sm:py-20 md:py-24 px-5 md:px-8 overflow-hidden bg-black border-t border-neutral-900">
         <div className="max-w-[1400px] mx-auto">
-          <div className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
-            <span className="text-accent-ink">●</span> Logo · Brand · UI/UX · Front-end — Est. 2016
-          </div>
-          <h2 className="font-display text-[clamp(2.5rem,13.5vw,14rem)] leading-[0.85] tracking-tighter uppercase break-words font-extrabold">
+          <h2 className="font-display text-[clamp(2rem,7vw,6rem)] leading-[0.9] tracking-tighter uppercase break-words font-bold">
             <RotatingWord /> <br />
             <span className="text-stroke">Designer</span>
             <span className="text-accent-ink inline-block animate-spin-slow ml-2 sm:ml-4">*</span>
