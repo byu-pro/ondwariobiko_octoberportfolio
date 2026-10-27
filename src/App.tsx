@@ -163,7 +163,10 @@ export default function App() {
             className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-9 sm:size-11 md:size-12" : "size-10 sm:size-12 md:size-14"}`} 
             style={{ transition: "all 0.6s" }} 
           />
-          <span className={`hidden sm:block font-display text-xl sm:text-2xl uppercase tracking-tight leading-none ${open ? "text-black" : "text-ink"}`}>
+          <span 
+            className={`hidden sm:block font-display font-extrabold text-xl sm:text-2xl uppercase tracking-tight leading-none ${open ? "text-black" : "text-ink"}`}
+            style={{ fontFamily: "var(--font-display)" }}
+          >
             ondwari<span className={open ? "text-black/50" : "text-accent-ink"}>obiko</span>
           </span>
         </a>
@@ -257,12 +260,12 @@ export default function App() {
               className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
             />
 
-            {/* Dark Bottom Gradient that smoothly fades in on hover/touch to ensure text legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {/* Bottom Gradient: persistent on mobile, reveals on hover on desktop */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            {/* Project Name and Category - ONLY Appears on Hover / Touch */}
-            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-8 lg:p-14 z-10 flex flex-col items-start opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
-              <h2 className="text-2xl sm:text-4xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase group-hover:text-accent-ink transition-colors duration-500 drop-shadow-xl leading-tight">
+            {/* Project Name and Category: visible on mobile, reveals on hover on desktop */}
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-8 lg:p-14 z-10 flex flex-col items-start opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
+              <h2 className="text-2xl sm:text-4xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase md:group-hover:text-accent-ink transition-colors duration-500 drop-shadow-xl leading-tight">
                 {project.title}
               </h2>
               <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-2">
@@ -272,7 +275,7 @@ export default function App() {
             </div>
 
             {/* Razor-thin Neon Sweep Line along the bottom edge */}
-            <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-neon group-hover:w-full transition-all duration-700 ease-out pointer-events-none" />
+            <div className="absolute bottom-0 left-0 h-[2px] w-full md:w-0 md:group-hover:w-full transition-all duration-700 ease-out pointer-events-none" />
           </section>
         ))}
       </main>
