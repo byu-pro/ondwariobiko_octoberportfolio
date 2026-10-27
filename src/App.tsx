@@ -64,9 +64,12 @@ const fullWidthProjects: FullWidthProject[] = [
 ];
 
 const navLinks = [
+  { href: "#", label: "Index", hint: "Where it begins" },
   { href: "#work", label: "Work", hint: "Selected projects" },
+  { href: "#services", label: "Services", hint: "What I craft" },
+  { href: "#about", label: "About", hint: "The designer" },
   { href: "#contact", label: "Contact", hint: "Start a project" },
-  { href: "mailto:obi22004@byui.edu", label: "Direct Call", hint: "1 hour, on me" }
+  { href: "#consultation", label: "Free Call", hint: "1 hour, on me" },
 ] as const;
 
 export default function App() {
@@ -203,18 +206,18 @@ export default function App() {
           className="fixed inset-0 z-[55] bg-neon text-black animate-menu-in flex flex-col overflow-y-auto overscroll-contain" 
           onClick={(e) => e.target === e.currentTarget && setOpen(false)}
         >
-          <div className="flex-1 flex flex-col justify-center px-4 sm:px-10 md:px-16 pt-24 sm:pt-32 pb-8 sm:pb-12">
+          <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-32 pb-12">
             <ul>
               {navLinks.map((l, i) => (
                 <li key={l.label} className="overflow-hidden border-b border-black/15">
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-3 sm:gap-6 py-2.5 sm:py-3 md:py-4 animate-rise"
+                    className="group flex items-baseline gap-6 py-2 md:py-3 animate-rise"
                     style={{ animationDelay: `${200 + i * 70}ms` }}
                   >
-                    <span className="font-mono text-xs sm:text-sm w-7 sm:w-10">0{i + 1}</span>
-                    <span className="font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.1rem,7.5vw,7.5rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic break-words">
+                    <span className="font-mono text-xs md:text-sm w-10">0{i + 1}</span>
+                    <span className="font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.8rem,9vw,8rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic">
                       {l.label}
                     </span>
                     <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
@@ -227,12 +230,12 @@ export default function App() {
           </div>
 
           {/* Marquee Ticker at the Bottom of Menu */}
-          <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-3 sm:py-4">
-            <div className="flex w-max animate-marquee font-display uppercase text-lg sm:text-2xl tracking-tight whitespace-nowrap">
+          <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-4">
+            <div className="flex w-max animate-marquee font-display uppercase text-2xl tracking-tight whitespace-nowrap">
               {Array.from({ length: 2 }).map((_, k) => (
                 <span key={k} className="flex">
                   {["Logo Design", "Brand Identity", "UI/UX", "Front-end", "Art Direction", "Remote Worldwide"].map((w) => (
-                    <span key={w} className="px-6 sm:px-8">{w} •</span>
+                    <span key={w} className="px-8">{w} ✺</span>
                   ))}
                 </span>
               ))}
@@ -341,31 +344,31 @@ export default function App() {
       </section>
 
       {/* THE FOOTER SECTION AFTER THE VIDEO (MATCHING ondwariobiko-portfolio-website) */}
-      <footer id="contact" className="px-4 sm:px-6 md:px-8 pt-16 sm:pt-24 md:pt-32 pb-24 md:pb-24 border-t border-ink/10 bg-black text-ink">
+      <footer id="contact" className="px-5 md:px-8 pt-20 md:pt-32 pb-28 md:pb-24 border-t border-ink/10 bg-black text-ink">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-4 sm:mb-6">Have a vision?</p>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">Have a vision?</p>
           <a 
-            href="mailto:obi22004@byui.edu" 
-            className="group block font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.3rem,10.5vw,10rem)] break-words"
+            href="mailto:ondwariobiko@gmail.com" 
+            className="group block font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.5rem,11vw,10rem)]"
           >
             <span className="block transition-all duration-500 group-hover:text-accent-ink group-hover:translate-x-4">
               Let's build
             </span>
             <span className="block text-stroke group-hover:text-accent-ink transition-all duration-700 group-hover:translate-x-10">
-              something •
+              something ✺
             </span>
           </a>
 
           <div className="mt-10 border-t border-ink/15 pt-6 font-mono text-xs uppercase tracking-widest">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-ink/80">
-              <span>© {new Date().getFullYear()} ondwariobiko. All Rights Reserved.</span>
+              <span>© 2026 ondwariobiko. All Rights Reserved.</span>
               <div className="flex gap-6 text-ink">
                 <a href="#terms" className="hover:text-accent-ink transition-colors">Terms</a>
                 <a href="#privacy" className="hover:text-accent-ink transition-colors">Privacy</a>
               </div>
             </div>
-            <div className="mt-6 flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-3 text-ink/50">
-              <a href="mailto:obi22004@byui.edu" className="hover:text-accent-ink transition-colors">Email</a>
+            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-ink/50">
+              <a href="mailto:ondwariobiko@gmail.com" className="hover:text-accent-ink transition-colors">Email</a>
               <a href="https://wa.me/254702255575" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">WhatsApp</a>
               <a href="https://www.linkedin.com/in/ondwariobiko/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">LinkedIn</a>
               <a href="https://www.behance.net/johnobiko" target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">Behance</a>
@@ -382,13 +385,13 @@ export default function App() {
         aria-label="Back to top"
         aria-hidden={!backToTopVisible}
         tabIndex={backToTopVisible ? 0 : -1}
-        className={`back-to-top fixed bottom-4 left-3 sm:left-6 md:bottom-6 md:left-6 z-50 flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-surface/60 backdrop-blur-md size-10 sm:size-auto sm:px-3 sm:py-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink transition-all duration-500 hover:border-neon hover:text-accent-ink cursor-pointer ${
+        className={`back-to-top min-h-11 min-w-11 fixed bottom-4 left-4 md:bottom-6 md:left-6 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-surface/60 backdrop-blur-md px-3 py-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink transition-all duration-500 hover:border-neon hover:text-accent-ink cursor-pointer ${
           backToTopVisible
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
-        <span className="grid size-5 sm:size-6 place-items-center rounded-full border border-ink/20 leading-none transition-transform duration-500 group-hover:rotate-0 -rotate-45">
+        <span className="grid size-6 place-items-center rounded-full border border-ink/20 leading-none transition-transform duration-500 group-hover:rotate-0 -rotate-45">
           ↑
         </span>
         <span className="hidden sm:inline">Top</span>
@@ -396,12 +399,12 @@ export default function App() {
 
       {/* FLOATING CONSULT / START A PROJECT PILL (BOTTOM-RIGHT, MATCHING ondwariobiko-portfolio-website) */}
       <a 
-        href="mailto:obi22004@byui.edu" 
+        href="mailto:ondwariobiko@gmail.com" 
         aria-label="Start a project" 
-        className="floating-consult group fixed bottom-4 right-3 sm:right-6 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 shadow-sm transition-transform duration-300 hover:scale-105"
+        className="floating-consult group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1.5 py-1.5 shadow-sm transition-transform duration-300 hover:scale-105"
       >
         <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">Start a project</span>
-        <span className="size-7 sm:size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45 text-xs sm:text-base">
+        <span className="size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">
           ↗
         </span>
       </a>
