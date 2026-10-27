@@ -165,7 +165,7 @@ export default function App() {
             className={`nav-logo object-contain ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
             style={{ transition: "all 0.6s" }} 
           />
-          <span className={`hidden sm:block font-display text-2xl uppercase tracking-tight leading-none ${open ? "text-black" : "text-ink"}`}>
+          <span className={`hidden sm:block font-display font-extrabold text-2xl uppercase tracking-tight leading-none transition-colors duration-500 drop-shadow-md ${open ? "text-black" : "text-white group-hover:text-accent-ink"}`}>
             ondwari<span className={open ? "text-black/50" : "text-accent-ink"}>obiko</span>
           </span>
         </a>
