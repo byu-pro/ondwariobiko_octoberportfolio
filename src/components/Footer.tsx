@@ -3,6 +3,7 @@ import { PageRoute } from '../types';
 
 interface FooterProps {
   base: string;
+  currentRoute: PageRoute;
   backToTopVisible: boolean;
   scrollToTop: () => void;
   onNavigate: (route: PageRoute) => void;
@@ -11,6 +12,7 @@ interface FooterProps {
 
 export function Footer({
   base,
+  currentRoute,
   backToTopVisible,
   scrollToTop,
   onNavigate,
@@ -70,7 +72,11 @@ export function Footer({
             href="#/contact" 
             onClick={(e) => {
               e.preventDefault();
-              onNavigate('contact');
+              if (currentRoute === 'contact') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                onNavigate('contact');
+              }
             }}
             className="group block font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.5rem,11vw,10rem)] cursor-pointer"
           >
@@ -142,20 +148,22 @@ export function Footer({
       </button>
 
       {/* FLOATING CONSULT / START A PROJECT PILL (BOTTOM-RIGHT) */}
-      <a 
-        href="#/contact" 
-        onClick={(e) => {
-          e.preventDefault();
-          onNavigate('contact');
-        }}
-        aria-label="Start a project" 
-        className="floating-consult group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1.5 py-1.5 shadow-sm transition-transform duration-300 hover:scale-105 cursor-pointer font-bold"
-      >
-        <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">Start a project</span>
-        <span className="size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">
-          ↗
-        </span>
-      </a>
+      {currentRoute !== 'contact' && currentRoute !== 'consultation' && (
+        <a 
+          href="#/contact" 
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('contact');
+          }}
+          aria-label="Start a project" 
+          className="floating-consult group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1.5 py-1.5 shadow-sm transition-transform duration-300 hover:scale-105 cursor-pointer font-bold"
+        >
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">Start a project</span>
+          <span className="size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">
+            ↗
+          </span>
+        </a>
+      )}
     </>
   );
 }

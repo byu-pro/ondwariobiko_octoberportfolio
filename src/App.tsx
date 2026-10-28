@@ -148,6 +148,7 @@ export default function App() {
       {/* FOOTER SECTION WITH VIDEO ANIMATION & DIRECT CHANNELS */}
       <Footer
         base={base}
+        currentRoute={currentRoute}
         backToTopVisible={backToTopVisible}
         scrollToTop={scrollToTop}
         onNavigate={navigateTo}

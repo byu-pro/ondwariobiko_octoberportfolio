@@ -66,24 +66,23 @@ export function ConsultationPage() {
           {/* Left Column: Perks */}
           <div className="lg:col-span-5">
             <p className="text-xl md:text-3xl font-light leading-tight">
-              Before we start anything, let's have an honest <span className="text-accent-ink font-semibold">60-minute conversation</span> about your project, goals and budget — on me.
+              An honest <span className="text-accent-ink font-semibold">60-minute conversation</span> about your project, goals, and budget — on me.
             </p>
-            <div className="mt-10 grid grid-cols-2 gap-px bg-ink/15 border border-ink/15">
+            <div className="mt-8 grid grid-cols-2 gap-px bg-ink/15 border border-ink/15">
               {perks.map(([k, v]) => (
-                <div key={k} className="bg-surface p-5 md:p-6">
+                <div key={k} className="bg-surface p-5">
                   <div className="font-display font-extrabold text-2xl md:text-3xl text-accent-ink">{k}</div>
-                  <div className="mt-2 text-sm text-ink/60">{v}</div>
+                  <div className="mt-2 text-xs sm:text-sm text-ink/60">{v}</div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 p-6 border border-ink/15 rounded-xl bg-surface/50 font-mono text-xs text-ink/70 leading-relaxed">
+            <div className="mt-8 p-5 border border-ink/15 rounded-xl bg-surface/50 font-mono text-xs text-ink/70 leading-relaxed">
               <span className="text-accent-ink font-bold">What we cover:</span>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-2.5 space-y-1.5">
                 <li>• Your brand vision and business objectives</li>
-                <li>• Realistic timelines, milestones & deliverables</li>
-                <li>• Honest scoping and budget matching</li>
-                <li>• Zero sales pressure — strictly helpful advice</li>
+                <li>• Recommended deliverables & technical scope</li>
+                <li>• Actionable creative advice you can use immediately</li>
               </ul>
             </div>
           </div>

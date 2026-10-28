@@ -25,12 +25,12 @@ const sources = ["Behance", "LinkedIn", "Referral", "Google", "Other"];
 
 const contactFaqs = [
   {
-    q: "Do you work with clients outside Kenya?",
-    a: "Yes — most of my clients are international, and everything is handled remotely from first contact to final delivery. Time zones are worked around, not against.",
+    q: "What should I prepare before getting in touch?",
+    a: "Just a brief description of what you need and any references you like. No formal design brief is required — we'll shape the scope and milestones together.",
   },
   {
     q: "What if I'm not sure exactly what I need yet?",
-    a: "That's fine — select 'Not sure yet' in the project type field and describe what you're working on. We can figure out the right scope together.",
+    a: "That's completely fine — select 'Not sure yet' in the project type field and describe your business. We'll figure out the best approach together.",
   },
   {
     q: "How does payment work?",

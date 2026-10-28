@@ -520,30 +520,6 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           </div>
         </div>
       </section>
-
-      {/* 11 — Closing CTA */}
-      <section className="px-5 md:px-8 pb-20 sm:pb-28 md:pb-36">
-        <div className="max-w-[1400px] mx-auto border-t border-ink/15 pt-12 sm:pt-16 text-center">
-          <h2 className="font-display font-extrabold text-3xl sm:text-6xl md:text-7xl leading-[0.9] tracking-tight">
-            Have a project<br />
-            in <span className="text-accent-ink">mind?</span>
-          </h2>
-          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
-            <button
-              onClick={() => onNavigate('contact')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-neon text-black font-mono text-xs sm:text-sm uppercase tracking-widest px-8 py-3.5 sm:py-4 rounded-full hover:scale-105 transition-all font-bold cursor-pointer"
-            >
-              Let's talk ⟶
-            </button>
-            <button
-              onClick={() => onNavigate('consultation')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-ink/25 text-ink font-mono text-xs sm:text-sm uppercase tracking-widest px-8 py-3.5 sm:py-4 rounded-full hover:border-neon hover:text-accent-ink transition-all cursor-pointer"
-            >
-              Book a Free Call
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
