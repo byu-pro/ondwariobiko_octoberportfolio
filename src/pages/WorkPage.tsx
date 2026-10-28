@@ -58,7 +58,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
   return (
     <section 
       onClick={() => onOpenLightbox(project, activeView === 'logo' && project.logoImage ? project.logoImage : project.image)}
-      className="group relative w-full aspect-[16/9] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
+      className="group relative w-full aspect-[18/9] sm:aspect-[19/9] lg:aspect-[21/10] max-h-[600px] min-h-[200px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
     >
       {/* Invisible preloader to verify whether logo file exists without displaying broken image icons */}
       {project.logoImage && (
@@ -116,7 +116,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
 
       {/* Project Name and Category: visible & compact on mobile, reveals on hover on desktop */}
-      <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 md:p-8 lg:p-14 z-20 flex flex-col items-start opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
+      <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 md:p-7 lg:p-10 z-20 flex flex-col items-start opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
         <h2 className="text-sm sm:text-base md:text-4xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase md:group-hover:text-accent-ink transition-colors duration-500 drop-shadow-lg leading-tight">
           {project.title}
         </h2>
