@@ -199,7 +199,6 @@ function ProfilePhoto({ base }: { base: string }) {
         decoding="async"
         className="w-full h-full object-cover grayscale contrast-105"
       />
-      <div className="absolute inset-0 ring-1 ring-inset ring-neon/20 pointer-events-none z-10" />
 
       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/90">

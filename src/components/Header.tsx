@@ -37,11 +37,12 @@ export function Header({
         className="flex items-center gap-2 group cursor-pointer shrink-0"
       >
         <img 
+          key={open ? "logo-black" : "logo-white"}
           src={`${base}images/${open ? "logoblack.webp" : "logowhite.webp"}`} 
           alt="ondwariobiko monogram" 
           width={64} 
           height={64} 
-          className={`nav-logo object-contain shrink-0 ${open ? "rounded-full" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
+          className={`nav-logo object-contain shrink-0 ${open ? "rounded-full brightness-0 filter" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
           style={{ transition: "all 0.6s" }} 
         />
         <span 
