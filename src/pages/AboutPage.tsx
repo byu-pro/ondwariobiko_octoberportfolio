@@ -187,57 +187,21 @@ function AnimatedStat({ value, label, suffix = "" }: { value: number; label: str
   );
 }
 
-function ProfileImageCarousel({ base }: { base: string }) {
-  const profileImages = [
-    `${base}images/johnobiko_profilepic.webp`,
-    `${base}images/profileimage_2.webp`,
-    `${base}images/profileimage_3.webp`,
-    `${base}images/profileimage_4.webp`,
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % profileImages.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [profileImages.length]);
-
+function ProfilePhoto({ base }: { base: string }) {
   return (
-    <div className="relative aspect-[4/5] max-h-[460px] sm:max-h-none bg-neutral-900 border border-ink/10 overflow-hidden group rounded-xl mx-auto w-full">
-      {profileImages.map((src, idx) => (
-        <img
-          key={src}
-          src={src}
-          alt={`Photo of me (${idx + 1})`}
-          width={1200}
-          height={1500}
-          loading={idx === 0 ? "eager" : "lazy"}
-          decoding="async"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-            idx === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
-        />
-      ))}
-      <div className="absolute inset-0 ring-1 ring-inset ring-neon/20 pointer-events-none z-20" />
+    <div className="relative aspect-[4/5] max-h-[460px] sm:max-h-none bg-neutral-900 border border-ink/10 overflow-hidden group rounded-xl mx-auto w-full shadow-2xl">
+      <img
+        src={`${base}images/johnobiko_profilepic.webp`}
+        alt="Ondwari Obiko"
+        width={1200}
+        height={1500}
+        loading="eager"
+        decoding="async"
+        className="w-full h-full object-cover grayscale contrast-105"
+      />
+      <div className="absolute inset-0 ring-1 ring-inset ring-neon/20 pointer-events-none z-10" />
 
-      {/* Slide indicators */}
-      <div className="absolute top-4 right-4 z-30 flex gap-1.5 bg-black/60 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/10">
-        {profileImages.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            aria-label={`Go to photo ${idx + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
-              idx === currentIndex ? "w-5 bg-neon" : "w-1.5 bg-white/40 hover:bg-white/70"
-            }`}
-          />
-        ))}
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20 pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/90">
           Nairobi, Kenya · Working worldwide
         </p>
@@ -287,11 +251,11 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         </div>
       </section>
 
-      {/* 2 — Who I am, with Photo Carousel */}
+      {/* 2 — Who I am, with Portrait Photo */}
       <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-12 gap-8 md:gap-14 items-center">
           <div className="md:col-span-5 max-w-md mx-auto md:max-w-none w-full">
-            <ProfileImageCarousel base={base} />
+            <ProfilePhoto base={base} />
           </div>
           <div className="md:col-span-7">
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">⟶ Who I am</p>
