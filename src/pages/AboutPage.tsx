@@ -192,7 +192,7 @@ function ProfilePhoto({ base }: { base: string }) {
     <div className="relative aspect-[4/5] max-h-[460px] sm:max-h-none bg-neutral-900 border border-ink/10 overflow-hidden group rounded-xl mx-auto w-full shadow-2xl">
       <img
         src={`${base}images/johnobiko_profilepic.webp`}
-        alt="Ondwari Obiko"
+        alt="John Obiko"
         width={1200}
         height={1500}
         loading="eager"
@@ -241,7 +241,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div className="md:col-span-7">
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">⟶ Who I am</p>
             <p className="text-xl sm:text-2xl md:text-3xl font-light leading-snug">
-              I'm <span className="text-accent-ink font-semibold">Ondwari Obiko</span> — a solo graphic and web designer based in Nairobi, Kenya, serving clients worldwide. I craft custom vector logos, mascot systems, and <span className="text-accent-ink font-semibold">design & build</span> the responsive websites that power them.
+              I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a solo graphic and web designer based in Nairobi, Kenya, serving clients worldwide. I craft custom vector logos, mascot systems, and <span className="text-accent-ink font-semibold">design & build</span> the responsive websites that power them.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button

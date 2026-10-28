@@ -51,7 +51,7 @@ export default function App() {
   useEffect(() => {
     switch (currentRoute) {
       case 'about':
-        document.title = "About Me & Services | Ondwari Obiko — Designer & Developer";
+        document.title = "About Me & Services | John Obiko — Designer & Developer";
         break;
       case 'contact':
         document.title = "Contact Me | Ondwari Obiko — Start a Project";
