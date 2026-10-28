@@ -219,24 +219,6 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         outline="Developer" 
       />
 
-      {/* Quick Jump Subnav */}
-      <div className="px-5 md:px-8 -mt-2 mb-10 sm:mb-12">
-        <div className="max-w-[1400px] mx-auto flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none font-mono text-[11px] sm:text-xs uppercase tracking-wider">
-          <a href="#about-section" className="px-3.5 py-1.5 rounded-full bg-ink/10 text-accent-ink hover:bg-neon hover:text-black transition-colors shrink-0">
-            About
-          </a>
-          <a href="#services-section" className="px-3.5 py-1.5 rounded-full bg-ink/5 text-ink/70 hover:bg-ink/15 hover:text-white transition-colors shrink-0">
-            Services
-          </a>
-          <a href="#skills-section" className="px-3.5 py-1.5 rounded-full bg-ink/5 text-ink/70 hover:bg-ink/15 hover:text-white transition-colors shrink-0">
-            Skills
-          </a>
-          <a href="#faq-section" className="px-3.5 py-1.5 rounded-full bg-ink/5 text-ink/70 hover:bg-ink/15 hover:text-white transition-colors shrink-0">
-            FAQ
-          </a>
-        </div>
-      </div>
-
       {/* 1 — Opening Hook: Philosophy */}
       <section id="about-section" className="px-5 md:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
