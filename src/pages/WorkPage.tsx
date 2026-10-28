@@ -28,47 +28,36 @@ function RotatingWord() {
 interface ProjectCardProps {
   project: FullWidthProject;
   idx: number;
-  onOpenLightbox: (project: FullWidthProject, initialView: 'thumbnail' | 'logo', hasLogo: boolean) => void;
+  onOpenLightbox: (project: FullWidthProject, currentImage: string) => void;
 }
 
 function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
   const [logoAvailable, setLogoAvailable] = useState<boolean>(false);
   const [activeView, setActiveView] = useState<'thumbnail' | 'logo'>('thumbnail');
-  const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  // Smooth periodic crossfade cycle when logo exists and user is not actively hovering
+  // Naturally transitions between thumbnail and logo on its own
   useEffect(() => {
     if (!logoAvailable) return;
 
-    // Stagger transition timing per card so adjacent projects don't toggle at the same instant
-    const initialDelay = (idx % 3) * 1200 + 4000;
+    // Stagger initial delay across cards so they transition organically
+    const initialDelay = (idx % 3) * 1200 + 3500;
     let intervalId: ReturnType<typeof setInterval>;
 
     const timeoutId = setTimeout(() => {
-      // Toggle views periodically
       intervalId = setInterval(() => {
-        if (!isHovered) {
-          setActiveView((prev) => (prev === 'thumbnail' ? 'logo' : 'thumbnail'));
-        }
-      }, 5500);
+        setActiveView((prev) => (prev === 'thumbnail' ? 'logo' : 'thumbnail'));
+      }, 5000);
     }, initialDelay);
 
     return () => {
       clearTimeout(timeoutId);
       if (intervalId) clearInterval(intervalId);
     };
-  }, [logoAvailable, isHovered, idx]);
-
-  const handleToggle = (e: React.MouseEvent, view: 'thumbnail' | 'logo') => {
-    e.stopPropagation();
-    setActiveView(view);
-  };
+  }, [logoAvailable, idx]);
 
   return (
     <section 
-      onClick={() => onOpenLightbox(project, activeView, logoAvailable)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => onOpenLightbox(project, activeView === 'logo' && project.logoImage ? project.logoImage : project.image)}
       className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
     >
       {/* Invisible preloader to verify whether logo file exists without displaying broken image icons */}
@@ -85,7 +74,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
 
       {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
           activeView === 'thumbnail' ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -100,10 +89,10 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
         />
       </div>
 
-      {/* LAYER 2: PROJECT LOGO THUMBNAIL (Crossfades in seamlessly when logo exists) */}
+      {/* LAYER 2: PROJECT LOGO THUMBNAIL (Natural crossfade on its own) */}
       {logoAvailable && project.logoImage && (
         <div 
-          className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
             activeView === 'logo' ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
           }`}
         >
@@ -133,38 +122,6 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* Modern Interactive View Switcher Pill (Top Right) - Appears dynamically when logo is present */}
-      {logoAvailable && (
-        <div 
-          className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 md:top-8 md:right-8 z-30 flex items-center bg-black/70 backdrop-blur-md border border-neutral-800 rounded-full p-1 text-[9px] sm:text-[11px] font-mono tracking-wider transition-all duration-300 opacity-90 hover:opacity-100 hover:border-neutral-700"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <button
-            type="button"
-            onClick={(e) => handleToggle(e, 'thumbnail')}
-            className={`px-2.5 sm:px-3 py-1 rounded-full transition-all duration-300 cursor-pointer ${
-              activeView === 'thumbnail'
-                ? 'bg-neutral-800 text-white font-bold shadow-sm'
-                : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            MOCKUP
-          </button>
-          <button
-            type="button"
-            onClick={(e) => handleToggle(e, 'logo')}
-            className={`px-2.5 sm:px-3 py-1 rounded-full flex items-center gap-1.5 transition-all duration-300 cursor-pointer ${
-              activeView === 'logo'
-                ? 'bg-accent-ink text-black font-bold shadow-sm'
-                : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            <span className={`w-1.5 h-1.5 rounded-full ${activeView === 'logo' ? 'bg-black' : 'bg-neon animate-pulse'}`} />
-            LOGO
-          </button>
-        </div>
-      )}
-
       {/* Razor-thin Neon Sweep Line along the bottom edge */}
       <div className="absolute bottom-0 left-0 h-[2px] w-full md:w-0 md:group-hover:w-full transition-all duration-700 ease-out pointer-events-none z-20" />
     </section>
@@ -172,14 +129,12 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
 }
 
 export function WorkPage({ base }: WorkPageProps) {
-  const [activeImage, setActiveImage] = useState<FullWidthProject | null>(null);
-  const [lightboxView, setLightboxView] = useState<'thumbnail' | 'logo'>('thumbnail');
-  const [lightboxHasLogo, setLightboxHasLogo] = useState<boolean>(false);
+  const [activePreview, setActivePreview] = useState<{ project: FullWidthProject; image: string } | null>(null);
 
   // Close lightbox on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setActiveImage(null);
+      if (e.key === 'Escape') setActivePreview(null);
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -260,15 +215,13 @@ export function WorkPage({ base }: WorkPageProps) {
     }
   ];
 
-  const handleOpenLightbox = (project: FullWidthProject, initialView: 'thumbnail' | 'logo', hasLogo: boolean) => {
-    setActiveImage(project);
-    setLightboxView(initialView);
-    setLightboxHasLogo(hasLogo);
+  const handleOpenLightbox = (project: FullWidthProject, currentImage: string) => {
+    setActivePreview({ project, image: currentImage });
   };
 
   return (
     <>
-      {/* 9 FULL-WIDTH PROJECT CARDS WITH DUAL THUMBNAIL & LOGO CROSSFADE */}
+      {/* 9 FULL-WIDTH PROJECT CARDS WITH NATURAL THUMBNAIL & LOGO TRANSITIONS */}
       <main id="work" className="w-full flex flex-col pt-24">
         {fullWidthProjects.map((project, idx) => (
           <ProjectCard 
@@ -291,63 +244,30 @@ export function WorkPage({ base }: WorkPageProps) {
       </section>
 
       {/* FULLSCREEN PREVIEW LIGHTBOX */}
-      {activeImage && (
+      {activePreview && (
         <div 
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex flex-col justify-between p-3 sm:p-8 md:p-12 animate-fadeIn"
-          onClick={() => setActiveImage(null)}
+          onClick={() => setActivePreview(null)}
         >
           {/* Lightbox Header */}
           <div className="flex items-center justify-between gap-3 text-xs font-mono border-b border-neutral-800 pb-3 sm:pb-4">
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 min-w-0 pr-2">
               <span className="text-white uppercase font-bold text-sm sm:text-base font-display">
-                {activeImage.title}
+                {activePreview.project.title}
               </span>
               <span className="text-neutral-500 hidden sm:inline">•</span>
               <span className="text-accent-ink text-[11px] sm:text-xs">
-                {activeImage.category}
+                {activePreview.project.category}
               </span>
             </div>
 
-            <div className="flex items-center gap-2 sm:gap-4 shrink-0">
-              {/* Optional Lightbox View Toggle if logo is available */}
-              {lightboxHasLogo && activeImage.logoImage && (
-                <div 
-                  className="flex items-center bg-neutral-900 border border-neutral-800 rounded-full p-0.5"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button 
-                    type="button"
-                    onClick={() => setLightboxView('thumbnail')}
-                    className={`px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono transition-colors cursor-pointer ${
-                      lightboxView === 'thumbnail'
-                        ? 'bg-neutral-800 text-white font-bold'
-                        : 'text-neutral-400 hover:text-white'
-                    }`}
-                  >
-                    MOCKUP
-                  </button>
-                  <button 
-                    type="button"
-                    onClick={() => setLightboxView('logo')}
-                    className={`px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono transition-colors cursor-pointer ${
-                      lightboxView === 'logo'
-                        ? 'bg-accent-ink text-black font-bold'
-                        : 'text-neutral-400 hover:text-white'
-                    }`}
-                  >
-                    LOGO
-                  </button>
-                </div>
-              )}
-
-              <button 
-                onClick={() => setActiveImage(null)}
-                className="p-2 rounded-full border border-neutral-800 hover:border-neon text-neutral-400 hover:text-accent-ink transition-colors cursor-pointer"
-                aria-label="Close image"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+            <button 
+              onClick={() => setActivePreview(null)}
+              className="p-2 rounded-full border border-neutral-800 hover:border-neon text-neutral-400 hover:text-accent-ink transition-colors cursor-pointer shrink-0"
+              aria-label="Close preview"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Large Image Preview */}
@@ -356,8 +276,8 @@ export function WorkPage({ base }: WorkPageProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <img 
-              src={lightboxView === 'thumbnail' ? activeImage.image : (activeImage.logoImage || activeImage.image)} 
-              alt={activeImage.title} 
+              src={activePreview.image} 
+              alt={activePreview.project.title} 
               className="max-h-[72vh] sm:max-h-[75vh] w-auto max-w-full object-contain rounded-lg border border-neutral-800 shadow-2xl transition-all duration-500"
             />
           </div>
