@@ -40,7 +40,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
     if (!logoAvailable) return;
 
     // Stagger initial delay across cards so they transition organically
-    const initialDelay = (idx % 3) * 1200 + 3500;
+    const initialDelay = (idx % 3) * 1400 + 3500;
     let intervalId: ReturnType<typeof setInterval>;
 
     const timeoutId = setTimeout(() => {
@@ -74,8 +74,8 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
 
       {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-          activeView === 'thumbnail' ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
+        className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
+          activeView === 'thumbnail' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
         <img 
@@ -85,26 +85,46 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
           height={1080}
           loading={idx < 2 ? "eager" : "lazy"}
           decoding="async"
-          className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
+          className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-transform ${
+            activeView === 'thumbnail' ? 'scale-100' : 'scale-105'
+          } group-hover:scale-[1.03]`}
         />
       </div>
 
-      {/* LAYER 2: PROJECT LOGO THUMBNAIL (Natural crossfade on its own) */}
+      {/* LAYER 2: PROJECT LOGO THUMBNAIL (Seamless natural zoom-in, uncropped framing) */}
       {logoAvailable && project.logoImage && (
         <div 
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            activeView === 'logo' ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
+          className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
+            activeView === 'logo' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
           }`}
         >
+          {/* Ambient blurred backdrop matching the logo background organically without clipping */}
           <img 
             src={project.logoImage} 
-            alt={`${project.title} Logo`}
-            width={1920}
-            height={1080}
-            loading={idx < 2 ? "eager" : "lazy"}
-            decoding="async"
-            className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
+            alt="" 
+            aria-hidden="true" 
+            className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-35 scale-125 pointer-events-none transform-gpu"
           />
+
+          {/* Vignette depth layer */}
+          <div className="absolute inset-0 bg-neutral-950/20 pointer-events-none" />
+
+          {/* Clean, uncropped Logo Thumbnail with smooth decelerating zoom-in */}
+          <div className="relative w-full h-full flex items-center justify-center p-3 sm:p-6 md:p-10 lg:p-14">
+            <img 
+              src={project.logoImage} 
+              alt={`${project.title} Logo`}
+              width={1920}
+              height={1080}
+              loading="lazy"
+              decoding="async"
+              className={`max-w-full max-h-full object-contain filter drop-shadow-[0_12px_30px_rgba(0,0,0,0.8)] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-transform ${
+                activeView === 'logo'
+                  ? 'scale-100 opacity-100'
+                  : 'scale-[0.88] opacity-0'
+              } group-hover:scale-[1.03]`}
+            />
+          </div>
         </div>
       )}
 
