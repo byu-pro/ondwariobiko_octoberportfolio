@@ -42,8 +42,7 @@ export function Header({
           alt="ondwariobiko monogram" 
           width={64} 
           height={64} 
-          className={`nav-logo object-contain shrink-0 ${open ? "rounded-full brightness-0 filter" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
-          style={{ transition: "all 0.6s" }} 
+          className={`nav-logo object-contain shrink-0 transition-all duration-500 ease-out transform-gpu ${open ? "rounded-full brightness-0 filter" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
         />
         <span 
           className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 pr-2 ${

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import { FullWidthProject } from '../types';
 
@@ -10,14 +10,29 @@ const rotatingWords = ["Creative", "Logo", "Brand", "Visual", "UI/UX", "Digital"
 
 function RotatingWord() {
   const [i, setI] = useState(0);
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
+  // Only animate when visible in viewport to prevent idle CPU usage
   useEffect(() => {
-    const id = setInterval(() => setI((n) => (n + 1) % rotatingWords.length), 2200);
-    return () => clearInterval(id);
+    const el = spanRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isInView) return;
+    const id = setInterval(() => setI((n) => (n + 1) % rotatingWords.length), 2200);
+    return () => clearInterval(id);
+  }, [isInView]);
+
   return (
-    <span className="relative inline-block overflow-hidden align-bottom h-[0.9em] min-w-[5ch] text-center">
+    <span ref={spanRef} className="relative inline-block overflow-hidden align-bottom h-[0.9em] min-w-[5ch] text-center">
       <span key={rotatingWords[i]} className="block animate-rise text-accent-ink text-center">
         {rotatingWords[i]}
       </span>
@@ -34,29 +49,48 @@ interface ProjectCardProps {
 function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
   const [logoAvailable, setLogoAvailable] = useState<boolean>(false);
   const [activeView, setActiveView] = useState<'thumbnail' | 'logo'>('thumbnail');
+  const [isInView, setIsInView] = useState<boolean>(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  // Naturally transitions between thumbnail and logo on its own
+  // Viewport detection: only run transitions when the project card is visible on screen
   useEffect(() => {
-    if (!logoAvailable) return;
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Naturally transitions between thumbnail and logo only when card is in viewport
+  useEffect(() => {
+    if (!logoAvailable || !isInView) return;
 
     // Stagger initial delay across cards so they transition organically
-    const initialDelay = (idx % 3) * 1400 + 3500;
+    const initialDelay = (idx % 3) * 1200 + 3500;
     let intervalId: ReturnType<typeof setInterval>;
 
     const timeoutId = setTimeout(() => {
       intervalId = setInterval(() => {
         setActiveView((prev) => (prev === 'thumbnail' ? 'logo' : 'thumbnail'));
-      }, 5000);
+      }, 5500);
     }, initialDelay);
 
     return () => {
       clearTimeout(timeoutId);
       if (intervalId) clearInterval(intervalId);
     };
-  }, [logoAvailable, idx]);
+  }, [logoAvailable, isInView, idx]);
 
   return (
     <section 
+      ref={sectionRef}
       onClick={() => onOpenLightbox(project, activeView === 'logo' && project.logoImage ? project.logoImage : project.image)}
       className="group relative w-full aspect-[18/9] sm:aspect-[19/9] lg:aspect-[21/10] max-h-[600px] min-h-[200px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
     >
@@ -72,9 +106,9 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
         />
       )}
 
-      {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL (Full Width) */}
+      {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL (Full Width, GPU-accelerated) */}
       <div 
-        className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-in-out transform-gpu ${
+        className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-out transform-gpu backface-hidden ${
           activeView === 'thumbnail' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
@@ -85,7 +119,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
           height={1080}
           loading={idx < 2 ? "eager" : "lazy"}
           decoding="async"
-          className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-all duration-1200 ease-out transform-gpu will-change-transform ${
+          className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
             activeView === 'thumbnail' ? 'scale-100' : 'scale-[1.03]'
           } group-hover:scale-[1.03]`}
         />
@@ -94,7 +128,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
       {/* LAYER 2: PROJECT LOGO THUMBNAIL (Full Width, Seamless Cinematic Zoom-In) */}
       {logoAvailable && project.logoImage && (
         <div 
-          className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-in-out transform-gpu ${
+          className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-out transform-gpu backface-hidden ${
             activeView === 'logo' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
           }`}
         >
@@ -105,7 +139,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
             height={1080}
             loading="lazy"
             decoding="async"
-            className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-all duration-1200 ease-out transform-gpu will-change-transform ${
+            className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
               activeView === 'logo' ? 'scale-[1.03]' : 'scale-100'
             } group-hover:scale-[1.05]`}
           />
