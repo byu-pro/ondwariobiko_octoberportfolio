@@ -18,7 +18,7 @@ function RotatingWord() {
 
   return (
     <span className="relative inline-block overflow-hidden align-bottom h-[0.9em] min-w-[5ch] text-center">
-      <span key={rotatingWords[i]} className="block animate-rise text-accent-ink text-center">
+      <span key={rotatingWords[i]} className="block animate-rise text-center">
         {rotatingWords[i]}
       </span>
     </span>
@@ -136,11 +136,11 @@ export function WorkPage({ base }: WorkPageProps) {
       </main>
 
       {/* KINETIC ROTATING HEADLINE (JUST AFTER THE LAST PROJECT BEFORE THE VIDEO) */}
-      <section className="relative py-16 sm:py-24 md:py-32 px-5 md:px-8 overflow-hidden bg-black border-t border-neutral-900">
+      <section className="group relative py-16 sm:py-24 md:py-32 px-5 md:px-8 overflow-hidden bg-black border-t border-neutral-900">
         <div className="max-w-[1400px] mx-auto text-center flex flex-col items-center justify-center">
-          <h2 className="font-display text-[clamp(2.5rem,11vw,10rem)] leading-[0.85] tracking-tighter uppercase break-words text-center">
+          <h2 className="font-extrabold tracking-tight text-white font-display uppercase md:group-hover:text-accent-ink transition-colors duration-500 drop-shadow-lg text-[clamp(2.5rem,11vw,10rem)] leading-[0.85] break-words text-center">
             <RotatingWord /> <br />
-            <span className="text-stroke">Designer</span>
+            <span>Designer</span>
           </h2>
         </div>
       </section>
