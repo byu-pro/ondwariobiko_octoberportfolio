@@ -30,58 +30,64 @@ export function WorkPage({ base }: WorkPageProps) {
 
   const fullWidthProjects: FullWidthProject[] = [
     {
-      id: 'ikon',
-      title: 'IKON TRAILERS',
-      category: 'BRAND IDENTITY & LIVERY',
+      id: 'pelican-social',
+      title: 'PELICAN SOCIAL BAR AND GRILL',
+      category: 'FULL BRAND AND LOGO IDENTITY CREATION',
+      image: `${base}images/pelicansocial_casestudybanner.webp`
+    },
+    {
+      id: 'ikon-trailers',
+      title: 'IKON TRAILERS.COM',
+      category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/ikontrailers_thumbnail.webp`
-    },
-    {
-      id: 'aquapet',
-      title: 'AQUAPET VETERINARY',
-      category: 'PACKAGING & BRAND SYSTEM',
-      image: `${base}images/aquapet_thumbnail.webp`
-    },
-    {
-      id: 'oceanline',
-      title: 'OCEAN-LINE CARGO',
-      category: 'MARITIME DIGITAL PLATFORM',
-      image: `${base}images/oceanline_thumbnail.webp`
-    },
-    {
-      id: 'fastkat',
-      title: 'FASTKAT LOGISTICS',
-      category: 'COURIER DISPATCH UI/UX',
-      image: `${base}images/fastkat_thumbnail.webp`
     },
     {
       id: 'iron-acre',
       title: 'IRON ACRE LAND CO',
-      category: 'BRAND ARCHITECTURE & PRINT',
-      image: `${base}images/project-thumb-1.webp`
+      category: 'FULL BRAND AND LOGO IDENTITY CREATION',
+      image: `${base}images/ironacrelandco_herobanner.webp`
     },
     {
-      id: 'green-essentials',
-      title: 'GREEN ESSENTIALS',
-      category: 'ECO BRAND SYSTEM & WEB',
-      image: `${base}images/project-thumb-2.webp`
+      id: 'friends-of-unionville',
+      title: 'FRIENDS OF UNIONVILLE',
+      category: 'FULL BRAND AND LOGO IDENTITY CREATION',
+      image: `${base}images/friendsofunionville_herobanner.webp`
     },
     {
-      id: 'pelican-social',
-      title: 'PELICAN SOCIAL',
-      category: 'HOSPITALITY BRANDING & SIGNAGE',
-      image: `${base}images/project-thumb-3.webp`
+      id: 'sound-curves',
+      title: 'SOUND CURVES WEBSITE',
+      category: 'WEBSITE DESIGN & DIGITAL PLATFORM',
+      image: `${base}images/soundcurves_herobanner.webp`
     },
     {
-      id: 'aerauliqa',
-      title: 'AERAULIQA ENGINEERING',
-      category: 'ENTERPRISE AIRFLOW TELEMETRY',
-      image: `${base}images/project-thumb-4.webp`
+      id: 'moods-and-nerds',
+      title: 'MOODS AND NERDS WEBSITE',
+      category: 'WEBSITE DESIGN & WEB APP UI/UX',
+      image: `${base}images/moodnmeds_herobanner.webp`
+    },
+    {
+      id: 'yellow-dot-energy',
+      title: 'YELLOW DOT ENERGY MOBILE APP',
+      category: 'MOBILE APP UI/UX & PRODUCT STRATEGY',
+      image: `${base}images/yellowdot_herobanner.webp`
+    },
+    {
+      id: 'green-essential',
+      title: 'GREEN ESSENTIAL TURF AND MOSQUITO',
+      category: 'LOGO DESIGN',
+      image: `${base}images/greenessentials_herobanner.webp`
+    },
+    {
+      id: 'lewis-park',
+      title: 'LEWIS PARK SACRAMENTO',
+      category: 'T-SHIRT & APPAREL DESIGN',
+      image: `${base}images/lewispark_thumbnail.webp`
     }
   ];
 
   return (
     <>
-      {/* 8 FULL-WIDTH THUMBNAILS (PURE VISUAL - PROJECT NAME REVEALED ON HOVER/TOUCH) */}
+      {/* 9 FULL-WIDTH THUMBNAILS (PURE VISUAL - PROJECT NAME REVEALED ON HOVER/TOUCH) */}
       <main id="work" className="w-full flex flex-col pt-24">
         {fullWidthProjects.map((project, idx) => (
           <section 
