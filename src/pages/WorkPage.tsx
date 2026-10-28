@@ -191,7 +191,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'WEBSITE DESIGN & WEB APP UI/UX',
       image: `${base}images/moodnmeds_thumbnaildesktop.png`,
       mobileImage: `${base}images/moodnmeds_mobilethumbnail.png`,
-      logoImage: `${base}images/moodnmedslogo_thumbnail.png`
+      logoImage: `${base}images/moodnnerdslogo_thumbnail.png`
     },
     {
       id: 'yellow-dot-energy',
@@ -207,7 +207,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'LOGO DESIGN',
       image: `${base}images/greenessential_thumbnaildesktop.png`,
       mobileImage: `${base}images/greenessentials_mobilethumbnail.png`,
-      logoImage: `${base}images/greenessentiallogo_thumbnail.png`
+      logoImage: `${base}images/greenessentials_thumbnail.png`
     },
     {
       id: 'lewis-park',
