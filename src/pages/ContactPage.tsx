@@ -51,7 +51,7 @@ export function ContactPage() {
 
   const buildMessage = () => {
     return (
-      `Hi John! I'd like to start a project.\n\n` +
+      `Hi! I'd like to start a project.\n\n` +
       `• Name: ${name.trim()}\n` +
       `• Email: ${email.trim()}\n` +
       (company.trim() ? `• Company / Brand: ${company.trim()}\n` : "") +

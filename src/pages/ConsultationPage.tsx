@@ -3,10 +3,10 @@ import { PageHero } from '../components/PageHero';
 import { BudgetField } from '../components/BudgetField';
 
 const perks = [
-  ["60 min", "Dedicated, one-to-one video or WhatsApp call"],
-  ["$0", "Completely free — no obligation, no hard sell"],
+  ["60 min", "Dedicated, 1-on-1 video or WhatsApp call"],
+  ["$0", "Completely free — zero pressure, zero hard sell"],
   ["Clear plan", "Honest advice, scope, timeline & rough budget"],
-  ["Good fit?", "We both find out if working together makes sense"],
+  ["Solo partner", "Direct collaboration with me — no agency middlemen"],
 ];
 
 const types = ["Logo", "Brand Identity", "UI/UX", "Website", "Other — custom", "Not sure yet"];
@@ -22,7 +22,7 @@ export function ConsultationPage() {
   const submitWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const msg = 
-      `Hi John! I'd like to book a free 1-hour consultation.\n\n` +
+      `Hi! I'd like to book a free 1-hour consultation.\n\n` +
       `Name: ${name}\n` +
       `Email: ${email}\n` +
       `Project: ${type}\n` +
@@ -38,7 +38,7 @@ export function ConsultationPage() {
       return;
     }
     const msg = 
-      `Hi John! I'd like to book a free 1-hour consultation.\n\n` +
+      `Hi! I'd like to book a free 1-hour consultation.\n\n` +
       `Name: ${name}\n` +
       `Email: ${email}\n` +
       `Project: ${type}\n` +

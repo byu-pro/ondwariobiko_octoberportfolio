@@ -9,7 +9,7 @@ interface NavMenuProps {
 
 const navLinks: { id: PageRoute; label: string; hint: string }[] = [
   { id: "work", label: "Work", hint: "Selected projects" },
-  { id: "about", label: "About", hint: "The designer & what I craft" },
+  { id: "about", label: "About", hint: "Who I am & what I craft" },
   { id: "contact", label: "Contact", hint: "Start a project" },
   { id: "consultation", label: "Free Call", hint: "1 hour, on me" },
 ];

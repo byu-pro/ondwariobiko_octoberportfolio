@@ -29,7 +29,7 @@ const markers = [
   { value: new Date().getFullYear() - 2016, label: "Years experience" },
   { value: 350, suffix: "+", label: "Projects completed" },
   { value: 3, label: "Core disciplines" },
-  { value: 1, label: "Direct creative partner" },
+  { value: 1, label: "Solo creative partner" },
 ];
 
 const packages = [
@@ -211,7 +211,7 @@ function ProfileImageCarousel({ base }: { base: string }) {
         <img
           key={src}
           src={src}
-          alt={`John Obiko — brand designer and front-end developer photo ${idx + 1}`}
+          alt={`Photo of me (${idx + 1})`}
           width={1200}
           height={1500}
           loading={idx === 0 ? "eager" : "lazy"}
@@ -239,7 +239,7 @@ function ProfileImageCarousel({ base }: { base: string }) {
 
       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20 pointer-events-none">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/90">
-          John Obiko · Nairobi, Kenya · Working worldwide
+          Nairobi, Kenya · Working worldwide
         </p>
       </div>
     </div>
@@ -251,7 +251,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
     <div className="w-full flex flex-col overflow-x-hidden">
       <PageHero 
         index="02" 
-        eyebrow="The designer & services" 
+        eyebrow="About me & services" 
         title="Designer" 
         outline="Developer" 
       />
@@ -296,7 +296,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div className="md:col-span-7">
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">⟶ Who I am</p>
             <p className="text-xl sm:text-2xl md:text-3xl font-light leading-snug">
-              I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a graphic and web designer based in Nairobi, Kenya, serving clients worldwide. I craft custom vector logos, mascot systems, and <span className="text-accent-ink font-semibold">design & build</span> the responsive websites that power them.
+              I'm <span className="text-accent-ink font-semibold">Ondwari Obiko</span> — a solo graphic and web designer based in Nairobi, Kenya, serving clients worldwide. I craft custom vector logos, mascot systems, and <span className="text-accent-ink font-semibold">design & build</span> the responsive websites that power them.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button

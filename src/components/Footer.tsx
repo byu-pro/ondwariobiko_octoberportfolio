@@ -45,7 +45,7 @@ export function Footer({
   return (
     <>
       {/* LOGO VIDEO ANIMATION SECTION */}
-      <section className="w-full overflow-hidden bg-black h-[220px] sm:h-[320px] md:h-[420px] lg:h-[480px] relative border-0 outline-none -my-px" aria-label="John Obiko logo animation">
+      <section className="w-full overflow-hidden bg-black h-[220px] sm:h-[320px] md:h-[420px] lg:h-[480px] relative border-0 outline-none -my-px" aria-label="Logo animation">
         <video
           ref={videoRef}
           src={`${base}images/logo-animation.webm`}
