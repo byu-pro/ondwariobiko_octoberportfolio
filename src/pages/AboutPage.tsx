@@ -10,112 +10,94 @@ interface AboutPageProps {
 const pillars = [
   {
     n: "01",
-    title: "Hand-drawn, not templated",
-    body: "I draw letterforms and symbols manually with the pen tool rather than leaning on existing fonts. Every mark is genuinely custom — built from scratch for your brand alone, not assembled from someone else's shapes.",
+    title: "Hand-drawn marks",
+    body: "Original letterforms and symbols drawn from scratch with the pen tool. Genuinely bespoke for your brand alone.",
   },
   {
     n: "02",
-    title: "Designed and built by the same person",
-    body: "When I also handle your website, there's no gap between what you approve in design and what actually ships in code. What you see in Figma is what your visitors see live — pixel for pixel.",
+    title: "Design + Code",
+    body: "Designed and built by the same hands. What you approve in Figma translates pixel-for-pixel into production code.",
   },
   {
     n: "03",
-    title: "Built for everyday use",
-    body: "Every identity is considered across the places your customers encounter it — from a small screen to signage and print. You receive practical files and guidance to keep the brand consistent.",
+    title: "Built to scale",
+    body: "Complete vector assets and practical brand guidelines prepared for screens, signage, apparel, and print.",
   },
 ];
 
 const markers = [
-  { value: new Date().getFullYear() - 2016, label: "Years designing · since 2016" },
+  { value: new Date().getFullYear() - 2016, label: "Years experience" },
   { value: 350, suffix: "+", label: "Projects completed" },
-  { value: 3, label: "Core disciplines · brand, graphic & web" },
-  { value: 1, label: "Designer · your direct creative partner" },
+  { value: 3, label: "Core disciplines" },
+  { value: 1, label: "Direct creative partner" },
 ];
 
 const packages = [
   {
     n: "01",
     t: "Logo System",
-    blurb: "Not just a mark — a proper system. Primary, secondary, icon and favicon versions, built to hold up at 16px and on a billboard.",
+    blurb: "Complete logo suite: primary, secondary, and standalone icon/favicon versions.",
     includes: [
-      "3 initial concepts, hand-drawn then vector",
-      "2 rounds of revisions",
-      "Primary, secondary & icon/favicon versions",
-      "AI, EPS, SVG, PNG + PDF mini-guide",
+      "3 custom initial concepts",
+      "Primary, secondary & icon marks",
+      "Vector AI, EPS, SVG + PNG delivery",
     ],
-    ideal: "Best for startups launching their first brand",
+    ideal: "Startups & new ventures",
   },
   {
     n: "02",
-    t: "Brand Identity Package",
-    blurb: "The full world your brand grows into — logo system plus colour, typography, voice and the rules that hold it all together.",
+    t: "Brand Identity",
+    blurb: "Full visual language: typography, color palette, logo suite, and usage rules.",
     includes: [
-      "Everything in the Logo System",
-      "Colour palette + typography system",
-      "Visual language & art direction",
-      "30–40 page brand guidelines PDF",
+      "Complete Logo System included",
+      "Color palette & typography pairing",
+      "Comprehensive brand guidelines PDF",
     ],
-    ideal: "Best for established businesses rebranding",
+    ideal: "Growing & rebranding brands",
   },
   {
     n: "03",
     t: "Mascot Design",
-    blurb: "A signature character — a specialty of mine, not a generic illustration line. Built as a flexible system with expressions and poses.",
+    blurb: "Signature illustrated characters with expressive poses and versatile vector artwork.",
     includes: [
-      "2 character concept directions",
-      "2 revision rounds",
-      "3 pose / expression variations",
-      "AI, EPS, SVG, PNG delivery",
+      "Original character directions",
+      "Multiple pose variations",
+      "High-res vector & transparent exports",
     ],
-    ideal: "Best for brands wanting a memorable personality",
+    ideal: "Brands wanting memorable personality",
   },
   {
     n: "04",
     t: "Web Design & Build",
-    blurb: "Designed and developed by the same hands — no handoff losses. Fast, responsive, with motion and performance baked in.",
+    blurb: "Custom websites designed and coded from scratch — fast, responsive, and animated.",
     includes: [
-      "Custom design, no templates",
-      "Up to 5 pages",
-      "Responsive build + animations",
-      "1 round of post-launch tweaks",
+      "Bespoke design, no templates",
+      "Responsive code with smooth animations",
+      "SEO & performance optimized",
     ],
-    ideal: "Best for founders who want one person owning it all",
+    ideal: "Founders needing design + code",
   },
   {
     n: "05",
     t: "Brand Guidelines",
-    blurb: "The full usage rulebook for clients who already have a logo but need the system documented so any team can apply it correctly.",
+    blurb: "Usage documentation covering typography, clear space, color values, and assets.",
     includes: [
-      "Logo usage, spacing & misuse",
-      "Colour, type & imagery rules",
-      "Application examples",
-      "30–50 page PDF guide",
+      "Logo placement & clear space rules",
+      "Digital & print color specs",
+      "Hand-off ready style guide PDF",
     ],
-    ideal: "Best for teams scaling beyond the founder",
+    ideal: "Teams scaling their marketing",
   },
   {
     n: "06",
-    t: "Packaging & Collateral",
-    blurb: "Labels, boxes, business cards, stationery — identity work extended into the physical world and the files your printer needs.",
+    t: "Custom Collateral",
+    blurb: "Labels, packaging, apparel graphics, stationery, and bespoke campaign artwork.",
     includes: [
-      "Up to 5 collateral pieces",
-      "Print-ready, dieline-aware files",
-      "2 revision rounds",
-      "Source + PDF delivery",
+      "Tailored deliverables to your brief",
+      "Print-ready dieline & digital files",
+      "Direct creative collaboration",
     ],
-    ideal: "Best for product brands ready to ship",
-  },
-  { 
-    n: "07", 
-    t: "Custom Design Work", 
-    blurb: "A specific creative challenge? I shape the design around your brief, whether you need bespoke artwork, campaign graphics or a one-off brand application.", 
-    includes: [
-      "Scope and deliverables agreed together",
-      "Original concepts tailored to your brief",
-      "2 rounds of revisions",
-      "Final files prepared for the intended use"
-    ], 
-    ideal: "Best for projects that need a tailored approach" 
+    ideal: "Product & apparel brands",
   },
 ];
 
@@ -124,54 +106,51 @@ const addons = [
   "Social Media Kit",
   "Packaging Mockups",
   "Stationery Suite",
-  "Favicon & App Icon Set",
-  "Pitch Deck Template",
+  "Favicon & App Icons",
+  "Pitch Deck Design",
+];
+
+const guarantees = [
+  { k: "Clear Rationale", v: "Every design direction is presented with the strategic thinking behind it." },
+  { k: "Agreed Scope", v: "Transparent milestone quote approved before work starts. No surprises." },
+  { k: "Source Files", v: "Full ownership of AI, EPS, SVG, and PNG files ready for any printer or developer." },
+  { k: "Direct Partner", v: "1-on-1 collaboration via WhatsApp and email, with responsive support after launch." },
 ];
 
 const skills = [
-  { name: "Custom design work", detail: "Bespoke artwork and design solutions shaped around your brief" },
-  { name: "Custom logo design", detail: "Original symbols and hand-drawn letterforms" },
-  { name: "Brand identity", detail: "Colour, typography and consistent visual systems" },
-  { name: "Mascot illustration", detail: "Expressive characters and vector artwork" },
-  { name: "Graphic design", detail: "Print, packaging and digital brand applications" },
-  { name: "UI/UX design", detail: "Clear, considered interfaces for web and mobile" },
-  { name: "Front-end development", detail: "Responsive websites brought to life in code" },
+  { name: "Custom Logo Design", detail: "Original symbols and hand-drawn letterforms" },
+  { name: "Brand Identity", detail: "Color palettes, typography systems & visual guides" },
+  { name: "Mascot Illustration", detail: "Expressive vector characters with personality" },
+  { name: "UI/UX Design", detail: "Clean, intuitive interfaces for web and mobile" },
+  { name: "Front-end Development", detail: "Fast, responsive websites built cleanly in modern code" },
+  { name: "Print & Packaging", detail: "Labels, boxes, apparel graphics & production files" },
 ];
 
 const tools = [
-  "Illustrator", "Photoshop", "InDesign", "Affinity", "Figma", 
-  "VS Code", "GitHub", "After Effects", "Canva", "Pen tool", 
-  "React", "CSS", "TypeScript", "Tailwind CSS", "Framer"
+  "Illustrator", "Photoshop", "Figma", "VS Code", "After Effects", 
+  "InDesign", "React", "TypeScript", "Tailwind CSS", "GitHub"
 ];
 
 const serviceFaqs = [
   {
     q: "How long does a project take?",
-    a: "There's no fixed timeline — it depends on the scope of work and what we agree together. Once we've discussed your project, I'll give you an honest estimate and we'll set milestones that work for both of us.",
+    a: "Timelines depend on the project scope. Most logo and identity projects take 2–3 weeks, while websites typically take 3–5 weeks. We agree on clear milestones before starting.",
   },
   {
     q: "How much does a project cost?",
-    a: "Every project is scoped and quoted individually — no fixed price lists. We discuss your goals, scope and budget, and I put together a quote that fits what your brand actually needs. You approve everything before we start.",
+    a: "Every project is scoped and quoted individually around your goals and budget. You approve the complete quote before any work begins.",
   },
   {
     q: "How many revisions are included?",
-    a: "Every package includes 2 rounds of revisions. If we need more, we agree on it together upfront — so scope creep never sneaks up on you.",
-  },
-  {
-    q: "Do you offer rush delivery?",
-    a: "Yes, when my schedule allows. Let me know your deadline and I'll confirm exactly what's possible before you commit to anything.",
-  },
-  {
-    q: "What if I don't like any of the concepts?",
-    a: "I present concepts with full rationale and we refine from there. If after the first round we're genuinely not aligned, you can walk away owing only the discovery deposit — no lock-in.",
+    a: "Every package includes 2 dedicated rounds of revisions to ensure you love the final deliverables. Additional rounds can easily be accommodated if needed.",
   },
   {
     q: "What file formats do I receive?",
-    a: "Vector source (AI, EPS, SVG), web-ready (PNG, SVG), and a PDF guide where applicable. Everything you need to hand off to a printer, developer or in-house team.",
+    a: "Full production-ready files: vector source (AI, EPS, SVG), high-res transparent web files (PNG, SVG), and a PDF guidelines document where applicable.",
   },
   {
-    q: "Do you work with clients anywhere?",
-    a: "Yes — I work remotely worldwide. Calls happen over WhatsApp or Zoom in your timezone, and async updates keep everything moving regardless of distance.",
+    q: "Do you work with clients internationally?",
+    a: "Yes — I work with clients worldwide. Calls happen on WhatsApp or Zoom in your timezone, with asynchronous updates keeping momentum high.",
   },
 ];
 
@@ -200,10 +179,10 @@ function AnimatedStat({ value, label, suffix = "" }: { value: number; label: str
 
   return (
     <div ref={root} className="min-w-0 text-center flex flex-col items-center">
-      <div className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl tracking-tighter text-accent-ink tabular-nums">
+      <div className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tighter text-accent-ink tabular-nums leading-none">
         <span>{display}{suffix}</span>
       </div>
-      <p className="font-mono text-xs uppercase tracking-wider mt-4 text-ink/70 leading-relaxed max-w-[26ch]">{label}</p>
+      <p className="font-mono text-[10px] sm:text-xs uppercase tracking-wider mt-3 text-ink/70 leading-snug">{label}</p>
     </div>
   );
 }
@@ -227,7 +206,7 @@ function ProfileImageCarousel({ base }: { base: string }) {
   }, [profileImages.length]);
 
   return (
-    <div className="relative aspect-[4/5] bg-neutral-900 border border-ink/10 overflow-hidden group rounded-xl">
+    <div className="relative aspect-[4/5] max-h-[460px] sm:max-h-none bg-neutral-900 border border-ink/10 overflow-hidden group rounded-xl mx-auto w-full">
       {profileImages.map((src, idx) => (
         <img
           key={src}
@@ -259,7 +238,7 @@ function ProfileImageCarousel({ base }: { base: string }) {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20 pointer-events-none">
-        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/90">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/90">
           John Obiko · Nairobi, Kenya · Working worldwide
         </p>
       </div>
@@ -269,7 +248,7 @@ function ProfileImageCarousel({ base }: { base: string }) {
 
 export function AboutPage({ base, onNavigate }: AboutPageProps) {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col overflow-x-hidden">
       <PageHero 
         index="02" 
         eyebrow="The designer & services" 
@@ -278,61 +257,57 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       />
 
       {/* Quick Jump Subnav */}
-      <div className="px-5 md:px-8 -mt-4 mb-12">
-        <div className="max-w-[1400px] mx-auto flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.2em]">
-          <a href="#about-section" className="text-accent-ink hover:underline">
-            ↓ About Me
+      <div className="px-5 md:px-8 -mt-2 mb-10 sm:mb-12">
+        <div className="max-w-[1400px] mx-auto flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none font-mono text-[11px] sm:text-xs uppercase tracking-wider">
+          <a href="#about-section" className="px-3.5 py-1.5 rounded-full bg-ink/10 text-accent-ink hover:bg-neon hover:text-black transition-colors shrink-0">
+            About
           </a>
-          <span className="text-ink/30">•</span>
-          <a href="#services-section" className="text-ink/60 hover:text-accent-ink transition-colors">
-            ↓ Services & Packages
+          <a href="#services-section" className="px-3.5 py-1.5 rounded-full bg-ink/5 text-ink/70 hover:bg-ink/15 hover:text-white transition-colors shrink-0">
+            Services
           </a>
-          <span className="text-ink/30">•</span>
-          <a href="#faq-section" className="text-ink/60 hover:text-accent-ink transition-colors">
-            ↓ Project FAQ
+          <a href="#skills-section" className="px-3.5 py-1.5 rounded-full bg-ink/5 text-ink/70 hover:bg-ink/15 hover:text-white transition-colors shrink-0">
+            Skills
+          </a>
+          <a href="#faq-section" className="px-3.5 py-1.5 rounded-full bg-ink/5 text-ink/70 hover:bg-ink/15 hover:text-white transition-colors shrink-0">
+            FAQ
           </a>
         </div>
       </div>
 
       {/* 1 — Opening Hook: Philosophy */}
-      <section id="about-section" className="px-5 md:px-8 pb-16 md:pb-24">
+      <section id="about-section" className="px-5 md:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent-ink mb-8">⟶ The philosophy</p>
-          <h2 className="font-display font-extrabold text-[8vw] sm:text-6xl md:text-7xl lg:text-8xl leading-[0.92] tracking-tight max-w-[16ch]">
-            Every logo I draw starts with a <span className="text-accent-ink">pencil</span>, not a font.
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ The philosophy</p>
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight max-w-[20ch] break-words">
+            Every logo starts with a <span className="text-accent-ink">pencil</span>, not a font.
           </h2>
-          <p className="mt-10 max-w-[54ch] text-lg sm:text-xl text-ink/75 leading-relaxed font-light">
-            For over ten years I've built brand identities and websites for clients around the world — combining
-            hand-drawn craftsmanship with the technical precision of a front-end developer. No templates, no
-            generators, no shortcuts. Just marks made deliberately, built to last.
+          <p className="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-ink/70 leading-relaxed font-light">
+            Over 10 years crafting custom identities and bespoke websites for clients worldwide. Hand-drawn marks, clean code, no templates or shortcuts.
           </p>
         </div>
       </section>
 
       {/* 2 — Who I am, with Photo Carousel */}
-      <section className="px-5 md:px-8 pb-20 md:pb-32">
-        <div className="max-w-[1400px] mx-auto grid md:grid-cols-12 gap-10 md:gap-16 items-center">
-          <div className="md:col-span-5">
+      <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
+        <div className="max-w-[1400px] mx-auto grid md:grid-cols-12 gap-8 md:gap-14 items-center">
+          <div className="md:col-span-5 max-w-md mx-auto md:max-w-none w-full">
             <ProfileImageCarousel base={base} />
           </div>
           <div className="md:col-span-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent-ink mb-6">⟶ Who I am</p>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-light leading-snug">
-              I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a graphic and web designer based in Nairobi, Kenya, working with
-              clients worldwide. I specialise in flat vector logo design, mascot illustration and full brand identity
-              systems — and I <span className="text-accent-ink font-display font-bold">design and build</span> the websites
-              that bring them to life.
+            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">⟶ Who I am</p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-light leading-snug">
+              I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a graphic and web designer based in Nairobi, Kenya, serving clients worldwide. I craft custom vector logos, mascot systems, and <span className="text-accent-ink font-semibold">design & build</span> the responsive websites that power them.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={() => onNavigate('contact')}
-                className="bg-neon text-black font-mono text-xs uppercase tracking-widest px-6 py-3 rounded-full hover:scale-105 transition-transform font-bold cursor-pointer"
+                className="w-full sm:w-auto text-center bg-neon text-black font-mono text-xs uppercase tracking-widest px-6 py-3.5 rounded-full hover:scale-105 transition-transform font-bold cursor-pointer"
               >
                 Start a project ⟶
               </button>
               <button
                 onClick={() => onNavigate('consultation')}
-                className="border border-ink/30 text-ink font-mono text-xs uppercase tracking-widest px-6 py-3 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer"
+                className="w-full sm:w-auto text-center border border-ink/30 text-ink font-mono text-xs uppercase tracking-widest px-6 py-3.5 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer"
               >
                 Free 1-hr call
               </button>
@@ -342,20 +317,20 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 3 — Craft Pillars */}
-      <section className="px-5 md:px-8 pb-20 md:pb-32">
+      <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent-ink mb-10">⟶ What makes it different</p>
-          <div className="grid md:grid-cols-3 gap-px bg-ink/15 border border-ink/15">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ What makes it different</p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-ink/15 border border-ink/15">
             {pillars.map((p) => (
               <div
                 key={p.n}
-                className="group bg-surface p-8 md:p-10 min-h-[280px] flex flex-col transition-colors duration-500 hover:bg-neon hover:text-black"
+                className="group bg-surface p-6 sm:p-8 flex flex-col transition-colors duration-500 hover:bg-neon hover:text-black"
               >
-                <span className="font-display text-5xl text-accent-ink group-hover:text-black transition-colors mb-6 font-bold">
+                <span className="font-display text-4xl sm:text-5xl text-accent-ink group-hover:text-black transition-colors mb-4 font-bold">
                   {p.n}
                 </span>
-                <h3 className="font-display font-bold text-xl mb-4 leading-tight">{p.title}</h3>
-                <p className="text-sm text-ink/60 group-hover:text-black/80 leading-relaxed transition-colors">
+                <h3 className="font-display font-bold text-lg sm:text-xl mb-2.5 leading-tight">{p.title}</h3>
+                <p className="text-sm text-ink/65 group-hover:text-black/80 leading-relaxed transition-colors">
                   {p.body}
                 </p>
               </div>
@@ -365,55 +340,55 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 4 — Track Record & Stats */}
-      <section className="px-5 md:px-8 pb-20 md:pb-32">
+      <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent-ink mb-10">⟶ Track record</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 border-y border-ink/15 py-12">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ Track record</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 border-y border-ink/15 py-8 sm:py-12">
             {markers.map((stat) => <AnimatedStat key={stat.label} {...stat} />)}
           </div>
         </div>
       </section>
 
-      {/* 5 — SERVICES SECTION (THE 7 CORE PACKAGES) */}
-      <section id="services-section" className="px-5 md:px-8 pt-8 pb-24 md:pb-32 border-t border-ink/15">
+      {/* 5 — SERVICES SECTION (THE 6 CORE PACKAGES) */}
+      <section id="services-section" className="px-5 md:px-8 pt-8 pb-16 sm:pb-24 md:pb-32 border-t border-ink/15">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-12">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-ink mb-4">⟶ What I craft</p>
-            <h2 className="font-display uppercase tracking-tighter text-4xl sm:text-6xl md:text-7xl font-extrabold leading-[0.9]">
+          <div className="mb-8 sm:mb-12">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">⟶ What I craft</p>
+            <h2 className="font-display uppercase tracking-tighter text-3xl sm:text-5xl md:text-6xl font-extrabold leading-[0.9]">
               Services & <span className="text-stroke">Packages</span>
             </h2>
-            <p className="mt-6 font-display text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight text-ink/80 max-w-3xl">
-              Custom brand identities and logo systems for founders who want something <span className="text-accent-ink">built to last, not templated.</span> Hand-drawn, concept-driven, no AI shortcuts — and the same hands that design it build it.
+            <p className="mt-4 sm:mt-6 font-display text-lg sm:text-2xl leading-snug tracking-tight text-ink/80 max-w-2xl">
+              Custom brand identities and logo systems <span className="text-accent-ink">built to last.</span> Hand-drawn, concept-driven, no shortcuts.
             </p>
           </div>
 
-          {/* 7 Core Packages */}
+          {/* 6 Core Packages */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/15 border border-ink/15">
             {packages.map((p) => (
               <div
                 key={p.t}
-                className="group bg-surface p-6 sm:p-8 flex flex-col transition-colors duration-500 hover:bg-neon hover:text-black sm:min-h-[460px]"
+                className="group bg-surface p-6 sm:p-7 flex flex-col transition-colors duration-500 hover:bg-neon hover:text-black"
               >
                 <div className="flex justify-between items-start font-mono text-xs">
-                  <span className="text-accent-ink group-hover:text-black font-bold">{p.n}</span>
+                  <span className="text-accent-ink group-hover:text-black font-bold text-sm">{p.n}</span>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/40 group-hover:text-black/60">Scoped per project</span>
                 </div>
 
-                <h3 className="mt-6 font-display uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.9] font-bold transition-transform duration-500 group-hover:-translate-y-1">
+                <h3 className="mt-4 sm:mt-5 font-display uppercase tracking-tighter text-2xl sm:text-3xl leading-tight font-bold transition-transform duration-500 group-hover:-translate-y-0.5">
                   {p.t}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/60 group-hover:text-black/70">{p.blurb}</p>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-ink/60 group-hover:text-black/70">{p.blurb}</p>
 
-                <ul className="mt-5 flex flex-col gap-2">
+                <ul className="mt-4 flex flex-col gap-1.5">
                   {p.includes.map((x) => (
-                    <li key={x} className="flex items-start gap-2 text-sm text-ink/70 group-hover:text-black/80">
-                      <span className="text-accent-ink group-hover:text-black mt-1 shrink-0">→</span>
+                    <li key={x} className="flex items-start gap-2 text-xs sm:text-sm text-ink/70 group-hover:text-black/85">
+                      <span className="text-accent-ink group-hover:text-black mt-0.5 shrink-0 font-bold">→</span>
                       {x}
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-auto pt-6 border-t border-ink/10 group-hover:border-black/15">
+                <div className="mt-6 pt-4 border-t border-ink/10 group-hover:border-black/15">
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink group-hover:text-black font-semibold">
                     {p.ideal}
                   </span>
@@ -424,27 +399,20 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         </div>
       </section>
 
-      {/* 6 — What's Included / Reassurance Band */}
-      <section className="px-5 md:px-8 py-20 md:py-28 border-y border-ink/10 bg-white/[0.02]">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-20">
+      {/* 6 — What's Included / Guarantee */}
+      <section className="px-5 md:px-8 py-14 sm:py-20 md:py-24 border-y border-ink/10 bg-white/[0.02]">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-16">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-ink mb-4">No surprises</p>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl uppercase tracking-tighter leading-[0.9] font-extrabold">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">No surprises</p>
+            <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
               What you<br /><span className="text-stroke">always get</span>
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
-            {[
-              { k: "Concepts with rationale", v: "Every direction is presented with the thinking behind it — never guesswork." },
-              { k: "Clear, agreed scope", v: "You approve the scope and quote before we start. No open-ended hourly billing." },
-              { k: "Agreed revision rounds", v: "Revisions are set together in your quote, so expectations are clear on both sides." },
-              { k: "All source files", v: "AI, EPS, SVG, PNG and a PDF guide. Yours to keep and hand off freely." },
-              { k: "Honest updates", v: "Regular check-ins by email, and video calls on WhatsApp whenever it's easier to talk." },
-              { k: "Support after launch", v: "You leave with a brand or site you can actually use, and a partner on call." },
-            ].map((x) => (
+          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+            {guarantees.map((x) => (
               <div key={x.k}>
-                <h4 className="font-display text-lg uppercase tracking-tight text-accent-ink font-bold">{x.k}</h4>
-                <p className="mt-2 text-sm text-ink/65 leading-relaxed">{x.v}</p>
+                <h4 className="font-display text-base sm:text-lg uppercase tracking-tight text-accent-ink font-bold">{x.k}</h4>
+                <p className="mt-1.5 text-xs sm:text-sm text-ink/65 leading-relaxed">{x.v}</p>
               </div>
             ))}
           </div>
@@ -452,22 +420,22 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 7 — Add-ons */}
-      <section className="px-5 md:px-8 py-20 md:py-28">
+      <section className="px-5 md:px-8 py-14 sm:py-20 md:py-24">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-ink mb-3">Optional extras</p>
-              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl uppercase tracking-tighter leading-[0.9] font-extrabold">Add-ons</h2>
+              <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-2">Optional extras</p>
+              <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">Add-ons</h2>
             </div>
-            <p className="text-ink/50 max-w-sm text-sm leading-relaxed">
-              Stack any of these onto a package — quoted together with your project so everything fits your budget.
+            <p className="text-ink/50 text-xs sm:text-sm leading-relaxed max-w-sm">
+              Add any extra collateral to your project package.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/15 border border-ink/15">
             {addons.map((a) => (
-              <div key={a} className="bg-surface p-5 flex items-center justify-between group hover:bg-ink/[0.06] transition-colors duration-300">
-                <span className="font-display text-lg sm:text-xl uppercase tracking-tight font-semibold">{a}</span>
-                <span className="font-mono text-accent-ink text-xl leading-none transition-transform duration-300 group-hover:rotate-45">+</span>
+              <div key={a} className="bg-surface p-4 sm:p-5 flex items-center justify-between group hover:bg-ink/[0.06] transition-colors duration-300">
+                <span className="font-display text-base sm:text-lg uppercase tracking-tight font-semibold">{a}</span>
+                <span className="font-mono text-accent-ink text-lg leading-none transition-transform duration-300 group-hover:rotate-45">+</span>
               </div>
             ))}
           </div>
@@ -475,24 +443,24 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 8 — Note on Investment */}
-      <section className="px-5 md:px-8 py-20 md:py-28 border-t border-ink/10 bg-neon text-black">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-20 items-start">
+      <section className="px-5 md:px-8 py-14 sm:py-20 md:py-24 border-t border-ink/10 bg-neon text-black">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16 items-start">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-black/60 mb-4 font-bold">No price lists</p>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl uppercase tracking-tighter leading-[0.9] font-extrabold">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-black/60 mb-2 font-bold">Clear pricing</p>
+            <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
               A note on<br />investment
             </h2>
           </div>
-          <div className="flex flex-col gap-6">
-            <p className="font-display text-2xl sm:text-3xl leading-tight tracking-tight max-w-2xl font-bold">
-              Every project is scoped individually, because no two brands need the same thing.
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <p className="font-display text-xl sm:text-2xl leading-snug tracking-tight font-bold">
+              Every project is scoped individually around your goals and budget.
             </p>
-            <p className="text-black/75 leading-relaxed max-w-2xl">
-              Rather than fixed pricing or fixed timelines, I quote after understanding your goals and the scope of work involved — and we shape it around a budget that works for you. That way you're only ever paying for what your brand actually needs, and you approve the full quote before anything begins.
+            <p className="text-black/75 text-sm sm:text-base leading-relaxed">
+              Rather than rigid price lists, you receive an upfront milestone quote tailored to what your brand actually needs. No hidden fees, no surprises.
             </p>
             <button
               onClick={() => onNavigate('consultation')}
-              className="inline-flex items-center gap-3 self-start bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-8 py-5 hover:bg-neutral-900 transition-colors duration-300 font-bold cursor-pointer rounded-full"
+              className="inline-flex items-center gap-2 self-start bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-6 sm:px-8 py-3.5 sm:py-4 hover:bg-neutral-900 transition-colors duration-300 font-bold cursor-pointer rounded-full mt-2"
             >
               Start with a free 1-hr consult ↗
             </button>
@@ -501,24 +469,24 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 9 — Skills & Tools */}
-      <section className="px-5 md:px-8 py-20 md:pb-28">
+      <section id="skills-section" className="px-5 md:px-8 py-14 sm:py-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-8">⟶ Skills & expertise</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mb-20">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-6">⟶ Skills & disciplines</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 mb-14 sm:mb-16">
             {skills.map((skill) => (
-              <div key={skill.name} className="border-t border-ink/20 pt-6">
-                <h3 className="font-display font-bold text-2xl md:text-3xl mb-3">{skill.name}</h3>
-                <p className="text-base text-ink/70 leading-relaxed">{skill.detail}</p>
+              <div key={skill.name} className="border-t border-ink/20 pt-4 sm:pt-5">
+                <h3 className="font-display font-bold text-xl sm:text-2xl mb-1.5">{skill.name}</h3>
+                <p className="text-xs sm:text-sm text-ink/65 leading-relaxed">{skill.detail}</p>
               </div>
             ))}
           </div>
 
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/70 mb-8">⟶ Tools of the trade</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-ink/60 mb-4 sm:mb-6">⟶ Tools & stack</p>
+          <div className="flex flex-wrap gap-2 sm:gap-2.5">
             {tools.map((t) => (
               <span
                 key={t}
-                className="font-display font-semibold text-lg sm:text-xl border border-ink/20 p-4 text-ink hover:border-neon hover:text-accent-ink transition-colors text-center"
+                className="font-display font-medium text-xs sm:text-sm border border-ink/20 px-3.5 py-2 text-ink/80 hover:border-neon hover:text-accent-ink transition-colors rounded-lg bg-surface/50"
               >
                 {t}
               </span>
@@ -528,25 +496,25 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 10 — FAQ block */}
-      <section id="faq-section" className="px-5 md:px-8 py-20 md:py-28 border-t border-ink/10">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+      <section id="faq-section" className="px-5 md:px-8 py-14 sm:py-20 md:py-24 border-t border-ink/10">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-ink mb-4">Before you ask</p>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl uppercase tracking-tighter leading-[0.85] font-extrabold">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">FAQ</p>
+            <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
               Service<br /><span className="text-stroke">Questions</span>
             </h2>
-            <p className="mt-6 text-ink/50 max-w-sm leading-relaxed">
-              The exact questions that otherwise stall a quote request for days — answered up front.
+            <p className="mt-4 text-ink/50 text-xs sm:text-sm leading-relaxed max-w-sm">
+              Key questions answered up front so we can jump straight into creating.
             </p>
           </div>
-          <div>
+          <div className="divide-y divide-ink/15">
             {serviceFaqs.map((f) => (
-              <details key={f.q} className="group border-b border-ink/15 py-5">
-                <summary className="flex items-center justify-between gap-6 cursor-pointer list-none font-display text-lg sm:text-xl uppercase tracking-tight hover:text-accent-ink transition-colors duration-300">
-                  {f.q}
-                  <span className="font-mono text-accent-ink text-2xl leading-none transition-transform duration-300 group-open:rotate-45">+</span>
+              <details key={f.q} className="group py-4 sm:py-5">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-display text-base sm:text-lg uppercase tracking-tight hover:text-accent-ink transition-colors duration-300">
+                  <span>{f.q}</span>
+                  <span className="font-mono text-accent-ink text-xl leading-none transition-transform duration-300 group-open:rotate-45 shrink-0">+</span>
                 </summary>
-                <p className="mt-4 text-ink/65 leading-relaxed max-w-2xl text-sm sm:text-base">{f.a}</p>
+                <p className="mt-3 text-ink/65 leading-relaxed max-w-2xl text-xs sm:text-sm">{f.a}</p>
               </details>
             ))}
           </div>
@@ -554,22 +522,22 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 11 — Closing CTA */}
-      <section className="px-5 md:px-8 pb-28 md:pb-36">
-        <div className="max-w-[1400px] mx-auto border-t border-ink/15 pt-16 text-center">
-          <h2 className="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl leading-[0.9] tracking-tight">
+      <section className="px-5 md:px-8 pb-20 sm:pb-28 md:pb-36">
+        <div className="max-w-[1400px] mx-auto border-t border-ink/15 pt-12 sm:pt-16 text-center">
+          <h2 className="font-display font-extrabold text-3xl sm:text-6xl md:text-7xl leading-[0.9] tracking-tight">
             Have a project<br />
             in <span className="text-accent-ink">mind?</span>
           </h2>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
             <button
               onClick={() => onNavigate('contact')}
-              className="inline-flex items-center gap-2 bg-neon text-black font-mono text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:scale-105 transition-all font-bold cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-neon text-black font-mono text-xs sm:text-sm uppercase tracking-widest px-8 py-3.5 sm:py-4 rounded-full hover:scale-105 transition-all font-bold cursor-pointer"
             >
               Let's talk ⟶
             </button>
             <button
               onClick={() => onNavigate('consultation')}
-              className="inline-flex items-center gap-2 border border-ink/25 text-ink font-mono text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:border-neon hover:text-accent-ink transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-ink/25 text-ink font-mono text-xs sm:text-sm uppercase tracking-widest px-8 py-3.5 sm:py-4 rounded-full hover:border-neon hover:text-accent-ink transition-all cursor-pointer"
             >
               Book a Free Call
             </button>
