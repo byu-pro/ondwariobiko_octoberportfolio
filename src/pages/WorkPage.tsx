@@ -33,55 +33,64 @@ export function WorkPage({ base }: WorkPageProps) {
       id: 'pelican-social',
       title: 'PELICAN SOCIAL BAR AND GRILL',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/pelicansocial_casestudybanner.webp`
+      image: `${base}images/pelicansocial_thumbnaildesktop.png`,
+      mobileImage: `${base}images/pelicansocial_mobilethumbnail.png`
     },
     {
       id: 'ikon-trailers',
       title: 'IKON TRAILERS.COM',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/ikontrailers_thumbnail.webp`
+      image: `${base}images/ikontrailers_thumbnailldesktop.png`,
+      mobileImage: `${base}images/ikontrailers_mobilethumbnail.png`
     },
     {
       id: 'iron-acre',
       title: 'IRON ACRE LAND CO',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/ironacrelandco_herobanner.webp`
+      image: `${base}images/ironacre_thumbnaildesktop.png`,
+      mobileImage: `${base}images/ironacre_mobilethumbnail.png`
     },
     {
       id: 'friends-of-unionville',
       title: 'FRIENDS OF UNIONVILLE',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/friendsofunionville_herobanner.webp`
+      image: `${base}images/friendsofunionville_desktopthumbnail.png`,
+      mobileImage: `${base}images/friendsofunionville_mobilethumbnail.png`
     },
     {
       id: 'sound-curves',
       title: 'SOUND CURVES WEBSITE',
       category: 'WEBSITE DESIGN & DIGITAL PLATFORM',
-      image: `${base}images/soundcurves_herobanner.webp`
+      image: `${base}images/soundcurves_thumbnaildesktop.png`,
+      mobileImage: `${base}images/soundcurves_mobilethumbnail.png`
     },
     {
       id: 'moods-and-nerds',
       title: 'MOODS AND NERDS WEBSITE',
       category: 'WEBSITE DESIGN & WEB APP UI/UX',
-      image: `${base}images/moodnmeds_herobanner.webp`
+      image: `${base}images/moodnmeds_thumbnaildesktop.png`,
+      mobileImage: `${base}images/moodnmeds_mobilethumbnail.png`
     },
     {
       id: 'yellow-dot-energy',
       title: 'YELLOW DOT ENERGY MOBILE APP',
       category: 'MOBILE APP UI/UX & PRODUCT STRATEGY',
-      image: `${base}images/yellowdot_herobanner.webp`
+      image: `${base}images/yellowdot_desktopthumbnail.png`,
+      mobileImage: `${base}images/yellowdot_mobilethumbnail.png`
     },
     {
       id: 'green-essential',
       title: 'GREEN ESSENTIAL TURF AND MOSQUITO',
       category: 'LOGO DESIGN',
-      image: `${base}images/greenessentials_herobanner.webp`
+      image: `${base}images/greenessential_thumbnaildesktop.png`,
+      mobileImage: `${base}images/greenessentials_mobilethumbnail.png`
     },
     {
       id: 'lewis-park',
       title: 'LEWIS PARK SACRAMENTO',
       category: 'T-SHIRT & APPAREL DESIGN',
-      image: `${base}images/lewispark_thumbnail.webp`
+      image: `${base}images/lewispark_thumbnaildesktop.png`,
+      mobileImage: `${base}images/lewispark_mobilethumbnail.png`
     }
   ];
 
@@ -96,15 +105,20 @@ export function WorkPage({ base }: WorkPageProps) {
             className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation"
           >
             {/* Background Full-Width Image with Cinematic Zoom */}
-            <img 
-              src={project.image} 
-              alt={project.title}
-              width={1920}
-              height={1080}
-              loading={idx < 2 ? "eager" : "lazy"}
-              decoding="async"
-              className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
-            />
+            <picture className="w-full h-full block">
+              {project.mobileImage && (
+                <source media="(max-width: 639px)" srcSet={project.mobileImage} />
+              )}
+              <img 
+                src={project.image} 
+                alt={project.title}
+                width={1920}
+                height={1080}
+                loading={idx < 2 ? "eager" : "lazy"}
+                decoding="async"
+                className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
+              />
+            </picture>
 
             {/* Bottom Gradient: subtle on mobile, reveals on hover on desktop */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

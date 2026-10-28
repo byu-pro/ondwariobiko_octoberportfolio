@@ -3,6 +3,7 @@ export interface FullWidthProject {
   title: string;
   category: string;
   image: string;
+  mobileImage?: string;
 }
 
 export type PageRoute = 'work' | 'about' | 'contact' | 'consultation';
