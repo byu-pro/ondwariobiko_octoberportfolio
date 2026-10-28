@@ -105,20 +105,15 @@ export function WorkPage({ base }: WorkPageProps) {
             className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation"
           >
             {/* Background Full-Width Image with Cinematic Zoom */}
-            <picture className="w-full h-full block">
-              {project.mobileImage && (
-                <source media="(max-width: 639px)" srcSet={project.mobileImage} />
-              )}
-              <img 
-                src={project.image} 
-                alt={project.title}
-                width={1920}
-                height={1080}
-                loading={idx < 2 ? "eager" : "lazy"}
-                decoding="async"
-                className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
-              />
-            </picture>
+            <img 
+              src={project.image} 
+              alt={project.title}
+              width={1920}
+              height={1080}
+              loading={idx < 2 ? "eager" : "lazy"}
+              decoding="async"
+              className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
+            />
 
             {/* Bottom Gradient: subtle on mobile, reveals on hover on desktop */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
