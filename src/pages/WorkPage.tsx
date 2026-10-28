@@ -58,7 +58,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
   return (
     <section 
       onClick={() => onOpenLightbox(project, activeView === 'logo' && project.logoImage ? project.logoImage : project.image)}
-      className="group relative w-full aspect-[16/9] sm:aspect-[21/9] lg:h-[75vh] min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
+      className="group relative w-full aspect-[16/9] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
     >
       {/* Invisible preloader to verify whether logo file exists without displaying broken image icons */}
       {project.logoImage && (
@@ -72,9 +72,9 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
         />
       )}
 
-      {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL */}
+      {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL (Full Width) */}
       <div 
-        className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
+        className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-in-out transform-gpu ${
           activeView === 'thumbnail' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
@@ -85,46 +85,30 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
           height={1080}
           loading={idx < 2 ? "eager" : "lazy"}
           decoding="async"
-          className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-transform ${
-            activeView === 'thumbnail' ? 'scale-100' : 'scale-105'
+          className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-all duration-1200 ease-out transform-gpu will-change-transform ${
+            activeView === 'thumbnail' ? 'scale-100' : 'scale-[1.03]'
           } group-hover:scale-[1.03]`}
         />
       </div>
 
-      {/* LAYER 2: PROJECT LOGO THUMBNAIL (Seamless natural zoom-in, uncropped framing) */}
+      {/* LAYER 2: PROJECT LOGO THUMBNAIL (Full Width, Seamless Cinematic Zoom-In) */}
       {logoAvailable && project.logoImage && (
         <div 
-          className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
+          className={`absolute inset-0 overflow-hidden transition-all duration-1000 ease-in-out transform-gpu ${
             activeView === 'logo' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
           }`}
         >
-          {/* Ambient blurred backdrop matching the logo background organically without clipping */}
           <img 
             src={project.logoImage} 
-            alt="" 
-            aria-hidden="true" 
-            className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-35 scale-125 pointer-events-none transform-gpu"
+            alt={`${project.title} Logo`}
+            width={1920}
+            height={1080}
+            loading="lazy"
+            decoding="async"
+            className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-all duration-1200 ease-out transform-gpu will-change-transform ${
+              activeView === 'logo' ? 'scale-[1.03]' : 'scale-100'
+            } group-hover:scale-[1.05]`}
           />
-
-          {/* Vignette depth layer */}
-          <div className="absolute inset-0 bg-neutral-950/20 pointer-events-none" />
-
-          {/* Clean, uncropped Logo Thumbnail with smooth decelerating zoom-in */}
-          <div className="relative w-full h-full flex items-center justify-center p-3 sm:p-6 md:p-10 lg:p-14">
-            <img 
-              src={project.logoImage} 
-              alt={`${project.title} Logo`}
-              width={1920}
-              height={1080}
-              loading="lazy"
-              decoding="async"
-              className={`max-w-full max-h-full object-contain filter drop-shadow-[0_12px_30px_rgba(0,0,0,0.8)] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-transform ${
-                activeView === 'logo'
-                  ? 'scale-100 opacity-100'
-                  : 'scale-[0.88] opacity-0'
-              } group-hover:scale-[1.03]`}
-            />
-          </div>
         </div>
       )}
 
