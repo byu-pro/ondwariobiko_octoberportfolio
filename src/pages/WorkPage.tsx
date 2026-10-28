@@ -100,33 +100,22 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
         />
       </div>
 
-      {/* LAYER 2: PROJECT LOGO SHOWCASE (Crossfades in seamlessly when logo exists) */}
+      {/* LAYER 2: PROJECT LOGO THUMBNAIL (Crossfades in seamlessly when logo exists) */}
       {logoAvailable && project.logoImage && (
         <div 
-          className={`absolute inset-0 bg-neutral-950 flex items-center justify-center overflow-hidden transition-opacity duration-700 ease-out ${
+          className={`absolute inset-0 transition-opacity duration-700 ease-out ${
             activeView === 'logo' ? 'opacity-100 z-0' : 'opacity-0 pointer-events-none'
           }`}
         >
-          {/* Ambient color reflection from the project's hero mockup */}
           <img 
-            src={project.image} 
-            alt="" 
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-20 scale-125 transform-gpu pointer-events-none"
+            src={project.logoImage} 
+            alt={`${project.title} Logo`}
+            width={1920}
+            height={1080}
+            loading={idx < 2 ? "eager" : "lazy"}
+            decoding="async"
+            className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.03] filter brightness-95 group-hover:brightness-105 transform-gpu will-change-transform"
           />
-          {/* Subtle vignette radial layer */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.85)_100%)] pointer-events-none" />
-
-          {/* Centered logo presentation */}
-          <div className="relative z-10 w-full h-full flex items-center justify-center p-6 sm:p-12 md:p-20">
-            <img 
-              src={project.logoImage} 
-              alt={`${project.title} Logo`}
-              loading="lazy"
-              decoding="async"
-              className="max-w-[78%] sm:max-w-[65%] md:max-w-[50%] max-h-[72%] sm:max-h-[65%] object-contain filter drop-shadow-[0_12px_30px_rgba(0,0,0,0.9)] transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-          </div>
         </div>
       )}
 
@@ -203,7 +192,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/pelicansocial_thumbnaildesktop.png`,
       mobileImage: `${base}images/pelicansocial_mobilethumbnail.png`,
-      logoImage: `${base}images/pelicansocial_logo.png`
+      logoImage: `${base}images/pelicansociallogo_thumbnail.png`
     },
     {
       id: 'ikon-trailers',
@@ -211,7 +200,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/ikontrailers_thumbnailldesktop.png`,
       mobileImage: `${base}images/ikontrailers_mobilethumbnail.png`,
-      logoImage: `${base}images/ikontrailers_logo.png`
+      logoImage: `${base}images/ikontrailerslogo_thumbnail.png`
     },
     {
       id: 'iron-acre',
@@ -219,7 +208,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/ironacre_thumbnaildesktop.png`,
       mobileImage: `${base}images/ironacre_mobilethumbnail.png`,
-      logoImage: `${base}images/ironacre_logo.png`
+      logoImage: `${base}images/ironacrelogo_thumbnail.png`
     },
     {
       id: 'friends-of-unionville',
@@ -227,7 +216,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/friendsofunionville_desktopthumbnail.png`,
       mobileImage: `${base}images/friendsofunionville_mobilethumbnail.png`,
-      logoImage: `${base}images/friendsofunionville_logo.png`
+      logoImage: `${base}images/friendsofunionvillelogo_thumbnail.png`
     },
     {
       id: 'sound-curves',
@@ -235,7 +224,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'WEBSITE DESIGN & DIGITAL PLATFORM',
       image: `${base}images/soundcurves_thumbnaildesktop.png`,
       mobileImage: `${base}images/soundcurves_mobilethumbnail.png`,
-      logoImage: `${base}images/soundcurves_logo.png`
+      logoImage: `${base}images/soundcurveslogo_thumbnail.png`
     },
     {
       id: 'moods-and-nerds',
@@ -243,7 +232,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'WEBSITE DESIGN & WEB APP UI/UX',
       image: `${base}images/moodnmeds_thumbnaildesktop.png`,
       mobileImage: `${base}images/moodnmeds_mobilethumbnail.png`,
-      logoImage: `${base}images/moodnmeds_logo.png`
+      logoImage: `${base}images/moodnmedslogo_thumbnail.png`
     },
     {
       id: 'yellow-dot-energy',
@@ -251,7 +240,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'MOBILE APP UI/UX & PRODUCT STRATEGY',
       image: `${base}images/yellowdot_desktopthumbnail.png`,
       mobileImage: `${base}images/yellowdot_mobilethumbnail.png`,
-      logoImage: `${base}images/yellowdot_logo.png`
+      logoImage: `${base}images/yellowdotlogo_thumbnail.png`
     },
     {
       id: 'green-essential',
@@ -259,7 +248,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'LOGO DESIGN',
       image: `${base}images/greenessential_thumbnaildesktop.png`,
       mobileImage: `${base}images/greenessentials_mobilethumbnail.png`,
-      logoImage: `${base}images/greenessential_logo.png`
+      logoImage: `${base}images/greenessentiallogo_thumbnail.png`
     },
     {
       id: 'lewis-park',
@@ -267,7 +256,7 @@ export function WorkPage({ base }: WorkPageProps) {
       category: 'T-SHIRT & APPAREL DESIGN',
       image: `${base}images/lewispark_thumbnaildesktop.png`,
       mobileImage: `${base}images/lewispark_mobilethumbnail.png`,
-      logoImage: `${base}images/lewispark_logo.png`
+      logoImage: `${base}images/lewisparklogo_thumbnail.png`
     }
   ];
 
@@ -366,27 +355,11 @@ export function WorkPage({ base }: WorkPageProps) {
             className="my-auto max-h-[78vh] flex items-center justify-center p-1 sm:p-2 relative overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {lightboxView === 'thumbnail' ? (
-              <img 
-                src={activeImage.image} 
-                alt={activeImage.title} 
-                className="max-h-[72vh] sm:max-h-[75vh] w-auto max-w-full object-contain rounded-lg border border-neutral-800 shadow-2xl transition-all duration-500"
-              />
-            ) : (
-              <div className="relative max-h-[72vh] sm:max-h-[75vh] w-full max-w-4xl flex items-center justify-center p-8 sm:p-14 bg-neutral-950/90 border border-neutral-800 rounded-lg shadow-2xl overflow-hidden">
-                <img 
-                  src={activeImage.image} 
-                  alt="" 
-                  aria-hidden="true" 
-                  className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-15 pointer-events-none" 
-                />
-                <img 
-                  src={activeImage.logoImage} 
-                  alt={`${activeImage.title} Logo`}
-                  className="relative z-10 max-h-[60vh] max-w-full object-contain filter drop-shadow-2xl transition-all duration-500"
-                />
-              </div>
-            )}
+            <img 
+              src={lightboxView === 'thumbnail' ? activeImage.image : (activeImage.logoImage || activeImage.image)} 
+              alt={activeImage.title} 
+              className="max-h-[72vh] sm:max-h-[75vh] w-auto max-w-full object-contain rounded-lg border border-neutral-800 shadow-2xl transition-all duration-500"
+            />
           </div>
 
           {/* Lightbox Footer */}
