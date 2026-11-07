@@ -261,65 +261,69 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND */}
       <section 
         id="home-hero" 
-        className="relative w-full bg-neon text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-30 md:pt-36 lg:pt-40 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
+        className="relative w-full bg-neon text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
       >
         {/* ============================================================== */}
         {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & BADGES)     */}
         {/* ============================================================== */}
         <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center pt-1 sm:pt-2 md:pt-3">
 
-          {/* CURVED MARQUEE FRAME TICKER (What I Am & Services - Inspired by cchora.com/studio) */}
-          <div className="mb-4 sm:mb-6 md:mb-7 max-w-[310px] sm:max-w-[420px] md:max-w-[480px] w-full mx-auto select-none">
-            <div className="relative w-full rounded-full bg-black text-white border-2 border-black py-2 sm:py-2.5 px-3 overflow-hidden shadow-[4px_4px_0px_#000] flex items-center group cursor-default">
-              
-              {/* Left & Right edge fade gradients to soften entrance/exit into the curved frame */}
-              <div className="absolute left-0 inset-y-0 w-6 sm:w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none rounded-l-full" />
-              <div className="absolute right-0 inset-y-0 w-6 sm:w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none rounded-r-full" />
+          {/* Main Headline Container with Full-Width Background Moving Kinetic Text */}
+          <div className="relative w-full flex flex-col items-center justify-center py-2 sm:py-4">
+            
+            {/* LARGE BACKGROUND KINETIC MARQUEE (BEHIND MAIN HEADLINE) */}
+            <div 
+              aria-hidden="true" 
+              className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-screen max-w-none overflow-hidden pointer-events-none select-none z-0"
+            >
+              {/* Left & Right edge fade gradients to soften entrance/exit into the screen frame */}
+              <div className="absolute left-0 inset-y-0 w-12 sm:w-24 md:w-36 bg-gradient-to-r from-neon to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 inset-y-0 w-12 sm:w-24 md:w-36 bg-gradient-to-l from-neon to-transparent z-10 pointer-events-none" />
 
               {/* Seamless looping marquee track */}
-              <div className="flex w-max animate-marquee [animation-duration:32s] items-center will-change-transform group-hover:[animation-play-state:paused]">
+              <div className="flex w-max animate-marquee [animation-duration:45s] items-center will-change-transform">
                 {/* Track 1 */}
-                <div className="flex items-center gap-4 sm:gap-6 shrink-0 pr-4 sm:pr-6 font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] font-bold text-white">
+                <div className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-black/[0.13] sm:text-black/[0.16] text-[clamp(4.5rem,14vw,11.5rem)] leading-none select-none">
                   <span>Brand Designer &amp; Web Developer</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Custom Logo Systems</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Brand Identity Design</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>UI/UX &amp; Web Development</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>100% Bespoke Craft</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Figma ➔ Code ➔ Web</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                 </div>
 
                 {/* Track 2 (Exact duplicate for seamless 0 -> -50% infinite marquee loop) */}
-                <div className="flex items-center gap-4 sm:gap-6 shrink-0 pr-4 sm:pr-6 font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] font-bold text-white" aria-hidden="true">
+                <div className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-black/[0.13] sm:text-black/[0.16] text-[clamp(4.5rem,14vw,11.5rem)] leading-none select-none" aria-hidden="true">
                   <span>Brand Designer &amp; Web Developer</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Custom Logo Systems</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Brand Identity Design</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>UI/UX &amp; Web Development</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>100% Bespoke Craft</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Figma ➔ Code ➔ Web</span>
-                  <span className="text-neon text-xs">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Main Headline */}
-          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
-            <span className="block">Custom logos &amp;</span>
-            <span className="block mt-1 sm:mt-2">
-              brand identities<span className="text-black">.</span>
-            </span>
-          </h1>
+            {/* Main Headline (Foreground solid black text) */}
+            <h1 className="relative z-10 font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
+              <span className="block">Custom logos &amp;</span>
+              <span className="block mt-1 sm:mt-2">
+                brand identities<span className="text-black">.</span>
+              </span>
+            </h1>
+          </div>
 
           {/* Subtitle / Bio Description */}
           <div className="mt-4 sm:mt-5 max-w-xl text-center mx-auto px-2">
