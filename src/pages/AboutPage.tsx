@@ -187,23 +187,29 @@ function AnimatedStat({ value, label, suffix = "" }: { value: number; label: str
   );
 }
 
-function ProfilePhoto({ base }: { base: string }) {
+function ProfilePhotoFullWidth({ base }: { base: string }) {
   return (
-    <div className="relative aspect-[4/5] max-h-[460px] sm:max-h-none bg-neutral-900 border border-ink/10 overflow-hidden group rounded-xl mx-auto w-full shadow-2xl">
+    <div className="relative w-full aspect-[16/9] max-h-[760px] bg-neutral-950 border-y border-ink/15 overflow-hidden group select-none">
       <img
-        src={`${base}images/johnobiko_profilepic.webp`}
-        alt="John Obiko"
-        width={1200}
-        height={1500}
+        src={`${base}images/aboutprofileimage_fullwidth.png`}
+        alt="John Obiko — Studio & Creative Direction"
+        width={1920}
+        height={1080}
         loading="eager"
         decoding="async"
-        className="w-full h-full object-cover grayscale contrast-105"
+        className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 ease-out"
       />
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/90">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+
+      <div className="absolute bottom-0 inset-x-0 p-5 sm:p-8 md:p-12 max-w-[1400px] mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pointer-events-none z-10">
+        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-white/90 font-medium">
           Nairobi, Kenya · Working worldwide
         </p>
+        <span className="font-mono text-xs uppercase tracking-widest text-accent-ink flex items-center gap-2">
+          <span className="size-2 rounded-full bg-neon animate-pulse" />
+          Direct Creative Partner
+        </span>
       </div>
     </div>
   );
@@ -232,33 +238,35 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         </div>
       </section>
 
-      {/* 2 — Who I am, with Portrait Photo */}
-      <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
-        <div className="max-w-[1400px] mx-auto grid md:grid-cols-12 gap-8 md:gap-14 items-center">
-          <div className="md:col-span-5 max-w-md mx-auto md:max-w-none w-full">
-            <ProfilePhoto base={base} />
-          </div>
-          <div className="md:col-span-7">
-            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">⟶ Who I am</p>
-            <p className="text-xl sm:text-2xl md:text-3xl font-light leading-snug">
+      {/* 2 — Who I am */}
+      <section className="px-5 md:px-8 pb-10 sm:pb-14 md:pb-16">
+        <div className="max-w-[1400px] mx-auto">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ Who I am</p>
+          <div className="max-w-4xl">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-snug">
               I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a solo graphic and web designer based in Nairobi, Kenya, serving clients worldwide. I craft custom vector logos, mascot systems, and <span className="text-accent-ink font-semibold">design & build</span> the responsive websites that power them.
             </p>
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={() => onNavigate('contact')}
-                className="w-full sm:w-auto text-center bg-neon text-black font-mono text-xs uppercase tracking-widest px-6 py-3.5 rounded-full hover:scale-105 transition-transform font-bold cursor-pointer"
+                className="w-full sm:w-auto text-center bg-neon text-black font-mono text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:scale-105 transition-transform font-bold cursor-pointer"
               >
                 Start a project ⟶
               </button>
               <button
                 onClick={() => onNavigate('consultation')}
-                className="w-full sm:w-auto text-center border border-ink/30 text-ink font-mono text-xs uppercase tracking-widest px-6 py-3.5 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer"
+                className="w-full sm:w-auto text-center border border-ink/30 text-ink font-mono text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer"
               >
                 Free 1-hr call
               </button>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* FULL-WIDTH PROFILE / STUDIO PHOTO */}
+      <section className="w-full pb-14 sm:pb-20 md:pb-28 overflow-hidden" aria-label="John Obiko Studio">
+        <ProfilePhotoFullWidth base={base} />
       </section>
 
       {/* 3 — Craft Pillars */}
