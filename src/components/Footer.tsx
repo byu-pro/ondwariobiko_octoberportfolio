@@ -147,7 +147,7 @@ export function Footer({
         <span className="hidden sm:inline">Top</span>
       </button>
 
-      {/* FLOATING CONSULT / START A PROJECT PILL (BOTTOM-RIGHT) */}
+      {/* FLOATING CONSULT / START A PROJECT PILL (BOTTOM-RIGHT, reveals on scroll) */}
       {currentRoute !== 'contact' && currentRoute !== 'consultation' && (
         <a 
           href="#/contact" 
@@ -156,7 +156,11 @@ export function Footer({
             onNavigate('contact');
           }}
           aria-label="Start a project" 
-          className="floating-consult group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1.5 py-1.5 border border-black/25 shadow-md transition-transform duration-300 hover:scale-105 cursor-pointer font-bold"
+          className={`floating-consult group fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 sm:gap-3 rounded-full bg-neon text-black pl-3 sm:pl-4 pr-1.5 py-1.5 border border-black/25 shadow-md transition-all duration-500 hover:scale-105 cursor-pointer font-bold ${
+            backToTopVisible
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 translate-y-4 pointer-events-none"
+          }`}
         >
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">Start a project</span>
           <span className="size-9 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">

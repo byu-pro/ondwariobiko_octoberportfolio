@@ -40,7 +40,6 @@
 @keyframes rise { from { transform: translateY(110%); } to { transform: translateY(0); } }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
 @utility animate-marquee { animation: marquee 28s linear infinite; will-change: transform; transform: translateZ(0); }
 @utility animate-menu-in { animation: menu-in 0.7s cubic-bezier(0.76, 0, 0.24, 1) both; }
 @utility animate-rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }

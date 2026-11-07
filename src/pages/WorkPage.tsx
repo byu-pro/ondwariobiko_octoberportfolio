@@ -41,51 +41,6 @@ function RotatingWord() {
   );
 }
 
-const heroPhrases = [
-  "logos people remember.",
-  "brands that stand out.",
-  "mascots with personality.",
-  "websites that convert.",
-  "identities built to last."
-];
-
-function RotatingHeroPhrase() {
-  const [index, setIndex] = useState(0);
-  const spanRef = useRef<HTMLSpanElement>(null);
-  const [isInView, setIsInView] = useState(true);
-
-  // Viewport detection: only cycle when visible in viewport
-  useEffect(() => {
-    const el = spanRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isInView) return;
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % heroPhrases.length);
-    }, 2800);
-    return () => clearInterval(interval);
-  }, [isInView]);
-
-  return (
-    <span ref={spanRef} className="relative inline-block overflow-hidden align-bottom pb-1 sm:pb-2">
-      <span 
-        key={heroPhrases[index]} 
-        className="block animate-rise text-black text-center whitespace-normal md:whitespace-nowrap"
-      >
-        {heroPhrases[index]}
-      </span>
-    </span>
-  );
-}
-
 interface ProjectCardProps {
   project: FullWidthProject;
   idx: number;
@@ -308,34 +263,34 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND (100% VIEWPORT HEIGHT) */}
       <section 
         id="home-hero" 
-        className="relative w-full min-h-[100dvh] bg-neon text-black flex flex-col justify-between items-center text-center px-5 sm:px-8 md:px-12 pt-32 sm:pt-40 md:pt-44 lg:pt-48 pb-10 sm:pb-14 border-b border-black/15"
+        className="relative w-full min-h-[100dvh] bg-neon text-black flex flex-col justify-between items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-32 md:pt-36 lg:pt-40 pb-6 sm:pb-8 border-b border-black/15"
       >
-        <div className="max-w-[1300px] w-full mx-auto flex-1 flex flex-col items-center justify-center text-center my-auto py-4 sm:py-8">
-          {/* Main Headline with fixed lead-in and rotating animated phrase on a loop */}
-          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.95] sm:leading-[0.92] text-[clamp(1.75rem,4.2vw,4.5rem)] text-black text-center break-words [overflow-wrap:anywhere]">
-            <span className="block md:inline mr-0 md:mr-3">
-              I design
+        <div className="max-w-[1300px] w-full mx-auto flex-1 flex flex-col items-center justify-center text-center my-auto py-2 sm:py-6">
+          {/* Main Headline */}
+          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.92] sm:leading-[0.88] text-[clamp(2rem,6vw,5.5rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
+            <span className="block">Custom logos &amp;</span>
+            <span className="block mt-1 sm:mt-2">
+              brand identities<span className="text-black">.</span>
             </span>
-            <RotatingHeroPhrase />
           </h1>
 
           {/* Subtitle / Bio Description (Center Aligned) */}
-          <div className="mt-5 sm:mt-7 md:mt-8 max-w-2xl text-center mx-auto">
-            <p className="font-mono text-sm sm:text-lg md:text-xl font-medium tracking-tight text-black/85 leading-snug text-center">
+          <div className="mt-4 sm:mt-6 md:mt-7 max-w-xl text-center mx-auto px-2">
+            <p className="font-mono text-xs sm:text-base md:text-lg font-medium tracking-tight text-black/85 leading-relaxed text-center">
               ondwariobiko, brand designer &amp; web developer. 10 years, 100% custom.
             </p>
           </div>
 
           {/* Action Buttons (Center Aligned) */}
-          <div className="mt-6 sm:mt-8 md:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mx-auto">
+          <div className="mt-5 sm:mt-7 md:mt-8 flex flex-row items-center justify-center gap-2.5 sm:gap-4 w-auto mx-auto flex-wrap px-2">
             {onNavigate && (
               <button
                 type="button"
                 onClick={() => onNavigate('contact')}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-7 sm:px-9 py-3.5 sm:py-4 rounded-full font-bold transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md"
+                className="inline-flex items-center justify-center gap-2 bg-black text-neon font-mono text-[11px] sm:text-xs uppercase tracking-[0.18em] px-5 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md"
               >
                 <span>Start a project</span>
-                <span className="text-sm">⟶</span>
+                <span className="text-xs sm:text-sm">⟶</span>
               </button>
             )}
 
@@ -345,17 +300,17 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 const el = document.getElementById('work-projects');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-black text-black font-mono text-xs uppercase tracking-[0.2em] px-7 sm:px-9 py-3.5 sm:py-4 rounded-full font-bold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 border-2 border-black text-black font-mono text-[11px] sm:text-xs uppercase tracking-[0.18em] px-5 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
             >
               <span>View work</span>
-              <span className="text-sm">↓</span>
+              <span className="text-xs sm:text-sm">↓</span>
             </button>
           </div>
         </div>
 
         {/* Subtle scroll down indicator */}
-        <div className="shrink-0 pt-4 opacity-60">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/75 flex items-center justify-center gap-1.5 font-semibold">
+        <div className="shrink-0 pt-2 sm:pt-4 opacity-60">
+          <span className="font-mono text-[9px] sm:text-[11px] uppercase tracking-[0.25em] text-black/75 flex items-center justify-center gap-1.5 font-semibold">
             Scroll to view work ↓
           </span>
         </div>
