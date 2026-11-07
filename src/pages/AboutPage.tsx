@@ -189,7 +189,7 @@ function AnimatedStat({ value, label, suffix = "" }: { value: number; label: str
 
 function ProfilePhotoFullWidth({ base }: { base: string }) {
   return (
-    <div className="relative w-full aspect-[16/9] max-h-[760px] bg-neutral-950 border-y border-ink/15 overflow-hidden group select-none">
+    <div className="relative w-full aspect-[16/9] max-h-[760px] bg-neutral-950 overflow-hidden group select-none">
       <img
         src={`${base}images/aboutprofileimage_fullwidth.png`}
         alt="John Obiko — Studio & Creative Direction"
