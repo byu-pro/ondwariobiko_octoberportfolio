@@ -25,35 +25,8 @@ export default function App() {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>(getRouteFromHash);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [heroInView, setHeroInView] = useState(true);
   const [backToTopVisible, setBackToTopVisible] = useState(false);
   const [legalModal, setLegalModal] = useState<'terms' | 'privacy' | null>(null);
-
-  // Detect whether the lime-green hero header on the home page is currently under the navbar
-  useEffect(() => {
-    if (currentRoute !== 'work') {
-      setHeroInView(false);
-      return;
-    }
-
-    const checkHero = () => {
-      const heroEl = document.getElementById('home-hero');
-      if (!heroEl) {
-        setHeroInView(false);
-        return;
-      }
-      const rect = heroEl.getBoundingClientRect();
-      setHeroInView(rect.bottom > 70);
-    };
-
-    checkHero();
-    window.addEventListener('scroll', checkHero, { passive: true });
-    window.addEventListener('resize', checkHero);
-    return () => {
-      window.removeEventListener('scroll', checkHero);
-      window.removeEventListener('resize', checkHero);
-    };
-  }, [currentRoute]);
 
   // Sync route on hashchange
   useEffect(() => {
@@ -153,8 +126,6 @@ export default function App() {
         setOpen={setOpen}
         scrolled={scrolled}
         onNavigate={navigateTo}
-        currentRoute={currentRoute}
-        heroInView={heroInView}
       />
 
       {/* FULL-SCREEN EXPANDING CIRCLE NAVIGATION MENU */}
