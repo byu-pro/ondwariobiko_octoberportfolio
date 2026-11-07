@@ -404,17 +404,19 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
               </div>
             </div>
 
-            {/* Desktop-only Scroll Indicator aligned on the same line as 5-Star Rating sticker */}
-            <div className="hidden md:flex absolute right-0 lg:-right-4 xl:-right-10 top-1/2 -translate-y-1/2 items-center z-20">
-              <button
-                type="button"
-                onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-black font-bold opacity-75 hover:opacity-100 transition-opacity cursor-pointer select-none"
-                aria-label="Scroll to view work"
-              >
-                <span>Scroll to view work</span>
-                <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
-              </button>
+            {/* Desktop-only Scroll Indicator pushed to the far right of the screen on the same line as 5-Star Rating sticker */}
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-screen pointer-events-none top-1/2 -translate-y-1/2 z-20">
+              <div className="w-full flex justify-end pr-6 sm:pr-8 md:pr-10 lg:pr-12">
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="pointer-events-auto group flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-black font-bold opacity-75 hover:opacity-100 transition-opacity cursor-pointer select-none"
+                  aria-label="Scroll to view work"
+                >
+                  <span>Scroll to view work</span>
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
