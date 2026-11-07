@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import { X, PenTool, Sparkles, Star, Code2, Zap } from 'lucide-react';
 import { FullWidthProject, PageRoute } from '../types';
 
 interface WorkPageProps {
@@ -260,12 +260,189 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
   return (
     <>
-      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND (100% VIEWPORT HEIGHT) */}
+      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND & GRAPHIC STICKERS */}
       <section 
         id="home-hero" 
-        className="relative w-full min-h-[100dvh] bg-neon text-black flex flex-col justify-between items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-32 md:pt-36 lg:pt-40 pb-6 sm:pb-8 border-b border-black/15"
+        className="relative w-full min-h-[100dvh] bg-neon text-black flex flex-col justify-between items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-32 md:pt-36 lg:pt-40 pb-6 sm:pb-8 border-b border-black/15 overflow-hidden"
       >
-        <div className="max-w-[1300px] w-full mx-auto flex-1 flex flex-col items-center justify-center text-center my-auto py-2 sm:py-6">
+        {/* ============================================================== */}
+        {/* GRAPHIC DESIGN STICKERS & BADGES SCATTERED AROUND THE CANVAS   */}
+        {/* ============================================================== */}
+
+        {/* Sticker 1: Top-Left "100% Bespoke / No Templates" Stamp */}
+        <div 
+          className="absolute top-20 sm:top-24 md:top-28 left-3 sm:left-6 md:left-8 lg:left-12 z-20 select-none group cursor-pointer"
+        >
+          <div className="flex items-center gap-2 sm:gap-2.5 bg-white text-black border-2 border-black px-2.5 py-1.5 sm:px-3.5 sm:py-2.5 rounded-xl sm:rounded-2xl shadow-[3px_3px_0px_#000] sm:shadow-[4px_4px_0px_#000] -rotate-6 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300">
+            <div className="size-6 sm:size-8 rounded-lg sm:rounded-xl bg-neon border border-black grid place-items-center shrink-0">
+              <PenTool className="size-3 sm:size-4 text-black" />
+            </div>
+            <div className="text-left font-mono">
+              <div className="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                <span>100% Bespoke</span>
+                <Sparkles className="size-2.5 sm:size-3 text-black fill-black" />
+              </div>
+              <div className="text-[7.5px] sm:text-[9px] uppercase tracking-tight text-neutral-600 font-semibold">
+                No Templates • No AI
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Sticker 2: Top-Right "10+ Yrs Craft" Circular Starburst Badge */}
+        <div 
+          className="absolute top-20 sm:top-24 md:top-28 right-3 sm:right-6 md:right-8 lg:right-12 z-20 select-none group cursor-pointer"
+        >
+          <div className="relative size-16 sm:size-20 md:size-24 rounded-full bg-black text-white border-2 border-black flex flex-col items-center justify-center p-1.5 sm:p-2 shadow-[3px_3px_0px_#000] sm:shadow-[4px_4px_0px_#000] rotate-6 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300">
+            <Star className="size-3 sm:size-3.5 fill-neon text-neon mb-0.5 animate-pulse" />
+            <span className="font-display font-black text-xs sm:text-sm md:text-base leading-none uppercase text-neon tracking-tight">
+              10+ Yrs
+            </span>
+            <span className="font-mono text-[6.5px] sm:text-[7.5px] md:text-[8px] tracking-widest uppercase text-white/80 mt-0.5">
+              Solo Studio
+            </span>
+            <div className="absolute inset-1 rounded-full border border-dashed border-white/30 pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Sticker 3: Mid-Left "Figma to Code" Tape Sticker */}
+        <div 
+          className="hidden md:block absolute top-[52%] -translate-y-1/2 left-4 md:left-6 lg:left-10 xl:left-14 z-20 select-none group cursor-pointer"
+        >
+          <div className="flex flex-col gap-1 bg-white text-black border-2 border-black p-3 rounded-xl shadow-[4px_4px_0px_#000] -rotate-12 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 max-w-[170px] text-left">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider">
+                <Code2 className="size-3.5 text-black" />
+                <span>Figma ➔ Code</span>
+              </div>
+              <span className="size-2 rounded-full bg-neon border border-black" />
+            </div>
+            <div className="font-display font-extrabold text-xs uppercase tracking-tight text-neutral-900">
+              Pixel-Perfect Build
+            </div>
+            <div className="font-mono text-[8px] uppercase tracking-wider text-neutral-500 pt-0.5 border-t border-black/10">
+              Design + Engineering
+            </div>
+          </div>
+        </div>
+
+        {/* Sticker 4: Mid-Right "350+ Marks Shipped" Badge */}
+        <div 
+          className="hidden md:block absolute top-[52%] -translate-y-1/2 right-4 md:right-6 lg:right-10 xl:right-14 z-20 select-none group cursor-pointer"
+        >
+          <div className="flex flex-col gap-1 bg-black text-white border-2 border-black p-3 rounded-xl shadow-[4px_4px_0px_#000] rotate-8 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 max-w-[170px] text-left">
+            <div className="flex items-center gap-0.5 text-neon text-[11px] leading-none">
+              {"★".repeat(5)}
+            </div>
+            <div className="font-display font-black text-sm uppercase tracking-tight text-neon">
+              350+ Marks
+            </div>
+            <div className="font-mono text-[8.5px] uppercase tracking-wider text-neutral-300">
+              Crafted Worldwide
+            </div>
+          </div>
+        </div>
+
+        {/* Sticker 5: Bottom-Left Barcode Spec Sticker */}
+        <div 
+          className="hidden lg:block absolute bottom-8 left-10 xl:left-14 z-20 select-none group cursor-pointer"
+        >
+          <div className="flex flex-col items-start bg-white text-black border-2 border-black p-2.5 rounded-lg shadow-[3px_3px_0px_#000] rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 font-mono">
+            <div className="flex items-center justify-between w-full text-[8px] uppercase font-bold tracking-widest text-neutral-700">
+              <span>SERIES: 01</span>
+              <span>CUSTOM-ID</span>
+            </div>
+            <svg className="w-28 h-5 my-1 text-black" viewBox="0 0 112 20" fill="currentColor">
+              <rect x="0" y="0" width="3" height="20"/>
+              <rect x="5" y="0" width="1" height="20"/>
+              <rect x="8" y="0" width="4" height="20"/>
+              <rect x="14" y="0" width="2" height="20"/>
+              <rect x="18" y="0" width="1" height="20"/>
+              <rect x="21" y="0" width="3" height="20"/>
+              <rect x="26" y="0" width="1" height="20"/>
+              <rect x="29" y="0" width="4" height="20"/>
+              <rect x="35" y="0" width="2" height="20"/>
+              <rect x="39" y="0" width="3" height="20"/>
+              <rect x="44" y="0" width="1" height="20"/>
+              <rect x="47" y="0" width="4" height="20"/>
+              <rect x="53" y="0" width="2" height="20"/>
+              <rect x="57" y="0" width="1" height="20"/>
+              <rect x="60" y="0" width="3" height="20"/>
+              <rect x="65" y="0" width="2" height="20"/>
+              <rect x="69" y="0" width="4" height="20"/>
+              <rect x="75" y="0" width="1" height="20"/>
+              <rect x="78" y="0" width="3" height="20"/>
+              <rect x="83" y="0" width="2" height="20"/>
+              <rect x="87" y="0" width="4" height="20"/>
+              <rect x="93" y="0" width="1" height="20"/>
+              <rect x="96" y="0" width="3" height="20"/>
+              <rect x="101" y="0" width="2" height="20"/>
+              <rect x="105" y="0" width="4" height="20"/>
+              <rect x="110" y="0" width="2" height="20"/>
+            </svg>
+            <div className="text-[7.5px] uppercase font-bold tracking-[0.2em] text-neutral-800">
+              ONDWARI OBIKO STUDIO
+            </div>
+          </div>
+        </div>
+
+        {/* Sticker 6: Bottom-Right "Fast Turnaround" Electric Tag */}
+        <div 
+          className="hidden lg:block absolute bottom-8 right-10 xl:right-14 z-20 select-none group cursor-pointer"
+        >
+          <div className="flex items-center gap-2.5 bg-black text-neon border-2 border-black px-3.5 py-2 rounded-xl shadow-[3px_3px_0px_#000] -rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300">
+            <div className="size-7 rounded-lg bg-neon border border-black grid place-items-center shrink-0">
+              <Zap className="size-3.5 fill-black text-black" />
+            </div>
+            <div className="text-left font-mono">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-white">
+                Fast Turnaround
+              </div>
+              <div className="text-[8px] uppercase tracking-tight text-neon font-semibold">
+                Direct 1-on-1 Collab
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Graphic Accents / Stars */}
+        <span 
+          aria-hidden="true" 
+          className="hidden sm:block absolute top-[24%] left-[24%] text-black/70 text-2xl md:text-3xl font-black select-none pointer-events-none -rotate-12 animate-pulse"
+        >
+          ✦
+        </span>
+        <span 
+          aria-hidden="true" 
+          className="hidden sm:block absolute top-[28%] right-[24%] text-black/70 text-xl md:text-2xl font-black select-none pointer-events-none rotate-12"
+        >
+          ✧
+        </span>
+        <span 
+          aria-hidden="true" 
+          className="hidden md:block absolute bottom-[22%] left-[28%] text-black/50 text-lg md:text-xl font-black select-none pointer-events-none rotate-45"
+        >
+          ✦
+        </span>
+        <span 
+          aria-hidden="true" 
+          className="hidden md:block absolute bottom-[26%] right-[28%] text-black/50 text-xl font-black select-none pointer-events-none -rotate-12"
+        >
+          ★
+        </span>
+
+        {/* ============================================================== */}
+        {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE & CALLS TO ACTION)      */}
+        {/* ============================================================== */}
+        <div className="relative z-10 max-w-[1300px] w-full mx-auto flex-1 flex flex-col items-center justify-center text-center my-auto py-2 sm:py-6">
+          {/* Eyebrow Availability Pill */}
+          <div className="inline-flex items-center gap-2 bg-black text-white px-3 sm:px-4 py-1.5 rounded-full border-2 border-black font-mono text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 select-none cursor-default mb-3 sm:mb-5">
+            <span className="size-2 rounded-full bg-neon animate-pulse" />
+            <span>Available for new projects</span>
+            <span className="text-white/40 hidden sm:inline">•</span>
+            <span className="text-neon hidden sm:inline">2026</span>
+          </div>
+
           {/* Main Headline */}
           <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.92] sm:leading-[0.88] text-[clamp(2rem,6vw,5.5rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
             <span className="block">Custom logos &amp;</span>
@@ -309,7 +486,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         </div>
 
         {/* Subtle scroll down indicator */}
-        <div className="shrink-0 pt-2 sm:pt-4 opacity-60">
+        <div className="shrink-0 pt-2 sm:pt-4 opacity-60 relative z-10">
           <span className="font-mono text-[9px] sm:text-[11px] uppercase tracking-[0.25em] text-black/75 flex items-center justify-center gap-1.5 font-semibold">
             Scroll to view work ↓
           </span>
