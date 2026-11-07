@@ -199,18 +199,6 @@ function ProfilePhotoFullWidth({ base }: { base: string }) {
         decoding="async"
         className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 ease-out"
       />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-
-      <div className="absolute bottom-0 inset-x-0 p-5 sm:p-8 md:p-12 max-w-[1400px] mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pointer-events-none z-10">
-        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-white/90 font-medium">
-          Nairobi, Kenya · Working worldwide
-        </p>
-        <span className="font-mono text-xs uppercase tracking-widest text-accent-ink flex items-center gap-2">
-          <span className="size-2 rounded-full bg-neon animate-pulse" />
-          Direct Creative Partner
-        </span>
-      </div>
     </div>
   );
 }
