@@ -290,6 +290,21 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         </div>
       </section>
 
+      {/* FULL-WIDTH SECOND STUDIO / CREATIVE DIRECTION PHOTO */}
+      <section className="w-full pb-14 sm:pb-20 md:pb-28 overflow-hidden" aria-label="John Obiko Studio & Creative Direction">
+        <div className="relative w-full aspect-[16/9] max-h-[760px] bg-neutral-950 overflow-hidden group select-none">
+          <img
+            src={`${base}images/aboutimage_2.png`}
+            alt="John Obiko — Studio & Creative Direction"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 ease-out"
+          />
+        </div>
+      </section>
+
       {/* 5 — SERVICES SECTION (THE 6 CORE PACKAGES) */}
       <section id="services-section" className="px-5 md:px-8 pt-8 pb-16 sm:pb-24 md:pb-32 border-t border-ink/15">
         <div className="max-w-[1400px] mx-auto">
