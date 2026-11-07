@@ -88,26 +88,16 @@ export function Footer({
               </span>
             </div>
 
-            <div className="w-full">
-              <picture className="w-full block">
-                <source
-                  srcSet={`${base}images/ondwariobiko_wordmark@2x.webp 2x, ${base}images/ondwariobiko_wordmark.webp 1x`}
-                  type="image/webp"
-                />
-                <source
-                  srcSet={`${base}images/ondwariobiko_wordmark@2x.png 2x, ${base}images/ondwariobiko_wordmark.png 1x`}
-                  type="image/png"
-                />
-                <img
-                  src={`${base}images/ondwariobiko_wordmark.png`}
-                  alt="Ondwari Obiko"
-                  width={1710}
-                  height={610}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto block select-none"
-                />
-              </picture>
+            <div className="w-full my-2 sm:my-4">
+              <img
+                src={`${base}images/footer_wordmark.svg`}
+                alt="Ondwari Obiko"
+                width={2880}
+                height={1028}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto block select-none"
+              />
             </div>
           </a>
 
