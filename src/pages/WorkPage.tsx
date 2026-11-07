@@ -355,64 +355,68 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
           </div>
 
           {/* ============================================================== */}
-          {/* STICKER CLOUD / BADGES (PROMINENTLY DISPLAYED ON MOBILE & DESKTOP) */}
+          {/* STICKER CLOUD / BADGES & DESKTOP-ONLY RIGHT-ALIGNED SCROLL CTA */}
           {/* ============================================================== */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-7 sm:mt-9 max-w-2xl px-2">
-            {/* Mobile/All Sticker 1: 100% Bespoke */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
-              <PenTool className="size-3.5 text-black shrink-0" />
-              <span>100% Bespoke</span>
-              <span className="text-neutral-400">•</span>
-              <span className="text-neutral-600">No Templates</span>
+          <div className="relative w-full flex items-center justify-center mt-7 sm:mt-9">
+            
+            {/* Center Sticker Cloud */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-2xl px-2">
+              {/* Mobile/All Sticker 1: 100% Bespoke */}
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+                <PenTool className="size-3.5 text-black shrink-0" />
+                <span>100% Bespoke</span>
+                <span className="text-neutral-400">•</span>
+                <span className="text-neutral-600">No Templates</span>
+              </div>
+
+              {/* Mobile/All Sticker 2: 10+ Years */}
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-neon border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+                <Star className="size-3.5 fill-neon text-neon shrink-0" />
+                <span>10+ Years</span>
+                <span className="text-neutral-500">•</span>
+                <span className="text-white">350+ Brands</span>
+              </div>
+
+              {/* Mobile/All Sticker 3: Fast Turnaround */}
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-white border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+                <Zap className="size-3.5 fill-neon text-neon shrink-0" />
+                <span className="text-neon">Fast Turnaround</span>
+                <span className="text-neutral-500">•</span>
+                <span>1-on-1 Collab</span>
+              </div>
+
+              {/* Mobile/All Sticker 4: Figma to VS Code to Web */}
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+                <Code2 className="size-3.5 text-black shrink-0" />
+                <span>Figma ➔ VS Code ➔ Web</span>
+              </div>
+
+              {/* Mobile/All Sticker 5: 5-Star Satisfaction */}
+              <div className="inline-flex items-center gap-1.5 bg-white text-black border-2 border-black px-3 py-1.5 rounded-lg font-mono text-xs font-bold shadow-[2px_2px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+                <span className="text-amber-500 text-sm leading-none">★★★★★</span>
+                <span>5.0 Rating</span>
+              </div>
+
+              {/* Mobile/All Sticker 6: Barcode Seal */}
+              <div className="inline-flex items-center gap-2 bg-black text-white border-2 border-black px-3 py-1.5 rounded-lg font-mono text-[11px] font-bold shadow-[2px_2px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+                <span className="font-mono text-xs tracking-tighter text-neon font-black">||| | |||||</span>
+                <span className="tracking-wider uppercase text-neutral-200">Verified Bespoke</span>
+              </div>
             </div>
 
-            {/* Mobile/All Sticker 2: 10+ Years */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-neon border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
-              <Star className="size-3.5 fill-neon text-neon shrink-0" />
-              <span>10+ Years</span>
-              <span className="text-neutral-500">•</span>
-              <span className="text-white">350+ Brands</span>
-            </div>
-
-            {/* Mobile/All Sticker 3: Fast Turnaround */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-white border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
-              <Zap className="size-3.5 fill-neon text-neon shrink-0" />
-              <span className="text-neon">Fast Turnaround</span>
-              <span className="text-neutral-500">•</span>
-              <span>1-on-1 Collab</span>
-            </div>
-
-            {/* Mobile/All Sticker 4: Figma to VS Code to Web */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
-              <Code2 className="size-3.5 text-black shrink-0" />
-              <span>Figma ➔ VS Code ➔ Web</span>
-            </div>
-
-            {/* Mobile/All Sticker 5: 5-Star Satisfaction */}
-            <div className="inline-flex items-center gap-1.5 bg-white text-black border-2 border-black px-3 py-1.5 rounded-lg font-mono text-xs font-bold shadow-[2px_2px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
-              <span className="text-amber-500 text-sm leading-none">★★★★★</span>
-              <span>5.0 Rating</span>
-            </div>
-
-            {/* Mobile/All Sticker 6: Barcode Seal */}
-            <div className="inline-flex items-center gap-2 bg-black text-white border-2 border-black px-3 py-1.5 rounded-lg font-mono text-[11px] font-bold shadow-[2px_2px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
-              <span className="font-mono text-xs tracking-tighter text-neon font-black">||| | |||||</span>
-              <span className="tracking-wider uppercase text-neutral-200">Verified Bespoke</span>
+            {/* Desktop-only Scroll Indicator aligned on the same line as 5-Star Rating sticker */}
+            <div className="hidden md:flex absolute right-0 lg:-right-4 xl:-right-10 top-1/2 -translate-y-1/2 items-center z-20">
+              <button
+                type="button"
+                onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-black font-bold opacity-75 hover:opacity-100 transition-opacity cursor-pointer select-none"
+                aria-label="Scroll to view work"
+              >
+                <span>Scroll to view work</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+              </button>
             </div>
           </div>
-        </div>
-
-        {/* Scroll down indicator positioned on the right-hand side */}
-        <div className="absolute bottom-4 sm:bottom-6 md:bottom-7 right-4 sm:right-8 md:right-12 z-20">
-          <button
-            type="button"
-            onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-black font-bold opacity-75 hover:opacity-100 transition-opacity cursor-pointer select-none"
-            aria-label="Scroll to view work"
-          >
-            <span>Scroll to view work</span>
-            <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
-          </button>
         </div>
       </section>
 
