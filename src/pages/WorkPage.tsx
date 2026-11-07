@@ -269,8 +269,8 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* DESKTOP FLANKING DESIGNER STICKERS (HIGH CONTRAST & READABLE)  */}
         {/* ============================================================== */}
 
-        {/* Left Flank Column (Desktop - Positioned in the open space below the main headline) */}
-        <div className="hidden lg:flex flex-col gap-3 absolute left-3 xl:left-6 2xl:left-10 top-[52%] xl:top-[50%] z-20 select-none scale-90 xl:scale-100 origin-top-left">
+        {/* Left Flank Column (Desktop - Positioned slightly below center to clear headline) */}
+        <div className="hidden lg:flex flex-col gap-3.5 absolute left-4 xl:left-7 2xl:left-12 top-1/2 -translate-y-1/2 translate-y-7 xl:translate-y-9 z-20 select-none">
           {/* Sticker 1: 100% Bespoke */}
           <div className="group cursor-pointer">
             <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] -rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
@@ -314,8 +314,8 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
           </div>
         </div>
 
-        {/* Right Flank Column (Desktop - Positioned in the open space below the main headline) */}
-        <div className="hidden lg:flex flex-col gap-3 absolute right-3 xl:right-6 2xl:right-10 top-[52%] xl:top-[50%] z-20 select-none scale-90 xl:scale-100 origin-top-right">
+        {/* Right Flank Column (Desktop - Positioned slightly below center to clear headline) */}
+        <div className="hidden lg:flex flex-col gap-3.5 absolute right-4 xl:right-7 2xl:right-12 top-1/2 -translate-y-1/2 translate-y-7 xl:translate-y-9 z-20 select-none">
           {/* Sticker 3: 10+ Years Craft */}
           <div className="group cursor-pointer">
             <div className="flex flex-col gap-1.5 bg-black text-white border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
@@ -382,7 +382,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none max-w-4xl mx-auto">
+          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
             <span className="block">Custom logos &amp;</span>
             <span className="block mt-1 sm:mt-2">
               brand identities<span className="text-black">.</span>
