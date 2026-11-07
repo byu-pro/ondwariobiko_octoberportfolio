@@ -280,8 +280,11 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
               <div className="absolute left-0 inset-y-0 w-12 sm:w-24 md:w-36 bg-gradient-to-r from-neon to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 inset-y-0 w-12 sm:w-24 md:w-36 bg-gradient-to-l from-neon to-transparent z-10 pointer-events-none" />
 
-              {/* Seamless looping marquee track */}
-              <div className="flex w-max animate-marquee [animation-duration:45s] items-center will-change-transform">
+              {/* Seamless looping marquee track with calm, ambient slow glide */}
+              <div 
+                style={{ animationDuration: '85s' }}
+                className="flex w-max animate-marquee-slow items-center will-change-transform"
+              >
                 {/* Track 1 */}
                 <div className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-black/[0.13] sm:text-black/[0.16] text-[clamp(4.5rem,14vw,11.5rem)] leading-none select-none">
                   <span>Brand Designer &amp; Web Developer</span>
