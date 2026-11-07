@@ -17,7 +17,7 @@ const navLinks: { id: PageRoute; label: string; hint: string }[] = [
 export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
   return (
     <div 
-      className="fixed inset-0 z-[55] bg-neon text-black animate-menu-in flex flex-col overflow-y-auto overscroll-contain" 
+      className="fixed inset-0 z-[55] bg-neon-gradient text-black animate-menu-in flex flex-col overflow-y-auto overscroll-contain" 
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-32 pb-12">
