@@ -1,11 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { PageRoute } from '../types';
-
-const WORDMARKS = [
-  { src: 'footer_wordmark.svg', alt: 'Ondwari Obiko Wordmark — Classic Script Die-Cut' },
-  { src: 'footer_wordmarkb.svg', alt: 'Ondwari Obiko Wordmark — Sleek Expressive Calligraphy' },
-  { src: 'footer_wordmarkc.svg', alt: 'Ondwari Obiko Wordmark — Dynamic Signature Script' },
-];
 
 interface FooterProps {
   base: string;
@@ -25,15 +19,6 @@ export function Footer({
   onOpenLegal,
 }: FooterProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [activeWordmark, setActiveWordmark] = useState(0);
-
-  // Continuous loop through wordmarks (balanced timing: ~3.8s)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveWordmark((prev) => (prev + 1) % WORDMARKS.length);
-    }, 3800);
-    return () => clearInterval(timer);
-  }, []);
 
   // Video Intersection Observer for performance
   useEffect(() => {
@@ -79,47 +64,19 @@ export function Footer({
         />
       </section>
 
-      {/* FULL-WIDTH LOOPING WORDMARK (EDGE-TO-EDGE, NO SIDE NEGATIVE SPACE) */}
-      <section className="w-full bg-black pt-10 sm:pt-16 md:pt-24 pb-4 sm:pb-8 overflow-hidden" aria-label="Wordmark showcase">
-        <a 
-          href="#/contact" 
-          onClick={(e) => {
-            e.preventDefault();
-            if (currentRoute === 'contact') {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-              onNavigate('contact');
-            }
-          }}
-          aria-label="Ondwari Obiko — Start a project"
-          className="block w-full cursor-pointer px-0"
-        >
-          <div className="relative w-full aspect-[2800/1005] overflow-hidden">
-            {WORDMARKS.map((wm, idx) => {
-              const isActive = idx === activeWordmark;
-              const isPrevious = idx === (activeWordmark - 1 + WORDMARKS.length) % WORDMARKS.length;
-
-              return (
-                <img
-                  key={wm.src}
-                  src={`${base}images/${wm.src}`}
-                  alt={wm.alt}
-                  width={2800}
-                  height={1005}
-                  loading="eager"
-                  decoding="async"
-                  className={`absolute inset-0 w-full h-full object-contain object-center select-none pointer-events-none transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
-                    isActive
-                      ? "opacity-100 translate-y-0 scale-100 blur-0 z-10"
-                      : isPrevious
-                        ? "opacity-0 -translate-y-8 scale-[0.98] blur-[1px] z-0"
-                        : "opacity-0 translate-y-8 scale-[0.98] blur-[1px] z-0"
-                  }`}
-                />
-              );
-            })}
-          </div>
-        </a>
+      {/* FULL-WIDTH STATIC WORDMARK (EDGE-TO-EDGE, NO LINK) */}
+      <section className="w-full bg-black pt-10 sm:pt-16 md:pt-24 pb-4 sm:pb-8 overflow-hidden" aria-label="Ondwari Obiko Wordmark">
+        <div className="w-full px-0 select-none">
+          <img
+            src={`${base}images/footer_wordmark.svg`}
+            alt="Ondwari Obiko"
+            width={2800}
+            height={1005}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto block select-none pointer-events-none"
+          />
+        </div>
       </section>
 
       {/* THE FOOTER SECTION WITH COPYRIGHT & LINKS */}

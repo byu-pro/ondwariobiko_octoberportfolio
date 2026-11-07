@@ -375,11 +375,6 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & STICKERS)   */}
         {/* ============================================================== */}
         <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center">
-          {/* Eyebrow Status Pill with Requested Worldwide/Remote text & generous bottom space (no 2026 date) */}
-          <div className="inline-flex items-center gap-2.5 bg-black text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border-2 border-black font-mono text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 select-none cursor-default mb-6 sm:mb-8 max-w-full">
-            <span className="size-2.5 rounded-full bg-neon animate-pulse shrink-0" />
-            <span className="leading-snug">Available for projects worldwide, remotely</span>
-          </div>
 
           {/* Main Headline */}
           <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
