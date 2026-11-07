@@ -263,11 +263,11 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND (100% VIEWPORT HEIGHT) */}
       <section 
         id="home-hero" 
-        className="relative w-full h-[100dvh] min-h-[560px] bg-neon text-black flex flex-col justify-center items-center text-center px-5 sm:px-8 md:px-12 pt-20 sm:pt-24 pb-8 sm:pb-12 border-b border-black/15 overflow-hidden"
+        className="relative w-full min-h-[100dvh] bg-neon text-black flex flex-col justify-between items-center text-center px-5 sm:px-8 md:px-12 pt-32 sm:pt-40 md:pt-44 lg:pt-48 pb-10 sm:pb-14 border-b border-black/15"
       >
-        <div className="max-w-[1200px] w-full mx-auto flex flex-col items-center justify-center text-center my-auto">
-          {/* Main Headline (Center Aligned) */}
-          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.92] sm:leading-[0.88] text-[clamp(2.2rem,6.8vw,6.5rem)] text-black text-center break-words [overflow-wrap:anywhere]">
+        <div className="max-w-[1200px] w-full mx-auto flex-1 flex flex-col items-center justify-center text-center my-auto py-4 sm:py-8">
+          {/* Main Headline (Center Aligned with generous top clearance) */}
+          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.92] sm:leading-[0.88] text-[clamp(2rem,6vw,5.5rem)] text-black text-center break-words [overflow-wrap:anywhere]">
             <span className="block animate-rise">Custom logos &amp;</span>
             <span className="block mt-1 sm:mt-2">
               brand identities<span className="text-black">.</span>
@@ -276,7 +276,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
           {/* Subtitle / Bio Description (Center Aligned) */}
           <div className="mt-5 sm:mt-7 md:mt-8 max-w-2xl text-center mx-auto">
-            <p className="font-mono text-base sm:text-xl md:text-2xl font-medium tracking-tight text-black/85 leading-snug text-center">
+            <p className="font-mono text-sm sm:text-lg md:text-xl font-medium tracking-tight text-black/85 leading-snug text-center">
               ondwariobiko, brand designer &amp; web developer. 10 years, 100% custom.
             </p>
           </div>
@@ -309,7 +309,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         </div>
 
         {/* Subtle scroll down indicator */}
-        <div className="shrink-0 pt-2 opacity-60">
+        <div className="shrink-0 pt-4 opacity-60">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/75 flex items-center justify-center gap-1.5 font-semibold">
             Scroll to view work ↓
           </span>
