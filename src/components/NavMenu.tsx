@@ -17,7 +17,7 @@ const navLinks: { id: PageRoute; label: string; hint: string }[] = [
 export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
   return (
     <div 
-      className="fixed inset-0 z-[55] bg-neon text-black animate-menu-in flex flex-col overflow-y-auto overscroll-contain" 
+      className="fixed inset-0 z-[55] bg-black text-white animate-menu-in flex flex-col overflow-y-auto overscroll-contain" 
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-32 pb-12">
@@ -25,7 +25,7 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
           {navLinks.map((l, i) => {
             const active = currentRoute === l.id;
             return (
-              <li key={l.label} className="overflow-hidden border-b border-black/15">
+              <li key={l.label} className="overflow-hidden border-b border-white/10">
                 <a
                   href={`#/${l.id}`}
                   onClick={(e) => {
@@ -36,11 +36,11 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
                   className="group flex items-baseline gap-4 sm:gap-6 py-2 md:py-3 animate-rise cursor-pointer"
                   style={{ animationDelay: `${180 + i * 65}ms` }}
                 >
-                  <span className="font-mono text-xs md:text-sm w-8 sm:w-10">0{i + 1}</span>
-                  <span className={`font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.4rem,8.5vw,7.5rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic ${active ? "text-stroke" : ""}`}>
+                  <span className="font-mono text-xs md:text-sm w-8 sm:w-10 text-white/40">0{i + 1}</span>
+                  <span className={`font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.4rem,8.5vw,7.5rem)] text-white transition-all duration-500 group-hover:translate-x-6 group-hover:italic group-hover:text-accent-ink ${active ? "text-stroke text-white" : ""}`}>
                     {l.label}
                   </span>
-                  <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 font-medium">
+                  <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] text-white/50 opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-accent-ink font-medium">
                     {l.hint} →
                   </span>
                 </a>
@@ -51,7 +51,7 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
       </div>
 
       {/* Marquee Ticker at the Bottom of Menu */}
-      <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-4">
+      <div className="shrink-0 overflow-hidden bg-neutral-950 border-t border-white/10 text-accent-ink py-4">
         <div className="flex w-max animate-marquee font-display uppercase text-2xl tracking-tight whitespace-nowrap">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k} className="flex">

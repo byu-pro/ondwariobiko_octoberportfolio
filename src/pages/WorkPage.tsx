@@ -267,55 +267,44 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       >
         <div className="max-w-[1400px] mx-auto flex flex-col justify-center">
           {/* Main Headline */}
-          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.95] sm:leading-[0.88] text-[clamp(1.75rem,6.8vw,7.5rem)] text-black break-words [overflow-wrap:anywhere]">
-            <span className="block animate-rise">Hi, I'm John Obiko.</span>
-            <span className="block mt-2 sm:mt-4">
-              A <span className="text-stroke-black">Creative</span> multidisciplinary designer
-              <span className="inline-block text-black">.</span>
+          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.95] sm:leading-[0.88] text-[clamp(2.1rem,7.5vw,7.8rem)] text-black break-words [overflow-wrap:anywhere]">
+            <span className="block animate-rise">Custom logos &amp;</span>
+            <span className="block mt-1 sm:mt-2">
+              brand identities<span className="text-black">.</span>
             </span>
           </h1>
 
           {/* Subtitle / Bio Description */}
           <div className="mt-5 sm:mt-7 md:mt-9 max-w-3xl">
-            <p className="text-base sm:text-xl md:text-2xl lg:text-3xl font-medium leading-snug tracking-tight text-black/85">
-              Crafting bespoke brand identity systems, custom logos, intuitive UI/UX, and high-performance frontend websites with 10+ years of solo craft.
+            <p className="font-mono text-base sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-tight text-black/85 leading-snug">
+              ondwariobiko, brand designer &amp; web developer. 10 years, 100% custom.
             </p>
           </div>
 
           {/* Action Buttons */}
           <div className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            {onNavigate && (
+              <button
+                type="button"
+                onClick={() => onNavigate('contact')}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-7 sm:px-9 py-4 rounded-full font-bold transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md"
+              >
+                <span>Start a project</span>
+                <span className="text-sm">⟶</span>
+              </button>
+            )}
+
             <button
               type="button"
               onClick={() => {
                 const el = document.getElementById('work-projects');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-black text-black font-mono text-xs uppercase tracking-[0.2em] px-7 sm:px-9 py-4 rounded-full font-bold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
             >
-              <span>Explore Selected Work</span>
+              <span>View work</span>
               <span className="text-sm">↓</span>
             </button>
-
-            {onNavigate && (
-              <>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('contact')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-black text-black font-mono text-xs uppercase tracking-[0.2em] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
-                >
-                  <span>Start a Project</span>
-                  <span className="text-sm">⟶</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => onNavigate('consultation')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-black/80 hover:text-black underline underline-offset-4 font-semibold px-3 py-2 cursor-pointer transition-colors"
-                >
-                  Free 1-Hr Call ↗
-                </button>
-              </>
-            )}
           </div>
         </div>
       </section>

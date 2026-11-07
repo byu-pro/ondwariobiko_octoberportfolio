@@ -47,14 +47,12 @@ export function Header({
         className="flex items-center gap-2 group cursor-pointer shrink-0"
       >
         <img 
-          key={open || isOverNeon ? "logo-black" : "logo-white"}
-          src={`${base}images/${open || isOverNeon ? "logoblack.webp" : "logowhite.webp"}`} 
+          key={isOverNeon ? "logo-black" : "logo-white"}
+          src={`${base}images/${isOverNeon ? "logoblack.webp" : "logowhite.webp"}`} 
           alt="ondwariobiko monogram" 
           width={64} 
           height={64} 
           className={`nav-logo object-contain shrink-0 transition-all duration-500 ease-out transform-gpu ${
-            open ? "rounded-full brightness-0 filter" : ""
-          } ${
             scrolled && !open 
               ? "size-10 sm:size-11 md:size-12" 
               : "size-10 sm:size-12 md:size-14"
@@ -62,16 +60,14 @@ export function Header({
         />
         <span 
           className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 pr-2 ${
-            open 
+            isOverNeon
               ? "text-black opacity-100 max-w-[600px] translate-x-0" 
-              : isOverNeon
-                ? "text-black opacity-100 max-w-[600px] translate-x-0"
-                : scrolled 
-                  ? "opacity-0 max-w-0 -translate-x-3 pointer-events-none" 
-                  : "text-white group-hover:text-accent-ink opacity-100 max-w-[600px] translate-x-0"
+              : scrolled && !open
+                ? "opacity-0 max-w-0 -translate-x-3 pointer-events-none" 
+                : "text-white group-hover:text-accent-ink opacity-100 max-w-[600px] translate-x-0"
           }`}
         >
-          ondwari<span className={open || isOverNeon ? "text-black/60" : "text-accent-ink"}>obiko</span>
+          ondwari<span className={isOverNeon ? "text-black/60" : "text-accent-ink"}>obiko</span>
         </span>
       </a>
 
@@ -83,7 +79,7 @@ export function Header({
         >
           <span className={`font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] transition-colors ${
             open 
-              ? "text-black font-semibold" 
+              ? "text-white font-semibold" 
               : isOverNeon 
                 ? "text-black font-bold" 
                 : "text-ink group-hover:text-accent-ink"
@@ -92,7 +88,7 @@ export function Header({
           </span>
           <span className={`size-11 sm:size-12 md:size-14 rounded-full grid place-items-center transition-all duration-500 ${
             open 
-              ? "bg-black rotate-90" 
+              ? "bg-neon rotate-90" 
               : isOverNeon
                 ? "bg-black group-hover:scale-110"
                 : "bg-neon group-hover:scale-110"
@@ -100,14 +96,14 @@ export function Header({
             <span className="relative block w-4 sm:w-5 h-2.5 sm:h-3">
               <span className={`absolute left-0 h-0.5 w-4 sm:w-5 transition-all duration-500 ${
                 open 
-                  ? "top-1 sm:top-1.5 rotate-45 bg-neon" 
+                  ? "top-1 sm:top-1.5 rotate-45 bg-black" 
                   : isOverNeon 
                     ? "top-0 bg-neon" 
                     : "top-0 bg-black"
               }`} />
               <span className={`absolute left-0 h-0.5 transition-all duration-500 ${
                 open 
-                  ? "top-1 sm:top-1.5 w-4 sm:w-5 -rotate-45 bg-neon" 
+                  ? "top-1 sm:top-1.5 w-4 sm:w-5 -rotate-45 bg-black" 
                   : isOverNeon 
                     ? "top-2 sm:top-2.5 w-2.5 sm:w-3 bg-neon" 
                     : "top-2 sm:top-2.5 w-2.5 sm:w-3 bg-black"
