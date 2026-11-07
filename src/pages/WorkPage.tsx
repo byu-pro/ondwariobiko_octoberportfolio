@@ -41,6 +41,51 @@ function RotatingWord() {
   );
 }
 
+const heroPhrases = [
+  "logos people remember.",
+  "brands that stand out.",
+  "mascots with personality.",
+  "websites that convert.",
+  "identities built to last."
+];
+
+function RotatingHeroPhrase() {
+  const [index, setIndex] = useState(0);
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const [isInView, setIsInView] = useState(true);
+
+  // Viewport detection: only cycle when visible in viewport
+  useEffect(() => {
+    const el = spanRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % heroPhrases.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, [isInView]);
+
+  return (
+    <span ref={spanRef} className="relative inline-block overflow-hidden align-bottom pb-1 sm:pb-2">
+      <span 
+        key={heroPhrases[index]} 
+        className="block animate-rise text-black text-center whitespace-normal md:whitespace-nowrap"
+      >
+        {heroPhrases[index]}
+      </span>
+    </span>
+  );
+}
+
 interface ProjectCardProps {
   project: FullWidthProject;
   idx: number;
@@ -265,13 +310,13 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         id="home-hero" 
         className="relative w-full min-h-[100dvh] bg-neon text-black flex flex-col justify-between items-center text-center px-5 sm:px-8 md:px-12 pt-32 sm:pt-40 md:pt-44 lg:pt-48 pb-10 sm:pb-14 border-b border-black/15"
       >
-        <div className="max-w-[1200px] w-full mx-auto flex-1 flex flex-col items-center justify-center text-center my-auto py-4 sm:py-8">
-          {/* Main Headline (Center Aligned with generous top clearance) */}
-          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.92] sm:leading-[0.88] text-[clamp(2rem,6vw,5.5rem)] text-black text-center break-words [overflow-wrap:anywhere]">
-            <span className="block animate-rise">Custom logos &amp;</span>
-            <span className="block mt-1 sm:mt-2">
-              brand identities<span className="text-black">.</span>
+        <div className="max-w-[1300px] w-full mx-auto flex-1 flex flex-col items-center justify-center text-center my-auto py-4 sm:py-8">
+          {/* Main Headline with fixed lead-in and rotating animated phrase on a loop */}
+          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.95] sm:leading-[0.92] text-[clamp(1.75rem,4.2vw,4.5rem)] text-black text-center break-words [overflow-wrap:anywhere]">
+            <span className="block md:inline mr-0 md:mr-3">
+              I design
             </span>
+            <RotatingHeroPhrase />
           </h1>
 
           {/* Subtitle / Bio Description (Center Aligned) */}
