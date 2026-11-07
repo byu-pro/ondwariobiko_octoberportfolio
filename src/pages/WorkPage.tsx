@@ -147,22 +147,20 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
         </div>
       )}
 
-      {/* Bottom Gradient: subtle on mobile, reveals on hover on desktop */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+      {/* Subtle bottom gradient on hover to ensure "View project" pill stands out */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
 
-      {/* Project Name and Category: visible & compact on mobile, reveals on hover on desktop */}
-      <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 md:p-7 lg:p-10 z-20 flex flex-col items-start opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
-        <h2 className="text-sm sm:text-base md:text-4xl lg:text-7xl font-extrabold tracking-tight text-white font-display uppercase md:group-hover:text-accent-ink transition-colors duration-500 drop-shadow-lg leading-tight">
-          {project.title}
-        </h2>
-        <div className="mt-1 sm:mt-1.5 md:mt-2 text-[9px] sm:text-[10px] md:text-sm font-mono tracking-widest text-accent-ink uppercase font-semibold flex items-center gap-1.5">
-          <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-neon animate-pulse" />
-          {project.category}
+      {/* Subtle "View project" indicator on hover */}
+      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out translate-y-1.5 group-hover:translate-y-0">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] group-hover:border-neon/70 group-hover:text-neon shadow-xl transition-colors duration-300">
+          <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
+          <span>View project</span>
+          <span className="text-neon transition-transform duration-300 group-hover:translate-x-1 font-normal">⟶</span>
         </div>
       </div>
 
       {/* Razor-thin Neon Sweep Line along the bottom edge */}
-      <div className="absolute bottom-0 left-0 h-[2px] w-full md:w-0 md:group-hover:w-full transition-all duration-700 ease-out pointer-events-none z-20" />
+      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-neon transition-all duration-700 ease-out pointer-events-none z-20" />
     </section>
   );
 }
@@ -406,14 +404,11 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
             <button
               type="button"
-              onClick={() => {
-                const el = document.getElementById('work-projects');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => onNavigate ? onNavigate('consultation') : (window.location.hash = '#/consultation')}
               className="group inline-flex items-center justify-center gap-2.5 border-2 border-black bg-transparent text-black font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
             >
-              <span>View work</span>
-              <span className="inline-block transition-transform duration-300 group-hover:translate-y-1 font-normal">↓</span>
+              <span>Free 1-hr call</span>
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5 font-normal">⟶</span>
             </button>
           </div>
 
