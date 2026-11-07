@@ -258,10 +258,10 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
   return (
     <>
-      {/* FULL-WIDTH HERO HEADER SECTION WITH BLACK BACKGROUND */}
+      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN GRADIENT BACKGROUND */}
       <section 
         id="home-hero" 
-        className="relative w-full bg-black text-white flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 border-b border-white/10 overflow-hidden"
+        className="relative w-full bg-neon-gradient text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
       >
         {/* ============================================================== */}
         {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & BADGES)     */}
@@ -282,72 +282,72 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 className="flex w-max animate-marquee-slow items-center will-change-transform"
               >
                 {/* Track 1 */}
-                <div className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-white/[0.08] sm:text-white/[0.12] text-[clamp(4.5rem,14vw,11.5rem)] leading-none select-none">
+                <div className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-black/[0.13] sm:text-black/[0.16] text-[clamp(4.5rem,14vw,11.5rem)] leading-none select-none">
                   <span>Brand Designer &amp; Web Developer</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Custom Logo Systems</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Brand Identity Design</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>UI/UX &amp; Web Development</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>100% Bespoke Craft</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Figma ➔ Code ➔ Web</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                 </div>
 
                 {/* Track 2 (Exact duplicate for seamless 0 -> -50% infinite marquee loop) */}
-                <div className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-white/[0.08] sm:text-white/[0.12] text-[clamp(4.5rem,14vw,11.5rem)] leading-none select-none" aria-hidden="true">
+                <div className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-black/[0.13] sm:text-black/[0.16] text-[clamp(4.5rem,14vw,11.5rem)] leading-none select-none" aria-hidden="true">
                   <span>Brand Designer &amp; Web Developer</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Custom Logo Systems</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Brand Identity Design</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>UI/UX &amp; Web Development</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>100% Bespoke Craft</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                   <span>Figma ➔ Code ➔ Web</span>
-                  <span className="text-[0.6em] text-neon/40">✦</span>
+                  <span className="text-[0.6em] text-black/25">✦</span>
                 </div>
               </div>
             </div>
 
-            {/* Main Headline (Foreground solid crisp text) */}
-            <h1 className="relative z-10 font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-white text-center break-words [overflow-wrap:anywhere] select-none">
+            {/* Main Headline (Foreground solid black text) */}
+            <h1 className="relative z-10 font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
               <span className="block">Custom logos &amp;</span>
               <span className="block mt-1 sm:mt-2">
-                brand identities<span className="text-neon">.</span>
+                brand identities<span className="text-black">.</span>
               </span>
             </h1>
           </div>
 
           {/* Subtitle / Bio Description */}
           <div className="mt-4 sm:mt-5 max-w-xl text-center mx-auto px-2">
-            <p className="font-mono text-xs sm:text-base md:text-lg font-medium tracking-tight text-white/75 leading-relaxed text-center">
+            <p className="font-mono text-xs sm:text-base md:text-lg font-medium tracking-tight text-black/85 leading-relaxed text-center">
               ondwariobiko, brand designer &amp; web developer. 10 years, 100% custom.
             </p>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Buttons - Distinct, prominent interactive controls (not styled like stickers) */}
           <div className="mt-6 sm:mt-7 flex flex-row items-center justify-center gap-3 sm:gap-5 w-auto mx-auto flex-wrap px-2">
             {onNavigate && (
               <button
                 type="button"
                 onClick={() => onNavigate('contact')}
-                className="group inline-flex items-center justify-center gap-2.5 bg-neon text-black font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:scale-105 hover:bg-white cursor-pointer shadow-xl shadow-neon/10"
+                className="group inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:scale-105 hover:bg-neutral-900 cursor-pointer shadow-xl shadow-black/25"
               >
                 <span>Start a project</span>
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5 text-black font-normal">⟶</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5 text-neon font-normal">⟶</span>
               </button>
             )}
 
             <button
               type="button"
               onClick={() => onNavigate ? onNavigate('consultation') : (window.location.hash = '#/consultation')}
-              className="group inline-flex items-center justify-center gap-2.5 border-2 border-white/25 bg-transparent text-white font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:bg-white hover:text-black hover:border-white cursor-pointer"
+              className="group inline-flex items-center justify-center gap-2.5 border-2 border-black bg-transparent text-black font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
             >
               <span>Free 1-hr call</span>
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5 font-normal">⟶</span>
@@ -362,7 +362,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
             {/* Center Sticker Cloud */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-2xl px-2">
               {/* Mobile/All Sticker 1: 100% Bespoke */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-white/80 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
                 <PenTool className="size-3.5 text-black shrink-0" />
                 <span>100% Bespoke</span>
                 <span className="text-neutral-400">•</span>
@@ -370,15 +370,15 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
               </div>
 
               {/* Mobile/All Sticker 2: 10+ Years */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-neon border-2 border-neon px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#d9fd17] rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-neon border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
                 <Star className="size-3.5 fill-neon text-neon shrink-0" />
                 <span>10+ Years</span>
-                <span className="text-neutral-400">•</span>
+                <span className="text-neutral-500">•</span>
                 <span className="text-white">350+ Brands</span>
               </div>
 
               {/* Mobile/All Sticker 3: Fast Turnaround */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-neutral-900 text-white border-2 border-white/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_rgba(255,255,255,0.15)] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-white border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
                 <Zap className="size-3.5 fill-neon text-neon shrink-0" />
                 <span className="text-neon">Fast Turnaround</span>
                 <span className="text-neutral-500">•</span>
@@ -386,19 +386,19 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
               </div>
 
               {/* Mobile/All Sticker 4: Figma to VS Code to Web */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-white/80 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
                 <Code2 className="size-3.5 text-black shrink-0" />
                 <span>Figma ➔ VS Code ➔ Web</span>
               </div>
 
               {/* Mobile/All Sticker 5: 5-Star Satisfaction */}
-              <div className="inline-flex items-center gap-1.5 bg-white text-black border-2 border-white/80 px-3 py-1.5 rounded-lg font-mono text-xs font-bold shadow-[2px_2px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <div className="inline-flex items-center gap-1.5 bg-white text-black border-2 border-black px-3 py-1.5 rounded-lg font-mono text-xs font-bold shadow-[2px_2px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
                 <span className="text-amber-500 text-sm leading-none">★★★★★</span>
                 <span>5.0 Rating</span>
               </div>
 
               {/* Mobile/All Sticker 6: Barcode Seal */}
-              <div className="inline-flex items-center gap-2 bg-black text-white border-2 border-white/20 px-3 py-1.5 rounded-lg font-mono text-[11px] font-bold shadow-[2px_2px_0px_rgba(255,255,255,0.15)] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <div className="inline-flex items-center gap-2 bg-black text-white border-2 border-black px-3 py-1.5 rounded-lg font-mono text-[11px] font-bold shadow-[2px_2px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
                 <span className="font-mono text-xs tracking-tighter text-neon font-black">||| | |||||</span>
                 <span className="tracking-wider uppercase text-neutral-200">Verified Bespoke</span>
               </div>
@@ -410,11 +410,11 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 <button
                   type="button"
                   onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="pointer-events-auto group flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-white/75 hover:text-neon font-bold opacity-80 hover:opacity-100 transition-all cursor-pointer select-none"
+                  className="pointer-events-auto group flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-black font-bold opacity-75 hover:opacity-100 transition-opacity cursor-pointer select-none"
                   aria-label="Scroll to view work"
                 >
                   <span>Scroll to view work</span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-y-1 text-neon">↓</span>
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
                 </button>
               </div>
             </div>
