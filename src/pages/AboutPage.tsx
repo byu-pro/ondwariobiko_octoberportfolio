@@ -213,6 +213,11 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         outline="Developer" 
       />
 
+      {/* FULL-WIDTH PROFILE / STUDIO PHOTO */}
+      <section className="w-full pb-14 sm:pb-20 md:pb-28 overflow-hidden" aria-label="John Obiko Studio">
+        <ProfilePhotoFullWidth base={base} />
+      </section>
+
       {/* 1 — Opening Hook: Philosophy */}
       <section id="about-section" className="px-5 md:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
@@ -250,11 +255,6 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* FULL-WIDTH PROFILE / STUDIO PHOTO */}
-      <section className="w-full pb-14 sm:pb-20 md:pb-28 overflow-hidden" aria-label="John Obiko Studio">
-        <ProfilePhotoFullWidth base={base} />
       </section>
 
       {/* 3 — Craft Pillars */}
