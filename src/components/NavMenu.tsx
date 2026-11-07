@@ -50,13 +50,13 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
         </ul>
       </div>
 
-      {/* Marquee Ticker at the Bottom of Menu */}
-      <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-4">
-        <div className="flex w-max animate-marquee font-display uppercase text-2xl tracking-tight whitespace-nowrap">
+      {/* Marquee Ticker at the Bottom of Menu (Lime green background with black text) */}
+      <div className="shrink-0 overflow-hidden bg-neon text-black border-t-2 border-black py-4 select-none">
+        <div className="flex w-max animate-marquee font-display uppercase text-2xl tracking-tight whitespace-nowrap font-bold">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k} className="flex">
               {["Logo Design", "Brand Identity", "UI/UX", "Front-end", "Art Direction", "Remote Worldwide"].map((w) => (
-                <span key={w} className="px-8">{w} ✺</span>
+                <span key={w} className="px-8 flex items-center gap-4">{w} <span className="text-black/50">✺</span></span>
               ))}
             </span>
           ))}
