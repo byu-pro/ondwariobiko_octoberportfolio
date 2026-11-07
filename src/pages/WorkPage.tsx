@@ -432,13 +432,13 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
           </h2>
         </div>
 
-        {/* Continuous Slow Looping Marquee */}
+        {/* Continuous Slow Looping Marquee (Runs indefinitely with zero cursor interruption) */}
         <div 
-          className="relative w-full overflow-hidden group select-none [mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)]"
+          className="relative w-full overflow-hidden select-none pointer-events-none [mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)]"
         >
           <div 
             style={{ animationDuration: '50s' }}
-            className="flex w-max animate-marquee-slow items-center will-change-transform group-hover:[animation-play-state:paused]"
+            className="flex w-max animate-marquee-slow items-center will-change-transform"
           >
             {/* Track 1 */}
             <div className="flex items-center gap-10 sm:gap-14 md:gap-20 shrink-0 pr-10 sm:pr-14 md:pr-20">
@@ -446,14 +446,13 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 <div 
                   key={`track1-${brand.name}`}
                   className="h-10 sm:h-12 md:h-14 w-28 sm:w-36 md:w-44 flex items-center justify-center shrink-0"
-                  title={brand.name}
                 >
                   <img
                     src={`${base}images/brandworkedwith/${brand.file}`}
                     alt={`${brand.name} logo`}
                     loading="lazy"
                     decoding="async"
-                    className="max-h-full max-w-full w-auto h-auto object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-all duration-300 transform-gpu hover:scale-105"
+                    className="max-h-full max-w-full w-auto h-auto object-contain brightness-0 invert opacity-80"
                   />
                 </div>
               ))}
@@ -465,14 +464,13 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 <div 
                   key={`track2-${brand.name}`}
                   className="h-10 sm:h-12 md:h-14 w-28 sm:w-36 md:w-44 flex items-center justify-center shrink-0"
-                  title={brand.name}
                 >
                   <img
                     src={`${base}images/brandworkedwith/${brand.file}`}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="max-h-full max-w-full w-auto h-auto object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-all duration-300 transform-gpu hover:scale-105"
+                    className="max-h-full max-w-full w-auto h-auto object-contain brightness-0 invert opacity-80"
                   />
                 </div>
               ))}
