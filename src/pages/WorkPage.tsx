@@ -7,39 +7,23 @@ interface WorkPageProps {
   onNavigate?: (route: PageRoute) => void;
 }
 
-const rotatingWords = ["Creative", "Logo", "Brand", "Visual", "UI/UX", "Digital", "Web", "Art"];
-
-function RotatingWord() {
-  const [i, setI] = useState(0);
-  const spanRef = useRef<HTMLSpanElement>(null);
-  const [isInView, setIsInView] = useState(false);
-
-  // Only animate when visible in viewport to prevent idle CPU usage
-  useEffect(() => {
-    const el = spanRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isInView) return;
-    const id = setInterval(() => setI((n) => (n + 1) % rotatingWords.length), 2200);
-    return () => clearInterval(id);
-  }, [isInView]);
-
-  return (
-    <span ref={spanRef} className="relative inline-block overflow-hidden align-bottom h-[0.9em] min-w-[5ch] text-center">
-      <span key={rotatingWords[i]} className="block animate-rise text-accent-ink text-center">
-        {rotatingWords[i]}
-      </span>
-    </span>
-  );
-}
+const clientBrands = [
+  { name: 'Bosch', file: 'bosch.webp' },
+  { name: 'Ritter Sport', file: 'rittersport.webp' },
+  { name: 'PropertyGuru', file: 'propertyguru.webp' },
+  { name: '99.co', file: '99co.webp' },
+  { name: 'EdgeProp', file: 'edgeprop.webp' },
+  { name: 'Far East Organization', file: 'fareast.webp' },
+  { name: 'Holland Village', file: 'hollandvillage.webp' },
+  { name: 'The Church of Jesus Christ', file: 'The%20Church%20of%20Jesus%20Christ%20Logo.webp' },
+  { name: 'Legibra', file: 'legibra.webp' },
+  { name: 'Aquapet', file: 'aquapet.webp' },
+  { name: 'Beyond The Image', file: 'beyondtheimage.webp' },
+  { name: 'Fast Kat Connect', file: 'fastkatconnect.webp' },
+  { name: 'Hi Hoteles', file: 'hihoteles.webp' },
+  { name: 'Oceanline', file: 'oceanline.webp' },
+  { name: 'Paluxy River', file: 'paluxyriver.webp' },
+];
 
 interface ProjectCardProps {
   project: FullWidthProject;
@@ -434,13 +418,66 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         ))}
       </main>
 
-      {/* KINETIC ROTATING HEADLINE */}
-      <section className="relative py-16 sm:py-24 md:py-32 px-8 overflow-hidden bg-black border-t border-neutral-900">
-        <div className="max-w-[1400px] mx-auto text-center flex flex-col items-center justify-center">
-          <h2 className="font-extrabold tracking-tight font-display uppercase drop-shadow-lg text-[clamp(2.5rem,11vw,10rem)] leading-[0.85] break-words text-center">
-            <RotatingWord /> <br />
-            <span className="text-stroke text-white">Designer</span>
+      {/* BRANDS AND ORGANIZATIONS SHOWCASE */}
+      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden bg-black border-t border-neutral-900">
+        {/* Section Heading on top */}
+        <div className="max-w-[1400px] mx-auto text-center mb-10 sm:mb-14 md:mb-16 px-4">
+          <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-accent-ink font-semibold flex items-center justify-center gap-2 mb-3">
+            <span className="inline-block size-1.5 rounded-full bg-neon animate-pulse" />
+            <span>Trusted Experience</span>
+            <span className="inline-block size-1.5 rounded-full bg-neon animate-pulse" />
+          </p>
+          <h2 className="font-display font-extrabold uppercase tracking-tight text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
+            Brands and organizations I have worked with
           </h2>
+        </div>
+
+        {/* Continuous Slow Looping Marquee */}
+        <div 
+          className="relative w-full overflow-hidden group select-none [mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)]"
+        >
+          <div 
+            style={{ animationDuration: '50s' }}
+            className="flex w-max animate-marquee-slow items-center will-change-transform group-hover:[animation-play-state:paused]"
+          >
+            {/* Track 1 */}
+            <div className="flex items-center gap-10 sm:gap-14 md:gap-20 shrink-0 pr-10 sm:pr-14 md:pr-20">
+              {clientBrands.map((brand) => (
+                <div 
+                  key={`track1-${brand.name}`}
+                  className="h-10 sm:h-12 md:h-14 w-28 sm:w-36 md:w-44 flex items-center justify-center shrink-0"
+                  title={brand.name}
+                >
+                  <img
+                    src={`${base}images/brandworkedwith/${brand.file}`}
+                    alt={`${brand.name} logo`}
+                    loading="lazy"
+                    decoding="async"
+                    className="max-h-full max-w-full w-auto h-auto object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-all duration-300 transform-gpu hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Track 2 (Exact duplicate for seamless infinite loop) */}
+            <div className="flex items-center gap-10 sm:gap-14 md:gap-20 shrink-0 pr-10 sm:pr-14 md:pr-20" aria-hidden="true">
+              {clientBrands.map((brand) => (
+                <div 
+                  key={`track2-${brand.name}`}
+                  className="h-10 sm:h-12 md:h-14 w-28 sm:w-36 md:w-44 flex items-center justify-center shrink-0"
+                  title={brand.name}
+                >
+                  <img
+                    src={`${base}images/brandworkedwith/${brand.file}`}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="max-h-full max-w-full w-auto h-auto object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-all duration-300 transform-gpu hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

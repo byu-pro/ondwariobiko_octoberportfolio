@@ -15,7 +15,13 @@ if (fs.existsSync('assets')) {
   fs.rmSync('assets', { recursive: true, force: true });
 }
 fs.cpSync('dist/assets', 'assets', { recursive: true });
-fs.cpSync('dist/images', 'images', { recursive: true });
+try {
+  if (fs.existsSync('dist/images')) {
+    fs.cpSync('dist/images', 'images', { recursive: true, force: true });
+  }
+} catch {
+  // Ignore mapped/locked files in source images directory
+}
 fs.cpSync('dist/.nojekyll', '.nojekyll');
 if (fs.existsSync('docs')) {
   fs.rmSync('docs', { recursive: true, force: true });
