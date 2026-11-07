@@ -84,7 +84,7 @@ export function Footer({
         <div className="max-w-[1400px] mx-auto">
           <div className="border-t border-ink/15 pt-6 font-mono text-xs uppercase tracking-widest">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-ink/80">
-              <span>© 2026 ondwariobiko. All Rights Reserved.</span>
+              <span>© 2027 ondwariobiko. All Rights Reserved.</span>
               <div className="flex gap-6 text-ink">
                 <button 
                   onClick={() => onOpenLegal('terms')} 

@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { NavMenu } from './components/NavMenu';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
+import { Preloader } from './components/Preloader';
 import { WorkPage } from './pages/WorkPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
@@ -27,6 +28,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [backToTopVisible, setBackToTopVisible] = useState(false);
   const [legalModal, setLegalModal] = useState<'terms' | 'privacy' | null>(null);
+  const [loading, setLoading] = useState(true);
 
   // Sync route on hashchange
   useEffect(() => {
@@ -119,6 +121,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-neon selection:text-black flex flex-col justify-between">
       
+      {/* CREATIVE SITEWIDE PRELOADER */}
+      {loading && (
+        <Preloader base={base} onComplete={() => setLoading(false)} />
+      )}
+
       {/* FIXED HEADER WITH BRAND TYPOGRAPHY & BLURRED MOBILE GLASS */}
       <Header
         base={base}
