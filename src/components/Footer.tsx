@@ -92,49 +92,9 @@ export function Footer({
                 onNavigate('contact');
               }
             }}
-            aria-label="Ondwari Obiko — Have a vision? Let's build something"
+            aria-label="Ondwari Obiko — Start a project"
             className="block cursor-pointer"
           >
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 md:mb-8 font-mono text-xs uppercase tracking-[0.25em] text-ink/50 hover:text-ink transition-colors">
-              <span className="flex items-center gap-2.5">
-                <span>Have a vision? Let&apos;s build something</span>
-                <span className="hidden sm:inline-block size-1 rounded-full bg-ink/30" />
-                <span className="hidden sm:inline-flex items-center gap-1.5 text-ink/40 font-mono text-[11px]">
-                  <span className="text-neon font-semibold">{String(activeWordmark + 1).padStart(2, '0')}</span>
-                  <span>/</span>
-                  <span>03</span>
-                </span>
-              </span>
-
-              <div className="flex items-center gap-4">
-                {/* Variant style switcher pills */}
-                <div className="flex items-center gap-1.5" aria-label="Wordmark style selector">
-                  {WORDMARKS.map((_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setActiveWordmark(i);
-                      }}
-                      title={`Wordmark variant 0${i + 1}`}
-                      className={`h-1 rounded-full transition-all duration-500 cursor-pointer ${
-                        i === activeWordmark
-                          ? "w-6 bg-neon"
-                          : "w-2 bg-white/20 hover:bg-white/50"
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                <span className="text-neon flex items-center gap-1.5 font-bold tracking-widest text-[11px] sm:text-xs">
-                  <span>Start a project</span>
-                  <span>↗</span>
-                </span>
-              </div>
-            </div>
-
             <div className="relative w-full aspect-[2880/1028] my-2 sm:my-4 overflow-hidden">
               {WORDMARKS.map((wm, idx) => {
                 const isActive = idx === activeWordmark;
