@@ -269,8 +269,8 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* DESKTOP FLANKING DESIGNER STICKERS (HIGH CONTRAST & READABLE)  */}
         {/* ============================================================== */}
 
-        {/* Left Flank Column (Desktop) */}
-        <div className="hidden lg:flex flex-col gap-4 absolute left-4 xl:left-10 top-1/2 -translate-y-1/2 z-20 select-none">
+        {/* Left Flank Column (Desktop - Pushed down to bottom corners to clear main headline) */}
+        <div className="hidden lg:flex flex-col gap-3.5 absolute left-3 xl:left-6 2xl:left-10 bottom-6 xl:bottom-8 z-20 select-none">
           {/* Sticker 1: 100% Bespoke */}
           <div className="group cursor-pointer">
             <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] -rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
@@ -292,30 +292,30 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
             </div>
           </div>
 
-          {/* Sticker 2: Figma to Code */}
+          {/* Sticker 2: Figma to VS Code to Web */}
           <div className="group cursor-pointer">
             <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-2 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
               <div className="flex items-center gap-2">
                 <div className="size-7 xl:size-8 rounded-lg bg-black text-neon border border-black grid place-items-center shrink-0">
                   <Code2 className="size-3.5 xl:size-4" />
                 </div>
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-black">
-                  Figma ➔ Web
+                <span className="font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider text-black">
+                  Figma ➔ VS Code
                 </span>
               </div>
               <div className="font-display font-extrabold text-sm xl:text-base uppercase tracking-tight text-neutral-900">
-                Design + Code
+                Figma ➔ Code ➔ Web
               </div>
               <div className="font-mono text-xs font-medium text-neutral-700 flex items-center gap-1.5 pt-1 border-t border-black/10">
                 <span>✦</span>
-                <span>Pixel-Perfect Build</span>
+                <span>VS Code &amp; Custom Build</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Flank Column (Desktop) */}
-        <div className="hidden lg:flex flex-col gap-4 absolute right-4 xl:right-10 top-1/2 -translate-y-1/2 z-20 select-none">
+        {/* Right Flank Column (Desktop - Pushed down to bottom corners to clear main headline) */}
+        <div className="hidden lg:flex flex-col gap-3.5 absolute right-3 xl:right-6 2xl:right-10 bottom-6 xl:bottom-8 z-20 select-none">
           {/* Sticker 3: 10+ Years Craft */}
           <div className="group cursor-pointer">
             <div className="flex flex-col gap-1.5 bg-black text-white border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
@@ -375,12 +375,10 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & STICKERS)   */}
         {/* ============================================================== */}
         <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center">
-          {/* Eyebrow Status Pill with Requested Worldwide/Remote text & generous bottom space */}
+          {/* Eyebrow Status Pill with Requested Worldwide/Remote text & generous bottom space (no 2026 date) */}
           <div className="inline-flex items-center gap-2.5 bg-black text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border-2 border-black font-mono text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 select-none cursor-default mb-6 sm:mb-8 max-w-full">
             <span className="size-2.5 rounded-full bg-neon animate-pulse shrink-0" />
             <span className="leading-snug">Available for projects worldwide, remotely</span>
-            <span className="text-white/40 hidden md:inline">•</span>
-            <span className="text-neon hidden md:inline">2026</span>
           </div>
 
           {/* Main Headline */}
@@ -398,16 +396,16 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
             </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="mt-5 sm:mt-6 flex flex-row items-center justify-center gap-3 sm:gap-4 w-auto mx-auto flex-wrap px-2">
+          {/* Action Buttons - Distinct, prominent interactive controls (not styled like stickers) */}
+          <div className="mt-6 sm:mt-7 flex flex-row items-center justify-center gap-3 sm:gap-5 w-auto mx-auto flex-wrap px-2">
             {onNavigate && (
               <button
                 type="button"
                 onClick={() => onNavigate('contact')}
-                className="inline-flex items-center justify-center gap-2 bg-black text-neon font-mono text-xs sm:text-sm uppercase tracking-[0.16em] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold transition-transform duration-300 hover:scale-105 cursor-pointer shadow-[3px_3px_0px_#000]"
+                className="group inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:scale-105 hover:bg-neutral-900 cursor-pointer shadow-xl shadow-black/25"
               >
                 <span>Start a project</span>
-                <span className="text-xs sm:text-sm">⟶</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5 text-neon font-normal">⟶</span>
               </button>
             )}
 
@@ -417,17 +415,17 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 const el = document.getElementById('work-projects');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex items-center justify-center gap-2 border-2 border-black bg-white text-black font-mono text-xs sm:text-sm uppercase tracking-[0.16em] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer shadow-[3px_3px_0px_#000]"
+              className="group inline-flex items-center justify-center gap-2.5 border-2 border-black bg-transparent text-black font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
             >
               <span>View work</span>
-              <span className="text-xs sm:text-sm">↓</span>
+              <span className="inline-block transition-transform duration-300 group-hover:translate-y-1 font-normal">↓</span>
             </button>
           </div>
 
           {/* ============================================================== */}
           {/* STICKER CLOUD / BADGES (PROMINENTLY DISPLAYED ON MOBILE & DESKTOP) */}
           {/* ============================================================== */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-8 max-w-2xl px-2">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-7 sm:mt-9 max-w-2xl px-2">
             {/* Mobile/All Sticker 1: 100% Bespoke */}
             <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
               <PenTool className="size-3.5 text-black shrink-0" />
@@ -452,10 +450,10 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
               <span>1-on-1 Collab</span>
             </div>
 
-            {/* Mobile/All Sticker 4: Figma to Code */}
+            {/* Mobile/All Sticker 4: Figma to VS Code to Web */}
             <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
               <Code2 className="size-3.5 text-black shrink-0" />
-              <span>Figma ➔ Live Code</span>
+              <span>Figma ➔ VS Code ➔ Web</span>
             </div>
 
             {/* Mobile/All Sticker 5: 5-Star Satisfaction */}
