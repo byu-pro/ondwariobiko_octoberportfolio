@@ -270,7 +270,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* ============================================================== */}
 
         {/* Left Flank Column (Desktop - Positioned slightly below center to clear headline) */}
-        <div className="hidden lg:flex flex-col gap-3.5 absolute left-4 xl:left-7 2xl:left-12 top-1/2 -translate-y-1/2 translate-y-7 xl:translate-y-9 z-20 select-none">
+        <div className="hidden lg:flex flex-col gap-3.5 absolute left-4 xl:left-7 2xl:left-12 top-1/2 -translate-y-8 xl:-translate-y-10 2xl:-translate-y-12 z-20 select-none">
           {/* Sticker 1: 100% Bespoke */}
           <div className="group cursor-pointer">
             <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] -rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
@@ -315,7 +315,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         </div>
 
         {/* Right Flank Column (Desktop - Positioned slightly below center to clear headline) */}
-        <div className="hidden lg:flex flex-col gap-3.5 absolute right-4 xl:right-7 2xl:right-12 top-1/2 -translate-y-1/2 translate-y-7 xl:translate-y-9 z-20 select-none">
+        <div className="hidden lg:flex flex-col gap-3.5 absolute right-4 xl:right-7 2xl:right-12 top-1/2 -translate-y-8 xl:-translate-y-10 2xl:-translate-y-12 z-20 select-none">
           {/* Sticker 3: 10+ Years Craft */}
           <div className="group cursor-pointer">
             <div className="flex flex-col gap-1.5 bg-black text-white border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
