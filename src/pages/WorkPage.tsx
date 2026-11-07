@@ -402,11 +402,17 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
           </div>
         </div>
 
-        {/* Subtle scroll down indicator */}
-        <div className="shrink-0 pt-6 sm:pt-8 opacity-70 relative z-10">
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-black font-bold flex items-center justify-center gap-1.5">
-            Scroll to view work ↓
-          </span>
+        {/* Scroll down indicator positioned on the right-hand side */}
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-7 right-4 sm:right-8 md:right-12 z-20">
+          <button
+            type="button"
+            onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-black font-bold opacity-75 hover:opacity-100 transition-opacity cursor-pointer select-none"
+            aria-label="Scroll to view work"
+          >
+            <span>Scroll to view work</span>
+            <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+          </button>
         </div>
       </section>
 
