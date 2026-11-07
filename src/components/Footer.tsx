@@ -27,11 +27,11 @@ export function Footer({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [activeWordmark, setActiveWordmark] = useState(0);
 
-  // Continuous loop through wordmarks
+  // Continuous loop through wordmarks (balanced timing: ~3.8s)
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveWordmark((prev) => (prev + 1) % WORDMARKS.length);
-    }, 2800);
+    }, 3800);
     return () => clearInterval(timer);
   }, []);
 
@@ -79,50 +79,53 @@ export function Footer({
         />
       </section>
 
-      {/* THE FOOTER SECTION AFTER THE VIDEO */}
-      <footer id="contact-footer" className="px-5 md:px-8 pt-16 md:pt-28 pb-28 md:pb-24">
+      {/* FULL-WIDTH LOOPING WORDMARK (EDGE-TO-EDGE, NO SIDE NEGATIVE SPACE) */}
+      <section className="w-full bg-black pt-10 sm:pt-16 md:pt-24 pb-4 sm:pb-8 overflow-hidden" aria-label="Wordmark showcase">
+        <a 
+          href="#/contact" 
+          onClick={(e) => {
+            e.preventDefault();
+            if (currentRoute === 'contact') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              onNavigate('contact');
+            }
+          }}
+          aria-label="Ondwari Obiko — Start a project"
+          className="block w-full cursor-pointer px-0"
+        >
+          <div className="relative w-full aspect-[2800/1005] overflow-hidden">
+            {WORDMARKS.map((wm, idx) => {
+              const isActive = idx === activeWordmark;
+              const isPrevious = idx === (activeWordmark - 1 + WORDMARKS.length) % WORDMARKS.length;
+
+              return (
+                <img
+                  key={wm.src}
+                  src={`${base}images/${wm.src}`}
+                  alt={wm.alt}
+                  width={2800}
+                  height={1005}
+                  loading="eager"
+                  decoding="async"
+                  className={`absolute inset-0 w-full h-full object-contain object-center select-none pointer-events-none transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
+                    isActive
+                      ? "opacity-100 translate-y-0 scale-100 blur-0 z-10"
+                      : isPrevious
+                        ? "opacity-0 -translate-y-8 scale-[0.98] blur-[1px] z-0"
+                        : "opacity-0 translate-y-8 scale-[0.98] blur-[1px] z-0"
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </a>
+      </section>
+
+      {/* THE FOOTER SECTION WITH COPYRIGHT & LINKS */}
+      <footer id="contact-footer" className="px-5 md:px-8 pb-28 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
-          <a 
-            href="#/contact" 
-            onClick={(e) => {
-              e.preventDefault();
-              if (currentRoute === 'contact') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              } else {
-                onNavigate('contact');
-              }
-            }}
-            aria-label="Ondwari Obiko — Start a project"
-            className="block cursor-pointer"
-          >
-            <div className="relative w-full aspect-[2880/1028] my-2 sm:my-4 overflow-hidden">
-              {WORDMARKS.map((wm, idx) => {
-                const isActive = idx === activeWordmark;
-                const isPrevious = idx === (activeWordmark - 1 + WORDMARKS.length) % WORDMARKS.length;
-
-                return (
-                  <img
-                    key={wm.src}
-                    src={`${base}images/${wm.src}`}
-                    alt={wm.alt}
-                    width={2880}
-                    height={1028}
-                    loading="eager"
-                    decoding="async"
-                    className={`absolute inset-0 w-full h-full object-contain select-none pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
-                      isActive
-                        ? "opacity-100 translate-y-0 scale-100 blur-0 z-10"
-                        : isPrevious
-                          ? "opacity-0 -translate-y-8 scale-[0.98] blur-[1px] z-0"
-                          : "opacity-0 translate-y-8 scale-[0.98] blur-[1px] z-0"
-                    }`}
-                  />
-                );
-              })}
-            </div>
-          </a>
-
-          <div className="mt-10 border-t border-ink/15 pt-6 font-mono text-xs uppercase tracking-widest">
+          <div className="border-t border-ink/15 pt-6 font-mono text-xs uppercase tracking-widest">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-ink/80">
               <span>© 2026 ondwariobiko. All Rights Reserved.</span>
               <div className="flex gap-6 text-ink">
