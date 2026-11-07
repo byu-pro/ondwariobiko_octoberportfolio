@@ -263,7 +263,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND & GRAPHIC STICKERS */}
       <section 
         id="home-hero" 
-        className="relative w-full bg-neon text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-28 sm:pt-36 md:pt-44 lg:pt-48 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
+        className="relative w-full bg-neon text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-30 md:pt-36 lg:pt-40 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
       >
         {/* ============================================================== */}
         {/* DESKTOP FLANKING DESIGNER STICKERS (HIGH CONTRAST & READABLE)  */}
@@ -374,7 +374,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* ============================================================== */}
         {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & STICKERS)   */}
         {/* ============================================================== */}
-        <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center pt-4 sm:pt-8 md:pt-10">
+        <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center pt-1 sm:pt-2 md:pt-3">
 
           {/* Main Headline */}
           <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
