@@ -24,6 +24,7 @@
 
 .bg-black { --ink: #fff; --accent-ink: var(--neon); }
 .bg-neon { --accent-ink: #171914; }
+.bg-neon-gradient { --accent-ink: #171914; }
 .bg-neutral-900 { --ink: #fff; --accent-ink: var(--neon); }
 
 @layer base {
@@ -42,6 +43,10 @@
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @utility animate-marquee { animation: marquee 28s linear infinite; will-change: transform; transform: translateZ(0); }
 @utility animate-marquee-slow { animation: marquee 85s linear infinite; will-change: transform; transform: translateZ(0); }
+@utility bg-neon-gradient {
+  background-color: var(--neon);
+  background-image: radial-gradient(ellipse 130% 95% at 50% 5%, #ebff57 0%, #d9fd17 52%, #b5e400 100%);
+}
 @utility animate-menu-in { animation: menu-in 0.7s cubic-bezier(0.76, 0, 0.24, 1) both; }
 @utility animate-rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @utility animate-spin-slow { animation: spin-slow 8s linear infinite; }

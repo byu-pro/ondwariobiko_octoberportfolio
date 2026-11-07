@@ -258,10 +258,10 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
   return (
     <>
-      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND */}
+      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN GRADIENT BACKGROUND */}
       <section 
         id="home-hero" 
-        className="relative w-full bg-neon text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
+        className="relative w-full bg-neon-gradient text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
       >
         {/* ============================================================== */}
         {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & BADGES)     */}
@@ -274,12 +274,8 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
             {/* LARGE BACKGROUND KINETIC MARQUEE (BEHIND MAIN HEADLINE) */}
             <div 
               aria-hidden="true" 
-              className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-screen max-w-none overflow-hidden pointer-events-none select-none z-0"
+              className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-screen max-w-none overflow-hidden pointer-events-none select-none z-0 [mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)]"
             >
-              {/* Left & Right edge fade gradients to soften entrance/exit into the screen frame */}
-              <div className="absolute left-0 inset-y-0 w-12 sm:w-24 md:w-36 bg-gradient-to-r from-neon to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 inset-y-0 w-12 sm:w-24 md:w-36 bg-gradient-to-l from-neon to-transparent z-10 pointer-events-none" />
-
               {/* Seamless looping marquee track with calm, ambient slow glide */}
               <div 
                 style={{ animationDuration: '85s' }}
