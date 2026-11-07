@@ -21,10 +21,10 @@ export function Header({
       data-menu-open={open} 
       className={`fixed top-0 inset-x-0 z-[60] px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-500 ${
         open 
-          ? "py-3 sm:py-4 md:py-5 bg-transparent" 
+          ? "py-2.5 sm:py-3.5 bg-transparent" 
           : scrolled 
-            ? "py-2.5 sm:py-3 bg-black/90 backdrop-blur-xl border-b border-white/10" 
-            : "py-3.5 sm:py-4 md:py-5 bg-black/90 backdrop-blur-xl border-b border-white/10"
+            ? "py-2 sm:py-2.5 bg-black/90 backdrop-blur-xl border-b border-white/10" 
+            : "py-2.5 sm:py-3.5 bg-black/90 backdrop-blur-xl border-b border-white/10"
       }`}
     >
       <a 
@@ -46,8 +46,8 @@ export function Header({
             open ? "rounded-full brightness-0 filter" : ""
           } ${
             scrolled && !open 
-              ? "size-10 sm:size-11 md:size-12" 
-              : "size-10 sm:size-12 md:size-14"
+              ? "size-9 sm:size-10 md:size-11" 
+              : "size-10 sm:size-11 md:size-12"
           }`} 
         />
         <span 
