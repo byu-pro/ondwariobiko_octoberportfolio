@@ -260,7 +260,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
   return (
     <>
-      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND & HIGH-CONTRAST BADGES */}
+      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND & GRAPHIC STICKERS */}
       <section 
         id="home-hero" 
         className="relative w-full bg-neon text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-14 md:pb-16 border-b-2 border-black overflow-hidden"
@@ -269,48 +269,90 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* DESKTOP FLANKING DESIGNER STICKERS (HIGH CONTRAST & READABLE)  */}
         {/* ============================================================== */}
 
-        {/* Sticker 1: Left Flank "100% Bespoke / No Templates" Stamp */}
-        <div 
-          className="hidden lg:block absolute left-6 xl:left-12 top-1/2 -translate-y-1/2 z-20 select-none group cursor-pointer"
-        >
-          <div className="flex flex-col gap-2 bg-white text-black border-2 border-black p-4 rounded-2xl shadow-[5px_5px_0px_#000] -rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[220px] text-left">
-            <div className="flex items-center gap-2.5">
-              <div className="size-8 rounded-lg bg-neon border border-black grid place-items-center shrink-0">
-                <PenTool className="size-4 text-black" />
+        {/* Left Flank Column (Desktop) */}
+        <div className="hidden lg:flex flex-col gap-4 absolute left-4 xl:left-10 top-1/2 -translate-y-1/2 z-20 select-none">
+          {/* Sticker 1: 100% Bespoke */}
+          <div className="group cursor-pointer">
+            <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] -rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
+              <div className="flex items-center gap-2">
+                <div className="size-7 xl:size-8 rounded-lg bg-neon border border-black grid place-items-center shrink-0">
+                  <PenTool className="size-3.5 xl:size-4 text-black" />
+                </div>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-black">
+                  100% Bespoke
+                </span>
               </div>
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-black">
-                100% Bespoke
-              </span>
+              <div className="font-display font-extrabold text-sm xl:text-base uppercase tracking-tight text-neutral-900">
+                No Templates
+              </div>
+              <div className="font-mono text-xs font-medium text-neutral-700 flex items-center gap-1.5 pt-1 border-t border-black/10">
+                <Sparkles className="size-3 text-black shrink-0" />
+                <span>Drawn From Scratch</span>
+              </div>
             </div>
-            <div className="font-display font-extrabold text-base uppercase tracking-tight text-neutral-900">
-              No Templates
-            </div>
-            <div className="font-mono text-xs font-medium text-neutral-700 flex items-center gap-1.5 pt-1.5 border-t border-black/10">
-              <Sparkles className="size-3.5 text-black shrink-0" />
-              <span>Drawn From Scratch</span>
+          </div>
+
+          {/* Sticker 2: Figma to Code */}
+          <div className="group cursor-pointer">
+            <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-2 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
+              <div className="flex items-center gap-2">
+                <div className="size-7 xl:size-8 rounded-lg bg-black text-neon border border-black grid place-items-center shrink-0">
+                  <Code2 className="size-3.5 xl:size-4" />
+                </div>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-black">
+                  Figma ➔ Web
+                </span>
+              </div>
+              <div className="font-display font-extrabold text-sm xl:text-base uppercase tracking-tight text-neutral-900">
+                Design + Code
+              </div>
+              <div className="font-mono text-xs font-medium text-neutral-700 flex items-center gap-1.5 pt-1 border-t border-black/10">
+                <span>✦</span>
+                <span>Pixel-Perfect Build</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Sticker 2: Right Flank "10+ Yrs Craft / Solo Studio" Stamp */}
-        <div 
-          className="hidden lg:block absolute right-6 xl:left-auto xl:right-12 top-1/2 -translate-y-1/2 z-20 select-none group cursor-pointer"
-        >
-          <div className="flex flex-col gap-2 bg-black text-white border-2 border-black p-4 rounded-2xl shadow-[5px_5px_0px_#000] rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[220px] text-left">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-neon">
-                Solo Studio
-              </span>
-              <div className="flex items-center gap-0.5 text-neon text-xs leading-none">
-                {"★".repeat(5)}
+        {/* Right Flank Column (Desktop) */}
+        <div className="hidden lg:flex flex-col gap-4 absolute right-4 xl:right-10 top-1/2 -translate-y-1/2 z-20 select-none">
+          {/* Sticker 3: 10+ Years Craft */}
+          <div className="group cursor-pointer">
+            <div className="flex flex-col gap-1.5 bg-black text-white border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-neon">
+                  Solo Studio
+                </span>
+                <div className="flex items-center gap-0.5 text-neon text-xs leading-none">
+                  {"★".repeat(5)}
+                </div>
+              </div>
+              <div className="font-display font-black text-sm xl:text-base uppercase tracking-tight text-white">
+                10+ Years Craft
+              </div>
+              <div className="font-mono text-xs font-medium text-neutral-300 flex items-center gap-1.5 pt-1 border-t border-white/15">
+                <Star className="size-3 fill-neon text-neon shrink-0" />
+                <span>350+ Brand Marks</span>
               </div>
             </div>
-            <div className="font-display font-black text-base uppercase tracking-tight text-white">
-              10+ Years Craft
-            </div>
-            <div className="font-mono text-xs font-medium text-neutral-300 flex items-center gap-1.5 pt-1.5 border-t border-white/15">
-              <Star className="size-3.5 fill-neon text-neon shrink-0" />
-              <span>350+ Brand Marks</span>
+          </div>
+
+          {/* Sticker 4: Fast Turnaround */}
+          <div className="group cursor-pointer">
+            <div className="flex flex-col gap-1.5 bg-black text-white border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] -rotate-2 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-white">
+                  Direct Collab
+                </span>
+                <Zap className="size-3.5 fill-neon text-neon" />
+              </div>
+              <div className="font-display font-black text-sm xl:text-base uppercase tracking-tight text-neon">
+                Fast Turnaround
+              </div>
+              <div className="font-mono text-xs font-medium text-neutral-300 flex items-center gap-1.5 pt-1 border-t border-white/15">
+                <span>⚡</span>
+                <span>Zero Agency Middleman</span>
+              </div>
             </div>
           </div>
         </div>
@@ -330,15 +372,15 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         </span>
 
         {/* ============================================================== */}
-        {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & MOBILE PILLS)*/}
+        {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & STICKERS)   */}
         {/* ============================================================== */}
         <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center">
-          {/* Eyebrow Status Pill */}
-          <div className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full border-2 border-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 select-none cursor-default mb-4 sm:mb-5">
-            <span className="size-2.5 rounded-full bg-neon animate-pulse" />
-            <span>Available for new projects</span>
-            <span className="text-white/40 hidden sm:inline">•</span>
-            <span className="text-neon hidden sm:inline">2026</span>
+          {/* Eyebrow Status Pill with Requested Worldwide/Remote text & generous bottom space */}
+          <div className="inline-flex items-center gap-2.5 bg-black text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border-2 border-black font-mono text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 select-none cursor-default mb-6 sm:mb-8 max-w-full">
+            <span className="size-2.5 rounded-full bg-neon animate-pulse shrink-0" />
+            <span className="leading-snug">Available for projects worldwide, remotely</span>
+            <span className="text-white/40 hidden md:inline">•</span>
+            <span className="text-neon hidden md:inline">2026</span>
           </div>
 
           {/* Main Headline */}
@@ -382,15 +424,50 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
             </button>
           </div>
 
-          {/* Mobile & Tablet Badges (Stacked cleanly in-flow: readable & zero clutter) */}
-          <div className="flex lg:hidden flex-wrap items-center justify-center gap-2.5 sm:gap-3 mt-6">
-            <div className="inline-flex items-center gap-2 bg-white text-black border-2 border-black px-3.5 py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-1">
+          {/* ============================================================== */}
+          {/* STICKER CLOUD / BADGES (PROMINENTLY DISPLAYED ON MOBILE & DESKTOP) */}
+          {/* ============================================================== */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-8 max-w-2xl px-2">
+            {/* Mobile/All Sticker 1: 100% Bespoke */}
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
               <PenTool className="size-3.5 text-black shrink-0" />
-              <span>100% Bespoke • No Templates</span>
+              <span>100% Bespoke</span>
+              <span className="text-neutral-400">•</span>
+              <span className="text-neutral-600">No Templates</span>
             </div>
-            <div className="inline-flex items-center gap-2 bg-black text-neon border-2 border-black px-3.5 py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-1">
+
+            {/* Mobile/All Sticker 2: 10+ Years */}
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-neon border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
               <Star className="size-3.5 fill-neon text-neon shrink-0" />
-              <span>10+ Years • 350+ Brands</span>
+              <span>10+ Years</span>
+              <span className="text-neutral-500">•</span>
+              <span className="text-white">350+ Brands</span>
+            </div>
+
+            {/* Mobile/All Sticker 3: Fast Turnaround */}
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black text-white border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <Zap className="size-3.5 fill-neon text-neon shrink-0" />
+              <span className="text-neon">Fast Turnaround</span>
+              <span className="text-neutral-500">•</span>
+              <span>1-on-1 Collab</span>
+            </div>
+
+            {/* Mobile/All Sticker 4: Figma to Code */}
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-black border-2 border-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs font-bold shadow-[3px_3px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <Code2 className="size-3.5 text-black shrink-0" />
+              <span>Figma ➔ Live Code</span>
+            </div>
+
+            {/* Mobile/All Sticker 5: 5-Star Satisfaction */}
+            <div className="inline-flex items-center gap-1.5 bg-white text-black border-2 border-black px-3 py-1.5 rounded-lg font-mono text-xs font-bold shadow-[2px_2px_0px_#000] -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <span className="text-amber-500 text-sm leading-none">★★★★★</span>
+              <span>5.0 Rating</span>
+            </div>
+
+            {/* Mobile/All Sticker 6: Barcode Seal */}
+            <div className="inline-flex items-center gap-2 bg-black text-white border-2 border-black px-3 py-1.5 rounded-lg font-mono text-[11px] font-bold shadow-[2px_2px_0px_#000] rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-200 cursor-pointer select-none">
+              <span className="font-mono text-xs tracking-tighter text-neon font-black">||| | |||||</span>
+              <span className="tracking-wider uppercase text-neutral-200">Verified Bespoke</span>
             </div>
           </div>
         </div>
