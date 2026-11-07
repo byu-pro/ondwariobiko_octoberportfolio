@@ -65,9 +65,8 @@ export function Footer({
       </section>
 
       {/* THE FOOTER SECTION AFTER THE VIDEO */}
-      <footer id="contact-footer" className="px-5 md:px-8 pt-20 md:pt-32 pb-28 md:pb-24">
+      <footer id="contact-footer" className="px-5 md:px-8 pt-16 md:pt-28 pb-28 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">Have a vision?</p>
           <a 
             href="#/contact" 
             onClick={(e) => {
@@ -78,14 +77,38 @@ export function Footer({
                 onNavigate('contact');
               }
             }}
-            className="group block font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.5rem,11vw,10rem)] cursor-pointer"
+            aria-label="Ondwari Obiko — Have a vision? Let's build something"
+            className="group block cursor-pointer transition-all duration-500"
           >
-            <span className="block transition-all duration-500 group-hover:text-accent-ink group-hover:translate-x-4">
-              Let's build
-            </span>
-            <span className="block text-stroke group-hover:text-accent-ink transition-all duration-700 group-hover:translate-x-10">
-              something ✺
-            </span>
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 md:mb-8 font-mono text-xs uppercase tracking-[0.25em] text-ink/50 group-hover:text-ink transition-colors">
+              <span className="group-hover:text-white transition-colors">Have a vision? Let&apos;s build something</span>
+              <span className="text-neon flex items-center gap-1.5 font-bold tracking-widest text-[11px] sm:text-xs">
+                <span>Start a project</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+              </span>
+            </div>
+
+            <div className="w-full flex items-center justify-start overflow-hidden py-2 sm:py-4">
+              <picture className="w-full block">
+                <source
+                  srcSet={`${base}images/ondwariobiko_wordmark@2x.webp 2x, ${base}images/ondwariobiko_wordmark.webp 1x`}
+                  type="image/webp"
+                />
+                <source
+                  srcSet={`${base}images/ondwariobiko_wordmark@2x.png 2x, ${base}images/ondwariobiko_wordmark.png 1x`}
+                  type="image/png"
+                />
+                <img
+                  src={`${base}images/ondwariobiko_wordmark.png`}
+                  alt="Ondwari Obiko"
+                  width={1710}
+                  height={610}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full max-w-[1250px] h-auto object-contain select-none transition-all duration-500 ease-out group-hover:scale-[1.015] group-hover:drop-shadow-[0_0_45px_rgba(217,253,23,0.35)]"
+                />
+              </picture>
+            </div>
           </a>
 
           <div className="mt-10 border-t border-ink/15 pt-6 font-mono text-xs uppercase tracking-widest">
