@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, PenTool, Sparkles, Star, Code2, Zap } from 'lucide-react';
+import { X, PenTool, Star, Code2, Zap } from 'lucide-react';
 import { FullWidthProject, PageRoute } from '../types';
 
 interface WorkPageProps {
@@ -258,119 +258,13 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
   return (
     <>
-      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND & GRAPHIC STICKERS */}
+      {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND */}
       <section 
         id="home-hero" 
         className="relative w-full bg-neon text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-30 md:pt-36 lg:pt-40 pb-12 sm:pb-16 md:pb-20 border-b-2 border-black overflow-hidden"
       >
         {/* ============================================================== */}
-        {/* DESKTOP FLANKING DESIGNER STICKERS (HIGH CONTRAST & READABLE)  */}
-        {/* ============================================================== */}
-
-        {/* Left Flank Column (Desktop - Positioned slightly below center to clear headline) */}
-        <div className="hidden lg:flex flex-col gap-3.5 absolute left-4 xl:left-7 2xl:left-12 top-1/2 -translate-y-8 xl:-translate-y-10 2xl:-translate-y-12 z-20 select-none">
-          {/* Sticker 1: 100% Bespoke */}
-          <div className="group cursor-pointer">
-            <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] -rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
-              <div className="flex items-center gap-2">
-                <div className="size-7 xl:size-8 rounded-lg bg-neon border border-black grid place-items-center shrink-0">
-                  <PenTool className="size-3.5 xl:size-4 text-black" />
-                </div>
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-black">
-                  100% Bespoke
-                </span>
-              </div>
-              <div className="font-display font-extrabold text-sm xl:text-base uppercase tracking-tight text-neutral-900">
-                No Templates
-              </div>
-              <div className="font-mono text-xs font-medium text-neutral-700 flex items-center gap-1.5 pt-1 border-t border-black/10">
-                <Sparkles className="size-3 text-black shrink-0" />
-                <span>Drawn From Scratch</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Sticker 2: Figma to VS Code to Web */}
-          <div className="group cursor-pointer">
-            <div className="flex flex-col gap-1.5 bg-white text-black border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-2 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
-              <div className="flex items-center gap-2">
-                <div className="size-7 xl:size-8 rounded-lg bg-black text-neon border border-black grid place-items-center shrink-0">
-                  <Code2 className="size-3.5 xl:size-4" />
-                </div>
-                <span className="font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider text-black">
-                  Figma ➔ VS Code
-                </span>
-              </div>
-              <div className="font-display font-extrabold text-sm xl:text-base uppercase tracking-tight text-neutral-900">
-                Figma ➔ Code ➔ Web
-              </div>
-              <div className="font-mono text-xs font-medium text-neutral-700 flex items-center gap-1.5 pt-1 border-t border-black/10">
-                <span>✦</span>
-                <span>VS Code &amp; Custom Build</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Flank Column (Desktop - Positioned slightly below center to clear headline) */}
-        <div className="hidden lg:flex flex-col gap-3.5 absolute right-4 xl:right-7 2xl:right-12 top-1/2 -translate-y-8 xl:-translate-y-10 2xl:-translate-y-12 z-20 select-none">
-          {/* Sticker 3: 10+ Years Craft */}
-          <div className="group cursor-pointer">
-            <div className="flex flex-col gap-1.5 bg-black text-white border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-neon">
-                  Solo Studio
-                </span>
-                <div className="flex items-center gap-0.5 text-neon text-xs leading-none">
-                  {"★".repeat(5)}
-                </div>
-              </div>
-              <div className="font-display font-black text-sm xl:text-base uppercase tracking-tight text-white">
-                10+ Years Craft
-              </div>
-              <div className="font-mono text-xs font-medium text-neutral-300 flex items-center gap-1.5 pt-1 border-t border-white/15">
-                <Star className="size-3 fill-neon text-neon shrink-0" />
-                <span>350+ Brand Marks</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Sticker 4: Fast Turnaround */}
-          <div className="group cursor-pointer">
-            <div className="flex flex-col gap-1.5 bg-black text-white border-2 border-black p-3.5 xl:p-4 rounded-2xl shadow-[4px_4px_0px_#000] -rotate-2 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300 w-[210px] xl:w-[220px] text-left">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-white">
-                  Direct Collab
-                </span>
-                <Zap className="size-3.5 fill-neon text-neon" />
-              </div>
-              <div className="font-display font-black text-sm xl:text-base uppercase tracking-tight text-neon">
-                Fast Turnaround
-              </div>
-              <div className="font-mono text-xs font-medium text-neutral-300 flex items-center gap-1.5 pt-1 border-t border-white/15">
-                <span>⚡</span>
-                <span>Zero Agency Middleman</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Floating Graphic Accents / Stars in margins */}
-        <span 
-          aria-hidden="true" 
-          className="hidden xl:block absolute top-12 left-1/4 text-black/60 text-2xl font-black select-none pointer-events-none -rotate-12"
-        >
-          ✦
-        </span>
-        <span 
-          aria-hidden="true" 
-          className="hidden xl:block absolute top-14 right-1/4 text-black/60 text-xl font-black select-none pointer-events-none rotate-12"
-        >
-          ✧
-        </span>
-
-        {/* ============================================================== */}
-        {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & STICKERS)   */}
+        {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & BADGES)     */}
         {/* ============================================================== */}
         <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center pt-1 sm:pt-2 md:pt-3">
 

@@ -34,7 +34,8 @@ export function Header({
           onNavigate('work');
           if (open) setOpen(false);
         }} 
-        className="flex items-center gap-2 group cursor-pointer shrink-0"
+        aria-label="ondwariobiko home"
+        className="flex items-center group cursor-pointer shrink-0"
       >
         <img 
           key={open ? "logo-black" : "logo-white"}
@@ -50,17 +51,6 @@ export function Header({
               : "size-10 sm:size-11 md:size-12"
           }`} 
         />
-        <span 
-          className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 pr-2 ${
-            open 
-              ? "text-black opacity-100 max-w-[600px] translate-x-0" 
-              : scrolled 
-                ? "opacity-0 max-w-0 -translate-x-3 pointer-events-none" 
-                : "text-white group-hover:text-accent-ink opacity-100 max-w-[600px] translate-x-0"
-          }`}
-        >
-          ondwari<span className={open ? "text-black/50" : "text-accent-ink"}>obiko</span>
-        </span>
       </a>
 
       <div className="flex items-center gap-2 sm:gap-3">
