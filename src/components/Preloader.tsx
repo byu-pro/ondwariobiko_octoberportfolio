@@ -98,7 +98,7 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
   return (
     <div
       aria-label="Loading portfolio"
-      className="fixed inset-0 z-[9999] select-none pointer-events-auto"
+      className="fixed inset-0 z-[9999] select-none pointer-events-auto overflow-hidden"
     >
       {/* TOP CURTAIN SLAB */}
       <div
@@ -116,12 +116,12 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
 
       {/* CENTRAL CONTENT CONTAINER */}
       <div
-        className={`relative w-full h-full flex flex-col justify-between p-6 sm:p-8 md:p-12 transition-all duration-500 ${
+        className={`relative w-full h-full flex flex-col items-center justify-center p-6 transition-all duration-500 ${
           isExiting ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
         }`}
       >
         {/* AMBIENT NEON GLOW */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-neon/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[520px] h-[320px] sm:h-[520px] bg-neon/10 rounded-full blur-[130px] pointer-events-none" />
 
         {/* TECHNICAL BACKGROUND GRID LINES */}
         <div 
@@ -132,24 +132,8 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
           }}
         />
 
-        {/* HEADER BAR */}
-        <div className="relative z-10 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-white/60">
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-neon" />
-            </span>
-            <span className="text-white font-medium">ONDWARIOBIKO // STUDIO</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-4 text-white/40">
-            <span>01°17′S 36°49′E</span>
-            <span>•</span>
-            <span className="text-neon/80">EDITION 2027</span>
-          </div>
-        </div>
-
-        {/* CENTER MONOGRAM & COUNTER DISPLAY */}
-        <div className="relative z-10 flex flex-col items-center justify-center my-auto py-8">
+        {/* CENTER VISUAL: LOGO & TEXT ONLY BELOW LOGO */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center">
           {/* LOGO WITH GLOWING ORBIT */}
           <div className="relative mb-6 sm:mb-8 flex items-center justify-center">
             {/* Rotating dashed orbit */}
@@ -161,13 +145,13 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
             <img
               src={`${base}images/logowhite.webp`}
               alt="Ondwari Obiko Monogram"
-              width={72}
-              height={72}
-              className="relative size-14 sm:size-16 md:size-20 object-contain drop-shadow-[0_0_24px_rgba(217,253,23,0.35)]"
+              width={80}
+              height={80}
+              className="relative size-16 sm:size-20 md:size-24 object-contain drop-shadow-[0_0_28px_rgba(217,253,23,0.35)]"
             />
           </div>
 
-          {/* LARGE KINETIC COUNTER */}
+          {/* BELOW THE LOGO: LARGE KINETIC COUNTER */}
           <div className="flex items-baseline justify-center">
             <span className="font-display font-black text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] tracking-tighter text-white tabular-nums leading-none">
               {progress.toString().padStart(2, '0')}
@@ -177,8 +161,8 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
             </span>
           </div>
 
-          {/* DYNAMIC SYSTEM STATUS TICKER */}
-          <div className="mt-4 sm:mt-6 flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-neutral-400">
+          {/* DYNAMIC SYSTEM STATUS TICKER BELOW THE LOGO */}
+          <div className="mt-4 sm:mt-6 flex items-center justify-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-neutral-400">
             <span className="text-neon">[SYS]</span>
             <span className="inline-block transition-all duration-150">
               {STATUS_MESSAGES[statusIndex]}
@@ -186,27 +170,12 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
           </div>
         </div>
 
-        {/* FOOTER BAR WITH PROGRESS TRACK */}
-        <div className="relative z-10 w-full space-y-3">
-          <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono uppercase tracking-widest text-white/50">
-            <div className="flex items-center gap-2">
-              <span className="text-neon">INITIALIZING</span>
-              <span className="hidden sm:inline text-white/30">•</span>
-              <span className="hidden sm:inline text-white/50">BRAND • UI/UX • CODE</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-white/40 hidden md:inline">PRESS ESC TO SKIP</span>
-              <span className="text-white font-semibold">[{progress}%]</span>
-            </div>
-          </div>
-
-          {/* ULTRA-PRECISION PROGRESS BAR */}
-          <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden relative">
-            <div
-              className="h-full bg-neon transition-all duration-100 ease-out shadow-[0_0_12px_#d9fd17]"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+        {/* BOTTOM VISUAL PROGRESS LINE (PURELY VISUAL, NO TEXT) */}
+        <div className="absolute bottom-0 inset-x-0 h-1 bg-white/10 overflow-hidden">
+          <div
+            className="h-full bg-neon transition-all duration-100 ease-out shadow-[0_0_14px_#d9fd17]"
+            style={{ width: `${progress}%` }}
+          />
         </div>
       </div>
     </div>
