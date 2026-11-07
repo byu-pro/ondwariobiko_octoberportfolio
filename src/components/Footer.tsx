@@ -78,17 +78,17 @@ export function Footer({
               }
             }}
             aria-label="Ondwari Obiko — Have a vision? Let's build something"
-            className="group block cursor-pointer transition-all duration-500"
+            className="block cursor-pointer"
           >
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 md:mb-8 font-mono text-xs uppercase tracking-[0.25em] text-ink/50 group-hover:text-ink transition-colors">
-              <span className="group-hover:text-white transition-colors">Have a vision? Let&apos;s build something</span>
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 md:mb-8 font-mono text-xs uppercase tracking-[0.25em] text-ink/50 hover:text-ink transition-colors">
+              <span>Have a vision? Let&apos;s build something</span>
               <span className="text-neon flex items-center gap-1.5 font-bold tracking-widest text-[11px] sm:text-xs">
                 <span>Start a project</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                <span>↗</span>
               </span>
             </div>
 
-            <div className="w-full flex items-center justify-start overflow-hidden py-2 sm:py-4">
+            <div className="w-full">
               <picture className="w-full block">
                 <source
                   srcSet={`${base}images/ondwariobiko_wordmark@2x.webp 2x, ${base}images/ondwariobiko_wordmark.webp 1x`}
@@ -105,7 +105,7 @@ export function Footer({
                   height={610}
                   loading="lazy"
                   decoding="async"
-                  className="w-full max-w-[1250px] h-auto object-contain select-none transition-all duration-500 ease-out group-hover:scale-[1.015] group-hover:drop-shadow-[0_0_45px_rgba(217,253,23,0.35)]"
+                  className="w-full h-auto block select-none"
                 />
               </picture>
             </div>
