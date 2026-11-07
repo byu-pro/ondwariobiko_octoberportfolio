@@ -25,16 +25,16 @@ export function Header({
   return (
     <header 
       data-menu-open={open} 
-      className={`fixed top-0 inset-x-0 z-[60] px-5 md:px-8 flex items-center justify-between transition-all duration-500 ${
+      className={`fixed top-0 inset-x-0 z-[60] px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-500 ${
         open 
-          ? "py-5 bg-transparent" 
+          ? "py-3 sm:py-4 md:py-5 bg-transparent" 
           : isOverNeon
             ? scrolled
-              ? "py-3 bg-neon/90 backdrop-blur-xl border-b border-black/10"
-              : "py-5 bg-transparent"
+              ? "py-2.5 sm:py-3 bg-neon/90 backdrop-blur-xl border-b border-black/10"
+              : "py-3 sm:py-4 md:py-5 bg-transparent"
             : scrolled 
-              ? "py-3 bg-surface/70 backdrop-blur-xl border-b border-ink/10 md:bg-surface/50" 
-              : "py-5 bg-surface/70 backdrop-blur-xl border-b border-ink/10 md:bg-transparent md:backdrop-blur-none md:border-b-transparent"
+              ? "py-2.5 sm:py-3 bg-surface/70 backdrop-blur-xl border-b border-ink/10 md:bg-surface/50" 
+              : "py-3 sm:py-4 md:py-5 bg-surface/70 backdrop-blur-xl border-b border-ink/10 md:bg-transparent md:backdrop-blur-none md:border-b-transparent"
       }`}
     >
       <a 
@@ -52,10 +52,16 @@ export function Header({
           alt="ondwariobiko monogram" 
           width={64} 
           height={64} 
-          className={`nav-logo object-contain shrink-0 transition-all duration-500 ease-out transform-gpu ${open ? "rounded-full brightness-0 filter" : ""} ${scrolled && !open ? "size-11 md:size-12" : "size-12 md:size-14"}`} 
+          className={`nav-logo object-contain shrink-0 transition-all duration-500 ease-out transform-gpu ${
+            open ? "rounded-full brightness-0 filter" : ""
+          } ${
+            scrolled && !open 
+              ? "size-10 sm:size-11 md:size-12" 
+              : "size-10 sm:size-12 md:size-14"
+          }`} 
         />
         <span 
-          className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 pr-2 ${
+          className={`hidden sm:inline-block overflow-hidden whitespace-nowrap font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight leading-none drop-shadow-md transition-all duration-500 pr-2 ${
             open 
               ? "text-black opacity-100 max-w-[600px] translate-x-0" 
               : isOverNeon
@@ -69,13 +75,13 @@ export function Header({
         </span>
       </a>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <button
           onClick={() => setOpen((o) => !o)}
           aria-label={open ? "Close menu" : "Open menu"}
-          className="relative z-[60] flex items-center gap-3 group cursor-pointer"
+          className="relative z-[60] flex items-center gap-2 sm:gap-3 group cursor-pointer"
         >
-          <span className={`font-mono text-xs uppercase tracking-[0.25em] transition-colors ${
+          <span className={`font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] transition-colors ${
             open 
               ? "text-black font-semibold" 
               : isOverNeon 
@@ -84,27 +90,27 @@ export function Header({
           }`}>
             {open ? "Close" : "Menu"}
           </span>
-          <span className={`size-14 rounded-full grid place-items-center transition-all duration-500 ${
+          <span className={`size-11 sm:size-12 md:size-14 rounded-full grid place-items-center transition-all duration-500 ${
             open 
               ? "bg-black rotate-90" 
               : isOverNeon
                 ? "bg-black group-hover:scale-110"
                 : "bg-neon group-hover:scale-110"
           }`}>
-            <span className="relative block w-5 h-3">
-              <span className={`absolute left-0 h-0.5 w-5 transition-all duration-500 ${
+            <span className="relative block w-4 sm:w-5 h-2.5 sm:h-3">
+              <span className={`absolute left-0 h-0.5 w-4 sm:w-5 transition-all duration-500 ${
                 open 
-                  ? "top-1.5 rotate-45 bg-neon" 
+                  ? "top-1 sm:top-1.5 rotate-45 bg-neon" 
                   : isOverNeon 
                     ? "top-0 bg-neon" 
                     : "top-0 bg-black"
               }`} />
               <span className={`absolute left-0 h-0.5 transition-all duration-500 ${
                 open 
-                  ? "top-1.5 w-5 -rotate-45 bg-neon" 
+                  ? "top-1 sm:top-1.5 w-4 sm:w-5 -rotate-45 bg-neon" 
                   : isOverNeon 
-                    ? "top-2.5 w-3 bg-neon" 
-                    : "top-2.5 w-3 bg-black"
+                    ? "top-2 sm:top-2.5 w-2.5 sm:w-3 bg-neon" 
+                    : "top-2 sm:top-2.5 w-2.5 sm:w-3 bg-black"
               }`} />
             </span>
           </span>

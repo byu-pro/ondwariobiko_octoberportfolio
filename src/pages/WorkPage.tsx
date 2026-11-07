@@ -263,47 +263,34 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       {/* FULL-WIDTH HERO HEADER SECTION WITH LIME GREEN BACKGROUND */}
       <section 
         id="home-hero" 
-        className="relative w-full bg-neon text-black pt-28 sm:pt-36 md:pt-40 lg:pt-44 pb-14 sm:pb-20 md:pb-24 px-5 md:px-8 lg:px-12 border-b border-black/15 overflow-hidden"
+        className="relative w-full bg-neon text-black pt-24 sm:pt-32 md:pt-40 lg:pt-44 pb-12 sm:pb-16 md:pb-24 px-5 sm:px-8 md:px-12 border-b border-black/15 overflow-hidden"
       >
-        <div className="max-w-[1400px] mx-auto">
-          {/* Eyebrow & Status Row */}
-          <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-black/75 mb-6 sm:mb-8 md:mb-10 pb-4 border-b border-black/15">
-            <div className="flex items-center gap-2.5">
-              <span className="size-2 rounded-full bg-black animate-pulse" />
-              <span className="font-bold">Available for Q1 / Q2 Projects</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-4 text-black/60 font-medium">
-              <span>Nairobi, Kenya</span>
-              <span>•</span>
-              <span>Working Worldwide</span>
-            </div>
-          </div>
-
+        <div className="max-w-[1400px] mx-auto flex flex-col justify-center">
           {/* Main Headline */}
-          <h1 className="font-display font-extrabold uppercase tracking-tight leading-[0.88] text-[clamp(2.4rem,8.5vw,8.5rem)] text-black">
+          <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.95] sm:leading-[0.88] text-[clamp(1.75rem,6.8vw,7.5rem)] text-black break-words [overflow-wrap:anywhere]">
             <span className="block animate-rise">Hi, I'm John Obiko.</span>
-            <span className="block mt-2 sm:mt-3">
+            <span className="block mt-2 sm:mt-4">
               A <span className="text-stroke-black">Creative</span> multidisciplinary designer
               <span className="inline-block text-black">.</span>
             </span>
           </h1>
 
           {/* Subtitle / Bio Description */}
-          <div className="mt-6 sm:mt-8 md:mt-10 max-w-3xl">
-            <p className="text-lg sm:text-2xl md:text-3xl font-medium leading-snug tracking-tight text-black/85">
+          <div className="mt-5 sm:mt-7 md:mt-9 max-w-3xl">
+            <p className="text-base sm:text-xl md:text-2xl lg:text-3xl font-medium leading-snug tracking-tight text-black/85">
               Crafting bespoke brand identity systems, custom logos, intuitive UI/UX, and high-performance frontend websites with 10+ years of solo craft.
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="mt-8 sm:mt-10 md:mt-12 flex flex-wrap items-center gap-3.5 sm:gap-5">
+          <div className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <button
               type="button"
               onClick={() => {
                 const el = document.getElementById('work-projects');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex items-center gap-3 bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-7 sm:px-9 py-4 rounded-full font-bold transition-transform duration-300 hover:scale-105 cursor-pointer shadow-lg"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md"
             >
               <span>Explore Selected Work</span>
               <span className="text-sm">↓</span>
@@ -314,7 +301,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 <button
                   type="button"
                   onClick={() => onNavigate('contact')}
-                  className="inline-flex items-center gap-3 border-2 border-black text-black font-mono text-xs uppercase tracking-[0.2em] px-7 sm:px-9 py-4 rounded-full font-bold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-black text-black font-mono text-xs uppercase tracking-[0.2em] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
                 >
                   <span>Start a Project</span>
                   <span className="text-sm">⟶</span>
@@ -323,32 +310,12 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 <button
                   type="button"
                   onClick={() => onNavigate('consultation')}
-                  className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-black/80 hover:text-black underline underline-offset-4 font-semibold px-2 py-2 cursor-pointer transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-black/80 hover:text-black underline underline-offset-4 font-semibold px-3 py-2 cursor-pointer transition-colors"
                 >
                   Free 1-Hr Call ↗
                 </button>
               </>
             )}
-          </div>
-
-          {/* Disciplines / Summary Grid */}
-          <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-black/15 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 font-mono text-xs uppercase tracking-wider text-black">
-            <div>
-              <span className="block text-[10px] text-black/50 tracking-[0.2em] mb-1">01 / Focus</span>
-              <span className="font-bold">Brand Identity & Logos</span>
-            </div>
-            <div>
-              <span className="block text-[10px] text-black/50 tracking-[0.2em] mb-1">02 / Digital</span>
-              <span className="font-bold">UI/UX & Web Design</span>
-            </div>
-            <div>
-              <span className="block text-[10px] text-black/50 tracking-[0.2em] mb-1">03 / Code</span>
-              <span className="font-bold">Frontend Development</span>
-            </div>
-            <div>
-              <span className="block text-[10px] text-black/50 tracking-[0.2em] mb-1">04 / Experience</span>
-              <span className="font-bold">10+ Years Solo Craft</span>
-            </div>
           </div>
         </div>
       </section>
