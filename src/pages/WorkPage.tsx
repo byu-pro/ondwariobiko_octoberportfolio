@@ -268,6 +268,51 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         {/* ============================================================== */}
         <div className="relative z-10 max-w-[1100px] w-full mx-auto flex flex-col items-center justify-center text-center pt-1 sm:pt-2 md:pt-3">
 
+          {/* CURVED MARQUEE FRAME TICKER (What I Am & Services - Inspired by cchora.com/studio) */}
+          <div className="mb-4 sm:mb-6 md:mb-7 max-w-[310px] sm:max-w-[420px] md:max-w-[480px] w-full mx-auto select-none">
+            <div className="relative w-full rounded-full bg-black text-white border-2 border-black py-2 sm:py-2.5 px-3 overflow-hidden shadow-[4px_4px_0px_#000] flex items-center group cursor-default">
+              
+              {/* Left & Right edge fade gradients to soften entrance/exit into the curved frame */}
+              <div className="absolute left-0 inset-y-0 w-6 sm:w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none rounded-l-full" />
+              <div className="absolute right-0 inset-y-0 w-6 sm:w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none rounded-r-full" />
+
+              {/* Seamless looping marquee track */}
+              <div className="flex w-max animate-marquee [animation-duration:32s] items-center will-change-transform group-hover:[animation-play-state:paused]">
+                {/* Track 1 */}
+                <div className="flex items-center gap-4 sm:gap-6 shrink-0 pr-4 sm:pr-6 font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] font-bold text-white">
+                  <span>Brand Designer &amp; Web Developer</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>Custom Logo Systems</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>Brand Identity Design</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>UI/UX &amp; Web Development</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>100% Bespoke Craft</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>Figma ➔ Code ➔ Web</span>
+                  <span className="text-neon text-xs">✦</span>
+                </div>
+
+                {/* Track 2 (Exact duplicate for seamless 0 -> -50% infinite marquee loop) */}
+                <div className="flex items-center gap-4 sm:gap-6 shrink-0 pr-4 sm:pr-6 font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] font-bold text-white" aria-hidden="true">
+                  <span>Brand Designer &amp; Web Developer</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>Custom Logo Systems</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>Brand Identity Design</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>UI/UX &amp; Web Development</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>100% Bespoke Craft</span>
+                  <span className="text-neon text-xs">✦</span>
+                  <span>Figma ➔ Code ➔ Web</span>
+                  <span className="text-neon text-xs">✦</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Main Headline */}
           <h1 className="font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
             <span className="block">Custom logos &amp;</span>
