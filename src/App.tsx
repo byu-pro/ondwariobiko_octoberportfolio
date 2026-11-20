@@ -156,7 +156,7 @@ export default function App() {
       )}
 
       {/* CURRENT PAGE VIEW */}
-      <div className="flex-1 w-full">
+      <div key={`${currentRoute}-${projectSlug}`} className="page-transition flex-1 w-full">
         {currentRoute === 'work' && <WorkPage base={base} onNavigate={navigateTo} />}
         {currentRoute === 'about' && <AboutPage base={base} onNavigate={navigateTo} />}
         {currentRoute === 'contact' && <ContactPage />}

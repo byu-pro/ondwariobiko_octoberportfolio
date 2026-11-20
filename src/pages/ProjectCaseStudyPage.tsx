@@ -9,28 +9,28 @@ interface ProjectCaseStudyPageProps {
 
 const caseStudies = {
   'pelican-social': {
-    number: '01', title: 'Pelican Social', subtitle: 'A Caribbean welcome with a distinct point of view.', category: 'Brand identity · Restaurant', image: 'pelicansocial_thumbnaildesktop.png',
+    number: '01', title: 'Pelican Social', subtitle: 'A Caribbean welcome with a distinct point of view.', category: 'Brand identity · Restaurant', image: 'pelicansocial_thumbnaildesktop.png', links: [['Pelican Social website', 'https://pelicansocialsxm.com/'], ['Maho Group venue page', 'https://mahowineanddine.com/venues/pelican-social']],
     context: 'Pelican Social is a bar and grill in Simpson Bay, Sint Maarten, serving resort visitors and local guests in a destination full of dining choices.',
     challenge: 'The brand needed to communicate a varied, freshly prepared menu and a relaxed Caribbean atmosphere, while giving visitors a memorable name and identity to recognize.',
     response: ['Created a complete logo and brand identity direction around the Pelican Social name.', 'Balanced a polished, welcoming restaurant feel with the client’s boho-chic Caribbean setting.', 'Designed the identity to work across digital touchpoints and on-premise customer materials.'],
     value: 'A distinctive identity gives guests a clearer sense of the experience before they arrive and helps the restaurant stand apart in a busy resort destination.'
   },
   'ikon-trailers': {
-    number: '02', title: 'IKON Trailers', subtitle: 'A confident identity built for heavy-duty work.', category: 'Brand identity · Industrial', image: 'ikontrailers_thumbnailldesktop.png',
+    number: '02', title: 'IKON Trailers', subtitle: 'A confident identity built for heavy-duty work.', category: 'Brand identity · Industrial', image: 'ikontrailers_thumbnailldesktop.png', links: [['IKON Trailers website', 'https://ikontrailers.com/']],
     context: 'IKON Trailers sells heavy-duty trailers in San Antonio, Texas, serving owner-operators as well as large corporate buyers across several trailer categories.',
     challenge: 'The business wanted its identity to express the strength and high standards behind the IKON name, while earning confidence from buyers with very different operating scales.',
     response: ['Developed a logo and brand identity for a heavy-duty trailer dealer.', 'Used a strong, assured visual character suited to an industrial sales environment.', 'Kept the identity focused on the IKON name and the quality of the service it represents.'],
     value: 'A clear, professional identity helps the business present itself consistently to individual operators and enterprise buyers, supporting trust at the start of a considered purchase.'
   },
   'iron-acre': {
-    number: '03', title: 'Iron Acre Land Co', subtitle: 'A straightforward identity ready for the field.', category: 'Brand identity · Construction', image: 'ironacre_thumbnaildesktop.png',
+    number: '03', title: 'Iron Acre Land Co', subtitle: 'A straightforward identity ready for the field.', category: 'Brand identity · Construction', image: 'ironacre_thumbnaildesktop.png', links: [['Iron Acre Land Co website', 'https://www.ironacrelandco.com/']],
     context: 'Iron Acre Land Co provides excavation and land management for landowners and homeowners, with work spanning land, equine, and contractor settings.',
     challenge: 'The logo needed to feel tough and uncomplicated, reproduce clearly on trucks, machinery, workwear, and hats, and avoid narrowing the company to only a farm or horse audience.',
     response: ['Built the identity around the full Iron Acre Land Co name.', 'Kept the visual direction simple, strong, and grounded in the client’s black-and-white preference.', 'Designed for practical recognition across vehicles, equipment, clothing, and small-format uses.'],
     value: 'A versatile identity makes it easier for customers and partners to recognize the company wherever the work happens, from a job site to a first conversation.'
   },
   'friends-of-unionville': {
-    number: '04', title: 'Friends of Unionville', subtitle: 'A community identity rooted in place and shared purpose.', category: 'Brand identity · Non-profit', image: 'friendsofunionville_desktopthumbnail.png',
+    number: '04', title: 'Friends of Unionville', subtitle: 'A community identity rooted in place and shared purpose.', category: 'Brand identity · Non-profit', image: 'friendsofunionville_desktopthumbnail.png', links: [['Friends of Unionville website', 'https://www.friendsofunionville.org/']],
     context: 'Friends of Unionville is a new non-profit working with residents, local businesses, and stakeholders to steward a historic village and its public spaces.',
     challenge: 'As a new organization, it needed a recognizable identity that could express heritage, connection, walkability, and care for the village’s future without blending into local organizations already using blue.',
     response: ['Created a logo direction for the Friends of Unionville name and “Est. 2025” detail.', 'Explored a mature, sophisticated visual style using greens, reds, and other suitable colors.', 'Connected the identity to the village’s crossroads, historic character, and collaborative mission.'],
@@ -51,7 +51,7 @@ const caseStudies = {
     value: 'A thoughtful interface helps the service communicate its purpose and makes its tools easier to navigate. It supports the product experience without promising a medical outcome.'
   },
   'green-essential': {
-    number: '07', title: 'Green Essentials', subtitle: 'Bringing two outdoor services together in one identity.', category: 'Logo design · Home services', image: 'greenessential_thumbnaildesktop.png',
+    number: '07', title: 'Green Essentials', subtitle: 'Bringing two outdoor services together in one identity.', category: 'Logo design · Home services', image: 'greenessential_thumbnaildesktop.png', links: [['Green Essentials website', 'https://www.greenessentials.info/'], ['Green Essentials profile', 'https://www.alignable.com/loganville-ga/green-essentials-lawn-service']],
     context: 'Green Essentials offers lawn fertilization, weed control, and mosquito treatments to people who want a healthier lawn and a more comfortable yard.',
     challenge: 'The logo needed to make two related services—lawn care and mosquito control—clear to homeowners at a glance.',
     response: ['Developed a logo direction for the Green Essentials name.', 'Brought the lawn and mosquito service cues together in one visual identity.', 'Explored a blue-and-green palette suited to the environmental and outdoor service category.'],
@@ -101,8 +101,23 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       </section>
 
       <section className="px-3 sm:px-5 md:px-8 pb-14 sm:pb-20">
-        <div className="max-w-[1600px] mx-auto overflow-hidden border border-white/10 bg-neutral-950">
-          <img src={`${base}images/${project.image}`} alt={`${project.title} project design`} className="block w-full h-auto max-h-[820px] object-cover object-center" />
+        <div className="max-w-[1600px] mx-auto overflow-hidden border border-white/10 bg-neutral-950 group">
+          <img src={`${base}images/${project.image}`} alt={`${project.title} project design`} className="block w-full h-auto max-h-[820px] object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.025]" />
+        </div>
+      </section>
+
+      <section className="px-5 md:px-8 pb-16 sm:pb-24">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex items-end justify-between gap-6 mb-7">
+            <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-3">Project imagery</p><h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl">The work in detail</h2></div>
+            <p className="hidden sm:block font-mono text-[10px] uppercase tracking-wider text-ink/40">Image sizes shown at 2× export resolution</p>
+          </div>
+          <div className="grid md:grid-cols-12 gap-4 sm:gap-5">
+            <div className="md:col-span-7 aspect-[16/10] rounded-2xl border border-dashed border-ink/25 bg-white/[0.025] grid place-items-center text-center p-6 transition-colors duration-500 hover:border-neon/70 hover:bg-neon/[0.035]"><div><span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">01 / Featured visual</span><p className="mt-2 font-display uppercase text-xl sm:text-2xl">1920 × 1200 px</p><p className="mt-2 font-sans text-xs text-ink/45">16:10 · JPG or WebP</p></div></div>
+            <div className="md:col-span-5 aspect-[4/5] rounded-2xl border border-dashed border-ink/25 bg-white/[0.025] grid place-items-center text-center p-6 transition-colors duration-500 hover:border-neon/70 hover:bg-neon/[0.035]"><div><span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">02 / Detail or mobile view</span><p className="mt-2 font-display uppercase text-xl sm:text-2xl">1200 × 1500 px</p><p className="mt-2 font-sans text-xs text-ink/45">4:5 · JPG or WebP</p></div></div>
+            <div className="md:col-span-12 aspect-[2/1] rounded-2xl border border-dashed border-ink/25 bg-white/[0.025] grid place-items-center text-center p-6 transition-colors duration-500 hover:border-neon/70 hover:bg-neon/[0.035]"><div><span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">03 / Wide application or process image</span><p className="mt-2 font-display uppercase text-xl sm:text-2xl">2400 × 1200 px</p><p className="mt-2 font-sans text-xs text-ink/45">2:1 · JPG or WebP</p></div></div>
+          </div>
+          <p className="mt-4 font-sans text-xs text-ink/45">These are recommended export sizes. Place your finished files in <code className="text-accent-ink">public/images/case-studies/</code>; we can connect them after you choose the final images.</p>
         </div>
       </section>
 
@@ -141,6 +156,8 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           </ul>
         </div>
       </section>
+
+      {project.links.length > 0 && <section className="px-5 md:px-8 py-12 sm:py-16 border-y border-ink/10"><div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6"><div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2">Explore the business</p><h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl">Project links</h2></div><div className="flex flex-wrap gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.15em] hover:border-neon hover:text-accent-ink transition-all duration-300 hover:-translate-y-0.5">{label} ↗</a>)}</div></div></section>}
 
       <section className="px-5 md:px-8 py-16 sm:py-24 md:py-28">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
