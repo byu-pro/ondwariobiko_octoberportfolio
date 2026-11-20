@@ -37,7 +37,7 @@ const caseStudies = {
     value: 'A clear identity gives the organization a consistent way to introduce its mission, build recognition, and bring community initiatives under one shared banner.'
   },
   'sound-curves': {
-    number: '05', title: 'SoundCurves', subtitle: 'A premium earphone brand for audio enthusiasts and people exploring high-end sound.', category: 'Website design · Consumer technology', location: 'Client location not specified', caseStudyThumbnail: 'qbysoundcurveslogo_casestudythumbnail.png', image: 'soundcurves_thumbnaildesktop.png', links: [['SoundCurves website', 'http://www.soundcurves.com']],
+    number: '05', title: 'SoundCurves', subtitle: 'A premium earphone brand for audio enthusiasts and people exploring high-end sound.', category: 'Website design · Consumer technology', location: 'Client location not specified', caseStudyThumbnail: 'qbysoundcurveslogo_casestudythumbnail.png', image: 'soundcurves_thumbnaildesktop.png', links: [],
     context: 'SoundCurves sells premium earphones priced at $799 to two groups: experienced audio enthusiasts and people who have not yet tried premium audio.',
     challenge: 'The website needed to serve both audiences: give knowledgeable buyers the product and technology detail they expect, while helping newcomers understand why the listening experience merits the investment.',
     response: ['Planned a five-page experience covering the home, product, technology, and two campaign landing pages.', 'Organized navigation and page content around product discovery, education, and clear next steps.', 'Designed desktop and mobile layouts to support both comparison-minded visitors and first-time premium buyers.'],
@@ -108,7 +108,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       <section className="w-full pb-12 sm:pb-16">
         <img src={`${base}images/${project.caseStudyThumbnail}`} alt={`${project.title} project thumbnail`} className="block h-auto w-full object-cover" />
         <div className="max-w-[1400px] mx-auto px-5 md:px-8">
-          <aside className="mt-8 sm:mt-10 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <aside className="mt-12 sm:mt-14 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">Client</p><h2 className="mt-3 font-display uppercase font-bold text-2xl sm:text-3xl">{project.title}</h2><p className="mt-3 font-sans text-sm text-ink/60">{project.location}</p></div>
             {project.links.length > 0 && <div className="flex flex-wrap gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.15em] hover:border-neon hover:text-accent-ink transition-all duration-300 hover:-translate-y-0.5">{label} ↗</a>)}</div>}
           </aside>
