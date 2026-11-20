@@ -28,6 +28,17 @@ function getProjectSlugFromHash() {
   return window.location.hash.split('/')[2] ?? '';
 }
 
+const projectBrowserTitles: Record<string, string> = {
+  'pelican-social': 'Pelican Social — Brand Identity | Ondwari Obiko',
+  'ikon-trailers': 'IKON Trailers — Brand Identity | Ondwari Obiko',
+  'iron-acre': 'Iron Acre Land Co — Brand Identity | Ondwari Obiko',
+  'friends-of-unionville': 'Friends of Unionville — Brand Identity | Ondwari Obiko',
+  'sound-curves': 'SoundCurves — Website Design | Ondwari Obiko',
+  'moods-and-nerds': 'Moods N Meds — Website Design | Ondwari Obiko',
+  'green-essential': 'Green Essentials — Logo Design | Ondwari Obiko',
+  'lewis-park': 'Lewis Park Pickleball — Apparel Design | Ondwari Obiko',
+};
+
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>(getRouteFromHash);
   const [projectSlug, setProjectSlug] = useState<string>(getProjectSlugFromHash);
@@ -61,27 +72,29 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  // Update document title dynamically based on active page
+  // Keep the browser tab title in sync with the current page and project.
   useEffect(() => {
+    if (currentRoute === 'project') {
+      document.title = projectBrowserTitles[projectSlug] ?? 'Project Not Found | Ondwari Obiko';
+      return;
+    }
+
     switch (currentRoute) {
       case 'about':
-        document.title = "About Me & Services | John Obiko — Designer & Developer";
+        document.title = "About & Services | John Obiko — Designer & Developer";
         break;
       case 'contact':
-        document.title = "Contact Me | Ondwari Obiko — Start a Project";
+        document.title = "Contact | Ondwari Obiko — Start a Project";
         break;
       case 'consultation':
-        document.title = "Free 1-Hour Consultation | Book a Call with Me";
-        break;
-      case 'project':
-        document.title = "Project Case Study | Ondwari Obiko — Brand Designer & Developer";
+        document.title = "Free 1-Hour Consultation | Ondwari Obiko";
         break;
       case 'work':
       default:
-        document.title = "Ondwari Obiko | Brand Designer, UI/UX Designer & Frontend Developer";
+        document.title = "Selected Work | Ondwari Obiko — Brand, UI/UX & Web Design";
         break;
     }
-  }, [currentRoute]);
+  }, [currentRoute, projectSlug]);
 
   // Keyboard accessibility
   useEffect(() => {
