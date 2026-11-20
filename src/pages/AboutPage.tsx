@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PageHero } from '../components/PageHero';
 import { PageRoute } from '../types';
+import { responsiveImageSrcSet } from '../utils/images';
 
 interface AboutPageProps {
   base: string;
@@ -191,11 +192,14 @@ function ProfilePhotoFullWidth({ base }: { base: string }) {
   return (
     <div className="relative w-full aspect-[16/9] max-h-[760px] bg-neutral-950 overflow-hidden group select-none">
       <img
-        src={`${base}images/aboutprofileimage_fullwidth.png`}
+        src={`${base}images/aboutprofileimage_fullwidth.webp`}
         alt="John Obiko — Studio & Creative Direction"
         width={1920}
         height={1080}
+        srcSet={responsiveImageSrcSet(`${base}images/aboutprofileimage_fullwidth.webp`)}
+        sizes="100vw"
         loading="eager"
+        fetchPriority="high"
         decoding="async"
         className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 ease-out"
       />
@@ -294,10 +298,12 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       <section className="w-full pb-14 sm:pb-20 md:pb-28 overflow-hidden" aria-label="John Obiko Studio & Creative Direction">
         <div className="relative w-full aspect-[16/9] max-h-[760px] bg-neutral-950 overflow-hidden group select-none">
           <img
-            src={`${base}images/aboutimage_2.png`}
+            src={`${base}images/aboutimage_2.webp`}
             alt="John Obiko — Studio & Creative Direction"
             width={1920}
             height={1080}
+            srcSet={responsiveImageSrcSet(`${base}images/aboutimage_2.webp`)}
+            sizes="100vw"
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 ease-out"

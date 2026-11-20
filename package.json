@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node -e \"import('node:fs').then(fs => fs.copyFileSync('index.dev.html', 'index.html'))\" && vite",
+    "dev": "node scripts/prepare-images.mjs && node -e \"import('node:fs').then(fs => fs.copyFileSync('index.dev.html', 'index.html'))\" && vite",
     "build": "node scripts/build.mjs",
     "preview": "vite preview"
   },

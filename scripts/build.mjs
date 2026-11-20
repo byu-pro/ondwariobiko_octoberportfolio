@@ -1,11 +1,9 @@
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
+import './prepare-images.mjs';
 
-// 1. Ensure index.html has the dev entry for Vite build and sync images to public
+// 1. Ensure index.html has the dev entry for Vite build
 fs.copyFileSync('index.dev.html', 'index.html');
-if (fs.existsSync('images')) {
-  fs.cpSync('images', 'public/images', { recursive: true });
-}
 
 // 2. Run vite build
 execSync('npx vite build', { stdio: 'inherit' });

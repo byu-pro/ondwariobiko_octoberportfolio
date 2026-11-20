@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, PenTool, Star, Code2, Zap } from 'lucide-react';
 import { FullWidthProject, PageRoute } from '../types';
+import { responsiveImageSrcSet } from '../utils/images';
 
 interface WorkPageProps {
   base: string;
@@ -80,18 +81,6 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
       onClick={() => onOpenProject(project)}
       className="group relative w-full aspect-[18/9] sm:aspect-[19/9] lg:aspect-[21/10] max-h-[600px] min-h-[200px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
     >
-      {/* Invisible preloader to verify whether logo file exists without displaying broken image icons */}
-      {project.logoImage && (
-        <img 
-          src={project.logoImage} 
-          alt="" 
-          aria-hidden="true" 
-          onLoad={() => setLogoAvailable(true)} 
-          onError={() => setLogoAvailable(false)}
-          className="hidden" 
-        />
-      )}
-
       {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL (Full Width, GPU-accelerated) */}
       <div 
         className={`absolute inset-0 overflow-hidden transition-opacity duration-500 ease-out transform-gpu backface-hidden ${
@@ -103,7 +92,10 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
           alt={project.title}
           width={1920}
           height={1080}
-          loading={idx < 2 ? "eager" : "lazy"}
+          srcSet={responsiveImageSrcSet(project.image)}
+          sizes="100vw"
+          loading={idx === 0 ? "eager" : "lazy"}
+          fetchPriority={idx === 0 ? "high" : "auto"}
           decoding="async"
           className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
             activeView === 'thumbnail' ? 'scale-100' : 'scale-[1.03]'
@@ -112,10 +104,10 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
       </div>
 
       {/* LAYER 2: PROJECT LOGO THUMBNAIL (Full Width, Seamless Cinematic Zoom-In) */}
-      {logoAvailable && project.logoImage && (
+      {project.logoImage && (
         <div 
           className={`absolute inset-0 overflow-hidden transition-opacity duration-500 ease-out transform-gpu backface-hidden ${
-            activeView === 'logo' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
+            logoAvailable && activeView === 'logo' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
           }`}
         >
           <img 
@@ -123,8 +115,12 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
             alt={`${project.title} Logo`}
             width={1920}
             height={1080}
+            srcSet={responsiveImageSrcSet(project.logoImage)}
+            sizes="100vw"
             loading="lazy"
             decoding="async"
+            onLoad={() => setLogoAvailable(true)}
+            onError={() => setLogoAvailable(false)}
             className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
               activeView === 'logo' ? 'scale-[1.03]' : 'scale-100'
             } group-hover:scale-[1.05]`}
@@ -168,73 +164,73 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       id: 'pelican-social',
       title: 'PELICAN SOCIAL BAR AND GRILL',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/pelicansocial_thumbnaildesktop.png`,
-      mobileImage: `${base}images/pelicansocial_mobilethumbnail.png`,
-      logoImage: `${base}images/pelicansociallogo_casestudythumbnail.png`
+      image: `${base}images/pelicansocial_thumbnaildesktop.webp`,
+      mobileImage: `${base}images/pelicansocial_mobilethumbnail.webp`,
+      logoImage: `${base}images/pelicansociallogo_casestudythumbnail.webp`
     },
     {
       id: 'ikon-trailers',
       title: 'IKON TRAILERS.COM',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/ikontrailers_thumbnailldesktop.png`,
-      mobileImage: `${base}images/ikontrailers_mobilethumbnail.png`,
-      logoImage: `${base}images/ikontrailerslogo_casestudythumbnail.png`
+      image: `${base}images/ikontrailers_thumbnailldesktop.webp`,
+      mobileImage: `${base}images/ikontrailers_mobilethumbnail.webp`,
+      logoImage: `${base}images/ikontrailerslogo_casestudythumbnail.webp`
     },
     {
       id: 'iron-acre',
       title: 'IRON ACRE LAND CO',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/ironacre_thumbnaildesktop.png`,
-      mobileImage: `${base}images/ironacre_mobilethumbnail.png`,
-      logoImage: `${base}images/ironacrelogo_casestudythumbnail.png`
+      image: `${base}images/ironacre_thumbnaildesktop.webp`,
+      mobileImage: `${base}images/ironacre_mobilethumbnail.webp`,
+      logoImage: `${base}images/ironacrelogo_casestudythumbnail.webp`
     },
     {
       id: 'friends-of-unionville',
       title: 'FRIENDS OF UNIONVILLE',
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
-      image: `${base}images/friendsofunionville_desktopthumbnail.png`,
-      mobileImage: `${base}images/friendsofunionville_mobilethumbnail.png`,
-      logoImage: `${base}images/friendsofunionvillelogo_casestudythumbnail.png`
+      image: `${base}images/friendsofunionville_desktopthumbnail.webp`,
+      mobileImage: `${base}images/friendsofunionville_mobilethumbnail.webp`,
+      logoImage: `${base}images/friendsofunionvillelogo_casestudythumbnail.webp`
     },
     {
       id: 'sound-curves',
       title: 'SOUND CURVES WEBSITE',
       category: 'WEBSITE DESIGN & DIGITAL PLATFORM',
-      image: `${base}images/soundcurves_thumbnaildesktop.png`,
-      mobileImage: `${base}images/soundcurves_mobilethumbnail.png`,
-      logoImage: `${base}images/qbysoundcurveslogo_casestudythumbnail.png`
+      image: `${base}images/soundcurves_thumbnaildesktop.webp`,
+      mobileImage: `${base}images/soundcurves_mobilethumbnail.webp`,
+      logoImage: `${base}images/qbysoundcurveslogo_casestudythumbnail.webp`
     },
     {
       id: 'moods-and-nerds',
       title: 'MOODS AND NERDS WEBSITE',
       category: 'WEBSITE DESIGN & WEB APP UI/UX',
-      image: `${base}images/moodnmeds_thumbnaildesktop.png`,
-      mobileImage: `${base}images/moodnmeds_mobilethumbnail.png`,
-      logoImage: `${base}images/moodsnmedsllogo_casestudythumbnail.png`
+      image: `${base}images/moodnmeds_thumbnaildesktop.webp`,
+      mobileImage: `${base}images/moodnmeds_mobilethumbnail.webp`,
+      logoImage: `${base}images/moodsnmedsllogo_casestudythumbnail.webp`
     },
     {
       id: 'yellow-dot-energy',
       title: 'YELLOW DOT ENERGY MOBILE APP',
       category: 'MOBILE APP UI/UX & PRODUCT STRATEGY',
-      image: `${base}images/yellowdot_desktopthumbnail.png`,
-      mobileImage: `${base}images/yellowdot_mobilethumbnail.png`,
-      logoImage: `${base}images/yellowdotlogo_casestudythumbnail.png`
+      image: `${base}images/yellowdot_desktopthumbnail.webp`,
+      mobileImage: `${base}images/yellowdot_mobilethumbnail.webp`,
+      logoImage: `${base}images/yellowdotlogo_casestudythumbnail.webp`
     },
     {
       id: 'green-essential',
       title: 'GREEN ESSENTIAL TURF AND MOSQUITO',
       category: 'LOGO DESIGN',
-      image: `${base}images/greenessential_thumbnaildesktop.png`,
-      mobileImage: `${base}images/greenessentials_mobilethumbnail.png`,
-      logoImage: `${base}images/greenessentialslogo_casestudythumbnail.png`
+      image: `${base}images/greenessential_thumbnaildesktop.webp`,
+      mobileImage: `${base}images/greenessentials_mobilethumbnail.webp`,
+      logoImage: `${base}images/greenessentialslogo_casestudythumbnail.webp`
     },
     {
       id: 'lewis-park',
       title: 'LEWIS PARK SACRAMENTO',
       category: 'T-SHIRT & APPAREL DESIGN',
-      image: `${base}images/lewispark_thumbnaildesktop.png`,
-      mobileImage: `${base}images/lewispark_mobilethumbnail.png`,
-      logoImage: `${base}images/lewisparklogo_casestudythumbnail.png`
+      image: `${base}images/lewispark_thumbnaildesktop.webp`,
+      mobileImage: `${base}images/lewispark_mobilethumbnail.webp`,
+      logoImage: `${base}images/lewisparklogo_casestudythumbnail.webp`
     }
   ];
 

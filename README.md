@@ -41,6 +41,7 @@ ondwariobiko_octoberportfolio/
 ### 1. Install dependencies
 ```bash
 npm install
+python -m pip install -r requirements.txt
 ```
 
 ### 2. Start the local development server
@@ -52,6 +53,8 @@ npm run dev
 ```bash
 npm run build
 ```
+
+Place new PNG or JPEG source images in `images/`. Development and production builds automatically create high-quality WebP files plus 960 px responsive variants, and deploy the WebP versions.
 
 ### 4. Preview the production build
 ```bash

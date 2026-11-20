@@ -51,14 +51,13 @@ export function Footer({
           src={`${base}images/logo-animation.webm`}
           poster={`${base}images/logo-animation-poster.webp`}
           className="block w-full h-full object-cover pointer-events-none border-0 outline-none"
-          autoPlay
           loop
           muted
           playsInline
           controls={false}
           disablePictureInPicture
           disableRemotePlayback
-          preload="auto"
+          preload="none"
           aria-hidden="true"
           tabIndex={-1}
         />
