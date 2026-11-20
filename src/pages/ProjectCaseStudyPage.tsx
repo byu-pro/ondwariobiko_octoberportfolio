@@ -85,7 +85,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
     );
   }
 
-  const titleFontSize = `clamp(0.75rem, calc(min(88vw, 1344px) / ${((project.title.length + 1) * 1.12).toFixed(2)}), 7rem)`;
+  const titleFontSize = `clamp(0.75rem, calc(95cqi / ${((project.title.length + 1) * 1.12).toFixed(2)}), 7rem)`;
 
   return (
     <main className="w-full overflow-x-hidden">
@@ -93,7 +93,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         <div className="max-w-[1400px] mx-auto">
           <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors">← All projects</button>
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
-            <div className="min-w-0">
+            <div className="min-w-0" style={{ containerType: 'inline-size' }}>
               <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">{project.number} / {project.category}</p>
               <h1 style={{ fontSize: titleFontSize }} className="max-w-full whitespace-nowrap font-display font-extrabold uppercase tracking-tighter leading-[0.92]">{project.title}<span className="text-accent-ink">.</span></h1>
               <p className="mt-5 max-w-3xl font-sans text-lg sm:text-xl xl:text-2xl text-ink/70 leading-snug">{project.subtitle}</p>
