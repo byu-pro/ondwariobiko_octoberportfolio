@@ -72,7 +72,6 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
   const currentIndex = projectOrder.findIndex(([projectSlug]) => projectSlug === slug);
   const [previousSlug, previousProject] = projectOrder[(currentIndex - 1 + projectOrder.length) % projectOrder.length];
   const [nextSlug, nextProject] = projectOrder[(currentIndex + 1) % projectOrder.length];
-
   if (!project) {
     return (
       <main className="px-5 md:px-8 pt-40 pb-24 min-h-[60vh]">
@@ -85,6 +84,8 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
     );
   }
 
+  const needsCompactTitle = project.title === 'Friends of Unionville' || project.title === 'Green Essentials' || project.title === 'Lewis Park Pickleball';
+
   return (
     <main className="w-full overflow-x-hidden">
       <section className="px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14">
@@ -92,7 +93,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors">← All projects</button>
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
             <div className="min-w-0">
-              <h1 className="max-w-full break-words text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.92] text-[clamp(2.25rem,8vw,7rem)]">{project.title === 'SoundCurves' ? <>Sound<wbr />Curves</> : project.title}</h1>
+              <h1 className={`max-w-full break-normal text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.92] ${needsCompactTitle ? 'text-[clamp(2rem,7vw,5.5rem)]' : 'text-[clamp(2.25rem,8vw,7rem)]'}`}>{project.title === 'SoundCurves' ? <>Sound<wbr />Curves</> : project.title}</h1>
               <p className="mt-4 max-w-3xl font-sans text-lg sm:text-xl xl:text-2xl text-ink/75 leading-snug">{project.subtitle}</p>
               <p className="mt-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">{project.number} / {project.category}</p>
             </div>
