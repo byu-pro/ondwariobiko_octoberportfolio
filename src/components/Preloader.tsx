@@ -86,16 +86,14 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
       aria-label="Loading portfolio"
       className="fixed inset-0 z-[9999] select-none pointer-events-auto overflow-hidden"
     >
-      {/* TOP CURTAIN SLAB */}
       <div
-        className={`absolute top-0 inset-x-0 h-1/2 bg-black border-b border-white/10 transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] origin-top ${
+        className={`absolute top-0 inset-x-0 h-1/2 bg-black transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] origin-top ${
           isExiting ? '-translate-y-full' : 'translate-y-0'
         }`}
       />
 
-      {/* BOTTOM CURTAIN SLAB */}
       <div
-        className={`absolute bottom-0 inset-x-0 h-1/2 bg-black border-t border-white/10 transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] origin-bottom ${
+        className={`absolute bottom-0 inset-x-0 h-1/2 bg-black transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] origin-bottom ${
           isExiting ? 'translate-y-full' : 'translate-y-0'
         }`}
       />
@@ -126,12 +124,6 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
             </span>
           </div>
 
-          <div className="mt-4 h-px w-40 sm:w-52 overflow-hidden bg-white/15">
-            <div
-              className="h-full bg-neon transition-all duration-100 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
         </div>
       </div>
     </div>
