@@ -9,56 +9,56 @@ interface ProjectCaseStudyPageProps {
 
 const caseStudies = {
   'pelican-social': {
-    number: '01', title: 'Pelican Social', subtitle: 'A Caribbean welcome with a distinct point of view.', category: 'Brand identity · Restaurant', location: 'Simpson Bay, Sint Maarten', logo: 'pelicansociallogo_thumbnail.png', image: 'pelicansocial_thumbnaildesktop.png', links: [['Pelican Social website', 'https://pelicansocialsxm.com/'], ['Maho Group venue page', 'https://mahowineanddine.com/venues/pelican-social']],
+    number: '01', title: 'Pelican Social', subtitle: 'A Caribbean bar and grill in Simpson Bay, Sint Maarten.', category: 'Brand identity · Restaurant', location: 'Simpson Bay, Sint Maarten', logo: 'pelicansociallogo_thumbnail.png', image: 'pelicansocial_thumbnaildesktop.png', links: [['Pelican Social website', 'https://pelicansocialsxm.com/'], ['Maho Group venue page', 'https://mahowineanddine.com/venues/pelican-social']],
     context: 'Pelican Social is a bar and grill in Simpson Bay, Sint Maarten, serving resort visitors and local guests in a destination full of dining choices.',
     challenge: 'The brand needed to communicate a varied, freshly prepared menu and a relaxed Caribbean atmosphere, while giving visitors a memorable name and identity to recognize.',
     response: ['Created a complete logo and brand identity direction around the Pelican Social name.', 'Balanced a polished, welcoming restaurant feel with the client’s boho-chic Caribbean setting.', 'Designed the identity to work across digital touchpoints and on-premise customer materials.'],
     value: 'A distinctive identity gives guests a clearer sense of the experience before they arrive and helps the restaurant stand apart in a busy resort destination.'
   },
   'ikon-trailers': {
-    number: '02', title: 'IKON Trailers', subtitle: 'A confident identity built for heavy-duty work.', category: 'Brand identity · Industrial', location: 'San Antonio, Texas, USA', logo: 'ikontrailerslogo_thumbnail.png', image: 'ikontrailers_thumbnailldesktop.png', links: [['IKON Trailers website', 'https://ikontrailers.com/']],
+    number: '02', title: 'IKON Trailers', subtitle: 'A heavy-duty trailer dealer serving owner-operators and businesses in San Antonio, Texas.', category: 'Brand identity · Industrial', location: 'San Antonio, Texas, USA', logo: 'ikontrailerslogo_thumbnail.png', image: 'ikontrailers_thumbnailldesktop.png', links: [['IKON Trailers website', 'https://ikontrailers.com/']],
     context: 'IKON Trailers sells heavy-duty trailers in San Antonio, Texas, serving owner-operators as well as large corporate buyers across several trailer categories.',
     challenge: 'The business wanted its identity to express the strength and high standards behind the IKON name, while earning confidence from buyers with very different operating scales.',
     response: ['Developed a logo and brand identity for a heavy-duty trailer dealer.', 'Used a strong, assured visual character suited to an industrial sales environment.', 'Kept the identity focused on the IKON name and the quality of the service it represents.'],
     value: 'A clear, professional identity helps the business present itself consistently to individual operators and enterprise buyers, supporting trust at the start of a considered purchase.'
   },
   'iron-acre': {
-    number: '03', title: 'Iron Acre Land Co', subtitle: 'A straightforward identity ready for the field.', category: 'Brand identity · Construction', location: 'United States', logo: 'ironacrelogo_thumbnail.png', image: 'ironacre_thumbnaildesktop.png', links: [['Iron Acre Land Co website', 'https://www.ironacrelandco.com/']],
+    number: '03', title: 'Iron Acre Land Co', subtitle: 'An excavation and land management company serving landowners and homeowners.', category: 'Brand identity · Construction', location: 'United States', logo: 'ironacrelogo_thumbnail.png', image: 'ironacre_thumbnaildesktop.png', links: [['Iron Acre Land Co website', 'https://www.ironacrelandco.com/']],
     context: 'Iron Acre Land Co provides excavation and land management for landowners and homeowners, with work spanning land, equine, and contractor settings.',
     challenge: 'The logo needed to feel tough and uncomplicated, reproduce clearly on trucks, machinery, workwear, and hats, and avoid narrowing the company to only a farm or horse audience.',
     response: ['Built the identity around the full Iron Acre Land Co name.', 'Kept the visual direction simple, strong, and grounded in the client’s black-and-white preference.', 'Designed for practical recognition across vehicles, equipment, clothing, and small-format uses.'],
     value: 'A versatile identity makes it easier for customers and partners to recognize the company wherever the work happens, from a job site to a first conversation.'
   },
   'friends-of-unionville': {
-    number: '04', title: 'Friends of Unionville', subtitle: 'A community identity rooted in place and shared purpose.', category: 'Brand identity · Non-profit', location: 'Unionville, Pennsylvania, USA', logo: 'friendsofunionvillelogo_thumbnail.png', image: 'friendsofunionville_desktopthumbnail.png', links: [['Friends of Unionville website', 'https://www.friendsofunionville.org/']],
+    number: '04', title: 'Friends of Unionville', subtitle: 'A nonprofit caring for the historic village of Unionville, Pennsylvania, in partnership with its community.', category: 'Brand identity · Non-profit', location: 'Unionville, Pennsylvania, USA', logo: 'friendsofunionvillelogo_thumbnail.png', image: 'friendsofunionville_desktopthumbnail.png', links: [['Friends of Unionville website', 'https://www.friendsofunionville.org/']],
     context: 'Friends of Unionville is a new non-profit working with residents, local businesses, and stakeholders to steward a historic village and its public spaces.',
     challenge: 'As a new organization, it needed a recognizable identity that could express heritage, connection, walkability, and care for the village’s future without blending into local organizations already using blue.',
     response: ['Created a logo direction for the Friends of Unionville name and “Est. 2025” detail.', 'Explored a mature, sophisticated visual style using greens, reds, and other suitable colors.', 'Connected the identity to the village’s crossroads, historic character, and collaborative mission.'],
     value: 'A clear identity gives the organization a consistent way to introduce its mission, build recognition, and bring community initiatives under one shared banner.'
   },
   'sound-curves': {
-    number: '05', title: 'SoundCurves', subtitle: 'Making a premium product easier to understand and want.', category: 'Website design · Consumer technology', location: 'Client location not specified', logo: 'soundcurveslogo_thumbnail.png', image: 'soundcurves_thumbnaildesktop.png', links: [['SoundCurves website', 'http://www.soundcurves.com']],
+    number: '05', title: 'SoundCurves', subtitle: 'A premium earphone brand for audio enthusiasts and people exploring high-end sound.', category: 'Website design · Consumer technology', location: 'Client location not specified', logo: 'soundcurveslogo_thumbnail.png', image: 'soundcurves_thumbnaildesktop.png', links: [['SoundCurves website', 'http://www.soundcurves.com']],
     context: 'SoundCurves sells premium earphones priced at $799 to two groups: experienced audio enthusiasts and people who have not yet tried premium audio.',
     challenge: 'The website needed to serve both audiences: give knowledgeable buyers the product and technology detail they expect, while helping newcomers understand why the listening experience merits the investment.',
     response: ['Planned a five-page experience covering the home, product, technology, and two campaign landing pages.', 'Organized navigation and page content around product discovery, education, and clear next steps.', 'Designed desktop and mobile layouts to support both comparison-minded visitors and first-time premium buyers.'],
     value: 'A well-structured product experience can make a high-consideration offer easier to evaluate, explain product value clearly, and guide interested visitors toward a purchase decision.'
   },
   'moods-and-nerds': {
-    number: '06', title: 'Moods N Meds', subtitle: 'A calm interface for sensitive, personal information.', category: 'Website design · Digital wellness', location: 'Client location not specified', logo: 'moodnnerdslogo_thumbnail.png', image: 'moodnmeds_thumbnaildesktop.png', links: [],
+    number: '06', title: 'Moods N Meds', subtitle: 'A digital wellness concept for anxiety support, mood tracking, and medication reviews.', category: 'Website design · Digital wellness', location: 'Client location not specified', logo: 'moodnnerdslogo_thumbnail.png', image: 'moodnmeds_thumbnaildesktop.png', links: [],
     context: 'Moods N Meds is a digital wellness concept for people experiencing anxiety, combining calming content with tools for daily mood logging and medication reviews.',
     challenge: 'The experience needed to feel vibrant yet calm and make several tasks easy to understand: finding relief resources, recording a daily mood, viewing past logs, writing medication reviews, and creating an account.',
     response: ['Designed a consistent visual direction across five pages: home, daily log, results, reviews, and sign-up.', 'Used a calm visual atmosphere informed by the client’s interest in nature and Japanese garden references.', 'Structured the key actions and information so users can understand what each page is for.'],
     value: 'A thoughtful interface helps the service communicate its purpose and makes its tools easier to navigate. It supports the product experience without promising a medical outcome.'
   },
   'green-essential': {
-    number: '07', title: 'Green Essentials', subtitle: 'Bringing two outdoor services together in one identity.', category: 'Logo design · Home services', location: 'Loganville, Georgia, USA', logo: 'greenessentiallogo_thumbnail.png', image: 'greenessential_thumbnaildesktop.png', links: [['Green Essentials website', 'https://www.greenessentials.info/'], ['Green Essentials profile', 'https://www.alignable.com/loganville-ga/green-essentials-lawn-service']],
+    number: '07', title: 'Green Essentials', subtitle: 'A home services company offering lawn fertilization, weed control, and mosquito treatments.', category: 'Logo design · Home services', location: 'Loganville, Georgia, USA', logo: 'greenessentiallogo_thumbnail.png', image: 'greenessential_thumbnaildesktop.png', links: [['Green Essentials website', 'https://www.greenessentials.info/'], ['Green Essentials profile', 'https://www.alignable.com/loganville-ga/green-essentials-lawn-service']],
     context: 'Green Essentials offers lawn fertilization, weed control, and mosquito treatments to people who want a healthier lawn and a more comfortable yard.',
     challenge: 'The logo needed to make two related services—lawn care and mosquito control—clear to homeowners at a glance.',
     response: ['Developed a logo direction for the Green Essentials name.', 'Brought the lawn and mosquito service cues together in one visual identity.', 'Explored a blue-and-green palette suited to the environmental and outdoor service category.'],
     value: 'Clear service cues can help homeowners quickly understand what the business offers and remember it when they are ready to improve their outdoor space.'
   },
   'lewis-park': {
-    number: '08', title: 'Lewis Park Pickleball', subtitle: 'A wearable mark for a neighborhood that plays together.', category: 'Apparel design · Community', location: 'Sacramento, California, USA', logo: 'lewisparklogo_thumbnail.png', image: 'lewispark_thumbnaildesktop.png', links: [],
+    number: '08', title: 'Lewis Park Pickleball', subtitle: 'A neighborhood pickleball group bringing local players together in Sacramento, California.', category: 'Apparel design · Community', location: 'Sacramento, California, USA', logo: 'lewisparklogo_thumbnail.png', image: 'lewispark_thumbnaildesktop.png', links: [],
     context: 'A diverse group of adults plays pickleball regularly at Lewis Park in Sacramento, California, bringing neighbors together for friendship and exercise.',
     challenge: 'The shirt graphic needed to appeal across genders and ages, read clearly in group photos, and give Lewis Park greater prominence than the city line.',
     response: ['Created a two-color design for navy shirts using white and neon green.', 'Made “Lewis Park” the primary message, with “Sacramento, California” in a supporting role.', 'Designed the graphic for easy reading and a shared sense of group identity.'],
@@ -85,18 +85,16 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
     );
   }
 
-  const titleFontSize = `clamp(0.75rem, calc(100cqi / ${((project.title.length + 1) * 1.12).toFixed(2)}), 7rem)`;
-
   return (
     <main className="w-full overflow-x-hidden">
       <section className="px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14">
         <div className="max-w-[1400px] mx-auto">
           <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors">← All projects</button>
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
-            <div className="min-w-0" style={{ containerType: 'inline-size' }}>
-              <h1 style={{ fontSize: titleFontSize }} className="max-w-full whitespace-nowrap font-display font-extrabold uppercase tracking-tighter leading-[0.92]">{project.title}</h1>
+            <div className="min-w-0">
+              <h1 className="max-w-full break-words text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.92] text-[clamp(2.25rem,8vw,7rem)]">{project.title === 'SoundCurves' ? <>Sound<wbr />Curves</> : project.title}</h1>
+              <p className="mt-4 max-w-3xl font-sans text-lg sm:text-xl xl:text-2xl text-ink/75 leading-snug">{project.subtitle}</p>
               <p className="mt-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">{project.number} / {project.category}</p>
-              <p className="mt-5 max-w-3xl font-sans text-lg sm:text-xl xl:text-2xl text-ink/70 leading-snug">{project.subtitle}</p>
             </div>
             <div className="min-w-0 xl:pt-1">
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 mb-3">Project focus</p>
