@@ -110,7 +110,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         <div className="max-w-[1400px] mx-auto px-5 md:px-8">
           <aside className="mt-8 sm:mt-10 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">Client</p><h2 className="mt-3 font-display uppercase font-bold text-2xl sm:text-3xl">{project.title}</h2><p className="mt-3 font-sans text-sm text-ink/60">{project.location}</p></div>
-            <div className="flex flex-wrap items-start gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent-ink hover:text-white transition-colors break-all">{label} ↗</a>)}</div>
+            {project.links.length > 0 && <div className="flex flex-wrap gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.15em] hover:border-neon hover:text-accent-ink transition-all duration-300 hover:-translate-y-0.5">{label} ↗</a>)}</div>}
           </aside>
         </div>
       </section>
@@ -172,8 +172,6 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           </ul>
         </div>
       </section>
-
-      {project.links.length > 0 && <section className="px-5 md:px-8 py-12 sm:py-16 border-y border-ink/10"><div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6"><div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2">Explore the business</p><h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl">Project links</h2></div><div className="flex flex-wrap gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.15em] hover:border-neon hover:text-accent-ink transition-all duration-300 hover:-translate-y-0.5">{label} ↗</a>)}</div></div></section>}
 
       <section className="px-5 md:px-8 py-16 sm:py-24 md:py-28">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
