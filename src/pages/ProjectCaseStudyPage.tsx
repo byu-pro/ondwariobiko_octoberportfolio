@@ -104,15 +104,15 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         </div>
       </section>
 
-      <section className="px-5 md:px-8 pb-12 sm:pb-16">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="aspect-[2/1] w-full rounded-2xl border border-dashed border-ink/25 bg-[radial-gradient(ellipse_at_center,rgba(217,253,23,0.08),transparent_65%)] grid place-items-center overflow-hidden p-6 sm:p-10 md:p-14 text-center transition-colors duration-500 hover:border-neon/70">
-            <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">Main project image / logo</span>
-              <p className="mt-2 font-display uppercase text-xl sm:text-2xl">2400 × 1200 px</p>
-              <p className="mt-2 font-sans text-xs text-ink/45">2:1 · JPG or WebP · full width</p>
-            </div>
+      <section className="w-full pb-12 sm:pb-16">
+        <div className="aspect-[2/1] w-full bg-[radial-gradient(ellipse_at_center,rgba(217,253,23,0.08),transparent_65%)] grid place-items-center overflow-hidden px-6 py-8 sm:px-10 sm:py-12 md:px-14 text-center">
+          <div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">Main project image / logo</span>
+            <p className="mt-2 font-display uppercase text-xl sm:text-2xl">2400 × 1200 px</p>
+            <p className="mt-2 font-sans text-xs text-ink/45">2:1 · JPG or WebP · full screen width</p>
           </div>
+        </div>
+        <div className="max-w-[1400px] mx-auto px-5 md:px-8">
           <aside className="mt-4 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">Client</p><h2 className="mt-3 font-display uppercase font-bold text-2xl sm:text-3xl">{project.title}</h2><p className="mt-3 font-sans text-sm text-ink/60">{project.location}</p></div>
             <div className="flex flex-wrap items-start gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent-ink hover:text-white transition-colors break-all">{label} ↗</a>)}</div>
