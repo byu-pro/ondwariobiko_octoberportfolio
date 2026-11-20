@@ -108,7 +108,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       <section className="w-full pb-12 sm:pb-16">
         <img src={`${base}images/${project.caseStudyThumbnail}`} alt={`${project.title} project thumbnail`} className="block h-auto w-full object-cover" />
         <div className="max-w-[1400px] mx-auto px-5 md:px-8">
-          <aside className="mt-4 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <aside className="mt-8 sm:mt-10 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">Client</p><h2 className="mt-3 font-display uppercase font-bold text-2xl sm:text-3xl">{project.title}</h2><p className="mt-3 font-sans text-sm text-ink/60">{project.location}</p></div>
             <div className="flex flex-wrap items-start gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent-ink hover:text-white transition-colors break-all">{label} ↗</a>)}</div>
           </aside>
