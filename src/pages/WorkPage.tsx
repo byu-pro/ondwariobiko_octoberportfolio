@@ -28,10 +28,10 @@ const clientBrands = [
 interface ProjectCardProps {
   project: FullWidthProject;
   idx: number;
-  onOpenLightbox: (project: FullWidthProject, currentImage: string) => void;
+  onOpenProject: (project: FullWidthProject) => void;
 }
 
-function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
+function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
   const [logoAvailable, setLogoAvailable] = useState<boolean>(false);
   const [activeView, setActiveView] = useState<'thumbnail' | 'logo'>('thumbnail');
   const [isInView, setIsInView] = useState<boolean>(false);
@@ -76,7 +76,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
   return (
     <section 
       ref={sectionRef}
-      onClick={() => onOpenLightbox(project, activeView === 'logo' && project.logoImage ? project.logoImage : project.image)}
+      onClick={() => onOpenProject(project)}
       className="group relative w-full aspect-[18/9] sm:aspect-[19/9] lg:aspect-[21/10] max-h-[600px] min-h-[200px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
     >
       {/* Invisible preloader to verify whether logo file exists without displaying broken image icons */}
@@ -237,8 +237,12 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
     }
   ];
 
-  const handleOpenLightbox = (project: FullWidthProject, currentImage: string) => {
-    setActivePreview({ project, image: currentImage });
+  const handleOpenProject = (project: FullWidthProject) => {
+    if (caseStudyIds.has(project.id)) {
+      window.location.hash = `#/case-study/${project.id}`;
+      return;
+    }
+    setActivePreview({ project, image: project.image });
   };
 
   return (
@@ -414,7 +418,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
             key={project.id} 
             project={project} 
             idx={idx} 
-            onOpenLightbox={handleOpenLightbox} 
+            onOpenProject={handleOpenProject} 
           />
         ))}
       </main>
