@@ -5,14 +5,6 @@ interface PreloaderProps {
   onComplete?: () => void;
 }
 
-const STATUS_MESSAGES = [
-  'SYSTEM: BOOTING KINETIC ENGINE',
-  'ASSETS: RESOLVING DISPLAY MATRIX',
-  'TYPOGRAPHY: SYNE & SPACE GROTESK MOUNTED',
-  'DESIGN SYSTEM: BRUTALIST GRID SYNCED',
-  'ONDWARIOBIKO // ED. 2027 ONLINE',
-];
-
 export function Preloader({ base, onComplete }: PreloaderProps) {
   const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
@@ -89,12 +81,6 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
 
   if (isDone) return null;
 
-  // Determine which status message to display
-  const statusIndex = Math.min(
-    STATUS_MESSAGES.length - 1,
-    Math.floor((progress / 100) * STATUS_MESSAGES.length)
-  );
-
   return (
     <div
       aria-label="Loading portfolio"
@@ -114,68 +100,38 @@ export function Preloader({ base, onComplete }: PreloaderProps) {
         }`}
       />
 
-      {/* CENTRAL CONTENT CONTAINER */}
+      {/* SIMPLE CENTERED LOADER */}
       <div
         className={`relative w-full h-full flex flex-col items-center justify-center p-6 transition-all duration-500 ${
           isExiting ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
         }`}
       >
-        {/* AMBIENT NEON GLOW */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[520px] h-[320px] sm:h-[520px] bg-neon/10 rounded-full blur-[130px] pointer-events-none" />
-
-        {/* TECHNICAL BACKGROUND GRID LINES */}
-        <div 
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-
-        {/* CENTER VISUAL: LOGO & TEXT ONLY BELOW LOGO */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center">
-          {/* LOGO WITH GLOWING ORBIT */}
-          <div className="relative mb-6 sm:mb-8 flex items-center justify-center">
-            {/* Rotating dashed orbit */}
-            <div className="absolute -inset-4 sm:-inset-6 rounded-full border border-dashed border-neon/30 animate-spin-slow pointer-events-none" />
-            
-            {/* Glow ring */}
-            <div className="absolute -inset-1 rounded-full bg-neon/20 blur-md pointer-events-none" />
-            
+          <div className="mb-8 flex items-center justify-center">
             <img
               src={`${base}images/logowhite.webp`}
               alt="Ondwari Obiko Monogram"
               width={80}
               height={80}
-              className="relative size-16 sm:size-20 md:size-24 object-contain drop-shadow-[0_0_28px_rgba(217,253,23,0.35)]"
+              className="size-14 sm:size-16 object-contain"
             />
           </div>
 
-          {/* BELOW THE LOGO: LARGE KINETIC COUNTER */}
           <div className="flex items-baseline justify-center">
-            <span className="font-display font-black text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] tracking-tighter text-white tabular-nums leading-none">
+            <span className="font-display font-semibold text-5xl sm:text-6xl tracking-tight text-white tabular-nums leading-none">
               {progress.toString().padStart(2, '0')}
             </span>
-            <span className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-neon ml-2">
+            <span className="font-display text-xl sm:text-2xl text-neon ml-1">
               %
             </span>
           </div>
 
-          {/* DYNAMIC SYSTEM STATUS TICKER BELOW THE LOGO */}
-          <div className="mt-4 sm:mt-6 flex items-center justify-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-neutral-400">
-            <span className="text-neon">[SYS]</span>
-            <span className="inline-block transition-all duration-150">
-              {STATUS_MESSAGES[statusIndex]}
-            </span>
+          <div className="mt-4 h-px w-40 sm:w-52 overflow-hidden bg-white/15">
+            <div
+              className="h-full bg-neon transition-all duration-100 ease-out"
+              style={{ width: `${progress}%` }}
+            />
           </div>
-        </div>
-
-        {/* BOTTOM VISUAL PROGRESS LINE (PURELY VISUAL, NO TEXT) */}
-        <div className="absolute bottom-0 inset-x-0 h-1 bg-white/10 overflow-hidden">
-          <div
-            className="h-full bg-neon transition-all duration-100 ease-out shadow-[0_0_14px_#d9fd17]"
-            style={{ width: `${progress}%` }}
-          />
         </div>
       </div>
     </div>
