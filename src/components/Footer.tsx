@@ -118,6 +118,7 @@ export function Footer({
                 FAQ
               </button>
             </div>
+            <p className="mt-8 text-right font-mono text-[10px] uppercase tracking-[0.18em] text-ink/45">Built by <span className="text-ink/75">Ondwari Obiko</span></p>
           </div>
         </div>
       </footer>
