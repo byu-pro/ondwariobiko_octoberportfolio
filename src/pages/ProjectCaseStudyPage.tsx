@@ -90,13 +90,13 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       <section className="px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14">
         <div className="max-w-[1400px] mx-auto">
           <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors">← All projects</button>
-          <div className="mt-10 sm:mt-14 grid lg:grid-cols-12 gap-8 lg:gap-14 items-end">
-            <div className="lg:col-span-8">
+          <div className="mt-10 sm:mt-14 grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+            <div className="min-w-0 lg:col-span-8">
               <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">{project.number} / {project.category}</p>
-              <h1 className="font-display font-extrabold uppercase tracking-tighter leading-[0.88] text-[clamp(3rem,10vw,9rem)]">{project.title}<span className="text-accent-ink">.</span></h1>
+              <h1 className="break-words font-display font-extrabold uppercase tracking-tighter leading-[0.92] text-[clamp(3rem,7vw,7rem)]">{project.title}<span className="text-accent-ink">.</span></h1>
               <p className="mt-5 font-sans text-xl sm:text-2xl text-ink/70 leading-snug max-w-3xl">{project.subtitle}</p>
             </div>
-            <div className="lg:col-span-4 lg:pb-1">
+            <div className="min-w-0 lg:col-span-4">
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 mb-3">Project focus</p>
               <p className="font-sans text-sm sm:text-base text-ink/70 leading-relaxed">Business challenge, creative response, and the value the work is designed to support.</p>
             </div>
