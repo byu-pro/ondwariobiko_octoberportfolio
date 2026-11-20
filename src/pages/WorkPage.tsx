@@ -169,7 +169,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/pelicansocial_thumbnaildesktop.png`,
       mobileImage: `${base}images/pelicansocial_mobilethumbnail.png`,
-      logoImage: `${base}images/pelicansociallogo_thumbnail.png`
+      logoImage: `${base}images/pelicansociallogo_casestudythumbnail.png`
     },
     {
       id: 'ikon-trailers',
@@ -177,7 +177,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/ikontrailers_thumbnailldesktop.png`,
       mobileImage: `${base}images/ikontrailers_mobilethumbnail.png`,
-      logoImage: `${base}images/ikontrailerslogo_thumbnail.png`
+      logoImage: `${base}images/ikontrailerslogo_casestudythumbnail.png`
     },
     {
       id: 'iron-acre',
@@ -185,7 +185,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/ironacre_thumbnaildesktop.png`,
       mobileImage: `${base}images/ironacre_mobilethumbnail.png`,
-      logoImage: `${base}images/ironacrelogo_thumbnail.png`
+      logoImage: `${base}images/ironacrelogo_casestudythumbnail.png`
     },
     {
       id: 'friends-of-unionville',
@@ -193,7 +193,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'FULL BRAND AND LOGO IDENTITY CREATION',
       image: `${base}images/friendsofunionville_desktopthumbnail.png`,
       mobileImage: `${base}images/friendsofunionville_mobilethumbnail.png`,
-      logoImage: `${base}images/friendsofunionvillelogo_thumbnail.png`
+      logoImage: `${base}images/friendsofunionvillelogo_casestudythumbnail.png`
     },
     {
       id: 'sound-curves',
@@ -201,7 +201,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'WEBSITE DESIGN & DIGITAL PLATFORM',
       image: `${base}images/soundcurves_thumbnaildesktop.png`,
       mobileImage: `${base}images/soundcurves_mobilethumbnail.png`,
-      logoImage: `${base}images/soundcurveslogo_thumbnail.png`
+      logoImage: `${base}images/qbysoundcurveslogo_casestudythumbnail.png`
     },
     {
       id: 'moods-and-nerds',
@@ -209,7 +209,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'WEBSITE DESIGN & WEB APP UI/UX',
       image: `${base}images/moodnmeds_thumbnaildesktop.png`,
       mobileImage: `${base}images/moodnmeds_mobilethumbnail.png`,
-      logoImage: `${base}images/moodnnerdslogo_thumbnail.png`
+      logoImage: `${base}images/moodsnmedsllogo_casestudythumbnail.png`
     },
     {
       id: 'yellow-dot-energy',
@@ -217,7 +217,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'MOBILE APP UI/UX & PRODUCT STRATEGY',
       image: `${base}images/yellowdot_desktopthumbnail.png`,
       mobileImage: `${base}images/yellowdot_mobilethumbnail.png`,
-      logoImage: `${base}images/yellowdotlogo_thumbnail.png`
+      logoImage: `${base}images/yellowdotlogo_casestudythumbnail.png`
     },
     {
       id: 'green-essential',
@@ -225,7 +225,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'LOGO DESIGN',
       image: `${base}images/greenessential_thumbnaildesktop.png`,
       mobileImage: `${base}images/greenessentials_mobilethumbnail.png`,
-      logoImage: `${base}images/greenessentials_thumbnail.png`
+      logoImage: `${base}images/greenessentialslogo_casestudythumbnail.png`
     },
     {
       id: 'lewis-park',
@@ -233,7 +233,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       category: 'T-SHIRT & APPAREL DESIGN',
       image: `${base}images/lewispark_thumbnaildesktop.png`,
       mobileImage: `${base}images/lewispark_mobilethumbnail.png`,
-      logoImage: `${base}images/lewisparklogo_thumbnail.png`
+      logoImage: `${base}images/lewisparklogo_casestudythumbnail.png`
     }
   ];
 
