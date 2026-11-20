@@ -19,7 +19,7 @@ export function Header({
   return (
     <header 
       data-menu-open={open} 
-      className={`fixed top-0 inset-x-0 z-[60] px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-500 ${
+      className={`fixed top-0 inset-x-0 z-[60] px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-300 ${
         open 
           ? "py-2.5 sm:py-3.5 bg-transparent" 
           : scrolled 
@@ -43,7 +43,7 @@ export function Header({
           alt="ondwariobiko monogram" 
           width={64} 
           height={64} 
-          className={`nav-logo object-contain shrink-0 transition-all duration-500 ease-out transform-gpu ${
+          className={`nav-logo object-contain shrink-0 transition-all duration-300 ease-out transform-gpu ${
             open ? "rounded-full brightness-0 filter" : ""
           } ${
             scrolled && !open 
@@ -66,18 +66,18 @@ export function Header({
           }`}>
             {open ? "Close" : "Menu"}
           </span>
-          <span className={`size-11 sm:size-12 md:size-14 rounded-full grid place-items-center transition-all duration-500 ${
+          <span className={`size-11 sm:size-12 md:size-14 rounded-full grid place-items-center transition-all duration-300 ${
             open 
               ? "bg-black rotate-90" 
               : "bg-neon group-hover:scale-110"
           }`}>
             <span className="relative block w-4 sm:w-5 h-2.5 sm:h-3">
-              <span className={`absolute left-0 h-0.5 w-4 sm:w-5 transition-all duration-500 ${
+              <span className={`absolute left-0 h-0.5 w-4 sm:w-5 transition-all duration-300 ${
                 open 
                   ? "top-1 sm:top-1.5 rotate-45 bg-neon" 
                   : "top-0 bg-black"
               }`} />
-              <span className={`absolute left-0 h-0.5 transition-all duration-500 ${
+              <span className={`absolute left-0 h-0.5 transition-all duration-300 ${
                 open 
                   ? "top-1 sm:top-1.5 w-4 sm:w-5 -rotate-45 bg-neon" 
                   : "top-2 sm:top-2.5 w-2.5 sm:w-3 bg-black"

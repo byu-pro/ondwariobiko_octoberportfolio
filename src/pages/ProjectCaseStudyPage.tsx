@@ -196,14 +196,14 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       <nav aria-label="Case study navigation" className="px-5 md:px-8 pb-20 sm:pb-28">
         <div className="max-w-[1400px] mx-auto grid sm:grid-cols-2 gap-4">
           <a href={`#/case-study/${previousSlug}`} className="group relative isolate overflow-hidden rounded-2xl border border-ink/15 p-6 sm:p-8 hover:border-neon/60 transition-colors">
-            <img src={`${base}images/${previousProject.caseStudyThumbnail}`} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 hidden h-full w-full scale-105 object-cover opacity-0 transition duration-700 ease-out md:block md:group-hover:scale-100 md:group-hover:opacity-35" />
-            <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-black/80 via-black/60 to-black/75 opacity-0 transition-opacity duration-500 md:block md:group-hover:opacity-100" />
+            <img src={`${base}images/${previousProject.caseStudyThumbnail}`} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 hidden h-full w-full scale-105 object-cover opacity-0 transition duration-400 ease-out md:block md:group-hover:scale-100 md:group-hover:opacity-35" />
+            <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-black/80 via-black/60 to-black/75 opacity-0 transition-opacity duration-300 md:block md:group-hover:opacity-100" />
             <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 transition-colors md:group-hover:text-white/70">← Previous project</span>
             <span className="relative z-10 mt-3 block font-display font-bold uppercase tracking-tight text-2xl sm:text-3xl group-hover:text-accent-ink md:group-hover:text-neon transition-colors">{previousProject.title}</span>
           </a>
           <a href={`#/case-study/${nextSlug}`} className="group relative isolate overflow-hidden rounded-2xl border border-ink/15 p-6 sm:p-8 text-left sm:text-right hover:border-neon/60 transition-colors">
-            <img src={`${base}images/${nextProject.caseStudyThumbnail}`} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 hidden h-full w-full scale-105 object-cover opacity-0 transition duration-700 ease-out md:block md:group-hover:scale-100 md:group-hover:opacity-35" />
-            <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-l from-black/80 via-black/60 to-black/75 opacity-0 transition-opacity duration-500 md:block md:group-hover:opacity-100" />
+            <img src={`${base}images/${nextProject.caseStudyThumbnail}`} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 hidden h-full w-full scale-105 object-cover opacity-0 transition duration-400 ease-out md:block md:group-hover:scale-100 md:group-hover:opacity-35" />
+            <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-l from-black/80 via-black/60 to-black/75 opacity-0 transition-opacity duration-300 md:block md:group-hover:opacity-100" />
             <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 transition-colors md:group-hover:text-white/70">Next project →</span>
             <span className="relative z-10 mt-3 block font-display font-bold uppercase tracking-tight text-2xl sm:text-3xl group-hover:text-accent-ink md:group-hover:text-neon transition-colors">{nextProject.title}</span>
           </a>

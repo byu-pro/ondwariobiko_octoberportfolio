@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface PreloaderProps {
   base: string;
@@ -6,124 +6,63 @@ interface PreloaderProps {
 }
 
 export function Preloader({ base, onComplete }: PreloaderProps) {
-  const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
-  const [isDone, setIsDone] = useState(false);
+  const onCompleteRef = useRef(onComplete);
 
-  // Counter animation logic
   useEffect(() => {
-    // Prevent scrolling while preloader is active
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
+
+  useEffect(() => {
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    let finishTimer: number | undefined;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let startTimer: number;
 
-    let current = 0;
-    const startTime = performance.now();
-    const duration = 1600; // Snappy 1.6s load
-
-    let frameId: number;
-
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const t = Math.min(1, elapsed / duration);
-      
-      // Custom easing curve: brisk start, tiny plateau around 85%, then quick surge to 100
-      let eased = t;
-      if (t < 0.6) {
-        eased = (t / 0.6) * 0.75;
-      } else if (t < 0.85) {
-        eased = 0.75 + ((t - 0.6) / 0.25) * 0.12;
-      } else {
-        eased = 0.87 + ((t - 0.85) / 0.15) * 0.13;
-      }
-
-      current = Math.min(100, Math.floor(eased * 100));
-      setProgress(current);
-
-      if (t < 1) {
-        frameId = requestAnimationFrame(tick);
-      } else {
-        setProgress(100);
-        // Brief pause at 100% before opening the curtains
-        setTimeout(() => {
-          setIsExiting(true);
-          // Wait for curtain transition to finish before unmounting
-          setTimeout(() => {
-            setIsDone(true);
-            document.body.style.overflow = originalOverflow;
-            if (onComplete) onComplete();
-          }, 700);
-        }, 220);
-      }
+    const finish = () => {
+      window.clearTimeout(startTimer);
+      window.clearTimeout(finishTimer);
+      setIsExiting(true);
+      finishTimer = window.setTimeout(() => {
+        document.body.style.overflow = originalOverflow;
+        onCompleteRef.current?.();
+      }, reducedMotion ? 40 : 260);
     };
 
-    frameId = requestAnimationFrame(tick);
-
-    // Allow user to press ESC or Space to skip instantly
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' || e.key === ' ') {
-        setProgress(100);
-        setIsExiting(true);
-        setTimeout(() => {
-          setIsDone(true);
-          document.body.style.overflow = originalOverflow;
-          if (onComplete) onComplete();
-        }, 300);
-      }
+    startTimer = window.setTimeout(finish, reducedMotion ? 80 : 620);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' || event.key === ' ') finish();
     };
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      cancelAnimationFrame(frameId);
+      window.clearTimeout(startTimer);
+      window.clearTimeout(finishTimer);
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, [onComplete]);
-
-  if (isDone) return null;
+  }, []);
 
   return (
     <div
       aria-label="Loading portfolio"
-      className="fixed inset-0 z-[9999] select-none pointer-events-auto overflow-hidden"
+      aria-busy="true"
+      className={`fixed inset-0 z-[9999] grid place-items-center overflow-hidden bg-black transition-opacity duration-300 ${isExiting ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
     >
-      <div
-        className={`absolute top-0 inset-x-0 h-1/2 bg-black transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] origin-top ${
-          isExiting ? '-translate-y-full' : 'translate-y-0'
-        }`}
-      />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(217,253,23,0.075),transparent_38%)]" />
+      <div className={`relative flex w-[min(82vw,20rem)] flex-col items-center transition-transform duration-300 ${isExiting ? '-translate-y-2' : 'translate-y-0'}`}>
+        <div className="relative mb-7 grid size-20 place-items-center rounded-full border border-white/15 p-3 sm:size-24">
+          <span aria-hidden="true" className="absolute inset-[-1px] rounded-full border border-transparent border-t-neon animate-spin-slow" />
+          <img src={`${base}images/logowhite.webp`} alt="Ondwari Obiko" width={80} height={80} className="size-12 object-contain sm:size-14" />
+          <span aria-hidden="true" className="absolute -right-1 top-3 size-2 rounded-full bg-neon shadow-[0_0_14px_rgba(217,253,23,0.7)]" />
+        </div>
 
-      <div
-        className={`absolute bottom-0 inset-x-0 h-1/2 bg-black transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] origin-bottom ${
-          isExiting ? 'translate-y-full' : 'translate-y-0'
-        }`}
-      />
+        <p className="font-display text-lg font-semibold uppercase tracking-[0.16em] text-white sm:text-xl">Ondwari Obiko</p>
+        <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.26em] text-white/45 sm:text-[10px]">Brand · Digital · Experience</p>
 
-      {/* SIMPLE CENTERED LOADER */}
-      <div
-        className={`relative w-full h-full flex flex-col items-center justify-center p-6 transition-all duration-500 ${
-          isExiting ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
-        }`}
-      >
-        <div className="relative z-10 flex flex-col items-center justify-center text-center">
-          <div className="mb-8 flex items-center justify-center">
-            <img
-              src={`${base}images/logowhite.webp`}
-              alt="Ondwari Obiko Monogram"
-              width={80}
-              height={80}
-              className="size-14 sm:size-16 object-contain"
-            />
-          </div>
-
-          <div className="flex items-baseline justify-center">
-            <span className="font-display font-semibold text-5xl sm:text-6xl tracking-tight text-white tabular-nums leading-none">
-              {progress.toString().padStart(2, '0')}
-            </span>
-            <span className="font-display text-xl sm:text-2xl text-neon ml-1">
-              %
-            </span>
-          </div>
-
+        <div role="progressbar" aria-label="Loading portfolio" aria-valuemin={0} aria-valuemax={100} className="mt-8 h-px w-full overflow-hidden bg-white/15">
+          <span className="preloader-progress block h-full w-full origin-left bg-neon" />
         </div>
       </div>
     </div>

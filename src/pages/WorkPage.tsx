@@ -94,7 +94,7 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
 
       {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL (Full Width, GPU-accelerated) */}
       <div 
-        className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-out transform-gpu backface-hidden ${
+        className={`absolute inset-0 overflow-hidden transition-opacity duration-500 ease-out transform-gpu backface-hidden ${
           activeView === 'thumbnail' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
@@ -105,7 +105,7 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
           height={1080}
           loading={idx < 2 ? "eager" : "lazy"}
           decoding="async"
-          className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
+          className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
             activeView === 'thumbnail' ? 'scale-100' : 'scale-[1.03]'
           } group-hover:scale-[1.03]`}
         />
@@ -114,7 +114,7 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
       {/* LAYER 2: PROJECT LOGO THUMBNAIL (Full Width, Seamless Cinematic Zoom-In) */}
       {logoAvailable && project.logoImage && (
         <div 
-          className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-out transform-gpu backface-hidden ${
+          className={`absolute inset-0 overflow-hidden transition-opacity duration-500 ease-out transform-gpu backface-hidden ${
             activeView === 'logo' ? 'opacity-100 z-[1] pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
           }`}
         >
@@ -125,7 +125,7 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
             height={1080}
             loading="lazy"
             decoding="async"
-            className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
+            className={`w-full h-full object-cover object-center filter brightness-95 group-hover:brightness-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu will-change-transform backface-hidden ${
               activeView === 'logo' ? 'scale-[1.03]' : 'scale-100'
             } group-hover:scale-[1.05]`}
           />
@@ -145,7 +145,7 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
       </div>
 
       {/* Razor-thin Neon Sweep Line along the bottom edge */}
-      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-neon transition-all duration-700 ease-out pointer-events-none z-20" />
+      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-neon transition-all duration-400 ease-out pointer-events-none z-20" />
     </section>
   );
 }
