@@ -43,6 +43,10 @@ export default function App() {
       const nextRoute = getRouteFromHash();
       setCurrentRoute(nextRoute);
       setProjectSlug(getProjectSlugFromHash());
+
+      if (nextRoute === 'project') {
+        requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+      }
       
       // If hash specifically targeted #services, scroll down smoothly after mount
       if (window.location.hash.includes('services')) {
