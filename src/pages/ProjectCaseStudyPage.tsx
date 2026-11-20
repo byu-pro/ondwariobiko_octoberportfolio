@@ -1,0 +1,166 @@
+import React from 'react';
+import { PageRoute } from '../types';
+
+interface ProjectCaseStudyPageProps {
+  base: string;
+  slug: string;
+  onNavigate: (route: PageRoute) => void;
+}
+
+const caseStudies = {
+  'pelican-social': {
+    number: '01', title: 'Pelican Social', subtitle: 'A Caribbean welcome with a distinct point of view.', category: 'Brand identity · Restaurant', image: 'pelicansocial_thumbnaildesktop.png',
+    context: 'Pelican Social is a bar and grill in Simpson Bay, Sint Maarten, serving resort visitors and local guests in a destination full of dining choices.',
+    challenge: 'The brand needed to communicate a varied, freshly prepared menu and a relaxed Caribbean atmosphere, while giving visitors a memorable name and identity to recognize.',
+    response: ['Created a complete logo and brand identity direction around the Pelican Social name.', 'Balanced a polished, welcoming restaurant feel with the client’s boho-chic Caribbean setting.', 'Designed the identity to work across digital touchpoints and on-premise customer materials.'],
+    value: 'A distinctive identity gives guests a clearer sense of the experience before they arrive and helps the restaurant stand apart in a busy resort destination.'
+  },
+  'ikon-trailers': {
+    number: '02', title: 'IKON Trailers', subtitle: 'A confident identity built for heavy-duty work.', category: 'Brand identity · Industrial', image: 'ikontrailers_thumbnailldesktop.png',
+    context: 'IKON Trailers sells heavy-duty trailers in San Antonio, Texas, serving owner-operators as well as large corporate buyers across several trailer categories.',
+    challenge: 'The business wanted its identity to express the strength and high standards behind the IKON name, while earning confidence from buyers with very different operating scales.',
+    response: ['Developed a logo and brand identity for a heavy-duty trailer dealer.', 'Used a strong, assured visual character suited to an industrial sales environment.', 'Kept the identity focused on the IKON name and the quality of the service it represents.'],
+    value: 'A clear, professional identity helps the business present itself consistently to individual operators and enterprise buyers, supporting trust at the start of a considered purchase.'
+  },
+  'iron-acre': {
+    number: '03', title: 'Iron Acre Land Co', subtitle: 'A straightforward identity ready for the field.', category: 'Brand identity · Construction', image: 'ironacre_thumbnaildesktop.png',
+    context: 'Iron Acre Land Co provides excavation and land management for landowners and homeowners, with work spanning land, equine, and contractor settings.',
+    challenge: 'The logo needed to feel tough and uncomplicated, reproduce clearly on trucks, machinery, workwear, and hats, and avoid narrowing the company to only a farm or horse audience.',
+    response: ['Built the identity around the full Iron Acre Land Co name.', 'Kept the visual direction simple, strong, and grounded in the client’s black-and-white preference.', 'Designed for practical recognition across vehicles, equipment, clothing, and small-format uses.'],
+    value: 'A versatile identity makes it easier for customers and partners to recognize the company wherever the work happens, from a job site to a first conversation.'
+  },
+  'friends-of-unionville': {
+    number: '04', title: 'Friends of Unionville', subtitle: 'A community identity rooted in place and shared purpose.', category: 'Brand identity · Non-profit', image: 'friendsofunionville_desktopthumbnail.png',
+    context: 'Friends of Unionville is a new non-profit working with residents, local businesses, and stakeholders to steward a historic village and its public spaces.',
+    challenge: 'As a new organization, it needed a recognizable identity that could express heritage, connection, walkability, and care for the village’s future without blending into local organizations already using blue.',
+    response: ['Created a logo direction for the Friends of Unionville name and “Est. 2025” detail.', 'Explored a mature, sophisticated visual style using greens, reds, and other suitable colors.', 'Connected the identity to the village’s crossroads, historic character, and collaborative mission.'],
+    value: 'A clear identity gives the organization a consistent way to introduce its mission, build recognition, and bring community initiatives under one shared banner.'
+  },
+  'sound-curves': {
+    number: '05', title: 'SoundCurves', subtitle: 'Making a premium product easier to understand and want.', category: 'Website design · Consumer technology', image: 'soundcurves_thumbnaildesktop.png',
+    context: 'SoundCurves sells premium earphones priced at $799 to two groups: experienced audio enthusiasts and people who have not yet tried premium audio.',
+    challenge: 'The website needed to serve both audiences: give knowledgeable buyers the product and technology detail they expect, while helping newcomers understand why the listening experience merits the investment.',
+    response: ['Planned a five-page experience covering the home, product, technology, and two campaign landing pages.', 'Organized navigation and page content around product discovery, education, and clear next steps.', 'Designed desktop and mobile layouts to support both comparison-minded visitors and first-time premium buyers.'],
+    value: 'A well-structured product experience can make a high-consideration offer easier to evaluate, explain product value clearly, and guide interested visitors toward a purchase decision.'
+  },
+  'moods-and-nerds': {
+    number: '06', title: 'Moods N Meds', subtitle: 'A calm interface for sensitive, personal information.', category: 'Website design · Digital wellness', image: 'moodnmeds_thumbnaildesktop.png',
+    context: 'Moods N Meds is a digital wellness concept for people experiencing anxiety, combining calming content with tools for daily mood logging and medication reviews.',
+    challenge: 'The experience needed to feel vibrant yet calm and make several tasks easy to understand: finding relief resources, recording a daily mood, viewing past logs, writing medication reviews, and creating an account.',
+    response: ['Designed a consistent visual direction across five pages: home, daily log, results, reviews, and sign-up.', 'Used a calm visual atmosphere informed by the client’s interest in nature and Japanese garden references.', 'Structured the key actions and information so users can understand what each page is for.'],
+    value: 'A thoughtful interface helps the service communicate its purpose and makes its tools easier to navigate. It supports the product experience without promising a medical outcome.'
+  },
+  'green-essential': {
+    number: '07', title: 'Green Essentials', subtitle: 'Bringing two outdoor services together in one identity.', category: 'Logo design · Home services', image: 'greenessential_thumbnaildesktop.png',
+    context: 'Green Essentials offers lawn fertilization, weed control, and mosquito treatments to people who want a healthier lawn and a more comfortable yard.',
+    challenge: 'The logo needed to make two related services—lawn care and mosquito control—clear to homeowners at a glance.',
+    response: ['Developed a logo direction for the Green Essentials name.', 'Brought the lawn and mosquito service cues together in one visual identity.', 'Explored a blue-and-green palette suited to the environmental and outdoor service category.'],
+    value: 'Clear service cues can help homeowners quickly understand what the business offers and remember it when they are ready to improve their outdoor space.'
+  },
+  'lewis-park': {
+    number: '08', title: 'Lewis Park Pickleball', subtitle: 'A wearable mark for a neighborhood that plays together.', category: 'Apparel design · Community', image: 'lewispark_thumbnaildesktop.png',
+    context: 'A diverse group of adults plays pickleball regularly at Lewis Park in Sacramento, California, bringing neighbors together for friendship and exercise.',
+    challenge: 'The shirt graphic needed to appeal across genders and ages, read clearly in group photos, and give Lewis Park greater prominence than the city line.',
+    response: ['Created a two-color design for navy shirts using white and neon green.', 'Made “Lewis Park” the primary message, with “Sacramento, California” in a supporting role.', 'Designed the graphic for easy reading and a shared sense of group identity.'],
+    value: 'A recognizable group shirt helps participants feel connected and makes the park community easier to identify in photos and at local events.'
+  }
+} as const;
+
+export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStudyPageProps) {
+  const project = caseStudies[slug as keyof typeof caseStudies];
+
+  if (!project) {
+    return (
+      <main className="px-5 md:px-8 pt-40 pb-24 min-h-[60vh]">
+        <div className="max-w-[1000px] mx-auto">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-5">Project not found</p>
+          <h1 className="font-display font-extrabold uppercase tracking-tighter text-5xl sm:text-7xl">Let’s find the right work.</h1>
+          <button onClick={() => onNavigate('work')} className="mt-8 rounded-full bg-neon px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black">Back to selected work ↗</button>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="w-full overflow-x-hidden">
+      <section className="px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14">
+        <div className="max-w-[1400px] mx-auto">
+          <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors">← All projects</button>
+          <div className="mt-10 sm:mt-14 grid lg:grid-cols-12 gap-8 lg:gap-14 items-end">
+            <div className="lg:col-span-8">
+              <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">{project.number} / {project.category}</p>
+              <h1 className="font-display font-extrabold uppercase tracking-tighter leading-[0.88] text-[clamp(3rem,10vw,9rem)]">{project.title}<span className="text-accent-ink">.</span></h1>
+              <p className="mt-5 font-sans text-xl sm:text-2xl text-ink/70 leading-snug max-w-3xl">{project.subtitle}</p>
+            </div>
+            <div className="lg:col-span-4 lg:pb-1">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 mb-3">Project focus</p>
+              <p className="font-sans text-sm sm:text-base text-ink/70 leading-relaxed">Business challenge, creative response, and the value the work is designed to support.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-3 sm:px-5 md:px-8 pb-14 sm:pb-20">
+        <div className="max-w-[1600px] mx-auto overflow-hidden border border-white/10 bg-neutral-950">
+          <img src={`${base}images/${project.image}`} alt={`${project.title} project design`} className="block w-full h-auto max-h-[820px] object-cover object-center" />
+        </div>
+      </section>
+
+      <section className="px-5 md:px-8 pb-16 sm:pb-24 md:pb-32">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="lg:col-span-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-4">The business</p>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Context &amp; challenge</h2>
+          </div>
+          <div className="lg:col-span-8 space-y-8">
+            <div>
+              <h3 className="font-display uppercase tracking-tight text-lg sm:text-xl mb-2">The context</h3>
+              <p className="font-sans text-base sm:text-lg text-ink/70 leading-relaxed">{project.context}</p>
+            </div>
+            <div>
+              <h3 className="font-display uppercase tracking-tight text-lg sm:text-xl mb-2">The challenge</h3>
+              <p className="font-sans text-base sm:text-lg text-ink/70 leading-relaxed">{project.challenge}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 md:px-8 py-16 sm:py-24 bg-neon text-black">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="lg:col-span-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/60 mb-4">The response</p>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Design with a job to do.</h2>
+          </div>
+          <ul className="lg:col-span-8 divide-y divide-black/20 border-y border-black/20">
+            {project.response.map((item, index) => (
+              <li key={item} className="grid grid-cols-[2.5rem_1fr] sm:grid-cols-[3.5rem_1fr] gap-3 py-5 sm:py-6">
+                <span className="font-display font-extrabold text-2xl sm:text-3xl">0{index + 1}</span>
+                <p className="font-sans text-base sm:text-lg leading-relaxed">{item}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="px-5 md:px-8 py-16 sm:py-24 md:py-28">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div className="lg:col-span-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-4">Business value</p>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Built to support the next step.</h2>
+          </div>
+          <p className="lg:col-span-8 font-sans text-xl sm:text-2xl md:text-3xl text-ink/75 leading-relaxed">{project.value}</p>
+        </div>
+      </section>
+
+      <section className="px-5 md:px-8 pb-24 sm:pb-32">
+        <div className="max-w-[1400px] mx-auto border-t border-ink/15 pt-8 sm:pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2">Have a similar challenge?</p>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl">Let’s talk about it.</h2>
+          </div>
+          <button onClick={() => onNavigate('contact')} className="rounded-full bg-neon px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black hover:scale-[1.03] transition-transform">Discuss your project ↗</button>
+        </div>
+      </section>
+    </main>
+  );
+}

@@ -9,6 +9,7 @@ import { WorkPage } from './pages/WorkPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { ConsultationPage } from './pages/ConsultationPage';
+import { ProjectCaseStudyPage } from './pages/ProjectCaseStudyPage';
 
 const base = import.meta.env.BASE_URL.endsWith('/') 
   ? import.meta.env.BASE_URL 
@@ -16,14 +17,20 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 
 function getRouteFromHash(): PageRoute {
   const hash = window.location.hash.toLowerCase();
+  if (hash.startsWith('#/case-study/')) return 'project';
   if (hash.includes('about') || hash.includes('services')) return 'about';
   if (hash.includes('contact')) return 'contact';
   if (hash.includes('consultation') || hash.includes('free-call')) return 'consultation';
   return 'work';
 }
 
+function getProjectSlugFromHash() {
+  return window.location.hash.split('/')[2] ?? '';
+}
+
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>(getRouteFromHash);
+  const [projectSlug, setProjectSlug] = useState<string>(getProjectSlugFromHash);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [backToTopVisible, setBackToTopVisible] = useState(false);
@@ -35,6 +42,7 @@ export default function App() {
     const onHashChange = () => {
       const nextRoute = getRouteFromHash();
       setCurrentRoute(nextRoute);
+      setProjectSlug(getProjectSlugFromHash());
       
       // If hash specifically targeted #services, scroll down smoothly after mount
       if (window.location.hash.includes('services')) {
@@ -60,6 +68,9 @@ export default function App() {
         break;
       case 'consultation':
         document.title = "Free 1-Hour Consultation | Book a Call with Me";
+        break;
+      case 'project':
+        document.title = "Project Case Study | Ondwari Obiko — Brand Designer & Developer";
         break;
       case 'work':
       default:
@@ -150,6 +161,7 @@ export default function App() {
         {currentRoute === 'about' && <AboutPage base={base} onNavigate={navigateTo} />}
         {currentRoute === 'contact' && <ContactPage />}
         {currentRoute === 'consultation' && <ConsultationPage />}
+        {currentRoute === 'project' && <ProjectCaseStudyPage base={base} slug={projectSlug} onNavigate={navigateTo} />}
       </div>
 
       {/* FOOTER SECTION WITH VIDEO ANIMATION & DIRECT CHANNELS */}

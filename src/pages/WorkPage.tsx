@@ -151,6 +151,7 @@ function ProjectCard({ project, idx, onOpenLightbox }: ProjectCardProps) {
 
 export function WorkPage({ base, onNavigate }: WorkPageProps) {
   const [activePreview, setActivePreview] = useState<{ project: FullWidthProject; image: string } | null>(null);
+  const caseStudyIds = new Set(['pelican-social', 'ikon-trailers', 'iron-acre', 'friends-of-unionville', 'sound-curves', 'moods-and-nerds', 'green-essential', 'lewis-park']);
 
   // Close lightbox on Escape key
   useEffect(() => {
@@ -519,8 +520,19 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
           </div>
 
           {/* Lightbox Footer */}
-          <div className="text-center text-[10px] sm:text-xs font-mono text-neutral-500">
-            TAP ANYWHERE OR PRESS ESC TO CLOSE
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+            {caseStudyIds.has(activePreview.project.id) && (
+              <a
+                href={`#/case-study/${activePreview.project.id}`}
+                onClick={() => setActivePreview(null)}
+                className="inline-flex items-center gap-3 rounded-full bg-neon px-6 py-3 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-black hover:scale-[1.03] transition-transform"
+              >
+                Read the case study <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            <p className="text-[10px] sm:text-xs font-mono text-neutral-500">
+              TAP ANYWHERE OR PRESS ESC TO CLOSE
+            </p>
           </div>
         </div>
       )}

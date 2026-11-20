@@ -7,4 +7,4 @@ export interface FullWidthProject {
   logoImage?: string;
 }
 
-export type PageRoute = 'work' | 'about' | 'contact' | 'consultation';
+export type PageRoute = 'work' | 'about' | 'contact' | 'consultation' | 'project';
