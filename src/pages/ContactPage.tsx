@@ -108,8 +108,8 @@ export function ContactPage() {
       <section className="px-5 md:px-8 pb-12">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-display uppercase tracking-tighter leading-[0.95] text-[clamp(1.75rem,5vw,3rem)] max-w-4xl">
-            Let's build something together.{" "}
-            <span className="text-stroke">Tell me about your project</span> —
+            Have a business challenge to solve?{" "}
+            <span className="text-stroke">Tell me what you want to improve</span> —
             I'll reply within 24–48 hours.
           </p>
           <p className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-ink/50">

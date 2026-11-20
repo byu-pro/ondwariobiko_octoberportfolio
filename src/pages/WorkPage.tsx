@@ -301,9 +301,9 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
 
             {/* Main Headline (Foreground solid black text) */}
             <h1 className="relative z-10 font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.94] sm:leading-[0.9] text-[clamp(2.1rem,5.5vw,4.6rem)] text-black text-center break-words [overflow-wrap:anywhere] select-none">
-              <span className="block">Custom logos &amp;</span>
+              <span className="block">Design that</span>
               <span className="block mt-1 sm:mt-2">
-                brand identities<span className="text-black">.</span>
+                moves business<span className="text-black">.</span>
               </span>
             </h1>
           </div>
@@ -311,7 +311,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
           {/* Subtitle / Bio Description */}
           <div className="mt-4 sm:mt-5 max-w-xl text-center mx-auto px-2">
             <p className="font-mono text-xs sm:text-base md:text-lg font-medium tracking-tight text-black/85 leading-relaxed text-center">
-              ondwariobiko, brand designer &amp; web developer. 10 years, 100% custom.
+              I help businesses solve brand and digital challenges with clear strategy, distinctive design, and websites built to turn attention into action.
             </p>
           </div>
 
@@ -323,7 +323,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 onClick={() => onNavigate('contact')}
                 className="group inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:scale-105 hover:bg-neutral-900 cursor-pointer shadow-xl shadow-black/25"
               >
-                <span>Start a project</span>
+                <span>Discuss your challenge</span>
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5 text-neon font-normal">⟶</span>
               </button>
             )}
@@ -333,7 +333,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
               onClick={() => onNavigate ? onNavigate('consultation') : (window.location.hash = '#/consultation')}
               className="group inline-flex items-center justify-center gap-2.5 border-2 border-black bg-transparent text-black font-mono text-xs sm:text-sm uppercase tracking-[0.2em] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-extrabold transition-all duration-300 hover:bg-black hover:text-neon cursor-pointer"
             >
-              <span>Free 1-hr call</span>
+                <span>Explore how I can help</span>
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5 font-normal">⟶</span>
             </button>
           </div>
@@ -424,11 +424,11 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         <div className="max-w-[1400px] mx-auto text-center mb-10 sm:mb-14 md:mb-16 px-4">
           <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-accent-ink font-semibold flex items-center justify-center gap-2 mb-3">
             <span className="inline-block size-1.5 rounded-full bg-neon animate-pulse" />
-            <span>Trusted Experience</span>
+            <span>Experience across industries</span>
             <span className="inline-block size-1.5 rounded-full bg-neon animate-pulse" />
           </p>
           <h2 className="font-display font-extrabold uppercase tracking-tight text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-            Brands and organizations I have worked with
+            Helping brands show up with clarity
           </h2>
         </div>
 

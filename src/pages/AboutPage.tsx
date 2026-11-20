@@ -11,17 +11,17 @@ const pillars = [
   {
     n: "01",
     title: "Hand-drawn marks",
-    body: "Original letterforms and symbols drawn from scratch with the pen tool. Genuinely bespoke for your brand alone.",
+    body: "Distinctive marks help customers recognize your business, remember it, and choose it with confidence.",
   },
   {
     n: "02",
     title: "Design + Code",
-    body: "Designed and built by the same hands. What you approve in Figma translates pixel-for-pixel into production code.",
+    body: "A clear, useful digital experience makes it easier for the right customers to understand your offer and take the next step.",
   },
   {
     n: "03",
     title: "Built to scale",
-    body: "Complete vector assets and practical brand guidelines prepared for screens, signage, apparel, and print.",
+    body: "Consistent, ready-to-use assets help your team present one recognizable brand across every customer touchpoint.",
   },
 ];
 
@@ -208,9 +208,9 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
     <div className="w-full flex flex-col overflow-x-hidden">
       <PageHero 
         index="02" 
-        eyebrow="About me & services" 
-        title="Designer" 
-        outline="Developer" 
+        eyebrow="Creative partner for business growth" 
+        title="Business" 
+        outline="Problem Solver" 
       />
 
       {/* FULL-WIDTH PROFILE / STUDIO PHOTO */}
@@ -221,12 +221,12 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       {/* 1 — Opening Hook: Philosophy */}
       <section id="about-section" className="px-5 md:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ The philosophy</p>
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ The business challenge</p>
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight max-w-[20ch] break-words">
-            Every logo starts with a <span className="text-accent-ink">pencil</span>, not a font.
+            Good design makes it easier for customers to <span className="text-accent-ink">choose you.</span>
           </h2>
           <p className="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-ink/70 leading-relaxed font-light">
-            Over 10 years crafting custom identities and bespoke websites for clients worldwide. Hand-drawn marks, clean code, no templates or shortcuts.
+            When a brand is hard to recognize, a website is hard to use, or a business struggles to explain its value, potential customers move on. I bring strategy, design, and development together to make your business clearer, more memorable, and easier to engage with.
           </p>
         </div>
       </section>
@@ -237,7 +237,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ Who I am</p>
           <div className="max-w-4xl">
             <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-snug">
-              I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a solo graphic and web designer based in Nairobi, Kenya, serving clients worldwide. I craft custom vector logos, mascot systems, and <span className="text-accent-ink font-semibold">design & build</span> the responsive websites that power them.
+              I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a Nairobi-based creative partner working with businesses, clients, brands, and organizations worldwide. I solve communication and digital experience challenges through <span className="text-accent-ink font-semibold">brand identity, UI/UX, and web design and development</span>—helping you earn attention, build trust, and guide customers toward action.
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
@@ -260,7 +260,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       {/* 3 — Craft Pillars */}
       <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ What makes it different</p>
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ How I solve business challenges</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-ink/15 border border-ink/15">
             {pillars.map((p) => (
               <div
@@ -309,12 +309,12 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       <section id="services-section" className="px-5 md:px-8 pt-8 pb-16 sm:pb-24 md:pb-32 border-t border-ink/15">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-8 sm:mb-12">
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">⟶ What I craft</p>
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">⟶ Solutions shaped around your goals</p>
             <h2 className="font-display uppercase tracking-tighter text-3xl sm:text-5xl md:text-6xl font-extrabold leading-[0.9]">
               Services & <span className="text-stroke">Packages</span>
             </h2>
             <p className="mt-4 sm:mt-6 font-display text-lg sm:text-2xl leading-snug tracking-tight text-ink/80 max-w-2xl">
-              Custom brand identities and logo systems <span className="text-accent-ink">built to last.</span> Hand-drawn, concept-driven, no shortcuts.
+              From first impression to conversion, every deliverable has a job: make your value clear, strengthen brand visibility, and help customers take the next step.
             </p>
           </div>
 
