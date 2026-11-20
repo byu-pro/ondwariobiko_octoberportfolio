@@ -84,7 +84,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
     );
   }
 
-  const needsCompactTitle = project.title === 'Friends of Unionville' || project.title === 'Green Essentials' || project.title === 'Lewis Park Pickleball';
+  const needsCompactTitle = project.title === 'IKON Trailers' || project.title === 'Iron Acre Land Co' || project.title === 'Friends of Unionville' || project.title === 'Green Essentials' || project.title === 'Lewis Park Pickleball';
 
   return (
     <main className="w-full overflow-x-hidden">
