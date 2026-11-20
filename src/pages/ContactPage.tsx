@@ -107,12 +107,12 @@ export function ContactPage() {
       {/* Opening Intro */}
       <section className="px-5 md:px-8 pb-12">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-display uppercase tracking-tighter leading-[0.95] text-[clamp(1.75rem,5vw,3rem)] max-w-4xl">
+          <p className="font-sans font-medium leading-relaxed text-[clamp(1.25rem,3.5vw,2rem)] max-w-4xl">
             Have a business challenge to solve?{" "}
             <span className="text-stroke">Tell me what you want to improve</span> —
             I'll reply within 24–48 hours.
           </p>
-          <p className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-ink/50">
+          <p className="mt-6 font-sans text-sm sm:text-base text-ink/50">
             Remote worldwide · working across time zones, from first concept to final delivery
           </p>
         </div>
@@ -272,7 +272,7 @@ export function ContactPage() {
                       <Mail className="w-3.5 h-3.5" />
                       Email — best way to reach me
                     </span>
-                    <span className="relative break-all font-display uppercase tracking-tighter text-xl sm:text-2xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-bold">
+                    <span className="relative break-all font-sans text-lg sm:text-xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-semibold">
                       ondwariobiko@gmail.com ↗
                     </span>
                   </a>
@@ -292,7 +292,7 @@ export function ContactPage() {
                       <Phone className="w-3.5 h-3.5" />
                       WhatsApp — quickest for calls & chat
                     </span>
-                    <span className="relative font-display uppercase tracking-tighter text-xl sm:text-2xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-bold">
+                    <span className="relative font-sans text-lg sm:text-xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-semibold">
                       +254 702 255 575 ↗
                     </span>
                   </a>
@@ -310,7 +310,7 @@ export function ContactPage() {
                   <span className="relative font-mono text-[10px] uppercase tracking-[0.25em] text-ink/50 group-hover:text-black px-2">
                     Behance
                   </span>
-                  <span className="relative font-display uppercase tracking-tighter text-xl sm:text-2xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-bold">
+                  <span className="relative font-sans text-lg sm:text-xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-semibold">
                     /johnobiko ↗
                   </span>
                 </a>
@@ -326,7 +326,7 @@ export function ContactPage() {
                   <span className="relative font-mono text-[10px] uppercase tracking-[0.25em] text-ink/50 group-hover:text-black px-2">
                     LinkedIn
                   </span>
-                  <span className="relative font-display uppercase tracking-tighter text-xl sm:text-2xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-bold">
+                  <span className="relative font-sans text-lg sm:text-xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-semibold">
                     /in/ondwariobiko ↗
                   </span>
                 </a>
@@ -347,7 +347,7 @@ export function ContactPage() {
 
             {/* Social proof */}
             <figure className="border-l-2 border-neon pl-6">
-              <blockquote className="font-display uppercase tracking-tighter text-2xl sm:text-3xl leading-[0.95]">
+              <blockquote className="font-sans font-medium text-xl sm:text-2xl leading-relaxed">
                 "Helped us launch a fintech brand now serving customers in 12 countries."
               </blockquote>
               <figcaption className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-ink/50">
@@ -369,7 +369,7 @@ export function ContactPage() {
             {contactFaqs.map((f) => (
               <details key={f.q} className="group border-b border-ink/15 py-6">
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none">
-                  <span className="font-display uppercase tracking-tighter text-xl sm:text-2xl leading-[0.95]">{f.q}</span>
+                  <span className="font-display uppercase tracking-tight text-lg sm:text-xl leading-tight">{f.q}</span>
                   <span className="font-mono text-accent-ink text-2xl leading-none transition-transform duration-300 group-open:rotate-45">+</span>
                 </summary>
                 <p className="mt-4 max-w-[60ch] text-ink/70 leading-relaxed text-sm sm:text-base">{f.a}</p>

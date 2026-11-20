@@ -225,7 +225,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight max-w-[20ch] break-words">
             Good design makes it easier for customers to <span className="text-accent-ink">choose you.</span>
           </h2>
-          <p className="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-ink/70 leading-relaxed font-light">
+          <p className="mt-6 sm:mt-8 max-w-2xl font-sans text-base sm:text-lg text-ink/70 leading-relaxed font-light">
             When a brand is hard to recognize, a website is hard to use, or a business struggles to explain its value, potential customers move on. I bring strategy, design, and development together to make your business clearer, more memorable, and easier to engage with.
           </p>
         </div>
@@ -236,7 +236,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         <div className="max-w-[1400px] mx-auto">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ Who I am</p>
           <div className="max-w-4xl">
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-snug">
+            <p className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-snug">
               I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a Nairobi-based creative partner working with businesses, clients, brands, and organizations worldwide. I solve communication and digital experience challenges through <span className="text-accent-ink font-semibold">brand identity, UI/UX, and web design and development</span>—helping you earn attention, build trust, and guide customers toward action.
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -271,7 +271,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
                   {p.n}
                 </span>
                 <h3 className="font-display font-bold text-lg sm:text-xl mb-2.5 leading-tight">{p.title}</h3>
-                <p className="text-sm text-ink/65 group-hover:text-black/80 leading-relaxed transition-colors">
+                <p className="font-sans text-sm text-ink/65 group-hover:text-black/80 leading-relaxed transition-colors">
                   {p.body}
                 </p>
               </div>
@@ -313,7 +313,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             <h2 className="font-display uppercase tracking-tighter text-3xl sm:text-5xl md:text-6xl font-extrabold leading-[0.9]">
               Services & <span className="text-stroke">Packages</span>
             </h2>
-            <p className="mt-4 sm:mt-6 font-display text-lg sm:text-2xl leading-snug tracking-tight text-ink/80 max-w-2xl">
+            <p className="mt-4 sm:mt-6 font-sans text-lg sm:text-xl leading-relaxed text-ink/80 max-w-2xl">
               From first impression to conversion, every deliverable has a job: make your value clear, strengthen brand visibility, and help customers take the next step.
             </p>
           </div>
@@ -333,11 +333,11 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
                 <h3 className="mt-4 sm:mt-5 font-display uppercase tracking-tighter text-2xl sm:text-3xl leading-tight font-bold transition-transform duration-500 group-hover:-translate-y-0.5">
                   {p.t}
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-ink/60 group-hover:text-black/70">{p.blurb}</p>
+                <p className="mt-2 font-sans text-xs sm:text-sm leading-relaxed text-ink/60 group-hover:text-black/70">{p.blurb}</p>
 
                 <ul className="mt-4 flex flex-col gap-1.5">
                   {p.includes.map((x) => (
-                    <li key={x} className="flex items-start gap-2 text-xs sm:text-sm text-ink/70 group-hover:text-black/85">
+                    <li key={x} className="flex items-start gap-2 font-sans text-xs sm:text-sm text-ink/70 group-hover:text-black/85">
                       <span className="text-accent-ink group-hover:text-black mt-0.5 shrink-0 font-bold">→</span>
                       {x}
                     </li>
@@ -368,7 +368,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             {guarantees.map((x) => (
               <div key={x.k}>
                 <h4 className="font-display text-base sm:text-lg uppercase tracking-tight text-accent-ink font-bold">{x.k}</h4>
-                <p className="mt-1.5 text-xs sm:text-sm text-ink/65 leading-relaxed">{x.v}</p>
+                <p className="mt-1.5 font-sans text-xs sm:text-sm text-ink/65 leading-relaxed">{x.v}</p>
               </div>
             ))}
           </div>
@@ -408,10 +408,10 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             </h2>
           </div>
           <div className="flex flex-col gap-4 sm:gap-5">
-            <p className="font-display text-xl sm:text-2xl leading-snug tracking-tight font-bold">
+            <p className="font-sans text-lg sm:text-xl leading-relaxed font-medium">
               Every project is scoped individually around your goals and budget.
             </p>
-            <p className="text-black/75 text-sm sm:text-base leading-relaxed">
+            <p className="font-sans text-black/75 text-sm sm:text-base leading-relaxed">
               Rather than rigid price lists, you receive an upfront milestone quote tailored to what your brand actually needs. No hidden fees, no surprises.
             </p>
             <button
@@ -432,7 +432,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             {skills.map((skill) => (
               <div key={skill.name} className="border-t border-ink/20 pt-4 sm:pt-5">
                 <h3 className="font-display font-bold text-xl sm:text-2xl mb-1.5">{skill.name}</h3>
-                <p className="text-xs sm:text-sm text-ink/65 leading-relaxed">{skill.detail}</p>
+                <p className="font-sans text-xs sm:text-sm text-ink/65 leading-relaxed">{skill.detail}</p>
               </div>
             ))}
           </div>
@@ -442,7 +442,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             {tools.map((t) => (
               <span
                 key={t}
-                className="font-display font-medium text-xs sm:text-sm border border-ink/20 px-3.5 py-2 text-ink/80 hover:border-neon hover:text-accent-ink transition-colors rounded-lg bg-surface/50"
+                className="font-mono font-medium text-xs sm:text-sm border border-ink/20 px-3.5 py-2 text-ink/80 hover:border-neon hover:text-accent-ink transition-colors rounded-lg bg-surface/50"
               >
                 {t}
               </span>
@@ -459,7 +459,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
               Service<br /><span className="text-stroke">Questions</span>
             </h2>
-            <p className="mt-4 text-ink/50 text-xs sm:text-sm leading-relaxed max-w-sm">
+            <p className="mt-4 font-sans text-ink/50 text-xs sm:text-sm leading-relaxed max-w-sm">
               Key questions answered up front so we can jump straight into creating.
             </p>
           </div>
@@ -470,7 +470,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
                   <span>{f.q}</span>
                   <span className="font-mono text-accent-ink text-xl leading-none transition-transform duration-300 group-open:rotate-45 shrink-0">+</span>
                 </summary>
-                <p className="mt-3 text-ink/65 leading-relaxed max-w-2xl text-xs sm:text-sm">{f.a}</p>
+                <p className="mt-3 font-sans text-ink/65 leading-relaxed max-w-2xl text-xs sm:text-sm">{f.a}</p>
               </details>
             ))}
           </div>

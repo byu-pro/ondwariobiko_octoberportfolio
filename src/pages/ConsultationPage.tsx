@@ -71,7 +71,7 @@ export function ConsultationPage() {
             <div className="mt-8 grid grid-cols-2 gap-px bg-ink/15 border border-ink/15">
               {perks.map(([k, v]) => (
                 <div key={k} className="bg-surface p-5">
-                  <div className="font-display font-extrabold text-2xl md:text-3xl text-accent-ink">{k}</div>
+              <div className="font-display font-extrabold text-2xl md:text-3xl text-accent-ink">{k}</div>
                   <div className="mt-2 text-xs sm:text-sm text-ink/60">{v}</div>
                 </div>
               ))}
