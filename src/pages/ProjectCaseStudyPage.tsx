@@ -85,6 +85,8 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
     );
   }
 
+  const titleFontSize = `${(128 / (project.title.length + 1)).toFixed(2)}vw`;
+
   return (
     <main className="w-full overflow-x-hidden">
       <section className="px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14">
@@ -93,7 +95,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
             <div className="min-w-0">
               <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4">{project.number} / {project.category}</p>
-              <h1 className="max-w-full break-words font-display font-extrabold uppercase tracking-tighter leading-[0.92] text-balance text-[clamp(2.5rem,7vw,7rem)]">{project.title}<span className="text-accent-ink">.</span></h1>
+              <h1 style={{ fontSize: `clamp(1.125rem, ${titleFontSize}, 7rem)` }} className="max-w-full whitespace-nowrap font-display font-extrabold uppercase tracking-tighter leading-[0.92]">{project.title}<span className="text-accent-ink">.</span></h1>
               <p className="mt-5 max-w-3xl font-sans text-lg sm:text-xl xl:text-2xl text-ink/70 leading-snug">{project.subtitle}</p>
             </div>
             <div className="min-w-0 xl:pt-1">
