@@ -68,6 +68,10 @@ const caseStudies = {
 
 export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStudyPageProps) {
   const project = caseStudies[slug as keyof typeof caseStudies];
+  const projectOrder = Object.entries(caseStudies);
+  const currentIndex = projectOrder.findIndex(([projectSlug]) => projectSlug === slug);
+  const [previousSlug, previousProject] = projectOrder[(currentIndex - 1 + projectOrder.length) % projectOrder.length];
+  const [nextSlug, nextProject] = projectOrder[(currentIndex + 1) % projectOrder.length];
 
   if (!project) {
     return (
@@ -101,13 +105,13 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       </section>
 
       <section className="px-5 md:px-8 pb-12 sm:pb-16">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-6 items-stretch">
-          <div className="lg:col-span-8 min-h-[220px] sm:min-h-[300px] rounded-2xl border border-white/10 bg-[radial-gradient(ellipse_at_center,rgba(217,253,23,0.08),transparent_65%)] grid place-items-center overflow-hidden">
-            <img src={`${base}images/${project.logo}`} alt={`${project.title} main logo`} className="max-w-[78%] max-h-[220px] sm:max-h-[280px] object-contain transition-transform duration-700 hover:scale-[1.04]" />
+        <div className="max-w-[1400px] mx-auto">
+          <div className="min-h-[260px] sm:min-h-[380px] md:min-h-[480px] rounded-2xl border border-white/10 bg-[radial-gradient(ellipse_at_center,rgba(217,253,23,0.08),transparent_65%)] grid place-items-center overflow-hidden p-6 sm:p-10 md:p-14">
+            <img src={`${base}images/${project.logo}`} alt={`${project.title} main logo`} className="w-full max-h-[420px] object-contain transition-transform duration-700 hover:scale-[1.02]" />
           </div>
-          <aside className="lg:col-span-4 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col justify-between">
+          <aside className="mt-4 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">Client</p><h2 className="mt-3 font-display uppercase font-bold text-2xl sm:text-3xl">{project.title}</h2><p className="mt-3 font-sans text-sm text-ink/60">{project.location}</p></div>
-            <div className="mt-7 flex flex-col items-start gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent-ink hover:text-white transition-colors break-all">{label} ↗</a>)}</div>
+            <div className="flex flex-wrap items-start gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent-ink hover:text-white transition-colors break-all">{label} ↗</a>)}</div>
           </aside>
         </div>
       </section>
@@ -191,6 +195,19 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           <button onClick={() => onNavigate('contact')} className="rounded-full bg-neon px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black hover:scale-[1.03] transition-transform">Discuss your project ↗</button>
         </div>
       </section>
+
+      <nav aria-label="Case study navigation" className="px-5 md:px-8 pb-20 sm:pb-28">
+        <div className="max-w-[1400px] mx-auto grid sm:grid-cols-2 gap-4">
+          <a href={`#/case-study/${previousSlug}`} className="group rounded-2xl border border-ink/15 p-6 sm:p-8 hover:border-neon/60 transition-colors">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45">← Previous project</span>
+            <span className="mt-3 block font-display font-bold uppercase tracking-tight text-2xl sm:text-3xl group-hover:text-accent-ink transition-colors">{previousProject.title}</span>
+          </a>
+          <a href={`#/case-study/${nextSlug}`} className="group rounded-2xl border border-ink/15 p-6 sm:p-8 text-left sm:text-right hover:border-neon/60 transition-colors">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45">Next project →</span>
+            <span className="mt-3 block font-display font-bold uppercase tracking-tight text-2xl sm:text-3xl group-hover:text-accent-ink transition-colors">{nextProject.title}</span>
+          </a>
+        </div>
+      </nav>
     </main>
   );
 }
