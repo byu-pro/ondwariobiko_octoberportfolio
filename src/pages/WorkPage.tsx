@@ -76,6 +76,7 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
   return (
     <section 
       ref={sectionRef}
+      id={project.id}
       onClick={() => onOpenProject(project)}
       className="group relative w-full aspect-[18/9] sm:aspect-[19/9] lg:aspect-[21/10] max-h-[600px] min-h-[200px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
     >

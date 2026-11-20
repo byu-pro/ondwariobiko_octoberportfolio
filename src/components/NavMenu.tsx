@@ -32,6 +32,11 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
                     e.preventDefault();
                     onNavigate(l.id);
                     onClose();
+                    if (l.id === "work") {
+                      requestAnimationFrame(() => requestAnimationFrame(() => {
+                        document.getElementById("pelican-social")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }));
+                    }
                   }}
                   className="group flex items-baseline gap-4 sm:gap-6 py-2 md:py-3 animate-rise cursor-pointer"
                   style={{ animationDelay: `${180 + i * 65}ms` }}
