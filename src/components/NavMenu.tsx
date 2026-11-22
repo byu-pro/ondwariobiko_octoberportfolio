@@ -46,7 +46,13 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
                   style={{ animationDelay: `${180 + i * 65}ms` }}
                 >
                   <span className="font-mono text-xs md:text-sm w-8 sm:w-10">0{i + 1}</span>
-                  <span className={`font-display font-extrabold uppercase tracking-tighter leading-[0.9] text-[clamp(2.2rem,7vw,6rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic ${active ? "opacity-55 italic" : ""}`}>
+                  <span
+                    className={`transition-all duration-500 group-hover:translate-x-6 ${
+                      active
+                        ? "font-editorial font-normal italic normal-case tracking-normal leading-[0.88] text-[clamp(2.8rem,8.5vw,7.2rem)] opacity-75"
+                        : "font-display font-extrabold uppercase tracking-tighter leading-[0.9] text-[clamp(2.2rem,7vw,6rem)] group-hover:italic"
+                    }`}
+                  >
                     {l.label}
                   </span>
                   <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 font-medium">

@@ -8,6 +8,7 @@
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-editorial: var(--font-editorial);
 }
 
 :root {
@@ -16,6 +17,7 @@
   --font-display: "Syne", sans-serif;
   --font-sans: "Inter", sans-serif;
   --font-mono: "Space Grotesk", monospace;
+  --font-editorial: "Instrument Serif", Georgia, serif;
   --surface: #000;
   --ink: #fff;
   --accent-ink: var(--neon);
