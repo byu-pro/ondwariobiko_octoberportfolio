@@ -27,10 +27,11 @@ const pillars = [
 ];
 
 const markers = [
-  { value: new Date().getFullYear() - 2016, label: "Years experience" },
-  { value: 350, suffix: "+", label: "Projects completed" },
-  { value: 3, label: "Core disciplines" },
-  { value: 1, label: "Solo creative partner" },
+  { value: new Date().getFullYear() - 2016, label: "Years" },
+  { value: 350, suffix: "+", label: "Projects" },
+  { value: 3, label: "Disciplines" },
+  { value: 5.0, decimals: 1, label: "Rating" },
+  { value: 12, label: "Industries" },
 ];
 
 const packages = [
@@ -155,7 +156,17 @@ const serviceFaqs = [
   },
 ];
 
-function AnimatedStat({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) {
+function AnimatedStat({
+  value,
+  label,
+  suffix = "",
+  decimals = 0,
+}: {
+  value: number;
+  label: string;
+  suffix?: string;
+  decimals?: number;
+}) {
   const root = useRef<HTMLDivElement>(null);
   const [display, setDisplay] = useState(value);
 
@@ -166,9 +177,11 @@ function AnimatedStat({ value, label, suffix = "" }: { value: number; label: str
       if (!entry?.isIntersecting) return;
       observer.disconnect();
       const start = performance.now();
+      const factor = Math.pow(10, decimals);
       const tick = (now: number) => {
         const progress = Math.min((now - start) / 1400, 1);
-        setDisplay(Math.round(value * (1 - Math.pow(1 - progress, 3))));
+        const eased = value * (1 - Math.pow(1 - progress, 3));
+        setDisplay(Math.round(eased * factor) / factor);
         if (progress < 1) frame = requestAnimationFrame(tick);
       };
       setDisplay(0);
@@ -176,12 +189,14 @@ function AnimatedStat({ value, label, suffix = "" }: { value: number; label: str
     }, { threshold: 0.5 });
     if (root.current) observer.observe(root.current);
     return () => { observer.disconnect(); cancelAnimationFrame(frame); };
-  }, [value]);
+  }, [value, decimals]);
+
+  const formatted = decimals > 0 ? display.toFixed(decimals) : String(display);
 
   return (
-    <div ref={root} className="min-w-0 text-center flex flex-col items-center">
-      <div className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tighter text-accent-ink tabular-nums leading-none">
-        <span>{display}{suffix}</span>
+    <div ref={root} className="min-w-0 text-center flex flex-col items-center last:col-span-2 sm:last:col-span-1">
+      <div className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tighter tabular-nums leading-none">
+        <span className="inline-block text-neon-gradient">{formatted}{suffix}</span>
       </div>
       <p className="font-mono text-[10px] sm:text-xs uppercase tracking-wider mt-3 text-ink/70 leading-snug">{label}</p>
     </div>
@@ -280,10 +295,10 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 4 — Track Record & Stats */}
-      <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
+      <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ Track record</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 border-y border-ink/15 py-8 sm:py-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 py-4 sm:py-6">
             {markers.map((stat) => <AnimatedStat key={stat.label} {...stat} />)}
           </div>
         </div>
