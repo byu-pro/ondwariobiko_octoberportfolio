@@ -1,0 +1,45 @@
+# Robots.txt for Ondwari Obiko Portfolio (https://ondwariobiko.github.io/ondwariobiko_octoberportfolio/)
+# Welcome legitimate search engines
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: Slurp
+User-agent: Baiduspider
+User-agent: YandexBot
+Allow: /
+
+# Disallow aggressive AI dataset and content scrapers
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: Bytespider
+User-agent: PerplexityBot
+User-agent: Diffbot
+User-agent: Omgilibot
+Disallow: /
+
+# Disallow aggressive marketing scanners, vulnerability bots, and email harvesters
+User-agent: EmailCollector
+User-agent: EmailSiphon
+User-agent: WebReaper
+User-agent: SemrushBot
+User-agent: AhrefsBot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: PetalBot
+User-agent: BLEXBot
+User-agent: DataForSeoBot
+Disallow: /
+
+# General crawler policy
+User-agent: *
+Allow: /
+Disallow: /project-briefs/
+Disallow: /*.docx$
+Disallow: /*.json$
+
+Sitemap: https://ondwariobiko.github.io/ondwariobiko_octoberportfolio/sitemap.xml

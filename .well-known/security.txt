@@ -1,0 +1,6 @@
+# RFC 9116 Security Contact for ondwariobiko.github.io
+Contact: mailto:ondwariobiko@gmail.com
+Expires: 2028-12-31T23:59:59.000Z
+Preferred-Languages: en
+Policy: https://ondwariobiko.github.io/ondwariobiko_octoberportfolio/#/about
+Canonical: https://ondwariobiko.github.io/ondwariobiko_octoberportfolio/.well-known/security.txt

@@ -6,12 +6,24 @@ yarn-debug.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Node modules
+# Node modules & build artifacts
 node_modules/
 dist/
 dist-ssr/
 *.local
 project-briefs/
+
+# Secrets, Environment Variables & API Keys (Critical for vibe-coded repos)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.pfx
+*.p12
+credentials.json
+client_secret*.json
 
 # Editor files
 .vscode/*

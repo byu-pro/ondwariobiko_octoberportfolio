@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { PageHero } from '../components/PageHero';
 import { BudgetField } from '../components/BudgetField';
+import { 
+  getContactEmail, 
+  getWhatsAppUrl, 
+  getMailtoUrl, 
+  sanitizeInput, 
+  isHumanPaced 
+} from '../utils/security';
 
 const perks = [
   ["60 min", "Dedicated, 1-on-1 video or WhatsApp call"],
@@ -18,35 +25,61 @@ export function ConsultationPage() {
   const [email, setEmail] = useState<string>("");
   const [time, setTime] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [honeypot, setHoneypot] = useState<string>("");
+  const [mountedAt] = useState(() => Date.now());
+  const [error, setError] = useState<string>("");
 
   const submitWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (honeypot.trim()) return;
+    if (!isHumanPaced(mountedAt)) {
+      setError("Please wait a moment before submitting.");
+      return;
+    }
+    setError("");
+
+    const cleanName = sanitizeInput(name, 100);
+    const cleanEmail = sanitizeInput(email, 120);
+    const cleanTime = sanitizeInput(time, 100);
+    const cleanMessage = sanitizeInput(message, 1500);
+
     const msg = 
       `Hi! I'd like to book a free 1-hour consultation.\n\n` +
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
+      `Name: ${cleanName}\n` +
+      `Email: ${cleanEmail}\n` +
       `Project: ${type}\n` +
       `Budget: ${budget || "To be discussed"}\n` +
-      `Preferred time: ${time || "Flexible"}\n\n` +
-      (message ? `Notes: ${message}` : "");
-    window.open(`https://wa.me/254702255575?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+      `Preferred time: ${cleanTime || "Flexible"}\n\n` +
+      (cleanMessage ? `Notes: ${cleanMessage}` : "");
+    window.open(getWhatsAppUrl(msg), "_blank", "noopener,noreferrer");
   };
 
   const submitEmail = () => {
-    if (!name.trim() || !email.trim()) {
-      alert("Please enter your name and email address first.");
+    if (honeypot.trim()) return;
+    if (!isHumanPaced(mountedAt)) {
+      setError("Please wait a moment before submitting.");
       return;
     }
+    if (!name.trim() || !email.trim()) {
+      setError("Please enter your name and email address first.");
+      return;
+    }
+    setError("");
+
+    const cleanName = sanitizeInput(name, 100);
+    const cleanEmail = sanitizeInput(email, 120);
+    const cleanTime = sanitizeInput(time, 100);
+    const cleanMessage = sanitizeInput(message, 1500);
+
     const msg = 
       `Hi! I'd like to book a free 1-hour consultation.\n\n` +
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
+      `Name: ${cleanName}\n` +
+      `Email: ${cleanEmail}\n` +
       `Project: ${type}\n` +
       `Budget: ${budget || "To be discussed"}\n` +
-      `Preferred time: ${time || "Flexible"}\n\n` +
-      (message ? `Notes: ${message}` : "");
-    const mailtoUrl = `mailto:ondwariobiko@gmail.com?subject=${encodeURIComponent(`Consultation Booking: ${name} (${type})`)}&body=${encodeURIComponent(msg)}`;
-    window.location.href = mailtoUrl;
+      `Preferred time: ${cleanTime || "Flexible"}\n\n` +
+      (cleanMessage ? `Notes: ${cleanMessage}` : "");
+    window.location.href = getMailtoUrl(`Consultation Booking: ${cleanName} (${type})`, msg);
   };
 
   const field = "w-full bg-transparent border-b border-ink/20 py-4 text-lg md:text-xl outline-none focus:border-neon transition-colors placeholder:text-ink/30";
@@ -89,6 +122,19 @@ export function ConsultationPage() {
 
           {/* Right Column: Booking Form */}
           <form onSubmit={submitWhatsApp} className="lg:col-span-7 space-y-8">
+            {/* Anti-spam Bot Trap / Honeypot */}
+            <div className="opacity-0 absolute -left-[9999px] -top-[9999px] h-0 w-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+              <label htmlFor="consult_website_hp">Please leave this field blank</label>
+              <input
+                id="consult_website_hp"
+                name="website_url_hp"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
             <div className="grid sm:grid-cols-2 gap-8">
               <input 
                 required 
@@ -165,8 +211,12 @@ export function ConsultationPage() {
               </button>
             </div>
 
+            {error && (
+              <p className="font-mono text-xs text-accent-ink">{error}</p>
+            )}
+
             <p className="font-mono text-[10px] uppercase tracking-widest text-ink/40">
-              Opens WhatsApp with your details · Or email ondwariobiko@gmail.com
+              Opens WhatsApp with your details · Or email directly: {getContactEmail()}
             </p>
           </form>
 

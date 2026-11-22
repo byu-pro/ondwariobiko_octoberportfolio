@@ -21,6 +21,15 @@ try {
   // Ignore mapped/locked files in source images directory
 }
 fs.cpSync('dist/.nojekyll', '.nojekyll');
+if (fs.existsSync('dist/robots.txt')) {
+  fs.copyFileSync('dist/robots.txt', 'robots.txt');
+}
+if (fs.existsSync('dist/sitemap.xml')) {
+  fs.copyFileSync('dist/sitemap.xml', 'sitemap.xml');
+}
+if (fs.existsSync('dist/.well-known')) {
+  fs.cpSync('dist/.well-known', '.well-known', { recursive: true });
+}
 if (fs.existsSync('docs')) {
   fs.rmSync('docs', { recursive: true, force: true });
 }

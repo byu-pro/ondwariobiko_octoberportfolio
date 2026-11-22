@@ -1,5 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
+import { getContactEmail, getContactPhoneFormatted } from '../utils/security';
 
 interface LegalModalProps {
   type: 'terms' | 'privacy' | null;
@@ -83,7 +84,7 @@ export function LegalModal({ type, onClose }: LegalModalProps) {
               <div>
                 <h3 className="font-display uppercase text-lg text-white mb-2">03. Communications</h3>
                 <p>
-                  I communicate directly through official channels: ondwariobiko@gmail.com and WhatsApp (+254 702 255 575). You can request deletion of any project correspondence at any time.
+                  I communicate directly through official channels: {getContactEmail()} and WhatsApp ({getContactPhoneFormatted()}). You can request deletion of any project correspondence at any time.
                 </p>
               </div>
             </>

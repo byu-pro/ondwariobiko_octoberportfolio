@@ -3,6 +3,15 @@ import { PageHero } from '../components/PageHero';
 import { BudgetField } from '../components/BudgetField';
 import { CopyButton } from '../components/CopyButton';
 import { Mail, Phone } from 'lucide-react';
+import { 
+  getContactEmail, 
+  getContactPhoneRaw, 
+  getContactPhoneFormatted, 
+  getWhatsAppUrl, 
+  getMailtoUrl, 
+  sanitizeInput, 
+  isHumanPaced 
+} from '../utils/security';
 
 const projectTypes = [
   "Logo Design",
@@ -48,22 +57,41 @@ export function ContactPage() {
   const [details, setDetails] = useState("");
   const [source, setSource] = useState("");
   const [error, setError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [mountedAt] = useState(() => Date.now());
+
+  const contactEmail = getContactEmail();
+  const contactPhoneRaw = getContactPhoneRaw();
+  const contactPhoneFormatted = getContactPhoneFormatted();
 
   const buildMessage = () => {
+    const cleanName = sanitizeInput(name, 100);
+    const cleanEmail = sanitizeInput(email, 120);
+    const cleanCompany = sanitizeInput(company, 100);
+    const cleanDetails = sanitizeInput(details, 1500);
+
     return (
       `Hi! I'd like to start a project.\n\n` +
-      `• Name: ${name.trim()}\n` +
-      `• Email: ${email.trim()}\n` +
-      (company.trim() ? `• Company / Brand: ${company.trim()}\n` : "") +
+      `• Name: ${cleanName}\n` +
+      `• Email: ${cleanEmail}\n` +
+      (cleanCompany ? `• Company / Brand: ${cleanCompany}\n` : "") +
       `• Project type: ${type || "Not sure yet"}\n` +
       `• Budget: ${budget || "To be discussed"}\n` +
       `• When to start: ${start || "Flexible"}\n` +
       (source ? `• Found via: ${source}\n` : "") +
-      `\nProject Details:\n${details.trim()}`
+      `\nProject Details:\n${cleanDetails}`
     );
   };
 
   const validate = () => {
+    if (honeypot.trim()) {
+      // Honeypot trapped automated bot submission
+      return false;
+    }
+    if (!isHumanPaced(mountedAt)) {
+      setError("Please take a moment before submitting.");
+      return false;
+    }
     if (!name.trim() || !email.trim() || !details.trim()) {
       setError("Please add your name, email, and a few lines about your project.");
       return false;
@@ -80,14 +108,14 @@ export function ContactPage() {
     e.preventDefault();
     if (!validate()) return;
     const msg = buildMessage();
-    window.open(`https://wa.me/254702255575?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+    window.open(getWhatsAppUrl(msg), "_blank", "noopener,noreferrer");
   };
 
   const sendEmail = () => {
     if (!validate()) return;
     const msg = buildMessage();
-    const mailtoUrl = `mailto:ondwariobiko@gmail.com?subject=${encodeURIComponent(`Project Inquiry: ${name} (${type || "Design"})`)}&body=${encodeURIComponent(msg)}`;
-    window.location.href = mailtoUrl;
+    const cleanName = sanitizeInput(name, 100);
+    window.location.href = getMailtoUrl(`Project Inquiry: ${cleanName} (${type || "Design"})`, msg);
   };
 
   const fieldClass =
@@ -124,6 +152,20 @@ export function ContactPage() {
           
           {/* Inquiry Form */}
           <form onSubmit={sendWhatsApp} className="lg:col-span-7 space-y-8">
+            {/* Anti-spam Bot Trap / Honeypot */}
+            <div className="opacity-0 absolute -left-[9999px] -top-[9999px] h-0 w-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+              <label htmlFor="contact_website_hp">Please leave this field blank</label>
+              <input
+                id="contact_website_hp"
+                name="website_url_hp"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
+
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">
               Project inquiry form
             </p>
@@ -264,7 +306,7 @@ export function ContactPage() {
                 {/* Email row */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 border-b border-ink/15 pb-2 sm:pb-0">
                   <a 
-                    href="mailto:ondwariobiko@gmail.com" 
+                    href={getMailtoUrl()} 
                     className="group relative overflow-hidden flex flex-1 min-w-0 flex-col gap-1 py-5 select-text"
                   >
                     <span className="absolute inset-0 bg-neon translate-y-full transition-transform duration-500 group-hover:translate-y-0" />
@@ -273,16 +315,16 @@ export function ContactPage() {
                       Email — best way to reach me
                     </span>
                     <span className="relative break-all font-sans text-lg sm:text-xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-semibold">
-                      ondwariobiko@gmail.com ↗
+                      {contactEmail} ↗
                     </span>
                   </a>
-                  <CopyButton value="ondwariobiko@gmail.com" label="email address" />
+                  <CopyButton value={contactEmail} label="email address" />
                 </div>
 
                 {/* WhatsApp row */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 border-b border-ink/15 pb-2 sm:pb-0">
                   <a 
-                    href="https://wa.me/254702255575" 
+                    href={getWhatsAppUrl()} 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="group relative overflow-hidden flex flex-1 min-w-0 flex-col gap-1 py-5 select-text"
@@ -293,10 +335,10 @@ export function ContactPage() {
                       WhatsApp — quickest for calls & chat
                     </span>
                     <span className="relative font-sans text-lg sm:text-xl group-hover:text-black px-2 transition-transform duration-500 group-hover:-translate-x-2 font-semibold">
-                      +254 702 255 575 ↗
+                      {contactPhoneFormatted} ↗
                     </span>
                   </a>
-                  <CopyButton value="+254702255575" label="phone number" />
+                  <CopyButton value={contactPhoneRaw} label="phone number" />
                 </div>
 
                 {/* Behance */}
