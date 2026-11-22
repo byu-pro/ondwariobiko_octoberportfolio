@@ -3,9 +3,22 @@ import { PageRoute } from '../types';
 
 interface NavMenuProps {
   currentRoute: PageRoute;
+  projectSlug?: string;
   onNavigate: (route: PageRoute) => void;
   onClose: () => void;
 }
+
+const projectTitles: Record<string, string> = {
+  'pelican-social': 'Pelican Social',
+  'ikon-trailers': 'IKON Trailers',
+  'iron-acre': 'Iron Acre Land Co',
+  'friends-of-unionville': 'Friends of Unionville',
+  'sound-curves': 'SoundCurves',
+  'moods-and-nerds': 'Moods N Meds',
+  'yellow-dot-energy': 'Yellow Dot Energy',
+  'green-essential': 'Green Essentials',
+  'lewis-park': 'Lewis Park Pickleball',
+};
 
 const navLinks: { id: PageRoute; label: string; hint: string }[] = [
   { id: "work", label: "Work", hint: "Selected projects" },
@@ -14,7 +27,12 @@ const navLinks: { id: PageRoute; label: string; hint: string }[] = [
   { id: "consultation", label: "Free Call", hint: "1 hour, on me" },
 ];
 
-export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
+export function NavMenu({ currentRoute, projectSlug = '', onNavigate, onClose }: NavMenuProps) {
+  const activeProjectName =
+    currentRoute === 'project' && projectSlug
+      ? projectTitles[projectSlug] || projectSlug.replaceAll('-', ' ')
+      : '';
+
   return (
     <div 
       className="fixed inset-0 z-[55] bg-neon-gradient text-black animate-menu-in flex flex-col overflow-y-auto md:overflow-hidden overscroll-contain" 
@@ -23,7 +41,10 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
       <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-24 sm:pt-28 md:pt-20 pb-10 md:pb-6 min-h-0">
         <ul className="max-w-[1400px] w-full mx-auto my-auto">
           {navLinks.map((l, i) => {
-            const active = currentRoute === l.id;
+            const isProjectWork = currentRoute === 'project' && l.id === 'work';
+            const active = currentRoute === l.id || isProjectWork;
+            const hintText = isProjectWork && activeProjectName ? activeProjectName : l.hint;
+
             return (
               <li key={l.label} className="overflow-hidden border-b border-black/15">
                 <a
@@ -55,8 +76,14 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
                   >
                     {l.label}
                   </span>
-                  <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 font-medium">
-                    {l.hint} →
+                  <span
+                    className={`ml-auto font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] transition-all duration-500 ${
+                      isProjectWork && activeProjectName
+                        ? "block opacity-85 translate-x-0 font-semibold text-right max-w-[45vw] truncate"
+                        : "hidden md:block opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 font-medium"
+                    }`}
+                  >
+                    {hintText} →
                   </span>
                 </a>
               </li>

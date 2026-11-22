@@ -112,21 +112,9 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
             <span className="block overflow-hidden mt-1 sm:mt-1.5">
               <span className="block animate-rise [animation-delay:80ms] text-white">Problem</span>
             </span>
-            <span className="block mt-2 sm:mt-3">
-              <span className="inline-block animate-rise [animation-delay:150ms]">
-                <span className="relative inline-block px-2 sm:px-3.5 py-0.5">
-                  {/* Signature Figma-style Vector Selection Frame echoing Home Hero */}
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -inset-1 border-[1.5px] border-neon/80 bg-neon/[0.06]"
-                  >
-                    <span className="absolute -top-1.5 -left-1.5 w-2.5 h-2.5 bg-black border-[1.5px] border-neon" />
-                    <span className="absolute -top-1.5 -right-1.5 w-2.5 h-2.5 bg-black border-[1.5px] border-neon" />
-                    <span className="absolute -bottom-1.5 -left-1.5 w-2.5 h-2.5 bg-black border-[1.5px] border-neon" />
-                    <span className="absolute -bottom-1.5 -right-1.5 w-2.5 h-2.5 bg-black border-[1.5px] border-neon" />
-                  </span>
-                  <span className="relative z-10 inline-block text-neon-gradient">Solver</span>
-                </span>
+            <span className="block overflow-hidden mt-1 sm:mt-1.5">
+              <span className="block animate-rise [animation-delay:150ms]">
+                <span className="inline-block text-neon-gradient">Solver</span>
               </span>
             </span>
           </h1>

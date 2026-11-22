@@ -194,6 +194,7 @@ export default function App() {
       {open && (
         <NavMenu
           currentRoute={currentRoute}
+          projectSlug={projectSlug}
           onNavigate={navigateTo}
           onClose={() => setOpen(false)}
         />
