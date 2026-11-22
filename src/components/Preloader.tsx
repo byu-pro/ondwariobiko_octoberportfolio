@@ -8,15 +8,6 @@ interface PreloaderProps {
   onComplete?: () => void;
 }
 
-const chapters: Record<string, string> = {
-  Home: '00',
-  work: '01',
-  services: '02',
-  about: '03',
-  contact: '04',
-  consultation: '05',
-};
-
 const projectTitles: Record<string, string> = {
   'pelican-social': 'Pelican Social',
   'ikon-trailers': 'IKON Trailers',
@@ -75,22 +66,17 @@ export function Preloader({ base, currentRoute = 'work', projectSlug = '', onCom
   if (done) return null;
 
   let label = 'Home';
-  let chapter = '00';
 
   if (currentRoute === 'project' && projectSlug) {
     label = projectTitles[projectSlug] || projectSlug.replaceAll('-', ' ');
-    chapter = '↗';
   } else {
     const hash = window.location.hash.toLowerCase();
     if (currentRoute === 'about' && hash.includes('services')) {
       label = 'services';
-      chapter = chapters['services'] || '02';
     } else if (currentRoute === 'work') {
       label = 'Home';
-      chapter = chapters['Home'] || '00';
     } else {
       label = currentRoute;
-      chapter = chapters[currentRoute] || '↗';
     }
   }
 
@@ -112,8 +98,6 @@ export function Preloader({ base, currentRoute = 'work', projectSlug = '', onCom
       </div>
       <div className="monogram-passage__orbit" />
       <div className="monogram-passage__caption">
-        <span className="monogram-passage__index">{chapter}</span>
-        <span className="monogram-passage__rule" />
         <span className="monogram-passage__destination">{label}</span>
       </div>
       <span className="monogram-passage__edition">ONDWARIOBIKO / SELECTED PERSPECTIVES</span>
