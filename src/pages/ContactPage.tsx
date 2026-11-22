@@ -59,6 +59,7 @@ export function ContactPage() {
   const [error, setError] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [mountedAt] = useState(() => Date.now());
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const contactEmail = getContactEmail();
   const contactPhoneRaw = getContactPhoneRaw();
@@ -106,16 +107,22 @@ export function ContactPage() {
 
   const sendWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (!validate()) return;
+    setIsSubmitting(true);
     const msg = buildMessage();
     window.open(getWhatsAppUrl(msg), "_blank", "noopener,noreferrer");
+    setTimeout(() => setIsSubmitting(false), 3000);
   };
 
   const sendEmail = () => {
+    if (isSubmitting) return;
     if (!validate()) return;
+    setIsSubmitting(true);
     const msg = buildMessage();
     const cleanName = sanitizeInput(name, 100);
     window.location.href = getMailtoUrl(`Project Inquiry: ${cleanName} (${type || "Design"})`, msg);
+    setTimeout(() => setIsSubmitting(false), 3000);
   };
 
   const fieldClass =
@@ -275,18 +282,24 @@ export function ContactPage() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <button
                 type="submit"
-                className="group inline-flex items-center justify-between gap-6 rounded-full bg-neon text-black pl-8 pr-2 py-2 font-mono text-xs uppercase tracking-[0.2em] transition-transform hover:scale-[1.02] cursor-pointer font-bold"
+                disabled={isSubmitting}
+                className={`group inline-flex items-center justify-between gap-6 rounded-full bg-neon text-black pl-8 pr-2 py-2 font-mono text-xs uppercase tracking-[0.2em] transition-transform hover:scale-[1.02] cursor-pointer font-bold ${
+                  isSubmitting ? 'opacity-60 pointer-events-none' : ''
+                }`}
               >
-                <span>Continue in WhatsApp</span>
+                <span>{isSubmitting ? 'Opening WhatsApp…' : 'Continue in WhatsApp'}</span>
                 <span className="size-12 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">↗</span>
               </button>
 
               <button
                 type="button"
                 onClick={sendEmail}
-                className="inline-flex items-center justify-center border border-ink/25 text-ink font-mono text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer"
+                disabled={isSubmitting}
+                className={`inline-flex items-center justify-center border border-ink/25 text-ink font-mono text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer ${
+                  isSubmitting ? 'opacity-60 pointer-events-none' : ''
+                }`}
               >
-                Send via Email
+                {isSubmitting ? 'Opening Email…' : 'Send via Email'}
               </button>
             </div>
             

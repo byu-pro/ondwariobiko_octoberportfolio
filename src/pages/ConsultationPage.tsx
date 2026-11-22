@@ -28,15 +28,18 @@ export function ConsultationPage() {
   const [honeypot, setHoneypot] = useState<string>("");
   const [mountedAt] = useState(() => Date.now());
   const [error, setError] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submitWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (honeypot.trim()) return;
     if (!isHumanPaced(mountedAt)) {
       setError("Please wait a moment before submitting.");
       return;
     }
     setError("");
+    setIsSubmitting(true);
 
     const cleanName = sanitizeInput(name, 100);
     const cleanEmail = sanitizeInput(email, 120);
@@ -52,9 +55,11 @@ export function ConsultationPage() {
       `Preferred time: ${cleanTime || "Flexible"}\n\n` +
       (cleanMessage ? `Notes: ${cleanMessage}` : "");
     window.open(getWhatsAppUrl(msg), "_blank", "noopener,noreferrer");
+    setTimeout(() => setIsSubmitting(false), 3000);
   };
 
   const submitEmail = () => {
+    if (isSubmitting) return;
     if (honeypot.trim()) return;
     if (!isHumanPaced(mountedAt)) {
       setError("Please wait a moment before submitting.");
@@ -65,6 +70,7 @@ export function ConsultationPage() {
       return;
     }
     setError("");
+    setIsSubmitting(true);
 
     const cleanName = sanitizeInput(name, 100);
     const cleanEmail = sanitizeInput(email, 120);
@@ -80,6 +86,7 @@ export function ConsultationPage() {
       `Preferred time: ${cleanTime || "Flexible"}\n\n` +
       (cleanMessage ? `Notes: ${cleanMessage}` : "");
     window.location.href = getMailtoUrl(`Consultation Booking: ${cleanName} (${type})`, msg);
+    setTimeout(() => setIsSubmitting(false), 3000);
   };
 
   const field = "w-full bg-transparent border-b border-ink/20 py-4 text-lg md:text-xl outline-none focus:border-neon transition-colors placeholder:text-ink/30";
@@ -196,18 +203,24 @@ export function ConsultationPage() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <button 
                 type="submit" 
-                className="group inline-flex items-center justify-between gap-6 rounded-full bg-neon text-black pl-8 pr-2 py-2 font-mono text-xs uppercase tracking-[0.2em] transition-transform hover:scale-[1.02] cursor-pointer font-bold"
+                disabled={isSubmitting}
+                className={`group inline-flex items-center justify-between gap-6 rounded-full bg-neon text-black pl-8 pr-2 py-2 font-mono text-xs uppercase tracking-[0.2em] transition-transform hover:scale-[1.02] cursor-pointer font-bold ${
+                  isSubmitting ? 'opacity-60 pointer-events-none' : ''
+                }`}
               >
-                <span>Request via WhatsApp</span>
+                <span>{isSubmitting ? 'Opening WhatsApp…' : 'Request via WhatsApp'}</span>
                 <span className="size-12 rounded-full bg-black text-accent-ink grid place-items-center transition-transform duration-500 group-hover:rotate-45">↗</span>
               </button>
 
               <button 
                 type="button" 
                 onClick={submitEmail}
-                className="inline-flex items-center justify-center border border-ink/25 text-ink font-mono text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer"
+                disabled={isSubmitting}
+                className={`inline-flex items-center justify-center border border-ink/25 text-ink font-mono text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer ${
+                  isSubmitting ? 'opacity-60 pointer-events-none' : ''
+                }`}
               >
-                Book via Email
+                {isSubmitting ? 'Opening Email…' : 'Book via Email'}
               </button>
             </div>
 

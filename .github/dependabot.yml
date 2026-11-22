@@ -1,0 +1,10 @@
+version: 2
+updates:
+  # Scan npm dependencies weekly for security updates and CVE vulnerabilities
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(security-deps)"

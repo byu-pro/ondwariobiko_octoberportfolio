@@ -1,0 +1,26 @@
+# GitHub Linguist & Code Search Controls
+# Exclude compiled assets and minified bundles from public GitHub code search results and diffs
+assets/* linguist-vendored
+assets/* linguist-generated
+docs/assets/* linguist-vendored
+docs/assets/* linguist-generated
+public/images/* binary
+images/* binary
+
+# Treat binary media files properly
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.webm binary
+*.ico binary
+*.docx binary
+
+# Normalize text line endings
+* text=auto eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
