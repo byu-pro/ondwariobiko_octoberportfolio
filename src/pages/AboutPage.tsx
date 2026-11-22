@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { PageHero } from '../components/PageHero';
+import { AboutHero } from '../components/AboutHero';
 import { PageRoute } from '../types';
 import { responsiveImageSrcSet } from '../utils/images';
 
@@ -210,12 +210,7 @@ function ProfilePhotoFullWidth({ base }: { base: string }) {
 export function AboutPage({ base, onNavigate }: AboutPageProps) {
   return (
     <div className="w-full flex flex-col overflow-x-hidden">
-      <PageHero 
-        index="02" 
-        eyebrow="Creative partner for business growth" 
-        title="Business" 
-        outline="Problem Solver" 
-      />
+      <AboutHero onNavigate={onNavigate} />
 
       {/* FULL-WIDTH PROFILE / STUDIO PHOTO */}
       <section className="w-full pb-14 sm:pb-20 md:pb-28 overflow-hidden" aria-label="John Obiko Studio">
