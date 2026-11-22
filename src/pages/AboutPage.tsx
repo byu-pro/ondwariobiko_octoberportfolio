@@ -289,21 +289,29 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         </div>
       </section>
 
-      {/* FULL-WIDTH SECOND STUDIO / CREATIVE DIRECTION PHOTO */}
-      <section className="w-full pb-14 sm:pb-20 md:pb-28 overflow-hidden" aria-label="John Obiko Studio & Creative Direction">
-        <div className="relative w-full aspect-[16/9] max-h-[760px] bg-neutral-950 overflow-hidden group select-none">
+      {/* FULL-WIDTH ART SPEAKS EDITORIAL QUOTE POSTER */}
+      <section className="relative w-full mb-14 sm:mb-20 md:mb-28 bg-[#0a0a0a] border-y border-neutral-900 overflow-hidden select-none" aria-label="Art speaks where words are unable to explain">
+        <div className="relative w-full max-w-[1680px] mx-auto">
           <img
-            src={`${base}images/aboutimage_2.webp`}
-            alt="John Obiko — Studio & Creative Direction"
+            src={`${base}images/art-speaks-quote.webp`}
+            alt="Art speaks where words are unable to explain — Ondwari Obiko"
             width={1920}
             height={1080}
-            srcSet={responsiveImageSrcSet(`${base}images/aboutimage_2.webp`)}
+            srcSet={responsiveImageSrcSet(`${base}images/art-speaks-quote.webp`)}
             sizes="100vw"
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 ease-out"
+            className="block w-full h-auto object-contain"
           />
         </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-black/60 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent"
+        />
       </section>
 
       {/* 5 — SERVICES SECTION (THE 6 CORE PACKAGES) */}
