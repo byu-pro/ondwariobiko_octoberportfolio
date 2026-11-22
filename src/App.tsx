@@ -180,9 +180,10 @@ export default function App() {
         projectSlug={projectSlug}
       />
 
-      {/* FIXED HEADER WITH BRAND TYPOGRAPHY & BLURRED MOBILE GLASS */}
+      {/* FIXED HEADER WITH ADAPTIVE TRANSPARENT-TO-GLASS SURFACE */}
       <Header
         base={base}
+        currentRoute={currentRoute}
         open={open}
         setOpen={setOpen}
         scrolled={scrolled}

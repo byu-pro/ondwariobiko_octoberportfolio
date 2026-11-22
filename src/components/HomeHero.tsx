@@ -391,7 +391,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
           )}
 
           {/* Desktop Right-Aligned Scroll Indicator level with sticker cloud */}
-          <div className="hidden md:flex items-center justify-end absolute left-1/2 -translate-x-1/2 w-screen pointer-events-none top-1/2 -translate-y-1/2 px-6 sm:px-8 md:px-10 lg:px-12 z-20">
+          <div className="hidden xl:flex items-center justify-end absolute left-1/2 -translate-x-1/2 w-screen pointer-events-none top-1/2 -translate-y-1/2 px-6 sm:px-8 md:px-10 lg:px-12 z-20">
             <button
               type="button"
               onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
