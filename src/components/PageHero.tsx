@@ -16,7 +16,7 @@ export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
             <span className="text-accent-ink">{index}</span> / {eyebrow}
           </span>
         </div>
-        <h1 className="page-hero-title font-display uppercase tracking-tighter leading-[0.85] text-[clamp(2.2rem,11vw,11rem)]">
+        <h1 className="page-hero-title font-display font-extrabold uppercase tracking-tighter leading-[0.9] text-[clamp(1.9rem,8.5vw,8.5rem)]">
           <span className="block overflow-hidden">
             <span className="block animate-rise">{title}</span>
           </span>

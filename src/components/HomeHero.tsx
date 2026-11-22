@@ -52,8 +52,9 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
     el.style.transform = '';
   };
 
-  // Draggable sticker pointer handlers
+  // Draggable sticker pointer handlers (desktop mouse only — stickers stay fixed on mobile)
   const handleStickerPointerDown = (idx: number, e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== 'mouse' || window.innerWidth < 768) return;
     e.currentTarget.setPointerCapture(e.pointerId);
     topZRef.current += 1;
     const current = stickerOffsets[idx] ?? { x: 0, y: 0, tilt: 0, z: topZRef.current };
@@ -72,6 +73,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
   };
 
   const handleStickerPointerMove = (idx: number, e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== 'mouse' || window.innerWidth < 768) return;
     const drag = dragStateRef.current;
     if (!drag || drag.idx !== idx) return;
     const dx = drag.origX + (e.clientX - drag.startX);
@@ -126,7 +128,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
   };
 
   const stickerBaseClass =
-    'touch-none select-none cursor-grab active:cursor-grabbing transition-[transform,box-shadow] duration-200 hover:scale-105';
+    'select-none md:touch-none md:cursor-grab md:active:cursor-grabbing md:transition-[transform,box-shadow] md:duration-200 md:hover:scale-105';
 
   return (
     <section
@@ -203,7 +205,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
             </span>
 
             <span className="block mt-2.5 sm:mt-3.5">
-              <span className="inline-flex flex-wrap sm:flex-nowrap items-baseline justify-center gap-x-2.5 sm:gap-x-4 animate-rise [animation-delay:110ms]">
+              <span className="inline-flex flex-wrap sm:flex-nowrap items-baseline justify-center gap-x-2.5 sm:gap-x-4 gap-y-2.5 animate-rise [animation-delay:110ms]">
                 {/* Figma-style Vector Selection Bounding Box around "moves" */}
                 <span className="relative inline-block px-2 sm:px-3 py-0.5">
                   <span

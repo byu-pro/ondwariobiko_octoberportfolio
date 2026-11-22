@@ -80,9 +80,9 @@ export function Header({
         />
       </a>
 
-      {/* CENTER STATUS INDICATOR BETWEEN LOGO & MENU */}
+      {/* CENTER STATUS INDICATOR BETWEEN LOGO & MENU (DESKTOP ONLY) */}
       {!open && (
-        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.22em] text-white/85 whitespace-nowrap select-none">
+        <div className="pointer-events-none hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-white/85 whitespace-nowrap select-none">
           <span className="relative flex h-2 w-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-70" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-neon" />
