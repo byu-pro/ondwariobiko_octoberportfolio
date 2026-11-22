@@ -30,62 +30,58 @@ export function ConsultationPage() {
   const [error, setError] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submitWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-    if (honeypot.trim()) return;
+  const validate = () => {
+    if (honeypot.trim()) return false;
     if (!isHumanPaced(mountedAt)) {
       setError("Please wait a moment before submitting.");
-      return;
+      return false;
+    }
+    if (!name.trim() || !email.trim() || !type.trim() || !time.trim() || !message.trim()) {
+      setError("Please complete all required fields (only budget is optional).");
+      return false;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(email.trim())) {
+      setError("Please check your email address format.");
+      return false;
     }
     setError("");
-    setIsSubmitting(true);
+    return true;
+  };
 
+  const buildMessage = () => {
     const cleanName = sanitizeInput(name, 100);
     const cleanEmail = sanitizeInput(email, 120);
     const cleanTime = sanitizeInput(time, 100);
     const cleanMessage = sanitizeInput(message, 1500);
 
-    const msg = 
+    return (
       `Hi! I'd like to book a free 1-hour consultation.\n\n` +
       `Name: ${cleanName}\n` +
       `Email: ${cleanEmail}\n` +
       `Project: ${type}\n` +
       `Budget: ${budget || "To be discussed"}\n` +
-      `Preferred time: ${cleanTime || "Flexible"}\n\n` +
-      (cleanMessage ? `Notes: ${cleanMessage}` : "");
-    window.open(getWhatsAppUrl(msg), "_blank", "noopener,noreferrer");
+      `Preferred time: ${cleanTime}\n\n` +
+      `Notes: ${cleanMessage}`
+    );
+  };
+
+  const submitWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+    if (!validate()) return;
+    setIsSubmitting(true);
+
+    window.open(getWhatsAppUrl(buildMessage()), "_blank", "noopener,noreferrer");
     setTimeout(() => setIsSubmitting(false), 3000);
   };
 
   const submitEmail = () => {
     if (isSubmitting) return;
-    if (honeypot.trim()) return;
-    if (!isHumanPaced(mountedAt)) {
-      setError("Please wait a moment before submitting.");
-      return;
-    }
-    if (!name.trim() || !email.trim()) {
-      setError("Please enter your name and email address first.");
-      return;
-    }
-    setError("");
+    if (!validate()) return;
     setIsSubmitting(true);
 
     const cleanName = sanitizeInput(name, 100);
-    const cleanEmail = sanitizeInput(email, 120);
-    const cleanTime = sanitizeInput(time, 100);
-    const cleanMessage = sanitizeInput(message, 1500);
-
-    const msg = 
-      `Hi! I'd like to book a free 1-hour consultation.\n\n` +
-      `Name: ${cleanName}\n` +
-      `Email: ${cleanEmail}\n` +
-      `Project: ${type}\n` +
-      `Budget: ${budget || "To be discussed"}\n` +
-      `Preferred time: ${cleanTime || "Flexible"}\n\n` +
-      (cleanMessage ? `Notes: ${cleanMessage}` : "");
-    window.location.href = getMailtoUrl(`Consultation Booking: ${cleanName} (${type})`, msg);
+    window.location.href = getMailtoUrl(`Consultation Booking: ${cleanName} (${type})`, buildMessage());
     setTimeout(() => setIsSubmitting(false), 3000);
   };
 
@@ -98,6 +94,8 @@ export function ConsultationPage() {
         eyebrow="Free 1-hour consultation" 
         title="Let's" 
         outline="Talk" 
+        marqueeTop={["Free 1-Hour Call", "Zero Obligation", "Honest Creative Advice", "Live Scope & Clarity"]}
+        marqueeBottom={["Zoom Or WhatsApp", "Any Time Zone", "Strategy First", "Actionable Next Steps"]}
       />
 
       <section className="px-5 md:px-8 pb-24">
@@ -163,7 +161,7 @@ export function ConsultationPage() {
             {/* Chips */}
             <fieldset>
               <legend className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink/50 mb-4">
-                What do you need?
+                What do you need? *
               </legend>
               <div className="flex flex-wrap gap-2">
                 {types.map((o) => (
@@ -186,17 +184,19 @@ export function ConsultationPage() {
             <BudgetField value={budget} onChange={setBudget} />
 
             <input 
+              required
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              placeholder="Preferred day & time (your timezone)" 
+              placeholder="Preferred day & time (your timezone) *" 
               className={field} 
             />
 
             <textarea 
+              required
               rows={4} 
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Tell me a little about your project…" 
+              placeholder="Tell me a little about your project… *" 
               className={`${field} resize-none`} 
             />
 

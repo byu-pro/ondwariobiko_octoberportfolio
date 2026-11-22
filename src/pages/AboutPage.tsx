@@ -129,8 +129,8 @@ const skills = [
 ];
 
 const tools = [
-  "Illustrator", "Photoshop", "Figma", "VS Code", "After Effects", 
-  "InDesign", "React", "TypeScript", "Tailwind CSS", "GitHub"
+  "Illustrator", "Photoshop", "Figma", "Framer", "Affinity", "Inkscape", "Canva",
+  "VS Code", "After Effects", "InDesign", "React", "TypeScript", "Tailwind CSS", "GitHub"
 ];
 
 const serviceFaqs = [
@@ -194,7 +194,7 @@ function AnimatedStat({
   const formatted = decimals > 0 ? display.toFixed(decimals) : String(display);
 
   return (
-    <div ref={root} className="min-w-0 text-center flex flex-col items-center last:col-span-2 sm:last:col-span-1">
+    <div ref={root} className="min-w-0 text-center flex flex-col items-center">
       <div className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tighter tabular-nums leading-none">
         <span className="inline-block text-neon-gradient">{formatted}{suffix}</span>
       </div>
@@ -245,28 +245,39 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         </div>
       </section>
 
-      {/* 2 — Who I am */}
-      <section className="px-5 md:px-8 pb-10 sm:pb-14 md:pb-16">
-        <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ Who I am</p>
-          <div className="max-w-4xl">
-            <p className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-snug">
-              I'm <span className="text-accent-ink font-semibold">John Obiko</span> — a Nairobi-based creative partner working with businesses, clients, brands, and organizations worldwide. I solve communication and digital experience challenges through <span className="text-accent-ink font-semibold">brand identity, UI/UX, and web design and development</span>—helping you earn attention, build trust, and guide customers toward action.
-            </p>
-            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <button
-                onClick={() => onNavigate('contact')}
-                className="w-full sm:w-auto text-center bg-neon text-black font-mono text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:scale-105 transition-transform font-bold cursor-pointer"
-              >
-                Start a project ⟶
-              </button>
-              <button
-                onClick={() => onNavigate('consultation')}
-                className="w-full sm:w-auto text-center border border-ink/30 text-ink font-mono text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:border-neon hover:text-accent-ink transition-colors cursor-pointer"
-              >
-                Free 1-hr call
-              </button>
-            </div>
+      {/* 2 — Who I am (Full-Width Radial Lime Gradient Feature Band) */}
+      <section className="relative w-full bg-neon-gradient text-black px-5 md:px-8 py-16 sm:py-22 md:py-28 mb-14 sm:mb-20 md:mb-28 overflow-hidden">
+        {/* Subtle studio canvas dot-grid + organic grain matching Home Hero */}
+        <div aria-hidden="true" className="absolute inset-0 hero-dot-grid opacity-70 pointer-events-none z-0" />
+        <div aria-hidden="true" className="absolute inset-0 hero-grain opacity-40 pointer-events-none z-0" />
+
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
+          <p className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-1.5 rounded-full bg-black text-neon font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] select-none">
+            <span className="size-1.5 rounded-full bg-neon" aria-hidden="true" />
+            <span>Who I am</span>
+          </p>
+
+          <p className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-normal leading-snug tracking-tight text-black/80">
+            I'm <span className="font-bold text-black underline decoration-black/30 decoration-2 underline-offset-4">John Obiko</span> — a Nairobi-based creative partner working with businesses, clients, brands, and organizations worldwide. I solve communication and digital experience challenges through <span className="font-bold text-black">brand identity, UI/UX, and web design and development</span> — helping you earn attention, build trust, and guide customers toward action.
+          </p>
+
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+            <button
+              type="button"
+              onClick={() => onNavigate('contact')}
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-black text-neon font-mono text-xs uppercase tracking-[0.2em] px-8 sm:px-9 py-4 rounded-full hover:scale-105 hover:bg-neutral-900 transition-all duration-300 font-extrabold shadow-xl shadow-black/20 cursor-pointer"
+            >
+              <span>Start a project</span>
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 font-normal">⟶</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('consultation')}
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-black bg-transparent text-black font-mono text-xs uppercase tracking-[0.2em] px-8 sm:px-9 py-4 rounded-full hover:bg-black hover:text-neon transition-all duration-300 font-extrabold cursor-pointer"
+            >
+              <span>Free 1-hr call</span>
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 font-normal">⟶</span>
+            </button>
           </div>
         </div>
       </section>
@@ -298,7 +309,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ Track record</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 py-4 sm:py-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 sm:gap-8 md:gap-10 py-4 sm:py-6">
             {markers.map((stat) => <AnimatedStat key={stat.label} {...stat} />)}
           </div>
         </div>

@@ -8,7 +8,7 @@ interface BudgetFieldProps {
 }
 
 export function BudgetField({
-  label = "Your budget",
+  label = "Your budget (optional)",
   value,
   onChange,
   dark = true,

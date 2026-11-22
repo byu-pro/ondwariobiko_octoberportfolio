@@ -6,9 +6,18 @@ interface PageHeroProps {
   eyebrow: string;
   title: string;
   outline: string;
+  marqueeTop?: string[];
+  marqueeBottom?: string[];
 }
 
-export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
+export function PageHero({
+  index,
+  eyebrow,
+  title,
+  outline,
+  marqueeTop,
+  marqueeBottom,
+}: PageHeroProps) {
   const outlineWords = outline.trim().split(/\s+/);
   const lastWord = outlineWords.pop() ?? '';
   const leadingWords = outlineWords.join(' ');
@@ -25,6 +34,55 @@ export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
             'radial-gradient(ellipse 75% 65% at 78% 18%, rgba(217, 253, 23, 0.11) 0%, rgba(217, 253, 23, 0.03) 45%, rgba(0, 0, 0, 0) 75%)',
         }}
       />
+
+      {/* SUBTLE DUAL COUNTER-SCROLLING KINETIC BACKGROUND MARQUEES */}
+      {(marqueeTop?.length || marqueeBottom?.length) && (
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 -translate-x-1/2 top-[34%] sm:top-[36%] -translate-y-1/2 w-screen max-w-none overflow-hidden pointer-events-none select-none z-0 flex flex-col gap-1 [mask-image:linear-gradient(to_right,transparent,black_64px,black_calc(100%-64px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_64px,black_calc(100%-64px),transparent)]"
+        >
+          {marqueeTop && marqueeTop.length > 0 && (
+            <div
+              style={{ animationDuration: '86s' }}
+              className="flex w-max animate-marquee-slow items-center will-change-transform"
+            >
+              {[0, 1].map((copy) => (
+                <div
+                  key={copy}
+                  aria-hidden={copy === 1}
+                  className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-white/[0.045] text-[clamp(3.6rem,11vw,8.5rem)] leading-none select-none"
+                >
+                  {marqueeTop.map((item) => (
+                    <React.Fragment key={item}>
+                      <span>{item}</span>
+                      <span className="text-[0.55em]">/</span>
+                    </React.Fragment>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {marqueeBottom && marqueeBottom.length > 0 && (
+            <div className="flex w-max animate-marquee-reverse-slow items-center will-change-transform">
+              {[0, 1].map((copy) => (
+                <div
+                  key={copy}
+                  aria-hidden={copy === 1}
+                  className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-white/[0.03] text-[clamp(3rem,9vw,7rem)] leading-none select-none"
+                >
+                  {marqueeBottom.map((item) => (
+                    <React.Fragment key={item}>
+                      <span>{item}</span>
+                      <span className="text-[0.55em]">/</span>
+                    </React.Fragment>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="relative z-10 max-w-[1400px] mx-auto">
         <div className="flex flex-wrap gap-3 justify-between font-mono text-xs uppercase tracking-[0.25em] text-ink/50 mb-6 sm:mb-8">

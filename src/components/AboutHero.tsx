@@ -48,7 +48,7 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
       {/* LAYER 2: DUAL COUNTER-SCROLLING KINETIC BACKGROUND MARQUEES */}
       <div
         aria-hidden="true"
-        className="absolute left-1/2 -translate-x-1/2 top-[52%] -translate-y-1/2 w-screen max-w-none overflow-hidden pointer-events-none select-none z-0 flex flex-col gap-1 [mask-image:linear-gradient(to_right,transparent,black_64px,black_calc(100%-64px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_64px,black_calc(100%-64px),transparent)]"
+        className="absolute left-1/2 -translate-x-1/2 top-[34%] sm:top-[36%] -translate-y-1/2 w-screen max-w-none overflow-hidden pointer-events-none select-none z-0 flex flex-col gap-1 [mask-image:linear-gradient(to_right,transparent,black_64px,black_calc(100%-64px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_64px,black_calc(100%-64px),transparent)]"
       >
         {/* Row 1: Faint Solid Track Gliding Left */}
         <div
@@ -62,33 +62,33 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
               className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-white/[0.045] text-[clamp(3.6rem,11vw,8.5rem)] leading-none select-none"
             >
               <span>John Obiko</span>
-              <span className="text-[0.6em] text-neon/20">✦</span>
+              <span className="text-[0.55em]">/</span>
               <span>Solo Creative Partner</span>
-              <span className="text-[0.6em] text-neon/20">✦</span>
+              <span className="text-[0.55em]">/</span>
               <span>Strategy &amp; Identity</span>
-              <span className="text-[0.6em] text-neon/20">✦</span>
+              <span className="text-[0.55em]">/</span>
               <span>Design + Front-End Code</span>
-              <span className="text-[0.6em] text-neon/20">✦</span>
+              <span className="text-[0.55em]">/</span>
             </div>
           ))}
         </div>
 
-        {/* Row 2: Crisp Outlined Counter-Scrolling Track Gliding Right */}
+        {/* Row 2: Subtle Solid Counter-Scrolling Track Gliding Right */}
         <div className="flex w-max animate-marquee-reverse-slow items-center will-change-transform">
           {[0, 1].map((copy) => (
             <div
               key={copy}
               aria-hidden={copy === 1}
-              className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-stroke-white-faint text-[clamp(3rem,9vw,7rem)] leading-none select-none"
+              className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-white/[0.03] text-[clamp(3rem,9vw,7rem)] leading-none select-none"
             >
               <span>Nairobi To Worldwide</span>
-              <span className="text-[0.6em]">✺</span>
+              <span className="text-[0.55em]">/</span>
               <span>350+ Projects Delivered</span>
-              <span className="text-[0.6em]">✺</span>
+              <span className="text-[0.55em]">/</span>
               <span>100% Bespoke Craft</span>
-              <span className="text-[0.6em]">✺</span>
+              <span className="text-[0.55em]">/</span>
               <span>Built To Convert</span>
-              <span className="text-[0.6em]">✺</span>
+              <span className="text-[0.55em]">/</span>
             </div>
           ))}
         </div>

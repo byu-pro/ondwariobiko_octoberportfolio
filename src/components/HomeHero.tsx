@@ -134,7 +134,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
   return (
     <section
       id="home-hero"
-      className="relative w-full bg-neon-gradient text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-[5.5rem] sm:pt-24 md:pt-28 lg:pt-[7.5rem] pb-10 sm:pb-12 md:pb-13 border-b-2 border-black overflow-hidden"
+      className="relative w-full bg-neon-gradient text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-[5.5rem] sm:pt-24 md:pt-28 lg:pt-[7.5rem] pb-12 sm:pb-14 md:pb-16 overflow-hidden"
     >
       {/* LAYER 1: SUBTLE DESIGNER'S CANVAS DOT-GRID + ORGANIC PAPER GRAIN */}
       <div aria-hidden="true" className="absolute inset-0 hero-dot-grid opacity-75 pointer-events-none z-0" />
@@ -165,35 +165,35 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
                   className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-black/[0.11] sm:text-black/[0.13] text-[clamp(3.6rem,11vw,8.8rem)] leading-none select-none"
                 >
                   <span>Brand Designer &amp; Web Developer</span>
-                  <span className="text-[0.6em] text-black/20">✦</span>
+                  <span className="text-[0.55em]">/</span>
                   <span>Custom Logo Systems</span>
-                  <span className="text-[0.6em] text-black/20">✦</span>
+                  <span className="text-[0.55em]">/</span>
                   <span>Brand Identity Design</span>
-                  <span className="text-[0.6em] text-black/20">✦</span>
+                  <span className="text-[0.55em]">/</span>
                   <span>UI/UX &amp; Web Development</span>
-                  <span className="text-[0.6em] text-black/20">✦</span>
+                  <span className="text-[0.55em]">/</span>
                   <span>Figma ➔ Code ➔ Web</span>
-                  <span className="text-[0.6em] text-black/20">✦</span>
+                  <span className="text-[0.55em]">/</span>
                 </div>
               ))}
             </div>
 
-            {/* Row 2: Crisp Outlined Counter-Scrolling Track Gliding Right */}
+            {/* Row 2: Subtle Solid Counter-Scrolling Track Gliding Right */}
             <div className="flex w-max animate-marquee-reverse-slow items-center will-change-transform">
               {[0, 1].map((copy) => (
                 <div
                   key={copy}
                   aria-hidden={copy === 1}
-                  className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-stroke-black-faint text-[clamp(3rem,9.5vw,7.4rem)] leading-none select-none"
+                  className="flex items-center gap-8 sm:gap-14 shrink-0 pr-8 sm:pr-14 font-display font-extrabold uppercase tracking-tight text-black/[0.075] sm:text-black/[0.09] text-[clamp(3rem,9.5vw,7.4rem)] leading-none select-none"
                 >
                   <span>100% Bespoke Craft</span>
-                  <span className="text-[0.6em]">✺</span>
+                  <span className="text-[0.55em]">/</span>
                   <span>350+ Brands Built</span>
-                  <span className="text-[0.6em]">✺</span>
+                  <span className="text-[0.55em]">/</span>
                   <span>Strategy To Launch</span>
-                  <span className="text-[0.6em]">✺</span>
+                  <span className="text-[0.55em]">/</span>
                   <span>Nairobi To Worldwide</span>
-                  <span className="text-[0.6em]">✺</span>
+                  <span className="text-[0.55em]">/</span>
                 </div>
               ))}
             </div>

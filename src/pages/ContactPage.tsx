@@ -93,8 +93,16 @@ export function ContactPage() {
       setError("Please take a moment before submitting.");
       return false;
     }
-    if (!name.trim() || !email.trim() || !details.trim()) {
-      setError("Please add your name, email, and a few lines about your project.");
+    if (
+      !name.trim() ||
+      !email.trim() ||
+      !company.trim() ||
+      !type.trim() ||
+      !start.trim() ||
+      !source.trim() ||
+      !details.trim()
+    ) {
+      setError("Please complete all required fields (only budget is optional).");
       return false;
     }
     if (!/^\S+@\S+\.\S+$/.test(email.trim())) {
@@ -137,6 +145,8 @@ export function ContactPage() {
         eyebrow="Start a project" 
         title="Say" 
         outline="Jambo" 
+        marqueeTop={["Start A Project", "Direct 1-on-1 Partner", "Reply In 24–48 Hours", "Remote Worldwide"]}
+        marqueeBottom={["Brand Identity", "Custom Websites", "UI/UX Strategy", "Nairobi To Worldwide"]}
       />
 
       {/* Opening Intro */}
@@ -206,9 +216,10 @@ export function ContactPage() {
 
             <div className="grid sm:grid-cols-2 gap-8">
               <label className="block">
-                <span className={labelClass}>Company / Brand (optional)</span>
+                <span className={labelClass}>Company / Brand *</span>
                 <input
                   type="text"
+                  required
                   maxLength={100}
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
@@ -217,8 +228,9 @@ export function ContactPage() {
                 />
               </label>
               <label className="block">
-                <span className={labelClass}>Project type</span>
+                <span className={labelClass}>Project type *</span>
                 <select
+                  required
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   className={`${fieldClass} appearance-none cursor-pointer`}
@@ -235,8 +247,9 @@ export function ContactPage() {
 
             <div className="grid sm:grid-cols-2 gap-8">
               <label className="block">
-                <span className={labelClass}>When would you like to start?</span>
+                <span className={labelClass}>When would you like to start? *</span>
                 <select
+                  required
                   value={start}
                   onChange={(e) => setStart(e.target.value)}
                   className={`${fieldClass} appearance-none cursor-pointer`}
@@ -248,8 +261,9 @@ export function ContactPage() {
                 </select>
               </label>
               <label className="block">
-                <span className={labelClass}>How did you find me? (optional)</span>
+                <span className={labelClass}>How did you find me? *</span>
                 <select
+                  required
                   value={source}
                   onChange={(e) => setSource(e.target.value)}
                   className={`${fieldClass} appearance-none cursor-pointer`}

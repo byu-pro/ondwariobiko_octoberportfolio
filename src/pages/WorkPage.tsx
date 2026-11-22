@@ -80,7 +80,7 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
       ref={sectionRef}
       id={project.id}
       onClick={() => onOpenProject(project)}
-      className="group relative w-full aspect-[18/9] sm:aspect-[19/9] lg:aspect-[21/10] max-h-[600px] min-h-[200px] bg-neutral-950 border-b border-neutral-900 overflow-hidden cursor-pointer touch-manipulation select-none"
+      className="group relative w-full aspect-[18/9] sm:aspect-[19/9] lg:aspect-[21/10] max-h-[600px] min-h-[200px] bg-black overflow-hidden cursor-pointer touch-manipulation select-none"
     >
       {/* LAYER 1: PROJECT SHOWCASE THUMBNAIL (Full Width, GPU-accelerated) */}
       <div 
@@ -128,6 +128,20 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
           />
         </div>
       )}
+
+      {/* Subtle top edge feather on subsequent cards (first thumbnail stays clean with no top overlay or border line) */}
+      {idx > 0 && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-10 sm:h-12 md:h-14 bg-gradient-to-b from-black/70 via-black/20 to-transparent z-10"
+        />
+      )}
+
+      {/* Subtle bottom edge feather so consecutive thumbnails flow smoothly without a hard line */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-10 sm:h-12 md:h-14 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"
+      />
 
       {/* Subtle bottom gradient on hover to ensure "View project" pill stands out */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
@@ -261,7 +275,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       </main>
 
       {/* BRANDS AND ORGANIZATIONS SHOWCASE */}
-      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden bg-black border-t border-neutral-900">
+      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden bg-black">
         {/* Section Heading on top */}
         <div className="max-w-[1400px] mx-auto text-center mb-10 sm:mb-14 md:mb-16 px-4">
           <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-accent-ink font-semibold flex items-center justify-center gap-2 mb-3">
