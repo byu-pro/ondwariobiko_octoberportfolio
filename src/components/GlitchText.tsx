@@ -47,8 +47,8 @@ export function GlitchText({
     clearTimers();
     setIsGlitching(true);
     setBurstKey((k) => k + 1);
-    setScrambleA(scrambleText(text, 0.32));
-    setScrambleB(scrambleText(text, 0.25));
+    setScrambleA(scrambleText(text, 0.34));
+    setScrambleB(scrambleText(text, 0.26));
 
     const steps: Array<[number, number, number]> = [
       [75, 0.52, 0.44],
@@ -100,39 +100,35 @@ export function GlitchText({
       }}
       className={`glitch-root ${isGlitching ? 'is-glitching' : ''}`}
     >
-      {/* Base text keeps exact layout box width/height */}
-      <span key={`base-${burstKey}`} className={`glitch-base inline-block ${className}`}>
+      {/* Permanent, never-remounted base text so surrounding layout is 100% untouched */}
+      <span className={`glitch-base inline-block ${className}`}>
         {text}
       </span>
 
-      {/* Stepped digital tear overlays (only mounted during the 450ms burst) */}
+      {/* Completely isolated absolute overlay layers (zero impact on layout or siblings) */}
       {isGlitching && (
-        <>
+        <span aria-hidden="true" className="glitch-stage">
           <span
             key={`a-${burstKey}`}
-            aria-hidden="true"
             className={`glitch-layer ${isLight ? 'glitch-layer--a-light' : 'glitch-layer--a-dark'}`}
           >
             {scrambleA}
           </span>
           <span
             key={`b-${burstKey}`}
-            aria-hidden="true"
             className={`glitch-layer ${isLight ? 'glitch-layer--b-light' : 'glitch-layer--b-dark'}`}
           >
             {scrambleB}
           </span>
           <span
             key={`bar-${burstKey}`}
-            aria-hidden="true"
             className={`glitch-scanbar ${isLight ? 'glitch-scanbar--light' : 'glitch-scanbar--dark'}`}
           />
           <span
             key={`blk-${burstKey}`}
-            aria-hidden="true"
             className={`glitch-block-flash ${isLight ? 'bg-black/90' : 'bg-neon/90'}`}
           />
-        </>
+        </span>
       )}
     </span>
   );

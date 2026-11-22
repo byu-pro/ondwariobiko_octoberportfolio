@@ -131,7 +131,7 @@ export function ContactPage() {
     "font-mono text-[10px] uppercase tracking-[0.25em] text-ink/50";
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col overflow-x-clip">
       <PageHero 
         index="03" 
         eyebrow="Start a project" 

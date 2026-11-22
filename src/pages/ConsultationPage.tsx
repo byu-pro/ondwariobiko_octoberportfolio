@@ -92,7 +92,7 @@ export function ConsultationPage() {
   const field = "w-full bg-transparent border-b border-ink/20 py-4 text-lg md:text-xl outline-none focus:border-neon transition-colors placeholder:text-ink/30";
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col overflow-x-clip">
       <PageHero 
         index="04" 
         eyebrow="Free 1-hour consultation" 
