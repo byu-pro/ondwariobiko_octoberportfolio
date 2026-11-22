@@ -8,6 +8,21 @@ fs.copyFileSync('index.dev.html', 'index.html');
 // 2. Run vite build
 execSync('npx vite build', { stdio: 'inherit' });
 
+// 2.5 Inject anti-theft legal banner at top of compiled JS chunks
+try {
+  const jsFiles = fs.readdirSync('dist/assets').filter(f => f.endsWith('.js'));
+  for (const jsFile of jsFiles) {
+    const filePath = `dist/assets/${jsFile}`;
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const banner = '/* (c) Ondwari Obiko - ALL RIGHTS RESERVED. PROPRIETARY CODE & ASSETS. UNAUTHORIZED REPRODUCTION, SCRAPING, OR DECOMPILATION IS STRICTLY PROHIBITED. */\n';
+    if (!content.startsWith('/* (c) Ondwari Obiko')) {
+      fs.writeFileSync(filePath, banner + content);
+    }
+  }
+} catch (e) {
+  // Graceful fallback
+}
+
 // 3. Sync dist outputs to root and docs for GitHub Pages
 if (fs.existsSync('assets')) {
   fs.rmSync('assets', { recursive: true, force: true });

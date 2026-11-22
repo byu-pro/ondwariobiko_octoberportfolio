@@ -33,6 +33,19 @@
     color: var(--ink);
     font-family: var(--font-sans);
   }
+
+  /* Anti-Theft Protection: Prevent image/media drag-and-drop & easy scraping */
+  img, video {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
 }
 
 /* Animations from ondwariobiko-portfolio-website */

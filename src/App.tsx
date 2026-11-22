@@ -11,6 +11,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { ConsultationPage } from './pages/ConsultationPage';
 import { ProjectCaseStudyPage } from './pages/ProjectCaseStudyPage';
+import { initAntiInspect } from './utils/antiInspect';
 
 const base = import.meta.env.BASE_URL.endsWith('/') 
   ? import.meta.env.BASE_URL 
@@ -48,6 +49,11 @@ export default function App() {
   const [backToTopVisible, setBackToTopVisible] = useState(false);
   const [legalModal, setLegalModal] = useState<'terms' | 'privacy' | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Initialize anti-inspection, right-click, and media theft protections
+  useEffect(() => {
+    return initAntiInspect();
+  }, []);
 
   // Sync route on hashchange
   useEffect(() => {
