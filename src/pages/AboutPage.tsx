@@ -227,7 +227,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
         <div className="max-w-[1400px] mx-auto">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ The business challenge</p>
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight max-w-[20ch] break-words">
-            Good design makes it easier for customers to <span className="text-accent-ink">choose you.</span>
+            Good design makes it easier for customers to <span className="text-accent-ink">choose you</span>
           </h2>
           <p className="mt-6 sm:mt-8 max-w-2xl font-sans text-base sm:text-lg text-ink/70 leading-relaxed font-light">
             When a brand is hard to recognize, a website is hard to use, or a business struggles to explain its value, potential customers move on. I bring strategy, design, and development together to make your business clearer, more memorable, and easier to engage with.
@@ -317,7 +317,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div className="mb-8 sm:mb-12">
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">⟶ Solutions shaped around your goals</p>
             <h2 className="font-display uppercase tracking-tighter text-3xl sm:text-5xl md:text-6xl font-extrabold leading-[0.9]">
-              Services & <span className="text-stroke">Packages</span>
+              Services & Packages
             </h2>
             <p className="mt-4 sm:mt-6 font-sans text-lg sm:text-xl leading-relaxed text-ink/80 max-w-2xl">
               From first impression to conversion, every deliverable has a job: make your value clear, strengthen brand visibility, and help customers take the next step.
@@ -367,7 +367,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">No surprises</p>
             <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
-              What you<br /><span className="text-stroke">always get</span>
+              What you<br />always get
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
@@ -463,7 +463,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">FAQ</p>
             <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
-              Service<br /><span className="text-stroke">Questions</span>
+              Service<br />Questions
             </h2>
             <p className="mt-4 font-sans text-ink/50 text-xs sm:text-sm leading-relaxed max-w-sm">
               Key questions answered up front so we can jump straight into creating.

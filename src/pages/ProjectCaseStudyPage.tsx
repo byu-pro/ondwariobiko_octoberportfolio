@@ -52,7 +52,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       <main className="px-5 md:px-8 pt-40 pb-24 min-h-[60vh]">
         <div className="max-w-[1000px] mx-auto">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-5">Project not found</p>
-          <h1 className="font-display font-extrabold uppercase tracking-tighter text-5xl sm:text-7xl">Let’s find the right work.</h1>
+          <h1 className="font-display font-extrabold uppercase tracking-tighter text-5xl sm:text-7xl">Let’s find the right work</h1>
           <button onClick={() => onNavigate('work')} className="mt-8 rounded-full bg-neon px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black">Back to selected work ↗</button>
         </div>
       </main>
@@ -135,7 +135,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/60 mb-4">The response</p>
-            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Design with a job to do.</h2>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Design with a job to do</h2>
           </div>
           <ul className="lg:col-span-8 divide-y divide-black/20 border-y border-black/20">
             {project.response.map((item, index) => (
@@ -152,7 +152,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-4">Business value</p>
-            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Built to support the next step.</h2>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Built to support the next step</h2>
           </div>
           <p className="lg:col-span-8 font-sans text-xl sm:text-2xl md:text-3xl text-ink/75 leading-relaxed">{project.value}</p>
         </div>
@@ -162,7 +162,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         <div className="max-w-[1400px] mx-auto border-t border-ink/15 pt-8 sm:pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2">Have a similar challenge?</p>
-            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl">Let’s talk about it.</h2>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl">Let’s talk about it</h2>
           </div>
           <button onClick={() => onNavigate('contact')} className="rounded-full bg-neon px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black hover:scale-[1.03] transition-transform">Discuss your project ↗</button>
         </div>

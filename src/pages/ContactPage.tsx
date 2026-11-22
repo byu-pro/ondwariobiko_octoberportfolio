@@ -144,7 +144,7 @@ export function ContactPage() {
         <div className="max-w-[1400px] mx-auto">
           <p className="font-sans font-medium leading-relaxed text-[clamp(1.25rem,3.5vw,2rem)] max-w-4xl">
             Have a business challenge to solve?{" "}
-            <span className="text-stroke">Tell me what you want to improve</span> —
+            <span className="text-accent-ink">Tell me what you want to improve</span> —
             I'll reply within 24–48 hours.
           </p>
           <p className="mt-6 font-sans text-sm sm:text-base text-ink/50">

@@ -222,7 +222,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
                   <span className="relative z-10">moves</span>
                 </span>
                 <span className="inline-block">
-                  business<span className="text-black">.</span>
+                  business
                 </span>
               </span>
             </span>

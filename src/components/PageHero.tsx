@@ -21,9 +21,8 @@ export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
             <span className="block animate-rise">{title}</span>
           </span>
           <span className="block overflow-hidden">
-            <span className="block animate-rise text-stroke [animation-delay:120ms]">
+            <span className="block animate-rise [animation-delay:120ms]">
               {outline}
-              <span className="text-accent-ink">.</span>
             </span>
           </span>
         </h1>
