@@ -49,8 +49,17 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
   const [nextSlug, nextProject] = projectOrder[(currentIndex + 1) % projectOrder.length];
   if (!project) {
     return (
-      <main className="px-5 md:px-8 pt-40 pb-24 min-h-[60vh]">
-        <div className="max-w-[1000px] mx-auto">
+      <main className="relative w-full bg-black text-white px-5 md:px-8 pt-40 pb-24 min-h-[60vh] border-b border-white/15 overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-70 pointer-events-none z-0" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none z-0"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse 75% 65% at 78% 18%, rgba(217, 253, 23, 0.11) 0%, rgba(217, 253, 23, 0.03) 45%, rgba(0, 0, 0, 0) 75%)',
+          }}
+        />
+        <div className="relative z-10 max-w-[1000px] mx-auto">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-5">Project not found</p>
           <h1 className="font-display font-extrabold uppercase tracking-tighter text-5xl sm:text-7xl">
             Let’s find the right <span className="inline-block text-neon-gradient">work</span>
@@ -65,8 +74,19 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
 
   return (
     <main className="w-full overflow-x-hidden">
-      <section className="px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="relative w-full bg-black text-white px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14 border-b border-white/15 overflow-hidden">
+        {/* SUBTLE DARK STUDIO CANVAS DOT-GRID + AMBIENT LIME RADIAL GLOW */}
+        <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-70 pointer-events-none z-0" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none z-0"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse 75% 65% at 78% 18%, rgba(217, 253, 23, 0.11) 0%, rgba(217, 253, 23, 0.03) 45%, rgba(0, 0, 0, 0) 75%)',
+          }}
+        />
+
+        <div className="relative z-10 max-w-[1400px] mx-auto">
           <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors">← All projects</button>
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
             <div className="min-w-0">
