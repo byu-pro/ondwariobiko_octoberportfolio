@@ -317,7 +317,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div className="mb-8 sm:mb-12">
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">⟶ Solutions shaped around your goals</p>
             <h2 className="font-display uppercase tracking-tighter text-3xl sm:text-5xl md:text-6xl font-extrabold leading-[0.9]">
-              Services & Packages
+              Services &amp; <span className="inline-block text-neon-gradient">Packages</span>
             </h2>
             <p className="mt-4 sm:mt-6 font-sans text-lg sm:text-xl leading-relaxed text-ink/80 max-w-2xl">
               From first impression to conversion, every deliverable has a job: make your value clear, strengthen brand visibility, and help customers take the next step.
@@ -367,7 +367,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">No surprises</p>
             <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
-              What you<br />always get
+              What you<br />always <span className="inline-block text-neon-gradient">get</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
@@ -463,7 +463,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">FAQ</p>
             <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tighter leading-[0.9] font-extrabold">
-              Service<br />Questions
+              Service<br /><span className="inline-block text-neon-gradient">Questions</span>
             </h2>
             <p className="mt-4 font-sans text-ink/50 text-xs sm:text-sm leading-relaxed max-w-sm">
               Key questions answered up front so we can jump straight into creating.

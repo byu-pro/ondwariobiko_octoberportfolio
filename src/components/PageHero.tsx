@@ -8,6 +8,10 @@ interface PageHeroProps {
 }
 
 export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
+  const outlineWords = outline.trim().split(/\s+/);
+  const lastWord = outlineWords.pop() ?? '';
+  const leadingWords = outlineWords.join(' ');
+
   return (
     <section className="pt-28 sm:pt-36 md:pt-44 pb-10 sm:pb-14 md:pb-16 px-5 md:px-8">
       <div className="max-w-[1400px] mx-auto">
@@ -22,7 +26,8 @@ export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
           </span>
           <span className="block overflow-hidden">
             <span className="block animate-rise [animation-delay:120ms]">
-              {outline}
+              {leadingWords ? <>{leadingWords}{' '}</> : null}
+              <span className="inline-block text-neon-gradient">{lastWord}</span>
             </span>
           </span>
         </h1>

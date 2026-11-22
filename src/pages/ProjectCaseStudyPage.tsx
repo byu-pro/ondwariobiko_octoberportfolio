@@ -52,7 +52,9 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       <main className="px-5 md:px-8 pt-40 pb-24 min-h-[60vh]">
         <div className="max-w-[1000px] mx-auto">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-5">Project not found</p>
-          <h1 className="font-display font-extrabold uppercase tracking-tighter text-5xl sm:text-7xl">Let’s find the right work</h1>
+          <h1 className="font-display font-extrabold uppercase tracking-tighter text-5xl sm:text-7xl">
+            Let’s find the right <span className="inline-block text-neon-gradient">work</span>
+          </h1>
           <button onClick={() => onNavigate('work')} className="mt-8 rounded-full bg-neon px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black">Back to selected work ↗</button>
         </div>
       </main>
@@ -69,7 +71,21 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
             <div className="min-w-0">
               <p className="mb-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">{project.number} / {project.category}</p>
-              <h1 className={`max-w-full break-normal text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.92] ${needsCompactTitle ? 'text-[clamp(1.5rem,8vw,5.5rem)]' : 'text-[clamp(2.25rem,8vw,7rem)]'}`}>{project.title === 'SoundCurves' ? <>Sound<wbr />Curves</> : project.title}</h1>
+              <h1 className={`max-w-full break-normal text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.92] ${needsCompactTitle ? 'text-[clamp(1.5rem,8vw,5.5rem)]' : 'text-[clamp(2.25rem,8vw,7rem)]'}`}>
+                {project.title === 'SoundCurves' ? (
+                  <>Sound<wbr /><span className="inline-block text-neon-gradient">Curves</span></>
+                ) : (() => {
+                  const parts = project.title.trim().split(/\s+/);
+                  const last = parts.pop() ?? '';
+                  const rest = parts.join(' ');
+                  return (
+                    <>
+                      {rest ? <>{rest}{' '}</> : null}
+                      <span className="inline-block text-neon-gradient">{last}</span>
+                    </>
+                  );
+                })()}
+              </h1>
               <p className="mt-4 max-w-3xl font-sans text-lg sm:text-xl xl:text-2xl text-ink/75 leading-snug">{project.subtitle}</p>
             </div>
             <div className="min-w-0 xl:pt-1">

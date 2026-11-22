@@ -66,6 +66,13 @@
   background-color: var(--neon);
   background-image: radial-gradient(ellipse 130% 95% at 50% 5%, #ebff57 0%, #d9fd17 52%, #b5e400 100%);
 }
+@utility text-neon-gradient {
+  background-image: linear-gradient(135deg, #f3ff7a 0%, #d9fd17 48%, #a8d900 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
 .hero-dot-grid {
   background-image: radial-gradient(rgba(0, 0, 0, 0.16) 1px, transparent 1px);
   background-size: 24px 24px;
