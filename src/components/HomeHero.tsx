@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { PenTool, Star, Code2, Zap, RotateCcw } from 'lucide-react';
 import { PageRoute } from '../types';
+import { GlitchText } from './GlitchText';
 
 interface HomeHeroProps {
   onNavigate?: (route: PageRoute) => void;
@@ -207,7 +208,9 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
           {/* MAIN FOREGROUND HEADLINE WITH FIGMA VECTOR FRAME ON "MOVES" */}
           <h1 className="relative z-10 font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.98] sm:leading-[0.94] text-[clamp(2rem,5vw,4.35rem)] text-black text-center select-none">
             <span className="block">
-              <span className="inline-block animate-rise">Design that</span>
+              <span className="inline-block animate-rise">
+                <GlitchText text="Design that" variant="light" delayMs={0} />
+              </span>
             </span>
 
             <span className="block mt-2.5 sm:mt-3.5">
@@ -225,11 +228,11 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
                     <span className="absolute -bottom-1.5 -right-1.5 w-2.5 h-2.5 bg-white border-[1.5px] border-black" />
                   </span>
 
-                  <span className="relative z-10">moves</span>
+                  <span className="relative z-10">
+                    <GlitchText text="moves" variant="light" delayMs={70} />
+                  </span>
                 </span>
-                <span className="inline-block">
-                  business
-                </span>
+                <GlitchText text="business" variant="light" delayMs={130} />
               </span>
             </span>
           </h1>

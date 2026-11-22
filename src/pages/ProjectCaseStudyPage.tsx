@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageRoute } from '../types';
 import { responsiveImageSrcSet } from '../utils/images';
+import { GlitchText } from '../components/GlitchText';
 
 interface ProjectCaseStudyPageProps {
   base: string;
@@ -93,15 +94,23 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
               <p className="mb-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">{project.number} / {project.category}</p>
               <h1 className={`max-w-full break-normal text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.92] ${needsCompactTitle ? 'text-[clamp(1.5rem,8vw,5.5rem)]' : 'text-[clamp(2.25rem,8vw,7rem)]'}`}>
                 {project.title === 'SoundCurves' ? (
-                  <>Sound<wbr /><span className="inline-block text-neon-gradient">Curves</span></>
+                  <>
+                    <GlitchText text="Sound" variant="dark" delayMs={0} />
+                    <wbr />
+                    <GlitchText text="Curves" variant="dark" delayMs={80} className="text-neon-gradient" />
+                  </>
                 ) : (() => {
                   const parts = project.title.trim().split(/\s+/);
                   const last = parts.pop() ?? '';
                   const rest = parts.join(' ');
                   return (
                     <>
-                      {rest ? <>{rest}{' '}</> : null}
-                      <span className="inline-block text-neon-gradient">{last}</span>
+                      {rest ? (
+                        <>
+                          <GlitchText text={rest} variant="dark" delayMs={0} />{' '}
+                        </>
+                      ) : null}
+                      <GlitchText text={last} variant="dark" delayMs={80} className="text-neon-gradient" />
                     </>
                   );
                 })()}

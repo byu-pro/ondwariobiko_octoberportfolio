@@ -1,4 +1,5 @@
 import React from 'react';
+import { GlitchText } from './GlitchText';
 
 interface PageHeroProps {
   index: string;
@@ -32,13 +33,19 @@ export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
           </span>
         </div>
         <h1 className="page-hero-title font-display font-extrabold uppercase tracking-tighter leading-[0.9] text-[clamp(1.9rem,8.5vw,8.5rem)]">
-          <span className="block overflow-hidden">
-            <span className="block animate-rise">{title}</span>
+          <span className="block overflow-y-hidden">
+            <span className="block animate-rise">
+              <GlitchText text={title} variant="dark" delayMs={0} />
+            </span>
           </span>
-          <span className="block overflow-hidden">
+          <span className="block overflow-y-hidden">
             <span className="block animate-rise [animation-delay:120ms]">
-              {leadingWords ? <>{leadingWords}{' '}</> : null}
-              <span className="inline-block text-neon-gradient">{lastWord}</span>
+              {leadingWords ? (
+                <>
+                  <GlitchText text={leadingWords} variant="dark" delayMs={70} />{' '}
+                </>
+              ) : null}
+              <GlitchText text={lastWord} variant="dark" delayMs={130} className="text-neon-gradient" />
             </span>
           </span>
         </h1>

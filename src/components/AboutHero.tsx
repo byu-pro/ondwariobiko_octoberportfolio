@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { PageRoute } from '../types';
+import { GlitchText } from './GlitchText';
 
 interface AboutHeroProps {
   onNavigate: (route: PageRoute) => void;
@@ -104,17 +105,21 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
 
         {/* Main 2-Column Editorial Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] xl:grid-cols-[minmax(0,1fr)_420px] gap-8 lg:gap-12 items-end">
-          {/* LEFT: Commanding Syne 800 Display Title with Figma Vector Frame on SOLVER */}
+          {/* LEFT: Commanding Syne 800 Display Title */}
           <h1 className="page-hero-title font-display font-extrabold uppercase tracking-tighter leading-[0.92] text-[clamp(2.35rem,7.2vw,6.8rem)] select-none">
-            <span className="block overflow-hidden">
-              <span className="block animate-rise text-white">Business</span>
+            <span className="block overflow-y-hidden">
+              <span className="block animate-rise text-white">
+                <GlitchText text="Business" variant="dark" delayMs={0} />
+              </span>
             </span>
-            <span className="block overflow-hidden mt-1 sm:mt-1.5">
-              <span className="block animate-rise [animation-delay:80ms] text-white">Problem</span>
+            <span className="block overflow-y-hidden mt-1 sm:mt-1.5">
+              <span className="block animate-rise [animation-delay:80ms] text-white">
+                <GlitchText text="Problem" variant="dark" delayMs={70} />
+              </span>
             </span>
-            <span className="block overflow-hidden mt-1 sm:mt-1.5">
+            <span className="block overflow-y-hidden mt-1 sm:mt-1.5">
               <span className="block animate-rise [animation-delay:150ms]">
-                <span className="inline-block text-neon-gradient">Solver</span>
+                <GlitchText text="Solver" variant="dark" delayMs={130} className="text-neon-gradient" />
               </span>
             </span>
           </h1>
