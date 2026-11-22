@@ -101,7 +101,7 @@ export function GlitchText({
       className={`glitch-root ${isGlitching ? 'is-glitching' : ''}`}
     >
       {/* Permanent, never-remounted base text so surrounding layout is 100% untouched */}
-      <span className={`glitch-base inline-block ${className}`}>
+      <span className={`glitch-base ${className}`}>
         {text}
       </span>
 

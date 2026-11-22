@@ -92,7 +92,7 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
             <div className="min-w-0">
               <p className="mb-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">{project.number} / {project.category}</p>
-              <h1 className={`max-w-full break-normal text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.92] ${needsCompactTitle ? 'text-[clamp(1.5rem,8vw,5.5rem)]' : 'text-[clamp(2.25rem,8vw,7rem)]'}`}>
+              <h1 className={`max-w-full break-normal text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.86] ${needsCompactTitle ? 'text-[clamp(1.5rem,8vw,5.5rem)]' : 'text-[clamp(2.25rem,8vw,7rem)]'}`}>
                 {project.title === 'SoundCurves' ? (
                   <>
                     <GlitchText text="Sound" variant="dark" delayMs={0} />

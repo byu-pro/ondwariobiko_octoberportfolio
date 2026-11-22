@@ -206,14 +206,14 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
           </div>
 
           {/* MAIN FOREGROUND HEADLINE WITH FIGMA VECTOR FRAME ON "MOVES" */}
-          <h1 className="relative z-10 font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.98] sm:leading-[0.94] text-[clamp(2rem,5vw,4.35rem)] text-black text-center select-none">
+          <h1 className="relative z-10 font-display font-extrabold uppercase tracking-tight sm:tracking-tighter leading-[0.9] sm:leading-[0.88] text-[clamp(2rem,5vw,4.35rem)] text-black text-center select-none">
             <span className="block">
               <span className="inline-block animate-rise">
                 <GlitchText text="Design that" variant="light" delayMs={0} />
               </span>
             </span>
 
-            <span className="block mt-2.5 sm:mt-3.5">
+            <span className="block mt-1.5 sm:mt-2">
               <span className="inline-flex flex-wrap sm:flex-nowrap items-baseline justify-center gap-x-2.5 sm:gap-x-4 gap-y-2.5 animate-rise [animation-delay:110ms]">
                 {/* Figma-style Vector Selection Bounding Box around "moves" */}
                 <span className="relative inline-block px-2 sm:px-3 py-0.5">

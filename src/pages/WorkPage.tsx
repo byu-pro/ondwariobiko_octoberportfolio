@@ -260,6 +260,35 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
         ))}
       </main>
 
+      {/* EDITORIAL QUOTE MANIFESTO POSTER */}
+      <section
+        id="art-speaks-quote"
+        aria-label="Art speaks where words are unable to explain"
+        className="relative w-full bg-[#0a0a0a] border-t border-neutral-900 overflow-hidden select-none"
+      >
+        <div className="relative w-full max-w-[1680px] mx-auto">
+          <img
+            src={`${base}images/art-speaks-quote.webp`}
+            srcSet={responsiveImageSrcSet(`${base}images/art-speaks-quote.webp`)}
+            sizes="100vw"
+            alt="Art speaks where words are unable to explain — Ondwari Obiko"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            decoding="async"
+            className="block w-full h-auto object-contain"
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-black/60 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent"
+        />
+      </section>
+
       {/* BRANDS AND ORGANIZATIONS SHOWCASE */}
       <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden bg-black border-t border-neutral-900">
         {/* Section Heading on top */}

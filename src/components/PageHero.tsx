@@ -32,7 +32,7 @@ export function PageHero({ index, eyebrow, title, outline }: PageHeroProps) {
             <span className="text-accent-ink">{index}</span> / {eyebrow}
           </span>
         </div>
-        <h1 className="page-hero-title font-display font-extrabold uppercase tracking-tighter leading-[0.9] text-[clamp(1.9rem,8.5vw,8.5rem)]">
+        <h1 className="page-hero-title font-display font-extrabold uppercase tracking-tighter leading-[0.82] text-[clamp(1.9rem,8.5vw,8.5rem)]">
           <span className="block overflow-clip">
             <span className="block animate-rise">
               <GlitchText text={title} variant="dark" delayMs={0} />

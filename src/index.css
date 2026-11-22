@@ -125,6 +125,8 @@
 .glitch-root {
   position: relative;
   display: inline-block;
+  vertical-align: top;
+  line-height: inherit;
   isolation: isolate;
   contain: layout style;
   --glitch-shift: 8px;
@@ -137,6 +139,8 @@
 .glitch-base {
   position: relative;
   z-index: 1;
+  display: block;
+  line-height: inherit;
 }
 .glitch-root.is-glitching .glitch-base {
   animation: glitch-base-flicker 440ms steps(1, end) both;
