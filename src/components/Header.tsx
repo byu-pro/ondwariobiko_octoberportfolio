@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { PageRoute } from '../types';
 
 interface HeaderProps {
@@ -16,6 +16,33 @@ export function Header({
   scrolled,
   onNavigate,
 }: HeaderProps) {
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let rafId = 0;
+    const updateProgress = () => {
+      rafId = 0;
+      const bar = progressBarRef.current;
+      if (!bar) return;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = docHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / docHeight)) : 0;
+      bar.style.transform = `scaleX(${ratio})`;
+    };
+
+    const onScroll = () => {
+      if (!rafId) rafId = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
   return (
     <header 
       data-menu-open={open} 
@@ -53,6 +80,17 @@ export function Header({
         />
       </a>
 
+      {/* CENTER STATUS INDICATOR BETWEEN LOGO & MENU */}
+      {!open && (
+        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.22em] text-white/85 whitespace-nowrap select-none">
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-70" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-neon" />
+          </span>
+          <span className="font-medium">Available for new projects</span>
+        </div>
+      )}
+
       <div className="flex items-center gap-2 sm:gap-3">
         <button
           onClick={() => setOpen((o) => !o)}
@@ -86,6 +124,19 @@ export function Header({
           </span>
         </button>
       </div>
+
+      {!open && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-0 right-0 h-[2px] overflow-hidden"
+        >
+          <div
+            ref={progressBarRef}
+            className="h-full w-full bg-neon origin-left will-change-transform"
+            style={{ transform: 'scaleX(0)' }}
+          />
+        </div>
+      )}
     </header>
   );
 }

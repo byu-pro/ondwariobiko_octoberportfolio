@@ -50,6 +50,8 @@
 
 /* Animations from ondwariobiko-portfolio-website */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-reverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes hero-draw-stroke { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
 @keyframes menu-in { from { clip-path: circle(0% at calc(100% - 3rem) 3rem); } to { clip-path: circle(150% at calc(100% - 3rem) 3rem); } }
 @keyframes rise { from { transform: translateY(110%); } to { transform: translateY(0); } }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
@@ -58,9 +60,19 @@
 @keyframes preloader-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @utility animate-marquee { animation: marquee 28s linear infinite; will-change: transform; transform: translateZ(0); }
 @utility animate-marquee-slow { animation: marquee 85s linear infinite; will-change: transform; transform: translateZ(0); }
+@utility animate-marquee-reverse-slow { animation: marquee-reverse 95s linear infinite; will-change: transform; transform: translateZ(0); }
+@utility animate-hero-stroke { stroke-dasharray: 320; stroke-dashoffset: 0; animation: hero-draw-stroke 0.9s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @utility bg-neon-gradient {
   background-color: var(--neon);
   background-image: radial-gradient(ellipse 130% 95% at 50% 5%, #ebff57 0%, #d9fd17 52%, #b5e400 100%);
+}
+.hero-dot-grid {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.16) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.hero-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
 }
 @utility animate-menu-in { animation: menu-in 0.42s cubic-bezier(0.76, 0, 0.24, 1) both; }
 @utility animate-rise { animation: rise 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
@@ -92,6 +104,7 @@
 }
 @utility text-stroke { -webkit-text-stroke: 1px currentColor; -webkit-text-fill-color: transparent; }
 @utility text-stroke-black { -webkit-text-stroke: 1.5px #000; -webkit-text-fill-color: transparent; }
+@utility text-stroke-black-faint { -webkit-text-stroke: 1.4px rgba(0, 0, 0, 0.22); -webkit-text-fill-color: transparent; }
 @utility backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 
 /* Scrollbar */
