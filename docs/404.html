@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; object-src 'none'; base-uri 'self';" />
+    <title>404 · Page Not Found | Ondwari Obiko</title>
+    <link rel="icon" type="image/webp" href="/ondwariobiko_octoberportfolio/images/favicon.webp" sizes="64x64" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: 'Space Grotesk', -apple-system, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .badge {
+        font-family: 'Space Grotesk', monospace;
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #d9fd17;
+        margin-bottom: 16px;
+      }
+      h1 {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(4rem, 15vw, 10rem);
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+        color: #ffffff;
+        margin-bottom: 24px;
+      }
+      p {
+        max-width: 480px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 36px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background-color: #d9fd17;
+        color: #000000;
+        font-family: 'Space Grotesk', monospace;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        padding: 14px 28px;
+        border-radius: 9999px;
+        text-decoration: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+      .btn:hover {
+        transform: scale(1.04);
+        opacity: 0.95;
+      }
+    </style>
+    <script>
+      // Single-page app SPA redirect on GitHub Pages:
+      // If someone arrived at /ondwariobiko_octoberportfolio/about or /contact without a hash, redirect smoothly
+      (function() {
+        var base = "/ondwariobiko_octoberportfolio/";
+        var path = window.location.pathname;
+        if (path.indexOf(base) === 0) {
+          var route = path.slice(base.length);
+          if (route && route !== "index.html" && route !== "404.html") {
+            window.location.replace(base + "#/" + route);
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="badge">404 · Navigation Error</div>
+    <h1>PAGE NOT FOUND</h1>
+    <p>The page, route, or case study you requested could not be located. You can return directly to selected client work.</p>
+    <a href="/ondwariobiko_octoberportfolio/#/work" class="btn">
+      <span>Return to Portfolio</span>
+      <span>↗</span>
+    </a>
+  </body>
+</html>

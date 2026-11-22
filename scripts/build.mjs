@@ -45,6 +45,9 @@ if (fs.existsSync('dist/sitemap.xml')) {
 if (fs.existsSync('dist/.well-known')) {
   fs.cpSync('dist/.well-known', '.well-known', { recursive: true });
 }
+if (fs.existsSync('dist/404.html')) {
+  fs.copyFileSync('dist/404.html', '404.html');
+}
 if (fs.existsSync('docs')) {
   fs.rmSync('docs', { recursive: true, force: true });
 }
