@@ -97,9 +97,12 @@ export default function App() {
     }
   }, [currentRoute, projectSlug]);
 
-  // Keyboard accessibility
+  // Keyboard accessibility & lock scroll when menu/modal open
   useEffect(() => {
-    document.body.style.overflow = (open || legalModal !== null) ? "hidden" : "";
+    const isLocked = open || legalModal !== null;
+    document.body.style.overflow = isLocked ? "hidden" : "";
+    document.documentElement.style.overflow = isLocked ? "hidden" : "";
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
@@ -107,7 +110,11 @@ export default function App() {
       }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
   }, [open, legalModal]);
 
   // Scroll detection for header and back-to-top button

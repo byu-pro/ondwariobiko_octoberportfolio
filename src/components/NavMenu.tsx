@@ -17,11 +17,11 @@ const navLinks: { id: PageRoute; label: string; hint: string }[] = [
 export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
   return (
     <div 
-      className="fixed inset-0 z-[55] bg-neon-gradient text-black animate-menu-in flex flex-col overflow-y-auto overscroll-contain" 
+      className="fixed inset-0 z-[55] bg-neon-gradient text-black animate-menu-in flex flex-col overflow-y-auto md:overflow-hidden overscroll-contain" 
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-32 pb-12">
-        <ul className="max-w-[1400px] w-full mx-auto">
+      <div className="flex-1 flex flex-col justify-center px-5 md:px-16 pt-24 sm:pt-28 md:pt-20 pb-10 md:pb-6 min-h-0">
+        <ul className="max-w-[1400px] w-full mx-auto my-auto">
           {navLinks.map((l, i) => {
             const active = currentRoute === l.id;
             return (
@@ -42,11 +42,11 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
                       }, 160);
                     }
                   }}
-                  className="group flex items-baseline gap-4 sm:gap-6 py-2 md:py-3 animate-rise cursor-pointer"
+                  className="group flex items-baseline gap-4 sm:gap-6 py-2 md:py-2.5 lg:py-3 animate-rise cursor-pointer"
                   style={{ animationDelay: `${180 + i * 65}ms` }}
                 >
                   <span className="font-mono text-xs md:text-sm w-8 sm:w-10">0{i + 1}</span>
-                  <span className={`font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.4rem,8.5vw,7.5rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic ${active ? "text-stroke" : ""}`}>
+                  <span className={`font-display uppercase tracking-tighter leading-[0.9] text-[clamp(2.4rem,7.5vw,6.5rem)] transition-all duration-500 group-hover:translate-x-6 group-hover:italic ${active ? "text-stroke" : ""}`}>
                     {l.label}
                   </span>
                   <span className="ml-auto hidden md:block font-mono text-xs uppercase tracking-[0.25em] opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 font-medium">
@@ -60,7 +60,7 @@ export function NavMenu({ currentRoute, onNavigate, onClose }: NavMenuProps) {
       </div>
 
       {/* Marquee Ticker at the Bottom of Menu */}
-      <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-4">
+      <div className="shrink-0 overflow-hidden bg-black text-accent-ink py-3.5 md:py-4">
         <div className="flex w-max animate-marquee font-display uppercase text-2xl tracking-tight whitespace-nowrap">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k} className="flex">
