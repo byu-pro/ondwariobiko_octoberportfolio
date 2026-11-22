@@ -5,6 +5,7 @@ import { NavMenu } from './components/NavMenu';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
 import { Preloader } from './components/Preloader';
+import { PageTransition } from './components/PageTransition';
 import { WorkPage } from './pages/WorkPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
@@ -55,8 +56,8 @@ export default function App() {
       setCurrentRoute(nextRoute);
       setProjectSlug(getProjectSlugFromHash());
 
-      if (nextRoute === 'project') {
-        requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+      if (!window.location.hash.includes('services')) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       }
       
       // If hash specifically targeted #services, scroll down smoothly after mount
@@ -151,8 +152,20 @@ export default function App() {
       
       {/* CREATIVE SITEWIDE PRELOADER */}
       {loading && (
-        <Preloader base={base} onComplete={() => setLoading(false)} />
+        <Preloader
+          base={base}
+          currentRoute={currentRoute}
+          projectSlug={projectSlug}
+          onComplete={() => setLoading(false)}
+        />
       )}
+
+      {/* MONOGRAM CIRCULAR APERTURE PASSAGE ON PAGE / PROJECT NAVIGATION */}
+      <PageTransition
+        base={base}
+        currentRoute={currentRoute}
+        projectSlug={projectSlug}
+      />
 
       {/* FIXED HEADER WITH BRAND TYPOGRAPHY & BLURRED MOBILE GLASS */}
       <Header
@@ -173,7 +186,7 @@ export default function App() {
       )}
 
       {/* CURRENT PAGE VIEW */}
-      <div key={`${currentRoute}-${projectSlug}`} className="page-transition flex-1 w-full">
+      <div key={`${currentRoute}-${projectSlug}`} className="route-stage page-transition flex-1 w-full">
         {currentRoute === 'work' && <WorkPage base={base} onNavigate={navigateTo} />}
         {currentRoute === 'about' && <AboutPage base={base} onNavigate={navigateTo} />}
         {currentRoute === 'contact' && <ContactPage />}
