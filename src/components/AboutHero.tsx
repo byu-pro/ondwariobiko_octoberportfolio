@@ -32,7 +32,7 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
   return (
     <section
       id="about-hero"
-      className="relative w-full bg-black text-white pt-28 sm:pt-32 md:pt-40 pb-12 sm:pb-16 md:pb-20 px-5 md:px-8 border-b border-white/15 overflow-hidden"
+      className="relative w-full bg-black text-white pt-28 sm:pt-32 md:pt-40 pb-12 sm:pb-16 md:pb-20 px-5 md:px-8 overflow-hidden"
     >
       {/* LAYER 1: SUBTLE DARK STUDIO CANVAS DOT-GRID + AMBIENT LIME GLOW */}
       <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-70 pointer-events-none z-0" />

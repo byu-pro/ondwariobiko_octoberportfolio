@@ -391,7 +391,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 6 — What's Included / Guarantee */}
-      <section className="px-5 md:px-8 py-14 sm:py-20 md:py-24 border-y border-ink/10 bg-white/[0.02]">
+      <section className="px-5 md:px-8 py-14 sm:py-20 md:py-24 bg-white/[0.02]">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-16">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">No surprises</p>
@@ -434,7 +434,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 8 — Note on Investment */}
-      <section className="px-5 md:px-8 py-14 sm:py-20 md:py-24 border-t border-ink/10 bg-neon text-black">
+      <section className="px-5 md:px-8 py-14 sm:py-20 md:py-24 bg-neon text-black">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16 items-start">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-black/60 mb-2 font-bold">Clear pricing</p>
@@ -487,7 +487,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 10 — FAQ block */}
-      <section id="faq-section" className="px-5 md:px-8 py-14 sm:py-20 md:py-24 border-t border-ink/10">
+      <section id="faq-section" className="px-5 md:px-8 py-14 sm:py-20 md:py-24">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3">FAQ</p>

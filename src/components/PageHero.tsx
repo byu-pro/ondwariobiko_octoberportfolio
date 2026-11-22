@@ -23,7 +23,7 @@ export function PageHero({
   const leadingWords = outlineWords.join(' ');
 
   return (
-    <section className="relative w-full bg-black text-white pt-28 sm:pt-36 md:pt-44 pb-10 sm:pb-14 md:pb-16 mb-10 sm:mb-14 px-5 md:px-8 border-b border-white/15 overflow-hidden">
+    <section className="relative w-full bg-black text-white pt-28 sm:pt-36 md:pt-44 pb-10 sm:pb-14 md:pb-16 mb-10 sm:mb-14 px-5 md:px-8 overflow-hidden">
       {/* SUBTLE DARK STUDIO CANVAS DOT-GRID + AMBIENT LIME RADIAL GLOW */}
       <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-70 pointer-events-none z-0" />
       <div
@@ -33,6 +33,10 @@ export function PageHero({
           backgroundImage:
             'radial-gradient(ellipse 75% 65% at 78% 18%, rgba(217, 253, 23, 0.11) 0%, rgba(217, 253, 23, 0.03) 45%, rgba(0, 0, 0, 0) 75%)',
         }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent z-[1]"
       />
 
       {/* SUBTLE DUAL COUNTER-SCROLLING KINETIC BACKGROUND MARQUEES */}

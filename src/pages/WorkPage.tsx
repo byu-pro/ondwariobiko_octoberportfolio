@@ -129,20 +129,6 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
         </div>
       )}
 
-      {/* Subtle top edge feather on subsequent cards (first thumbnail stays clean with no top overlay or border line) */}
-      {idx > 0 && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-10 sm:h-12 md:h-14 bg-gradient-to-b from-black/70 via-black/20 to-transparent z-10"
-        />
-      )}
-
-      {/* Subtle bottom edge feather so consecutive thumbnails flow smoothly without a hard line */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-10 sm:h-12 md:h-14 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"
-      />
-
       {/* Subtle bottom gradient on hover to ensure "View project" pill stands out */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
 
