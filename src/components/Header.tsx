@@ -25,10 +25,10 @@ export function Header({
       data-menu-open={open} 
       className={`fixed top-0 inset-x-0 z-[60] px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-300 ${
         open 
-          ? "py-2.5 sm:py-3.5 bg-transparent border-b border-transparent" 
+          ? "pt-4 pb-2.5 sm:pt-6 sm:pb-3.5 bg-transparent border-b border-transparent" 
           : scrolled 
             ? "py-2 sm:py-2.5 bg-black/90 backdrop-blur-xl border-b border-white/10" 
-            : "py-2.5 sm:py-3.5 bg-transparent border-b border-transparent"
+            : "pt-4 pb-2.5 sm:pt-6 sm:pb-3.5 bg-transparent border-b border-transparent"
       }`}
     >
       <a 
