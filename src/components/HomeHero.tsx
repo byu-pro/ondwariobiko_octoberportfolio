@@ -133,7 +133,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
   return (
     <section
       id="home-hero"
-      className="relative w-full bg-neon-gradient text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-10 sm:pb-12 md:pb-14 border-b-2 border-black overflow-hidden"
+      className="relative w-full bg-neon-gradient text-black flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-12 pt-[5.5rem] sm:pt-24 md:pt-28 lg:pt-[7.5rem] pb-10 sm:pb-12 md:pb-13 border-b-2 border-black overflow-hidden"
     >
       {/* LAYER 1: SUBTLE DESIGNER'S CANVAS DOT-GRID + ORGANIC PAPER GRAIN */}
       <div aria-hidden="true" className="absolute inset-0 hero-dot-grid opacity-75 pointer-events-none z-0" />
@@ -142,10 +142,10 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
       {/* ============================================================== */}
       {/* CENTER HERO CONTENT (HEADLINE, SUBTITLE, BUTTONS & STICKERS)   */}
       {/* ============================================================== */}
-      <div className="relative z-20 max-w-[1140px] w-full mx-auto flex flex-col items-center justify-center text-center pt-1 sm:pt-2">
+      <div className="relative z-20 max-w-[1140px] w-full mx-auto flex flex-col items-center justify-center text-center">
 
         {/* Main Headline Container + Dual Counter-Scrolling Marquees */}
-        <div className="relative w-full flex flex-col items-center justify-center py-2 sm:py-4">
+        <div className="relative w-full flex flex-col items-center justify-center py-2 sm:py-3">
 
           {/* LARGE DUAL-LAYER COUNTER-SCROLLING KINETIC MARQUEES */}
           <div
@@ -196,6 +196,12 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Swahili Welcome Badge */}
+          <div className="relative z-10 inline-flex items-center gap-2.5 mb-4 sm:mb-5 px-5 sm:px-6 py-1.5 sm:py-2 rounded-full bg-black text-neon font-display font-extrabold text-sm sm:text-base md:text-lg uppercase tracking-[0.26em] shadow-[4px_4px_0px_rgba(0,0,0,0.28)] select-none animate-rise">
+            <span className="size-2 rounded-full bg-neon shrink-0" aria-hidden="true" />
+            <span>Karibu</span>
           </div>
 
           {/* MAIN FOREGROUND HEADLINE WITH FIGMA VECTOR FRAME ON "MOVES" */}
@@ -268,7 +274,7 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
         {/* ============================================================== */}
         {/* INTERACTIVE DRAGGABLE STICKERS + ROTATING SEAL + SCROLL CTA    */}
         {/* ============================================================== */}
-        <div className="relative w-full flex flex-col items-center justify-center mt-7 sm:mt-9">
+        <div className="relative w-full flex flex-col items-center justify-center mt-6 sm:mt-8">
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl px-2">
             {/* Sticker 1: 100% Bespoke */}
             <div
@@ -384,40 +390,8 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
             </button>
           )}
 
-          {/* Desktop Left/Right Rail aligned with sticker cloud so Scroll to view work sits higher up */}
-          <div className="hidden md:flex items-center justify-between absolute left-1/2 -translate-x-1/2 w-screen pointer-events-none top-1/2 -translate-y-1/2 px-6 sm:px-8 md:px-10 lg:px-12 z-20">
-            {/* Rotating Circular Typographic Studio Seal (Left) */}
-            <button
-              type="button"
-              onClick={() => (onNavigate ? onNavigate('consultation') : (window.location.hash = '#/consultation'))}
-              aria-label="Book a free 1-hour consultation"
-              className="pointer-events-auto flex items-center justify-center relative size-16 lg:size-20 group cursor-pointer select-none"
-            >
-              <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow" style={{ animationDuration: '18s' }}>
-                <defs>
-                  <path
-                    id="heroStudioSealPath"
-                    d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                  />
-                </defs>
-                <text
-                  fill="#000"
-                  fontSize="9.3"
-                  fontWeight="800"
-                  letterSpacing="2.1"
-                  className="font-mono uppercase"
-                >
-                  <textPath href="#heroStudioSealPath">
-                    ✦ BESPOKE BRAND &amp; WEB STUDIO ✦ FREE CALL{' '}
-                  </textPath>
-                </text>
-              </svg>
-              <span className="absolute size-8 rounded-full bg-black text-neon grid place-items-center text-sm font-bold shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
-                ↗
-              </span>
-            </button>
-
-            {/* Scroll Indicator (Right, pushed up level with stickers) */}
+          {/* Desktop Right-Aligned Scroll Indicator level with sticker cloud */}
+          <div className="hidden md:flex items-center justify-end absolute left-1/2 -translate-x-1/2 w-screen pointer-events-none top-1/2 -translate-y-1/2 px-6 sm:px-8 md:px-10 lg:px-12 z-20">
             <button
               type="button"
               onClick={() => document.getElementById('work-projects')?.scrollIntoView({ behavior: 'smooth' })}
