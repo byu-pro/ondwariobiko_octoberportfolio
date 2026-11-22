@@ -290,7 +290,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* FULL-WIDTH ART SPEAKS EDITORIAL QUOTE POSTER */}
-      <section className="relative w-full mb-14 sm:mb-20 md:mb-28 bg-[#0a0a0a] border-y border-neutral-900 overflow-hidden select-none" aria-label="Art speaks where words are unable to explain">
+      <section className="relative w-full mb-4 sm:mb-6 md:mb-8 bg-[#0a0a0a] overflow-hidden select-none" aria-label="Art speaks where words are unable to explain">
         <div className="relative w-full max-w-[1680px] mx-auto">
           <img
             src={`${base}images/art-speaks-quote.webp`}
@@ -315,7 +315,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 5 — SERVICES SECTION (THE 6 CORE PACKAGES) */}
-      <section id="services-section" className="px-5 md:px-8 pt-8 pb-16 sm:pb-24 md:pb-32 border-t border-ink/15">
+      <section id="services-section" className="px-5 md:px-8 pt-2 sm:pt-4 pb-16 sm:pb-24 md:pb-32">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-8 sm:mb-12">
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">⟶ Solutions shaped around your goals</p>
