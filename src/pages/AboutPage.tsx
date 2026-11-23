@@ -11,18 +11,18 @@ interface AboutPageProps {
 const pillars = [
   {
     n: "01",
-    title: "Hand-drawn marks",
-    body: "Distinctive marks help customers recognize your business, remember it, and choose it with confidence.",
+    title: "Logo & Brand Identity (Core Specialty)",
+    body: "Custom hand-drawn logos, distinctive marks, and cohesive visual identity systems built to help businesses, organizations, and personal projects stand out with memorable authenticity.",
   },
   {
     n: "02",
-    title: "Design + Code",
-    body: "A clear, useful digital experience makes it easier for the right customers to understand your offer and take the next step.",
+    title: "UI/UX & Web Design",
+    body: "Intuitive user experience flows and thoughtful interface design crafted to communicate value clearly and guide visitors toward meaningful action.",
   },
   {
     n: "03",
-    title: "Built to scale",
-    body: "Consistent, ready-to-use assets help your team present one recognizable brand across every customer touchpoint.",
+    title: "Front-End Development",
+    body: "Clean, responsive websites built with modern front-end code and smooth animations — ensuring your brand looks and performs flawlessly across every screen size.",
   },
 ];
 
@@ -44,7 +44,7 @@ const packages = [
       "Primary, secondary & icon marks",
       "Vector AI, EPS, SVG + PNG delivery",
     ],
-    ideal: "Startups & new ventures",
+    ideal: "Personal projects, creative founders & startups",
   },
   {
     n: "02",
@@ -55,7 +55,7 @@ const packages = [
       "Color palette & typography pairing",
       "Comprehensive brand guidelines PDF",
     ],
-    ideal: "Growing & rebranding brands",
+    ideal: "Growing brands & mission-driven organizations",
   },
   {
     n: "03",
@@ -66,7 +66,7 @@ const packages = [
       "Multiple pose variations",
       "High-res vector & transparent exports",
     ],
-    ideal: "Brands wanting memorable personality",
+    ideal: "Brands & creators wanting iconic personality",
   },
   {
     n: "04",
@@ -77,7 +77,7 @@ const packages = [
       "Responsive code with smooth animations",
       "SEO & performance optimized",
     ],
-    ideal: "Founders needing design + code",
+    ideal: "Bespoke portfolios, web apps & brand sites",
   },
   {
     n: "05",
@@ -88,7 +88,7 @@ const packages = [
       "Digital & print color specs",
       "Hand-off ready style guide PDF",
     ],
-    ideal: "Teams scaling their marketing",
+    ideal: "Teams & ventures seeking cohesive standards",
   },
   {
     n: "06",
@@ -99,7 +99,7 @@ const packages = [
       "Print-ready dieline & digital files",
       "Direct creative collaboration",
     ],
-    ideal: "Product & apparel brands",
+    ideal: "Merch, packaging, editorial & campaign rollouts",
   },
 ];
 
@@ -235,12 +235,12 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       {/* 1 — Opening Hook: Philosophy */}
       <section id="about-section" className="px-5 md:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ The business challenge</p>
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-4 sm:mb-6">⟶ Logo &amp; Brand Identity Specialty</p>
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight max-w-[20ch] break-words">
-            Good design makes it easier for customers to <span className="text-accent-ink">choose you</span>
+            Great design turns curiosity into <span className="text-accent-ink">lasting conviction</span>
           </h2>
           <p className="mt-6 sm:mt-8 max-w-2xl font-sans text-base sm:text-lg text-ink/70 leading-relaxed font-light">
-            When a brand is hard to recognize, a website is hard to use, or a business struggles to explain its value, potential customers move on. I bring strategy, design, and development together to make your business clearer, more memorable, and easier to engage with.
+            Whether for a commercial business, a purpose-driven organization, an emerging brand, or a personal project — a strong logo and visual identity is where credibility starts. Specializing in craft-driven logo systems and brand identity, complemented by UI/UX design and clean front-end web development, I ensure your work stands out and connects with genuine impact.
           </p>
         </div>
       </section>
@@ -258,7 +258,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
           </p>
 
           <p className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-normal leading-snug tracking-tight text-black/80">
-            I'm <span className="font-bold text-black underline decoration-black/30 decoration-2 underline-offset-4">John Obiko</span> — a Nairobi-based creative partner working with businesses, clients, brands, and organizations worldwide. I solve communication and digital experience challenges through <span className="font-bold text-black">brand identity, UI/UX, and web design and development</span> — helping you earn attention, build trust, and guide customers toward action.
+            I'm <span className="font-bold text-black underline decoration-black/30 decoration-2 underline-offset-4">John Obiko</span> — a Nairobi-based graphic and web designer specializing in <span className="font-bold text-black">logo and brand identity design</span>, with hands-on practice in <span className="font-bold text-black">UI/UX design and front-end development</span>. I collaborate with <span className="font-bold text-black">businesses, organizations, brands, and personal projects</span> worldwide — shaping distinctive visual marks and building fast, responsive websites from concept to code.
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
@@ -285,7 +285,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       {/* 3 — Craft Pillars */}
       <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-28">
         <div className="max-w-[1400px] mx-auto">
-          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ How I solve business challenges</p>
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ Core disciplines &amp; capabilities</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-ink/15 border border-ink/15">
             {pillars.map((p) => (
               <div
@@ -306,7 +306,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 4 — Track Record & Stats */}
-      <section className="px-5 md:px-8 pb-14 sm:pb-20 md:pb-24">
+      <section className="px-5 md:px-8 pb-4 sm:pb-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ Track record</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 sm:gap-8 md:gap-10 py-4 sm:py-6">
@@ -316,7 +316,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* FULL-WIDTH ART SPEAKS EDITORIAL QUOTE POSTER */}
-      <section className="relative w-full mb-4 sm:mb-6 md:mb-8 bg-[#0a0a0a] overflow-hidden select-none" aria-label="Art speaks where words are unable to explain">
+      <section className="relative w-full -mt-10 sm:mt-0 mb-4 sm:mb-6 md:mb-8 bg-[#0a0a0a] overflow-hidden select-none" aria-label="Art speaks where words are unable to explain">
         <div className="relative w-full max-w-[1680px] mx-auto">
           <img
             src={`${base}images/art-speaks-quote.webp`}
@@ -327,7 +327,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             sizes="100vw"
             loading="lazy"
             decoding="async"
-            className="block w-full h-auto object-contain"
+            className="block w-full h-auto object-contain -translate-y-3 sm:translate-y-0"
           />
         </div>
         <div
@@ -447,7 +447,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
               Every project is scoped individually around your goals and budget.
             </p>
             <p className="font-sans text-black/75 text-sm sm:text-base leading-relaxed">
-              Rather than rigid price lists, you receive an upfront milestone quote tailored to what your brand actually needs. No hidden fees, no surprises.
+              Whether you are an established enterprise, a community organization, an emerging brand, or launching an independent passion project, you receive a transparent, milestone-based quote tailored directly to your scope. No guesswork, no hidden retainers.
             </p>
             <button
               onClick={() => onNavigate('consultation')}

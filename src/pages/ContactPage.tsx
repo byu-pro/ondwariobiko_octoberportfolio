@@ -39,7 +39,7 @@ const contactFaqs = [
   },
   {
     q: "What if I'm not sure exactly what I need yet?",
-    a: "That's completely fine — select 'Not sure yet' in the project type field and describe your business. We'll figure out the best approach together.",
+    a: "That's completely fine — select 'Not sure yet' in the project type field and tell me about your goals, venture, or personal project. We'll diagnose the creative needs and define the exact scope together.",
   },
   {
     q: "How does payment work?",
@@ -153,8 +153,8 @@ export function ContactPage() {
       <section className="px-5 md:px-8 pb-12">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-sans font-medium leading-relaxed text-[clamp(1.25rem,3.5vw,2rem)] max-w-4xl">
-            Have a business challenge to solve?{" "}
-            <span className="text-accent-ink">Tell me what you want to improve</span> —
+            Have a commercial venture, organizational initiative, or personal passion project?{" "}
+            <span className="text-accent-ink">Let's discuss how we can bring it to life</span> —
             I'll reply within 24–48 hours.
           </p>
           <p className="mt-6 font-sans text-sm sm:text-base text-ink/50">
@@ -216,14 +216,14 @@ export function ContactPage() {
 
             <div className="grid sm:grid-cols-2 gap-8">
               <label className="block">
-                <span className={labelClass}>Company / Brand *</span>
+                <span className={labelClass}>Brand / Project / Company *</span>
                 <input
                   type="text"
                   required
                   maxLength={100}
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  placeholder="Brand name"
+                  placeholder="Brand, project, or company name"
                   className={fieldClass}
                 />
               </label>

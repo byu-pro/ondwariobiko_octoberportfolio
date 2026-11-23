@@ -239,9 +239,9 @@ export function HomeHero({ onNavigate }: HomeHeroProps) {
         </div>
 
         {/* Subtitle / Bio Description */}
-        <div className="mt-4 sm:mt-5 max-w-xl text-center mx-auto px-2">
+        <div className="mt-4 sm:mt-5 max-w-2xl text-center mx-auto px-2">
           <p className="font-mono text-xs sm:text-base md:text-lg font-medium tracking-tight text-black/85 leading-relaxed text-center">
-            I help businesses solve brand and digital challenges with clear strategy, distinctive design, and websites built to turn attention into action.
+            Graphic &amp; web designer specializing in logo and brand identity design, with UI/UX and front-end development capabilities. Partnering with businesses, organizations, brands, and personal projects to create distinctive marks and clean, responsive websites.
           </p>
         </div>
 

@@ -100,7 +100,7 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
       <div className="relative z-10 max-w-[1400px] mx-auto">
         {/* Eyebrow */}
         <div className="font-mono text-xs uppercase tracking-[0.25em] text-ink/60 mb-6 sm:mb-8">
-          <span className="text-accent-ink font-semibold">02</span> / Creative partner for business growth
+          <span className="text-accent-ink font-semibold">02</span> / Logo &amp; Brand Identity Specialist · Front-End Web Designer
         </div>
 
         {/* Main 2-Column Editorial Hero Grid */}
@@ -109,7 +109,7 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
           <h1 className="page-hero-title font-display font-extrabold uppercase tracking-tighter leading-[0.84] text-[clamp(2.35rem,7.2vw,6.8rem)] select-none">
             <span className="block overflow-clip">
               <span className="block animate-rise text-white">
-                <GlitchText text="Business" variant="dark" delayMs={0} />
+                <GlitchText text="Creative" variant="dark" delayMs={0} />
               </span>
             </span>
             <span className="block overflow-clip">
@@ -127,7 +127,7 @@ export function AboutHero({ onNavigate }: AboutHeroProps) {
           {/* RIGHT: Concise Studio Positioning + Direct CTAs */}
           <div className="flex flex-col items-start gap-5 lg:pb-2">
             <p className="font-mono text-sm sm:text-base text-white/80 leading-relaxed">
-              One dedicated partner from first sketch to shipped code — turning unclear brands and underperforming websites into sharp, conversion-ready assets.
+              A graphic and web designer specializing in logo systems and brand identity, with dedicated expertise in UI/UX and front-end development. Partnering with businesses, organizations, brands, and personal projects from first sketch to live code.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">

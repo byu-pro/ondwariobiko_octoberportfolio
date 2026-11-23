@@ -118,9 +118,9 @@ export function ConsultationPage() {
             <div className="mt-8 p-5 border border-ink/15 rounded-xl bg-surface/50 font-mono text-xs text-ink/70 leading-relaxed">
               <span className="text-accent-ink font-bold">What we cover:</span>
               <ul className="mt-2.5 space-y-1.5">
-                <li>• Your brand vision and business objectives</li>
-                <li>• Recommended deliverables & technical scope</li>
-                <li>• Actionable creative advice you can use immediately</li>
+                <li>• Your creative vision, commercial goals, or project roadmap</li>
+                <li>• Recommended deliverables, timeline &amp; tech stack</li>
+                <li>• Immediate strategic guidance tailored to your project scope</li>
               </ul>
             </div>
           </div>
