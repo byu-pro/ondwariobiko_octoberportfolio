@@ -194,7 +194,7 @@ function AnimatedStat({
   const formatted = decimals > 0 ? display.toFixed(decimals) : String(display);
 
   return (
-    <div ref={root} className="min-w-0 text-center flex flex-col items-center">
+    <div ref={root} className="min-w-0 text-center flex flex-col items-center last:col-span-2 sm:last:col-span-1">
       <div className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tighter tabular-nums leading-none">
         <span className="inline-block text-neon-gradient">{formatted}{suffix}</span>
       </div>
@@ -306,17 +306,17 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
       </section>
 
       {/* 4 — Track Record & Stats */}
-      <section className="px-5 md:px-8 pb-4 sm:pb-20 md:pb-24">
+      <section className="px-5 md:px-8 pb-8 sm:pb-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink mb-6 sm:mb-8">⟶ Track record</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 sm:gap-8 md:gap-10 py-4 sm:py-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 py-4 sm:py-6">
             {markers.map((stat) => <AnimatedStat key={stat.label} {...stat} />)}
           </div>
         </div>
       </section>
 
       {/* FULL-WIDTH ART SPEAKS EDITORIAL QUOTE POSTER */}
-      <section className="relative w-full -mt-10 sm:mt-0 mb-4 sm:mb-6 md:mb-8 bg-[#0a0a0a] overflow-hidden select-none" aria-label="Art speaks where words are unable to explain">
+      <section className="relative w-full mb-4 sm:mb-6 md:mb-8 bg-[#0a0a0a] overflow-hidden select-none" aria-label="Art speaks where words are unable to explain">
         <div className="relative w-full max-w-[1680px] mx-auto">
           <img
             src={`${base}images/art-speaks-quote.webp`}
@@ -327,7 +327,7 @@ export function AboutPage({ base, onNavigate }: AboutPageProps) {
             sizes="100vw"
             loading="lazy"
             decoding="async"
-            className="block w-full h-auto object-contain -translate-y-3 sm:translate-y-0"
+            className="block w-full h-auto object-contain"
           />
         </div>
         <div
