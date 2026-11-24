@@ -2,7 +2,7 @@ import React from 'react';
 import { PageRoute } from '../types';
 import { responsiveImageSrcSet } from '../utils/images';
 import { GlitchText } from '../components/GlitchText';
-import { SoundCurvesWebShowcase } from '../components/SoundCurvesWebShowcase';
+import { MoodsNMedWebShowcase, SoundCurvesWebShowcase } from '../components/SoundCurvesWebShowcase';
 
 interface ProjectCaseStudyPageProps {
   base: string;
@@ -351,6 +351,8 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
             <p className="font-mono text-[10px] uppercase tracking-wider text-ink/40">
               {slug === 'sound-curves'
                 ? 'High-Fidelity Audio Platform Compositions'
+                : slug === 'moods-and-nerds'
+                ? 'Desktop & Mobile Wellness Website Concepts'
                 : isBrandProject
                 ? 'Brand applications & physical mockups'
                 : 'Identity system & visual execution'}
@@ -359,6 +361,8 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
 
           {slug === 'sound-curves' ? (
             <SoundCurvesWebShowcase base={base} />
+          ) : slug === 'moods-and-nerds' ? (
+            <MoodsNMedWebShowcase base={base} />
           ) : isBrandProject ? (
             <div className="space-y-6 sm:space-y-8">
               {/* ROW 1: MOCKUP 01 (FULL WIDTH) */}

@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 
-interface SoundCurvesWebShowcaseProps {
+interface WebsiteShowcaseProps {
   base: string;
+  desktopPages: PageData[];
+  mobilePages: PageData[];
 }
 
-interface PageData {
+export interface PageData {
   id: string;
   tabLabel: string;
   title: string;
@@ -74,15 +76,49 @@ const MOBILE_PAGES: PageData[] = [
   },
 ];
 
-export function SoundCurvesWebShowcase({ base }: SoundCurvesWebShowcaseProps) {
-  const [activeDesktopId, setActiveDesktopId] = useState<string>('home');
-  const [activeMobileId, setActiveMobileId] = useState<string>('home-m');
+const MOODS_N_MEDS_DESKTOP_PAGES: PageData[] = [
+  {
+    id: 'illustrated',
+    tabLabel: '01 · Illustrated Theme',
+    title: 'Moods n Meds · Illustrated Desktop Design',
+    url: 'Moods n Meds · Illustrated Homepage',
+    filename: 'moodsnmeds/Home Page.webp',
+  },
+  {
+    id: 'photography',
+    tabLabel: '02 · Photography Theme',
+    title: 'Moods n Meds · Photography Desktop Design',
+    url: 'Moods n Meds · Photography Homepage',
+    filename: 'moodsnmeds/Home Page (1).webp',
+  },
+];
+
+const MOODS_N_MEDS_MOBILE_PAGES: PageData[] = [
+  {
+    id: 'illustrated-mobile',
+    tabLabel: '01 · Illustrated Theme',
+    title: 'Moods n Meds · Illustrated Mobile Design',
+    url: 'Moods n Meds · Illustrated Mobile Homepage',
+    filename: 'moodsnmeds/Mobile - Illustrated 600dpi.webp',
+  },
+  {
+    id: 'photography-mobile',
+    tabLabel: '02 · Photography Theme',
+    title: 'Moods n Meds · Photography Mobile Design',
+    url: 'Moods n Meds · Photography Mobile Homepage',
+    filename: 'moodsnmeds/Mobile - Photography 600dpi.webp',
+  },
+];
+
+export function WebsiteCompositionsShowcase({ base, desktopPages, mobilePages }: WebsiteShowcaseProps) {
+  const [activeDesktopId, setActiveDesktopId] = useState<string>(desktopPages[0]?.id ?? '');
+  const [activeMobileId, setActiveMobileId] = useState<string>(mobilePages[0]?.id ?? '');
 
   const desktopScrollRef = useRef<HTMLDivElement>(null);
   const mobileScrollRef = useRef<HTMLDivElement>(null);
 
-  const activeDesktopPage = DESKTOP_PAGES.find((p) => p.id === activeDesktopId) ?? DESKTOP_PAGES[0];
-  const activeMobilePage = MOBILE_PAGES.find((p) => p.id === activeMobileId) ?? MOBILE_PAGES[0];
+  const activeDesktopPage = desktopPages.find((p) => p.id === activeDesktopId) ?? desktopPages[0];
+  const activeMobilePage = mobilePages.find((p) => p.id === activeMobileId) ?? mobilePages[0];
 
   const handleDesktopTabChange = (pageId: string) => {
     setActiveDesktopId(pageId);
@@ -120,7 +156,7 @@ export function SoundCurvesWebShowcase({ base }: SoundCurvesWebShowcaseProps) {
 
         {/* DESKTOP PAGE TABS */}
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-1.5 sm:gap-2.5 bg-black/80 p-2 sm:p-2.5 rounded-xl border border-white/10">
-          {DESKTOP_PAGES.map((page) => {
+          {desktopPages.map((page) => {
             const isActive = page.id === activeDesktopId;
             return (
               <button
@@ -196,7 +232,7 @@ export function SoundCurvesWebShowcase({ base }: SoundCurvesWebShowcaseProps) {
 
         {/* MOBILE PAGE TABS */}
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-1.5 sm:gap-2.5 bg-black/80 p-2 sm:p-2.5 rounded-xl border border-white/10">
-          {MOBILE_PAGES.map((page) => {
+          {mobilePages.map((page) => {
             const isActive = page.id === activeMobileId;
             return (
               <button
@@ -259,5 +295,19 @@ export function SoundCurvesWebShowcase({ base }: SoundCurvesWebShowcaseProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+export function SoundCurvesWebShowcase({ base }: { base: string }) {
+  return <WebsiteCompositionsShowcase base={base} desktopPages={DESKTOP_PAGES} mobilePages={MOBILE_PAGES} />;
+}
+
+export function MoodsNMedWebShowcase({ base }: { base: string }) {
+  return (
+    <WebsiteCompositionsShowcase
+      base={base}
+      desktopPages={MOODS_N_MEDS_DESKTOP_PAGES}
+      mobilePages={MOODS_N_MEDS_MOBILE_PAGES}
+    />
   );
 }
