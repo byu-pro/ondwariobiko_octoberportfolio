@@ -149,7 +149,18 @@ function ProjectCard({ project, idx, onOpenProject }: ProjectCardProps) {
 
 export function WorkPage({ base, onNavigate }: WorkPageProps) {
   const [activePreview, setActivePreview] = useState<{ project: FullWidthProject; image: string } | null>(null);
-  const caseStudyIds = new Set(['pelican-social', 'ikon-trailers', 'iron-acre', 'friends-of-unionville', 'sound-curves', 'moods-and-nerds', 'green-essential', 'lewis-park']);
+  const caseStudyIds = new Set([
+    'pelican-social',
+    'ikon-trailers',
+    'iron-acre',
+    'friends-of-unionville',
+    'sound-curves',
+    'moods-and-nerds',
+    'aquapet-kenya',
+    'ocean-line-freight',
+    'green-essential',
+    'lewis-park'
+  ]);
 
   // Close lightbox on Escape key
   useEffect(() => {
