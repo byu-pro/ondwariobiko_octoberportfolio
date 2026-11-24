@@ -9,12 +9,12 @@ SOURCE_FORMATS = {".jpg", ".jpeg", ".png"}
 
 def is_line_art(stem: str) -> bool:
     s = stem.lower()
-    return "blackandwhite" in s
+    return "blackandwhite" in s or "whiteandblack" in s
 
 
 def is_sketch_or_bw(stem: str) -> bool:
     s = stem.lower()
-    return "sketch" in s or "blackandwhite" in s
+    return "sketch" in s or "blackandwhite" in s or "whiteandblack" in s
 
 
 def save_webp(image: Image.Image, destination: Path, icc_profile: bytes | None, stem: str = "") -> None:

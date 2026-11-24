@@ -45,7 +45,7 @@ const caseStudies: Record<string, CaseStudy> = _decodeRepositoryData<Record<stri
 const brandProjectVisuals: Record<string, { sketch: string; bw: string }> = {
   'pelican-social': {
     sketch: 'pelicansocialsketch.webp',
-    bw: 'pelicanblackandwhite.webp',
+    bw: 'pelicansocialwhiteandblack.webp',
   },
   'ikon-trailers': {
     sketch: 'ikontrailerssketch.webp',
