@@ -4,7 +4,6 @@ assets/* linguist-vendored
 assets/* linguist-generated
 docs/assets/* linguist-vendored
 docs/assets/* linguist-generated
-public/images/* binary
 images/* binary
 
 # Treat binary media files properly

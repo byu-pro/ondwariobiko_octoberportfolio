@@ -8,6 +8,11 @@ fs.copyFileSync('index.dev.html', 'index.html');
 // 2. Run vite build
 execSync('npx vite build', { stdio: 'inherit' });
 
+// Vite omits dotfiles from the public directory, so preserve the Pages marker explicitly.
+if (!fs.existsSync('dist/.nojekyll') && fs.existsSync('.nojekyll')) {
+  fs.copyFileSync('.nojekyll', 'dist/.nojekyll');
+}
+
 // 2.5 Inject anti-theft legal banner at top of compiled JS chunks
 try {
   const jsFiles = fs.readdirSync('dist/assets').filter(f => f.endsWith('.js'));

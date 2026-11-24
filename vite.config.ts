@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/ondwariobiko_octoberportfolio/',
+  publicDir: '.generated/public',
   build: {
     // Prevent source code reconstruction & leak via sourcemaps
     sourcemap: false,
