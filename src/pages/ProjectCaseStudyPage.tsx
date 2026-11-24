@@ -42,8 +42,40 @@ function _decodeRepositoryData<T>(rawBase64: string): T {
 
 const caseStudies: Record<string, CaseStudy> = _decodeRepositoryData<Record<string, CaseStudy>>(_ENC_STORE);
 
+const brandProjectVisuals: Record<string, { sketch: string; bw: string }> = {
+  'pelican-social': {
+    sketch: 'pelicansocialsketch.webp',
+    bw: 'pelicanblackandwhite.webp',
+  },
+  'ikon-trailers': {
+    sketch: 'ikontrailerssketch.webp',
+    bw: 'ikontrailersblackandwhite.webp',
+  },
+  'iron-acre': {
+    sketch: 'ironacresketch.webp',
+    bw: 'ironacreblackandwhite.webp',
+  },
+  'friends-of-unionville': {
+    sketch: 'friendsofunionvillesketch.webp',
+    bw: 'friendsblackandwhite.webp',
+  },
+  'aquapet-kenya': {
+    sketch: 'aquapetsketch.webp',
+    bw: 'aquapetblackandwhite.webp',
+  },
+  'ocean-line-freight': {
+    sketch: 'oceanlinesketch.webp',
+    bw: 'oceanlineblackandwhite.webp',
+  },
+  'green-essential': {
+    sketch: 'greenessentialssketch.webp',
+    bw: 'greenessentialsblackandwhite.webp',
+  },
+};
+
 export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStudyPageProps) {
   const project = caseStudies[slug as keyof typeof caseStudies];
+  const brandVisuals = brandProjectVisuals[slug];
   const projectOrder = Object.entries(caseStudies);
   const currentIndex = projectOrder.findIndex(([projectSlug]) => projectSlug === slug);
   const [previousSlug, previousProject] = projectOrder[(currentIndex - 1 + projectOrder.length) % projectOrder.length];
@@ -147,6 +179,50 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
           <div className="md:col-span-8"><p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed">{project.challenge}</p><p className="mt-4 sm:mt-5 font-mono text-[10px] uppercase tracking-[0.2em] text-black/60">{project.category}</p></div>
         </div>
       </section>
+
+      {/* BRAND EXPLORATION: CONCEPT SKETCHES (FULL-WIDTH) */}
+      {brandVisuals?.sketch && (
+        <section className="w-full pb-10 sm:pb-16 md:pb-20">
+          <div className="max-w-[1400px] mx-auto px-5 md:px-8 mb-4 sm:mb-6">
+            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
+              Ideation &amp; Exploratory Sketches
+            </p>
+          </div>
+          <div className="w-full overflow-hidden bg-black">
+            <img 
+              src={`${base}images/${brandVisuals.sketch}`}
+              srcSet={responsiveImageSrcSet(`${base}images/${brandVisuals.sketch}`)}
+              sizes="100vw"
+              alt={`${project.title} concept sketches`}
+              loading="lazy"
+              decoding="async"
+              className="block w-full h-auto object-cover"
+            />
+          </div>
+        </section>
+      )}
+
+      {/* BRAND EXPLORATION: BLACK & WHITE IDENTITY MARK (FULL-WIDTH) */}
+      {brandVisuals?.bw && (
+        <section className="w-full pb-12 sm:pb-20 md:pb-24">
+          <div className="max-w-[1400px] mx-auto px-5 md:px-8 mb-4 sm:mb-6">
+            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
+              Mark Development / Black &amp; White Execution
+            </p>
+          </div>
+          <div className="w-full overflow-hidden bg-black">
+            <img 
+              src={`${base}images/${brandVisuals.bw}`}
+              srcSet={responsiveImageSrcSet(`${base}images/${brandVisuals.bw}`)}
+              sizes="100vw"
+              alt={`${project.title} black and white mark`}
+              loading="lazy"
+              decoding="async"
+              className="block w-full h-auto object-cover"
+            />
+          </div>
+        </section>
+      )}
 
       <section className="px-5 md:px-8 pb-12 sm:pb-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
