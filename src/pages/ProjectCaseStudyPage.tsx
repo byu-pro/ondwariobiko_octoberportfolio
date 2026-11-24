@@ -73,9 +73,28 @@ const brandProjectVisuals: Record<string, { sketch: string; bw: string }> = {
   },
 };
 
+interface BrandProjectMockups {
+  hero?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+}
+
+const brandProjectMockups: Record<string, BrandProjectMockups> = {
+  'pelican-social': {},
+  'ikon-trailers': {},
+  'iron-acre': {},
+  'friends-of-unionville': {},
+  'aquapet-kenya': {},
+  'ocean-line-freight': {},
+  'green-essential': {},
+};
+
 export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStudyPageProps) {
   const project = caseStudies[slug as keyof typeof caseStudies];
   const brandVisuals = brandProjectVisuals[slug];
+  const isBrandProject = Boolean(brandProjectVisuals[slug]);
+  const mockups = brandProjectMockups[slug];
   const projectOrder = Object.entries(caseStudies);
   const currentIndex = projectOrder.findIndex(([projectSlug]) => projectSlug === slug);
   const [previousSlug, previousProject] = projectOrder[(currentIndex - 1 + projectOrder.length) % projectOrder.length];
@@ -227,20 +246,165 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
       <section className="px-5 md:px-8 pb-12 sm:pb-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-6 mb-5 sm:mb-7">
-            <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2 sm:mb-3">Project imagery</p><h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl">The work in detail</h2></div>
-            <p className="font-mono text-[10px] uppercase tracking-wider text-ink/40">Identity system &amp; visual execution</p>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2 sm:mb-3">Project imagery</p>
+              <h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl">The work in detail</h2>
+            </div>
+            <p className="font-mono text-[10px] uppercase tracking-wider text-ink/40">
+              {isBrandProject ? 'Brand applications & physical mockups' : 'Identity system & visual execution'}
+            </p>
           </div>
-          <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
-            <img 
-              src={`${base}images/${project.image}`}
-              srcSet={responsiveImageSrcSet(`${base}images/${project.image}`)}
-              sizes="100vw"
-              alt={`${project.title} showcase visual`}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-auto object-cover"
-            />
-          </div>
+
+          {isBrandProject ? (
+            <div className="space-y-6 sm:space-y-8">
+              {/* MOCKUP 01: HERO FULL-WIDTH */}
+              {mockups?.hero ? (
+                <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
+                  <img 
+                    src={`${base}images/${mockups.hero}`}
+                    srcSet={responsiveImageSrcSet(`${base}images/${mockups.hero}`)}
+                    sizes="100vw"
+                    alt={`${project.title} mockup 01`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-8 sm:p-14 md:p-20 text-center flex flex-col items-center justify-center min-h-[300px] sm:min-h-[420px] md:min-h-[500px] transition-colors hover:border-neon/40 group">
+                  <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
+                  <div className="relative z-10 max-w-xl space-y-3">
+                    <span className="inline-block px-3.5 py-1 rounded-full bg-neon/10 border border-neon/30 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
+                      Mockup 01 · Full-Width Showcase
+                    </span>
+                    <h3 className="font-display font-extrabold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl text-white">
+                      2880 × 1620 <span className="text-neon text-2xl sm:text-3xl font-mono">px</span>
+                    </h3>
+                    <p className="font-mono text-xs sm:text-sm text-ink/70">
+                      Aspect Ratio 16:9 · Full container width (1400px @ 2x Retina)
+                    </p>
+                    <p className="font-mono text-[10px] sm:text-xs text-ink/40 pt-1">
+                      Standard 1x: 1920 × 1080 px | Best Sharpness (2x Retina): 2880 × 1620 px
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* MOCKUP 02 & 03: SPLIT LEFT & RIGHT */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {/* LEFT SPLIT */}
+                {mockups?.left ? (
+                  <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
+                    <img 
+                      src={`${base}images/${mockups.left}`}
+                      srcSet={responsiveImageSrcSet(`${base}images/${mockups.left}`)}
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      alt={`${project.title} mockup 02 left`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-6 sm:p-10 md:p-14 text-center flex flex-col items-center justify-center min-h-[260px] sm:min-h-[360px] transition-colors hover:border-neon/40 group">
+                    <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
+                    <div className="relative z-10 max-w-sm space-y-2.5">
+                      <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/15 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
+                        Mockup 02 · Left Split
+                      </span>
+                      <h3 className="font-display font-extrabold uppercase tracking-tight text-2xl sm:text-3xl md:text-4xl text-white">
+                        1440 × 1080 <span className="text-neon text-xl sm:text-2xl font-mono">px</span>
+                      </h3>
+                      <p className="font-mono text-xs text-ink/70">
+                        Aspect Ratio 4:3 (or 1:1 @ 1440 × 1440 px)
+                      </p>
+                      <p className="font-mono text-[10px] text-ink/40">
+                        2x Retina: 1440 × 1080 px | 16:9 option: 1920 × 1080 px
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* RIGHT SPLIT */}
+                {mockups?.right ? (
+                  <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
+                    <img 
+                      src={`${base}images/${mockups.right}`}
+                      srcSet={responsiveImageSrcSet(`${base}images/${mockups.right}`)}
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      alt={`${project.title} mockup 03 right`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-6 sm:p-10 md:p-14 text-center flex flex-col items-center justify-center min-h-[260px] sm:min-h-[360px] transition-colors hover:border-neon/40 group">
+                    <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
+                    <div className="relative z-10 max-w-sm space-y-2.5">
+                      <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/15 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
+                        Mockup 03 · Right Split
+                      </span>
+                      <h3 className="font-display font-extrabold uppercase tracking-tight text-2xl sm:text-3xl md:text-4xl text-white">
+                        1440 × 1080 <span className="text-neon text-xl sm:text-2xl font-mono">px</span>
+                      </h3>
+                      <p className="font-mono text-xs text-ink/70">
+                        Aspect Ratio 4:3 (or 1:1 @ 1440 × 1440 px)
+                      </p>
+                      <p className="font-mono text-[10px] text-ink/40">
+                        2x Retina: 1440 × 1080 px | 16:9 option: 1920 × 1080 px
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* MOCKUP 04: FULL-WIDTH BOTTOM */}
+              {mockups?.bottom ? (
+                <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
+                  <img 
+                    src={`${base}images/${mockups.bottom}`}
+                    srcSet={responsiveImageSrcSet(`${base}images/${mockups.bottom}`)}
+                    sizes="100vw"
+                    alt={`${project.title} mockup 04`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-8 sm:p-14 md:p-20 text-center flex flex-col items-center justify-center min-h-[300px] sm:min-h-[420px] md:min-h-[500px] transition-colors hover:border-neon/40 group">
+                  <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
+                  <div className="relative z-10 max-w-xl space-y-3">
+                    <span className="inline-block px-3.5 py-1 rounded-full bg-neon/10 border border-neon/30 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
+                      Mockup 04 · Full-Width Showcase
+                    </span>
+                    <h3 className="font-display font-extrabold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl text-white">
+                      2880 × 1620 <span className="text-neon text-2xl sm:text-3xl font-mono">px</span>
+                    </h3>
+                    <p className="font-mono text-xs sm:text-sm text-ink/70">
+                      Aspect Ratio 16:9 · Full container width (1400px @ 2x Retina)
+                    </p>
+                    <p className="font-mono text-[10px] sm:text-xs text-ink/40 pt-1">
+                      Standard 1x: 1920 × 1080 px | Best Sharpness (2x Retina): 2880 × 1620 px
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
+              <img 
+                src={`${base}images/${project.image}`}
+                srcSet={responsiveImageSrcSet(`${base}images/${project.image}`)}
+                sizes="100vw"
+                alt={`${project.title} showcase visual`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          )}
         </div>
       </section>
 
