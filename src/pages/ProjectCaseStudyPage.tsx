@@ -56,8 +56,8 @@ const brandProjectVisuals: Record<string, { sketch: string; bw: string }> = {
     bw: 'ironacreblackandwhite.webp',
   },
   'friends-of-unionville': {
-    sketch: 'friendsofunionvillesketch.webp',
-    bw: 'friendsblackandwhite.webp',
+    sketch: 'friendsofunionvillesketch-01.webp',
+    bw: 'friendsofwhiteandblack-01.webp',
   },
   'aquapet-kenya': {
     sketch: 'aquapetsketch.webp',
