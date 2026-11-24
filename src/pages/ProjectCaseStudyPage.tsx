@@ -74,10 +74,17 @@ const brandProjectVisuals: Record<string, { sketch: string; bw: string }> = {
 };
 
 interface BrandProjectMockups {
-  hero?: string;
-  left?: string;
-  right?: string;
-  bottom?: string;
+  m01?: string;
+  m02?: string;
+  m03?: string;
+  m04?: string;
+  m05?: string;
+  m06?: string;
+  m07?: string;
+  m08?: string;
+  m09?: string;
+  m10?: string;
+  m11?: string;
 }
 
 const brandProjectMockups: Record<string, BrandProjectMockups> = {
@@ -89,6 +96,92 @@ const brandProjectMockups: Record<string, BrandProjectMockups> = {
   'ocean-line-freight': {},
   'green-essential': {},
 };
+
+function MockupSlot({
+  slotNumber,
+  type,
+  imageSrc,
+  projectTitle,
+  base,
+}: {
+  slotNumber: number;
+  type: 'full' | 'split-left' | 'split-right';
+  imageSrc?: string;
+  projectTitle: string;
+  base: string;
+}) {
+  const isFull = type === 'full';
+  const slotStr = slotNumber < 10 ? `0${slotNumber}` : `${slotNumber}`;
+  const label = isFull
+    ? `Mockup ${slotStr} · Full-Width Showcase`
+    : type === 'split-left'
+    ? `Mockup ${slotStr} · Left Split`
+    : `Mockup ${slotStr} · Right Split`;
+
+  if (imageSrc) {
+    return (
+      <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
+        <img
+          src={`${base}images/${imageSrc}`}
+          srcSet={responsiveImageSrcSet(`${base}images/${imageSrc}`)}
+          sizes={isFull ? '100vw' : '(min-width: 768px) 50vw, 100vw'}
+          alt={`${projectTitle} mockup ${slotStr}`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-auto object-cover"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] text-center flex flex-col items-center justify-center transition-colors hover:border-neon/40 group ${
+        isFull
+          ? 'p-8 sm:p-12 md:p-16 min-h-[280px] sm:min-h-[380px] md:min-h-[460px]'
+          : 'p-6 sm:p-8 md:p-10 min-h-[240px] sm:min-h-[320px]'
+      }`}
+    >
+      <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
+      <div className={`relative z-10 space-y-2.5 ${isFull ? 'max-w-xl' : 'max-w-sm'}`}>
+        <span
+          className={`inline-block px-3.5 py-1 rounded-full font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] ${
+            isFull
+              ? 'bg-neon/10 border border-neon/30 text-accent-ink'
+              : 'bg-white/5 border border-white/15 text-accent-ink'
+          }`}
+        >
+          {label}
+        </span>
+        <h3
+          className={`font-display font-extrabold uppercase tracking-tight text-white ${
+            isFull ? 'text-3xl sm:text-4xl md:text-5xl' : 'text-2xl sm:text-3xl md:text-4xl'
+          }`}
+        >
+          {isFull ? (
+            <>
+              2880 × 1620 <span className="text-neon text-2xl sm:text-3xl font-mono">px</span>
+            </>
+          ) : (
+            <>
+              1440 × 1080 <span className="text-neon text-xl sm:text-2xl font-mono">px</span>
+            </>
+          )}
+        </h3>
+        <p className="font-mono text-xs text-ink/70">
+          {isFull
+            ? 'Aspect Ratio 16:9 · Full container width (1400px @ 2x Retina)'
+            : 'Aspect Ratio 4:3 (or 1:1 @ 1440 × 1440 px)'}
+        </p>
+        <p className="font-mono text-[10px] text-ink/40 pt-0.5">
+          {isFull
+            ? 'Standard 1x: 1920 × 1080 px | Best Sharpness (2x Retina): 2880 × 1620 px'
+            : '2x Retina: 1440 × 1080 px | 16:9 option: 1920 × 1080 px'}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStudyPageProps) {
   const project = caseStudies[slug as keyof typeof caseStudies];
@@ -257,140 +350,38 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
 
           {isBrandProject ? (
             <div className="space-y-6 sm:space-y-8">
-              {/* MOCKUP 01: HERO FULL-WIDTH */}
-              {mockups?.hero ? (
-                <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
-                  <img 
-                    src={`${base}images/${mockups.hero}`}
-                    srcSet={responsiveImageSrcSet(`${base}images/${mockups.hero}`)}
-                    sizes="100vw"
-                    alt={`${project.title} mockup 01`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-8 sm:p-14 md:p-20 text-center flex flex-col items-center justify-center min-h-[300px] sm:min-h-[420px] md:min-h-[500px] transition-colors hover:border-neon/40 group">
-                  <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
-                  <div className="relative z-10 max-w-xl space-y-3">
-                    <span className="inline-block px-3.5 py-1 rounded-full bg-neon/10 border border-neon/30 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
-                      Mockup 01 · Full-Width Showcase
-                    </span>
-                    <h3 className="font-display font-extrabold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl text-white">
-                      2880 × 1620 <span className="text-neon text-2xl sm:text-3xl font-mono">px</span>
-                    </h3>
-                    <p className="font-mono text-xs sm:text-sm text-ink/70">
-                      Aspect Ratio 16:9 · Full container width (1400px @ 2x Retina)
-                    </p>
-                    <p className="font-mono text-[10px] sm:text-xs text-ink/40 pt-1">
-                      Standard 1x: 1920 × 1080 px | Best Sharpness (2x Retina): 2880 × 1620 px
-                    </p>
-                  </div>
-                </div>
-              )}
+              {/* ROW 1: MOCKUP 01 (FULL WIDTH) */}
+              <MockupSlot slotNumber={1} type="full" imageSrc={mockups?.m01} projectTitle={project.title} base={base} />
 
-              {/* MOCKUP 02 & 03: SPLIT LEFT & RIGHT */}
+              {/* ROW 2: MOCKUPS 02 & 03 (SPLIT LEFT & RIGHT) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                {/* LEFT SPLIT */}
-                {mockups?.left ? (
-                  <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
-                    <img 
-                      src={`${base}images/${mockups.left}`}
-                      srcSet={responsiveImageSrcSet(`${base}images/${mockups.left}`)}
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      alt={`${project.title} mockup 02 left`}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-6 sm:p-10 md:p-14 text-center flex flex-col items-center justify-center min-h-[260px] sm:min-h-[360px] transition-colors hover:border-neon/40 group">
-                    <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
-                    <div className="relative z-10 max-w-sm space-y-2.5">
-                      <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/15 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
-                        Mockup 02 · Left Split
-                      </span>
-                      <h3 className="font-display font-extrabold uppercase tracking-tight text-2xl sm:text-3xl md:text-4xl text-white">
-                        1440 × 1080 <span className="text-neon text-xl sm:text-2xl font-mono">px</span>
-                      </h3>
-                      <p className="font-mono text-xs text-ink/70">
-                        Aspect Ratio 4:3 (or 1:1 @ 1440 × 1440 px)
-                      </p>
-                      <p className="font-mono text-[10px] text-ink/40">
-                        2x Retina: 1440 × 1080 px | 16:9 option: 1920 × 1080 px
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* RIGHT SPLIT */}
-                {mockups?.right ? (
-                  <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
-                    <img 
-                      src={`${base}images/${mockups.right}`}
-                      srcSet={responsiveImageSrcSet(`${base}images/${mockups.right}`)}
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      alt={`${project.title} mockup 03 right`}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-6 sm:p-10 md:p-14 text-center flex flex-col items-center justify-center min-h-[260px] sm:min-h-[360px] transition-colors hover:border-neon/40 group">
-                    <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
-                    <div className="relative z-10 max-w-sm space-y-2.5">
-                      <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/15 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
-                        Mockup 03 · Right Split
-                      </span>
-                      <h3 className="font-display font-extrabold uppercase tracking-tight text-2xl sm:text-3xl md:text-4xl text-white">
-                        1440 × 1080 <span className="text-neon text-xl sm:text-2xl font-mono">px</span>
-                      </h3>
-                      <p className="font-mono text-xs text-ink/70">
-                        Aspect Ratio 4:3 (or 1:1 @ 1440 × 1440 px)
-                      </p>
-                      <p className="font-mono text-[10px] text-ink/40">
-                        2x Retina: 1440 × 1080 px | 16:9 option: 1920 × 1080 px
-                      </p>
-                    </div>
-                  </div>
-                )}
+                <MockupSlot slotNumber={2} type="split-left" imageSrc={mockups?.m02} projectTitle={project.title} base={base} />
+                <MockupSlot slotNumber={3} type="split-right" imageSrc={mockups?.m03} projectTitle={project.title} base={base} />
               </div>
 
-              {/* MOCKUP 04: FULL-WIDTH BOTTOM */}
-              {mockups?.bottom ? (
-                <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
-                  <img 
-                    src={`${base}images/${mockups.bottom}`}
-                    srcSet={responsiveImageSrcSet(`${base}images/${mockups.bottom}`)}
-                    sizes="100vw"
-                    alt={`${project.title} mockup 04`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-dashed border-white/20 bg-[#0a0a0c] p-8 sm:p-14 md:p-20 text-center flex flex-col items-center justify-center min-h-[300px] sm:min-h-[420px] md:min-h-[500px] transition-colors hover:border-neon/40 group">
-                  <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-35 pointer-events-none" />
-                  <div className="relative z-10 max-w-xl space-y-3">
-                    <span className="inline-block px-3.5 py-1 rounded-full bg-neon/10 border border-neon/30 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
-                      Mockup 04 · Full-Width Showcase
-                    </span>
-                    <h3 className="font-display font-extrabold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl text-white">
-                      2880 × 1620 <span className="text-neon text-2xl sm:text-3xl font-mono">px</span>
-                    </h3>
-                    <p className="font-mono text-xs sm:text-sm text-ink/70">
-                      Aspect Ratio 16:9 · Full container width (1400px @ 2x Retina)
-                    </p>
-                    <p className="font-mono text-[10px] sm:text-xs text-ink/40 pt-1">
-                      Standard 1x: 1920 × 1080 px | Best Sharpness (2x Retina): 2880 × 1620 px
-                    </p>
-                  </div>
-                </div>
-              )}
+              {/* ROW 3: MOCKUP 04 (FULL WIDTH) */}
+              <MockupSlot slotNumber={4} type="full" imageSrc={mockups?.m04} projectTitle={project.title} base={base} />
+
+              {/* ROW 4: MOCKUPS 05 & 06 (SPLIT LEFT & RIGHT) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <MockupSlot slotNumber={5} type="split-left" imageSrc={mockups?.m05} projectTitle={project.title} base={base} />
+                <MockupSlot slotNumber={6} type="split-right" imageSrc={mockups?.m06} projectTitle={project.title} base={base} />
+              </div>
+
+              {/* ROW 5: MOCKUP 07 (FULL WIDTH) */}
+              <MockupSlot slotNumber={7} type="full" imageSrc={mockups?.m07} projectTitle={project.title} base={base} />
+
+              {/* ROW 6: MOCKUPS 08 & 09 (SPLIT LEFT & RIGHT) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <MockupSlot slotNumber={8} type="split-left" imageSrc={mockups?.m08} projectTitle={project.title} base={base} />
+                <MockupSlot slotNumber={9} type="split-right" imageSrc={mockups?.m09} projectTitle={project.title} base={base} />
+              </div>
+
+              {/* ROW 7: MOCKUPS 10 & 11 (SPLIT LEFT & RIGHT) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <MockupSlot slotNumber={10} type="split-left" imageSrc={mockups?.m10} projectTitle={project.title} base={base} />
+                <MockupSlot slotNumber={11} type="split-right" imageSrc={mockups?.m11} projectTitle={project.title} base={base} />
+              </div>
             </div>
           ) : (
             <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
