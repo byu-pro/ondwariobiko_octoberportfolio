@@ -8,129 +8,162 @@ interface WebsiteShowcaseProps {
 
 export interface PageData {
   id: string;
+  pairId: string;
   tabLabel: string;
   title: string;
   url: string;
   filename: string;
+  caption: string;
 }
 
 const DESKTOP_PAGES: PageData[] = [
   {
     id: 'home',
+    pairId: 'home',
     tabLabel: '01 · Home Page',
     title: 'Home Page · Desktop Experience',
     url: 'https://soundcurves.audio',
     filename: 'soundcurvespages/home-page.webp',
+    caption: 'Introduces the premium earphone range and routes visitors toward product discovery, listening education, and purchase details.',
   },
   {
     id: 'product',
+    pairId: 'product',
     tabLabel: '02 · Product Page',
     title: 'Product Page · Desktop Experience',
     url: 'https://soundcurves.audio/earphones/curve-one',
     filename: 'soundcurvespages/product-page.webp',
+    caption: 'Presents the Curve One earphones with the product details buyers need to compare, evaluate, and take the next step.',
   },
   {
     id: 'tech',
+    pairId: 'technology',
     tabLabel: '03 · Technology Page',
     title: 'Technology Page · Desktop Experience',
     url: 'https://soundcurves.audio/acoustic-engineering',
     filename: 'soundcurvespages/technology-page.webp',
+    caption: 'Explains the acoustic engineering behind the listening experience for visitors who want a deeper technical understanding.',
   },
   {
     id: 'landing',
+    pairId: 'campaign',
     tabLabel: '04 · Campaign Landing',
     title: 'Landing Page 1 · Desktop Experience',
     url: 'https://soundcurves.audio/special-launch',
     filename: 'soundcurvespages/landing-page-1.webp',
+    caption: 'Focuses the launch campaign around one clear story and a direct next step for interested visitors.',
   },
 ];
 
 const MOBILE_PAGES: PageData[] = [
   {
     id: 'home-m',
+    pairId: 'home',
     tabLabel: '01 · Home (Mobile)',
     title: 'Home Page · Mobile Architecture',
     url: 'https://soundcurves.audio',
     filename: 'soundcurvespages/home-mobile.webp',
+    caption: 'Reorders the homepage for a narrow screen while keeping product discovery, education, and calls to action easy to reach.',
   },
   {
     id: 'product-m',
+    pairId: 'product',
     tabLabel: '02 · Product (Mobile)',
     title: 'Product Page · Mobile Architecture',
     url: 'https://soundcurves.audio/earphones/curve-one',
     filename: 'soundcurvespages/product-mobile.webp',
+    caption: 'Stacks the Curve One product information into a vertical flow that supports browsing and purchase consideration on mobile.',
   },
   {
     id: 'tech-m',
+    pairId: 'technology',
     tabLabel: '03 · Technology (Mobile)',
     title: 'Technology Page · Mobile Architecture',
     url: 'https://soundcurves.audio/acoustic-engineering',
     filename: 'soundcurvespages/technology-mobile.webp',
+    caption: 'Keeps the technology story readable on a phone, with the engineering details available in a scrollable page.',
   },
   {
     id: 'landing-m',
+    pairId: 'campaign',
     tabLabel: '04 · Campaign (Mobile)',
     title: 'Landing Page 1 · Mobile Architecture',
     url: 'https://soundcurves.audio/special-launch',
     filename: 'soundcurvespages/landing-page-1-mobile.webp',
+    caption: 'Adapts the launch campaign to a compact screen, preserving its single focus and prominent next step.',
   },
 ];
 
 const MOODS_N_MEDS_DESKTOP_PAGES: PageData[] = [
   {
     id: 'illustrated',
+    pairId: 'illustrated',
     tabLabel: '01 · Illustrated Theme',
     title: 'Moods n Meds · Illustrated Desktop Design',
     url: 'Moods n Meds · Illustrated Homepage',
     filename: 'moodsnmeds/Home Page.webp',
+    caption: 'Introduces the anxiety-support concept with a calm illustrated hero and clear routes to resources, premium features, and daily mood logging.',
   },
   {
     id: 'photography',
+    pairId: 'photography',
     tabLabel: '02 · Photography Theme',
     title: 'Moods n Meds · Photography Desktop Design',
     url: 'Moods n Meds · Photography Homepage',
     filename: 'moodsnmeds/Home Page (1).webp',
+    caption: 'Uses a photographic, nature-inspired art direction while retaining the homepage structure and its three core destinations.',
   },
 ];
 
 const MOODS_N_MEDS_MOBILE_PAGES: PageData[] = [
   {
     id: 'illustrated-mobile',
+    pairId: 'illustrated',
     tabLabel: '01 · Illustrated Theme',
     title: 'Moods n Meds · Illustrated Mobile Design',
     url: 'Moods n Meds · Illustrated Mobile Homepage',
     filename: 'moodsnmeds/Mobile - Illustrated 600dpi.webp',
+    caption: 'Stacks the illustrated introduction, calls to action, and feature cards into a single-column mobile flow.',
   },
   {
     id: 'photography-mobile',
+    pairId: 'photography',
     tabLabel: '02 · Photography Theme',
     title: 'Moods n Meds · Photography Mobile Design',
     url: 'Moods n Meds · Photography Mobile Homepage',
     filename: 'moodsnmeds/Mobile - Photography 600dpi.webp',
+    caption: 'Carries the photo-led design into a vertical mobile layout, keeping the main actions and feature cards easy to scan.',
   },
 ];
 
 export function WebsiteCompositionsShowcase({ base, desktopPages, mobilePages }: WebsiteShowcaseProps) {
-  const [activeDesktopId, setActiveDesktopId] = useState<string>(desktopPages[0]?.id ?? '');
-  const [activeMobileId, setActiveMobileId] = useState<string>(mobilePages[0]?.id ?? '');
+  const [activePairId, setActivePairId] = useState<string>(desktopPages[0]?.pairId ?? mobilePages[0]?.pairId ?? '');
 
   const desktopScrollRef = useRef<HTMLDivElement>(null);
   const mobileScrollRef = useRef<HTMLDivElement>(null);
 
-  const activeDesktopPage = desktopPages.find((p) => p.id === activeDesktopId) ?? desktopPages[0];
-  const activeMobilePage = mobilePages.find((p) => p.id === activeMobileId) ?? mobilePages[0];
+  const activeDesktopPage = desktopPages.find((p) => p.pairId === activePairId) ?? desktopPages[0];
+  const activeMobilePage = mobilePages.find((p) => p.pairId === activePairId) ?? mobilePages[0];
 
   const handleDesktopTabChange = (pageId: string) => {
-    setActiveDesktopId(pageId);
+    const selectedPage = desktopPages.find((page) => page.id === pageId);
+    if (selectedPage) setActivePairId(selectedPage.pairId);
     if (desktopScrollRef.current) {
       desktopScrollRef.current.scrollTop = 0;
+    }
+    if (mobileScrollRef.current) {
+      mobileScrollRef.current.scrollTop = 0;
     }
   };
 
   const handleMobileTabChange = (pageId: string) => {
-    setActiveMobileId(pageId);
+    const selectedPage = mobilePages.find((page) => page.id === pageId);
+    if (selectedPage) setActivePairId(selectedPage.pairId);
     if (mobileScrollRef.current) {
       mobileScrollRef.current.scrollTop = 0;
+    }
+    if (desktopScrollRef.current) {
+      desktopScrollRef.current.scrollTop = 0;
     }
   };
 
@@ -157,7 +190,7 @@ export function WebsiteCompositionsShowcase({ base, desktopPages, mobilePages }:
         {/* DESKTOP PAGE TABS */}
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-1.5 sm:gap-2.5 bg-black/80 p-2 sm:p-2.5 rounded-xl border border-white/10">
           {desktopPages.map((page) => {
-            const isActive = page.id === activeDesktopId;
+            const isActive = page.pairId === activePairId;
             return (
               <button
                 key={page.id}
@@ -210,6 +243,10 @@ export function WebsiteCompositionsShowcase({ base, desktopPages, mobilePages }:
             />
           </div>
         </div>
+        <div className="pt-3 border-t border-white/10" aria-live="polite">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink mb-1">Screen focus</p>
+          <p className="max-w-3xl font-sans text-sm sm:text-base leading-relaxed text-ink/65">{activeDesktopPage.caption}</p>
+        </div>
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -233,7 +270,7 @@ export function WebsiteCompositionsShowcase({ base, desktopPages, mobilePages }:
         {/* MOBILE PAGE TABS */}
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-1.5 sm:gap-2.5 bg-black/80 p-2 sm:p-2.5 rounded-xl border border-white/10">
           {mobilePages.map((page) => {
-            const isActive = page.id === activeMobileId;
+            const isActive = page.pairId === activePairId;
             return (
               <button
                 key={page.id}
@@ -292,6 +329,10 @@ export function WebsiteCompositionsShowcase({ base, desktopPages, mobilePages }:
               </div>
             </div>
           </div>
+        </div>
+        <div className="max-w-3xl mx-auto pt-3 border-t border-white/10" aria-live="polite">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink mb-1">Screen focus</p>
+          <p className="font-sans text-sm sm:text-base leading-relaxed text-ink/65">{activeMobilePage.caption}</p>
         </div>
       </div>
     </div>
