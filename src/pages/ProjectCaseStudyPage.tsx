@@ -71,11 +71,17 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
     );
   }
 
-  const needsCompactTitle = project.title === 'IKON Trailers' || project.title === 'Iron Acre Land Co' || project.title === 'Friends of Unionville' || project.title === 'Green Essentials' || project.title === 'Lewis Park Pickleball';
+  const isExtraLongTitle = project.title.length > 22 || project.title.split(/\s+/).length >= 4;
+  const isMediumTitle = project.title.length > 12 || project.title.split(/\s+/).length >= 3;
+  const titleSizeClass = isExtraLongTitle
+    ? 'text-[clamp(1.75rem,5.5vw,4.5rem)] leading-[0.94] sm:leading-[0.9]'
+    : isMediumTitle
+    ? 'text-[clamp(2rem,6.8vw,5.5rem)] leading-[0.9] sm:leading-[0.86]'
+    : 'text-[clamp(2.5rem,8vw,7rem)] leading-[0.86]';
 
   return (
     <main className="w-full overflow-x-hidden">
-      <section className="relative w-full bg-black text-white px-5 md:px-8 pt-32 sm:pt-40 md:pt-48 pb-10 sm:pb-14 border-b border-white/15 overflow-hidden">
+      <section className="relative w-full bg-black text-white px-5 md:px-8 pt-28 sm:pt-36 md:pt-48 pb-10 sm:pb-14 border-b border-white/15 overflow-hidden">
         {/* SUBTLE DARK STUDIO CANVAS DOT-GRID + AMBIENT LIME RADIAL GLOW */}
         <div aria-hidden="true" className="absolute inset-0 hero-dot-grid-dark opacity-70 pointer-events-none z-0" />
         <div
@@ -88,11 +94,11 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         />
 
         <div className="relative z-10 max-w-[1400px] mx-auto">
-          <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors">← All projects</button>
-          <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
+          <button onClick={() => onNavigate('work')} className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/55 hover:text-accent-ink transition-colors inline-flex items-center gap-1.5 py-1">← All projects</button>
+          <div className="mt-8 sm:mt-12 md:mt-14 grid grid-cols-1 gap-6 sm:gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] xl:gap-14 items-start">
             <div className="min-w-0">
-              <p className="mb-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">{project.number} / {project.category}</p>
-              <h1 className={`max-w-full break-normal text-balance font-display font-extrabold uppercase tracking-tighter leading-[0.86] ${needsCompactTitle ? 'text-[clamp(1.5rem,8vw,5.5rem)]' : 'text-[clamp(2.25rem,8vw,7rem)]'}`}>
+              <p className="mb-3 sm:mb-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">{project.number} / {project.category}</p>
+              <h1 className={`max-w-full break-words sm:break-normal text-balance font-display font-extrabold uppercase tracking-tighter ${titleSizeClass}`}>
                 {project.title === 'SoundCurves' ? (
                   <>
                     <GlitchText text="Sound" variant="dark" delayMs={0} />
@@ -115,117 +121,122 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
                   );
                 })()}
               </h1>
-              <p className="mt-4 max-w-3xl font-sans text-lg sm:text-xl xl:text-2xl text-ink/75 leading-snug">{project.subtitle}</p>
+              <p className="mt-3.5 sm:mt-4 max-w-3xl font-sans text-base sm:text-lg md:text-xl xl:text-2xl text-ink/75 leading-relaxed sm:leading-snug">{project.subtitle}</p>
             </div>
             <div className="min-w-0 xl:pt-1">
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 mb-3">Project focus</p>
-              <p className="max-w-[42ch] font-sans text-sm sm:text-base text-ink/70 leading-relaxed">Business challenge, creative response, and the value the work is designed to support.</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 mb-2 sm:mb-3">Project focus</p>
+              <p className="max-w-[42ch] font-sans text-xs sm:text-sm md:text-base text-ink/70 leading-relaxed">Business challenge, creative response, and the value the work is designed to support.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full pb-12 sm:pb-16">
+      <section className="w-full pb-10 sm:pb-14 md:pb-16">
         <img src={`${base}images/${project.caseStudyThumbnail}`} srcSet={responsiveImageSrcSet(`${base}images/${project.caseStudyThumbnail}`)} sizes="100vw" alt={`${project.title} project thumbnail`} width={1920} height={960} loading="eager" fetchPriority="high" decoding="async" className="block h-auto w-full object-cover" />
         <div className="max-w-[1400px] mx-auto px-5 md:px-8">
-          <aside className="mt-12 sm:mt-14 rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">Client</p><h2 className="mt-3 font-display uppercase font-bold text-2xl sm:text-3xl">{project.title}</h2><p className="mt-3 font-sans text-sm text-ink/60">{project.location}</p></div>
-            {project.links.length > 0 && <div className="flex flex-wrap gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.15em] hover:border-neon hover:text-accent-ink transition-all duration-300 hover:-translate-y-0.5">{label} ↗</a>)}</div>}
+          <aside className="mt-8 sm:mt-12 md:mt-14 rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-7 md:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6">
+            <div className="min-w-0"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink">Client</p><h2 className="mt-2 sm:mt-3 font-display uppercase font-bold text-xl sm:text-2xl md:text-3xl">{project.title}</h2><p className="mt-1.5 sm:mt-2 font-sans text-xs sm:text-sm text-ink/60">{project.location}</p></div>
+            {project.links.length > 0 && <div className="flex flex-wrap gap-2.5 sm:gap-3">{project.links.map(([label, url]) => <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/20 px-4 py-2.5 sm:px-5 sm:py-3 font-mono text-[10px] uppercase tracking-[0.15em] hover:border-neon hover:text-accent-ink transition-all duration-300 hover:-translate-y-0.5">{label} ↗</a>)}</div>}
           </aside>
         </div>
       </section>
 
-      <section className="px-5 md:px-8 pb-16 sm:pb-24">
-        <div className="max-w-[1400px] mx-auto rounded-2xl bg-neon text-black p-6 sm:p-10 md:p-14 grid md:grid-cols-12 gap-8 items-start">
-          <div className="md:col-span-4"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/60 mb-3">Project scope</p><h2 className="font-display uppercase font-extrabold tracking-tight text-3xl sm:text-4xl">What the client needed</h2></div>
-          <div className="md:col-span-8"><p className="font-sans text-lg sm:text-xl leading-relaxed">{project.challenge}</p><p className="mt-5 font-mono text-[10px] uppercase tracking-[0.2em] text-black/60">{project.category}</p></div>
+      <section className="px-5 md:px-8 pb-12 sm:pb-20 md:pb-24">
+        <div className="max-w-[1400px] mx-auto rounded-xl sm:rounded-2xl bg-neon text-black p-5 sm:p-8 md:p-12 lg:p-14 grid md:grid-cols-12 gap-6 sm:gap-8 items-start">
+          <div className="md:col-span-4"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/60 mb-2 sm:mb-3">Project scope</p><h2 className="font-display uppercase font-extrabold tracking-tight text-2xl sm:text-3xl md:text-4xl">What the client needed</h2></div>
+          <div className="md:col-span-8"><p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed">{project.challenge}</p><p className="mt-4 sm:mt-5 font-mono text-[10px] uppercase tracking-[0.2em] text-black/60">{project.category}</p></div>
         </div>
       </section>
 
-      <section className="px-5 md:px-8 pb-16 sm:pb-24">
+      <section className="px-5 md:px-8 pb-12 sm:pb-20 md:pb-24">
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-end justify-between gap-6 mb-7">
-            <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-3">Project imagery</p><h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl">The work in detail</h2></div>
-            <p className="hidden sm:block font-mono text-[10px] uppercase tracking-wider text-ink/40">Image sizes shown at 2× export resolution</p>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-6 mb-5 sm:mb-7">
+            <div><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2 sm:mb-3">Project imagery</p><h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl">The work in detail</h2></div>
+            <p className="font-mono text-[10px] uppercase tracking-wider text-ink/40">Identity system &amp; visual execution</p>
           </div>
-          <div className="grid md:grid-cols-12 gap-4 sm:gap-5">
-            <div className="md:col-span-7 aspect-[16/10] rounded-2xl border border-dashed border-ink/25 bg-white/[0.025] grid place-items-center text-center p-6 transition-colors duration-500 hover:border-neon/70 hover:bg-neon/[0.035]"><div><span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">01 / Featured visual</span><p className="mt-2 font-display uppercase text-xl sm:text-2xl">1920 × 1200 px</p><p className="mt-2 font-sans text-xs text-ink/45">16:10 · JPG or WebP</p></div></div>
-            <div className="md:col-span-5 aspect-[4/5] rounded-2xl border border-dashed border-ink/25 bg-white/[0.025] grid place-items-center text-center p-6 transition-colors duration-500 hover:border-neon/70 hover:bg-neon/[0.035]"><div><span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">02 / Detail or mobile view</span><p className="mt-2 font-display uppercase text-xl sm:text-2xl">1200 × 1500 px</p><p className="mt-2 font-sans text-xs text-ink/45">4:5 · JPG or WebP</p></div></div>
-            <div className="md:col-span-12 aspect-[2/1] rounded-2xl border border-dashed border-ink/25 bg-white/[0.025] grid place-items-center text-center p-6 transition-colors duration-500 hover:border-neon/70 hover:bg-neon/[0.035]"><div><span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-ink">03 / Wide application or process image</span><p className="mt-2 font-display uppercase text-xl sm:text-2xl">2400 × 1200 px</p><p className="mt-2 font-sans text-xs text-ink/45">2:1 · JPG or WebP</p></div></div>
-          </div>
-          <p className="mt-4 font-sans text-xs text-ink/45">The full width project thumbnail appears above. The slots here show recommended sizes for additional visuals; place those files in <code className="text-accent-ink">public/images/case-studies/</code> when ready.</p>
-        </div>
-      </section>
-
-      <section className="px-5 md:px-8 pb-16 sm:pb-24 md:pb-32">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
-          <div className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-4">The business</p>
-            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Context &amp; challenge</h2>
-          </div>
-          <div className="lg:col-span-8 space-y-8">
-            <div>
-              <h3 className="font-display uppercase tracking-tight text-lg sm:text-xl mb-2">The context</h3>
-              <p className="font-sans text-base sm:text-lg text-ink/70 leading-relaxed">{project.context}</p>
-            </div>
-            <div>
-              <h3 className="font-display uppercase tracking-tight text-lg sm:text-xl mb-2">The challenge</h3>
-              <p className="font-sans text-base sm:text-lg text-ink/70 leading-relaxed">{project.challenge}</p>
-            </div>
+          <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-2xl">
+            <img 
+              src={`${base}images/${project.image}`}
+              srcSet={responsiveImageSrcSet(`${base}images/${project.image}`)}
+              sizes="100vw"
+              alt={`${project.title} showcase visual`}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto object-cover"
+            />
           </div>
         </div>
       </section>
 
-      <section className="px-5 md:px-8 py-16 sm:py-24 bg-neon text-black">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
+      <section className="px-5 md:px-8 pb-12 sm:pb-20 md:pb-28">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-8 lg:gap-16">
           <div className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/60 mb-4">The response</p>
-            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Design with a job to do</h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">The business</p>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl leading-[0.95]">Context &amp; challenge</h2>
+          </div>
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8">
+            <div>
+              <h3 className="font-display uppercase tracking-tight text-base sm:text-lg md:text-xl mb-2">The context</h3>
+              <p className="font-sans text-sm sm:text-base md:text-lg text-ink/70 leading-relaxed">{project.context}</p>
+            </div>
+            <div>
+              <h3 className="font-display uppercase tracking-tight text-base sm:text-lg md:text-xl mb-2">The challenge</h3>
+              <p className="font-sans text-sm sm:text-base md:text-lg text-ink/70 leading-relaxed">{project.challenge}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 md:px-8 py-12 sm:py-20 md:py-24 bg-neon text-black">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-8 lg:gap-16">
+          <div className="lg:col-span-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-black/60 mb-3 sm:mb-4">The response</p>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl leading-[0.95]">Design with a job to do</h2>
           </div>
           <ul className="lg:col-span-8 divide-y divide-black/20 border-y border-black/20">
             {project.response.map((item, index) => (
-              <li key={item} className="grid grid-cols-[2.5rem_1fr] sm:grid-cols-[3.5rem_1fr] gap-3 py-5 sm:py-6">
-                <span className="font-display font-extrabold text-2xl sm:text-3xl">0{index + 1}</span>
-                <p className="font-sans text-base sm:text-lg leading-relaxed">{item}</p>
+              <li key={item} className="grid grid-cols-[2rem_1fr] sm:grid-cols-[3rem_1fr] md:grid-cols-[3.5rem_1fr] gap-3 sm:gap-4 py-4 sm:py-6">
+                <span className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl">0{index + 1}</span>
+                <p className="font-sans text-sm sm:text-base md:text-lg leading-relaxed">{item}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="px-5 md:px-8 py-16 sm:py-24 md:py-28">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <section className="px-5 md:px-8 py-12 sm:py-20 md:py-28">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-4">Business value</p>
-            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl leading-[0.95]">Built to support the next step</h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-3 sm:mb-4">Business value</p>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl leading-[0.95]">Built to support the next step</h2>
           </div>
-          <p className="lg:col-span-8 font-sans text-xl sm:text-2xl md:text-3xl text-ink/75 leading-relaxed">{project.value}</p>
+          <p className="lg:col-span-8 font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl text-ink/75 leading-relaxed">{project.value}</p>
         </div>
       </section>
 
-      <section className="px-5 md:px-8 pb-24 sm:pb-32">
+      <section className="px-5 md:px-8 pb-16 sm:pb-24 md:pb-32">
         <div className="max-w-[1400px] mx-auto border-t border-ink/15 pt-8 sm:pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-ink mb-2">Have a similar challenge?</p>
-            <h2 className="font-display font-extrabold uppercase tracking-tighter text-3xl sm:text-4xl">Let’s talk about it</h2>
+            <h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl">Let’s talk about it</h2>
           </div>
-          <button onClick={() => onNavigate('contact')} className="rounded-full bg-neon px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black hover:scale-[1.03] transition-transform">Discuss your project ↗</button>
+          <button onClick={() => onNavigate('contact')} className="rounded-full bg-neon px-6 py-3.5 sm:px-7 sm:py-4 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-black hover:scale-[1.03] transition-transform">Discuss your project ↗</button>
         </div>
       </section>
 
-      <nav aria-label="Case study navigation" className="px-5 md:px-8 pb-20 sm:pb-28">
+      <nav aria-label="Case study navigation" className="px-5 md:px-8 pb-16 sm:pb-24 md:pb-28">
         <div className="max-w-[1400px] mx-auto grid sm:grid-cols-2 gap-4">
-          <a href={`#/case-study/${previousSlug}`} className="group relative isolate overflow-hidden rounded-2xl border border-ink/15 p-6 sm:p-8 hover:border-neon/60 transition-colors">
+          <a href={`#/case-study/${previousSlug}`} className="group relative isolate overflow-hidden rounded-xl sm:rounded-2xl border border-ink/15 p-5 sm:p-7 md:p-8 hover:border-neon/60 transition-colors">
             <img src={`${base}images/${previousProject.caseStudyThumbnail}`} alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none absolute inset-0 hidden h-full w-full scale-105 object-cover opacity-0 transition duration-400 ease-out md:block md:group-hover:scale-100 md:group-hover:opacity-35" />
             <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-black/80 via-black/60 to-black/75 opacity-0 transition-opacity duration-300 md:block md:group-hover:opacity-100" />
             <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 transition-colors md:group-hover:text-white/70">← Previous project</span>
-            <span className="relative z-10 mt-3 block font-display font-bold uppercase tracking-tight text-2xl sm:text-3xl group-hover:text-accent-ink md:group-hover:text-neon transition-colors">{previousProject.title}</span>
+            <span className="relative z-10 mt-2 sm:mt-3 block font-display font-bold uppercase tracking-tight text-xl sm:text-2xl md:text-3xl group-hover:text-accent-ink md:group-hover:text-neon transition-colors">{previousProject.title}</span>
           </a>
-          <a href={`#/case-study/${nextSlug}`} className="group relative isolate overflow-hidden rounded-2xl border border-ink/15 p-6 sm:p-8 text-left sm:text-right hover:border-neon/60 transition-colors">
+          <a href={`#/case-study/${nextSlug}`} className="group relative isolate overflow-hidden rounded-xl sm:rounded-2xl border border-ink/15 p-5 sm:p-7 md:p-8 text-left sm:text-right hover:border-neon/60 transition-colors">
             <img src={`${base}images/${nextProject.caseStudyThumbnail}`} alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none absolute inset-0 hidden h-full w-full scale-105 object-cover opacity-0 transition duration-400 ease-out md:block md:group-hover:scale-100 md:group-hover:opacity-35" />
             <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-l from-black/80 via-black/60 to-black/75 opacity-0 transition-opacity duration-300 md:block md:group-hover:opacity-100" />
             <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 transition-colors md:group-hover:text-white/70">Next project →</span>
-            <span className="relative z-10 mt-3 block font-display font-bold uppercase tracking-tight text-2xl sm:text-3xl group-hover:text-accent-ink md:group-hover:text-neon transition-colors">{nextProject.title}</span>
+            <span className="relative z-10 mt-2 sm:mt-3 block font-display font-bold uppercase tracking-tight text-xl sm:text-2xl md:text-3xl group-hover:text-accent-ink md:group-hover:text-neon transition-colors">{nextProject.title}</span>
           </a>
         </div>
       </nav>

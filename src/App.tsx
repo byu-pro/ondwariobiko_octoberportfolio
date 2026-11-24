@@ -37,6 +37,8 @@ const projectBrowserTitles: Record<string, string> = {
   'friends-of-unionville': 'Friends of Unionville — Brand Identity | Ondwari Obiko',
   'sound-curves': 'SoundCurves — Website Design | Ondwari Obiko',
   'moods-and-nerds': 'Moods N Meds — Website Design | Ondwari Obiko',
+  'aquapet-kenya': 'Aquapet Kenya — Brand Identity | Ondwari Obiko',
+  'ocean-line-freight': 'Ocean Line Freight Forwarders — Brand Identity | Ondwari Obiko',
   'green-essential': 'Green Essentials — Logo Design | Ondwari Obiko',
   'lewis-park': 'Lewis Park Pickleball — Apparel Design | Ondwari Obiko',
 };
@@ -82,13 +84,23 @@ export default function App() {
   // Keep the browser tab title in sync with the current page and project.
   useEffect(() => {
     if (currentRoute === 'project') {
-      document.title = projectBrowserTitles[projectSlug] ?? 'Project Not Found | Ondwari Obiko';
+      if (projectBrowserTitles[projectSlug]) {
+        document.title = projectBrowserTitles[projectSlug];
+      } else if (projectSlug) {
+        const formatted = projectSlug
+          .split('-')
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(' ');
+        document.title = `${formatted} — Case Study | Ondwari Obiko`;
+      } else {
+        document.title = 'Project Not Found | Ondwari Obiko';
+      }
       return;
     }
 
     switch (currentRoute) {
       case 'about':
-        document.title = "About & Services | John Obiko — Designer & Developer";
+        document.title = "About & Services | Ondwari Obiko — Designer & Developer";
         break;
       case 'contact':
         document.title = "Contact | Ondwari Obiko — Start a Project";
