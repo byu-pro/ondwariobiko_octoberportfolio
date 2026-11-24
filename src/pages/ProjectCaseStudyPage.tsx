@@ -292,46 +292,50 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
         </div>
       </section>
 
-      {/* BRAND EXPLORATION: CONCEPT SKETCHES (FULL-WIDTH) */}
+      {/* BRAND EXPLORATION: CONCEPT SKETCHES (FULL-WIDTH ON MOBILE, CONTAINED ON DESKTOP) */}
       {brandVisuals?.sketch && (
         <section className="w-full pb-10 sm:pb-16 md:pb-20">
-          <div className="max-w-[1400px] mx-auto px-5 md:px-8 mb-4 sm:mb-6">
+          <div className="max-w-[1400px] lg:max-w-[1080px] xl:max-w-[1140px] mx-auto px-5 md:px-8 mb-4 sm:mb-6">
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
               Ideation &amp; Exploratory Sketches
             </p>
           </div>
-          <div className="w-full overflow-hidden bg-black">
-            <img 
-              src={`${base}images/${brandVisuals.sketch}`}
-              srcSet={responsiveImageSrcSet(`${base}images/${brandVisuals.sketch}`)}
-              sizes="100vw"
-              alt={`${project.title} concept sketches`}
-              loading="lazy"
-              decoding="async"
-              className="block w-full h-auto object-cover"
-            />
+          <div className="w-full lg:max-w-[1080px] xl:max-w-[1140px] mx-auto lg:px-8">
+            <div className="w-full overflow-hidden bg-black lg:rounded-xl xl:rounded-2xl lg:border lg:border-white/10 lg:shadow-2xl">
+              <img 
+                src={`${base}images/${brandVisuals.sketch}`}
+                srcSet={responsiveImageSrcSet(`${base}images/${brandVisuals.sketch}`)}
+                sizes="(min-width: 1024px) 1140px, 100vw"
+                alt={`${project.title} concept sketches`}
+                loading="lazy"
+                decoding="async"
+                className="block w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </section>
       )}
 
-      {/* BRAND EXPLORATION: BLACK & WHITE IDENTITY MARK (FULL-WIDTH) */}
+      {/* BRAND EXPLORATION: BLACK & WHITE IDENTITY MARK (FULL-WIDTH ON MOBILE, CONTAINED ON DESKTOP) */}
       {brandVisuals?.bw && (
         <section className="w-full pb-12 sm:pb-20 md:pb-24">
-          <div className="max-w-[1400px] mx-auto px-5 md:px-8 mb-4 sm:mb-6">
+          <div className="max-w-[1400px] lg:max-w-[1080px] xl:max-w-[1140px] mx-auto px-5 md:px-8 mb-4 sm:mb-6">
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent-ink">
               Mark Development / Black &amp; White Execution
             </p>
           </div>
-          <div className="w-full overflow-hidden bg-black">
-            <img 
-              src={`${base}images/${brandVisuals.bw}`}
-              srcSet={responsiveImageSrcSet(`${base}images/${brandVisuals.bw}`)}
-              sizes="100vw"
-              alt={`${project.title} black and white mark`}
-              loading="lazy"
-              decoding="async"
-              className="block w-full h-auto object-cover"
-            />
+          <div className="w-full lg:max-w-[1080px] xl:max-w-[1140px] mx-auto lg:px-8">
+            <div className="w-full overflow-hidden bg-black lg:rounded-xl xl:rounded-2xl lg:border lg:border-white/10 lg:shadow-2xl">
+              <img 
+                src={`${base}images/${brandVisuals.bw}`}
+                srcSet={responsiveImageSrcSet(`${base}images/${brandVisuals.bw}`)}
+                sizes="(min-width: 1024px) 1140px, 100vw"
+                alt={`${project.title} black and white mark`}
+                loading="lazy"
+                decoding="async"
+                className="block w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </section>
       )}
