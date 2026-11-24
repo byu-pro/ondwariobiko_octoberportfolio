@@ -210,12 +210,22 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       logoImage: `${base}images/moodnmedslogo_thumbnail.webp`
     },
     {
-      id: 'yellow-dot-energy',
-      title: 'YELLOW DOT ENERGY MOBILE APP',
-      category: 'MOBILE APP UI/UX & PRODUCT STRATEGY',
-      image: `${base}images/yellowdot_desktopthumbnail.webp`,
-      mobileImage: `${base}images/yellowdot_mobilethumbnail.webp`,
-      logoImage: `${base}images/yellowdotlogo_thumbnail.webp`
+      id: 'aquapet-kenya',
+      title: 'AQUAPET KENYA',
+      category: 'FULL BRAND AND LOGO IDENTITY CREATION',
+      image: `${base}images/aquapet_desktopthumbnail.webp`,
+      mobileImage: `${base}images/aquapet_mobilethumbnail.webp`,
+      logoImage: `${base}images/aquapetlogo_thumbnail.webp`,
+      websiteUrl: 'https://aquapet.co.ke/'
+    },
+    {
+      id: 'ocean-line-freight',
+      title: 'OCEAN LINE FREIGHT FORWARDERS',
+      category: 'FULL BRAND AND LOGO IDENTITY CREATION',
+      image: `${base}images/oceanline_desktopthumbnail.webp`,
+      mobileImage: `${base}images/oceanline_mobilethumbnail.webp`,
+      logoImage: `${base}images/oceanlinelogo_thumbnail.webp`,
+      websiteUrl: 'https://oceanlinefreight.com/'
     },
     {
       id: 'green-essential',
@@ -248,7 +258,7 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
       {/* CREATIVE FULL-WIDTH HERO HEADER SECTION */}
       <HomeHero onNavigate={onNavigate} />
 
-      {/* 9 FULL-WIDTH PROJECT CARDS WITH NATURAL THUMBNAIL & LOGO TRANSITIONS */}
+      {/* 10 FULL-WIDTH PROJECT CARDS WITH NATURAL THUMBNAIL & LOGO TRANSITIONS */}
       <main id="work-projects" className="w-full flex flex-col">
         {fullWidthProjects.map((project, idx) => (
           <ProjectCard 
@@ -369,6 +379,17 @@ export function WorkPage({ base, onNavigate }: WorkPageProps) {
                 className="inline-flex items-center gap-3 rounded-full bg-neon px-6 py-3 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-black hover:scale-[1.03] transition-transform"
               >
                 Read the case study <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            {activePreview.project.websiteUrl && (
+              <a
+                href={activePreview.project.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-3 rounded-full bg-neon px-6 py-3 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-black hover:scale-[1.03] transition-transform"
+              >
+                Visit live website <span aria-hidden="true">↗</span>
               </a>
             )}
             <p className="text-[10px] sm:text-xs font-mono text-neutral-500">

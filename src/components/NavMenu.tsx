@@ -15,7 +15,8 @@ const projectTitles: Record<string, string> = {
   'friends-of-unionville': 'Friends of Unionville',
   'sound-curves': 'SoundCurves',
   'moods-and-nerds': 'Moods N Meds',
-  'yellow-dot-energy': 'Yellow Dot Energy',
+  'aquapet-kenya': 'Aquapet Kenya',
+  'ocean-line-freight': 'Ocean Line Freight Forwarders',
   'green-essential': 'Green Essentials',
   'lewis-park': 'Lewis Park Pickleball',
 };
