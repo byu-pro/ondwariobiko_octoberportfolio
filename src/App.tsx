@@ -57,6 +57,14 @@ export default function App() {
     return initAntiInspect();
   }, []);
 
+  // Clean up any cache-busting reload query param so address bar remains pristine
+  useEffect(() => {
+    if (window.location.search.includes('t=')) {
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState(null, '', cleanUrl);
+    }
+  }, []);
+
   // Sync route on hashchange
   useEffect(() => {
     const onHashChange = () => {

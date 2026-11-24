@@ -20,6 +20,41 @@ export function Header({
 }: HeaderProps) {
   const useDarkForeground = open || (!scrolled && currentRoute === 'work');
 
+  const handleLogoClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (open) setOpen(false);
+
+    if (currentRoute === 'work') {
+      // User is on the homepage: hard refresh whole site and clear cache
+      try {
+        sessionStorage.clear();
+      } catch {}
+
+      if ('caches' in window) {
+        try {
+          const cacheKeys = await caches.keys();
+          await Promise.all(cacheKeys.map((k) => caches.delete(k)));
+        } catch {}
+      }
+
+      if ('serviceWorker' in navigator) {
+        try {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map((r) => r.unregister()));
+        } catch {}
+      }
+
+      const url = new URL(window.location.origin + window.location.pathname);
+      url.searchParams.set('t', Date.now().toString());
+      url.hash = '#/work';
+      window.location.replace(url.toString());
+      return;
+    }
+
+    // On other pages: standard SPA navigation to homepage
+    onNavigate('work');
+  };
+
   return (
     <header 
       data-menu-open={open} 
@@ -33,11 +68,7 @@ export function Header({
     >
       <a 
         href="#/work" 
-        onClick={(e) => {
-          e.preventDefault();
-          onNavigate('work');
-          if (open) setOpen(false);
-        }} 
+        onClick={handleLogoClick} 
         aria-label="ondwariobiko home"
         className="flex items-center group cursor-pointer shrink-0"
       >
