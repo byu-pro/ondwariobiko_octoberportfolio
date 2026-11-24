@@ -2,6 +2,7 @@ import React from 'react';
 import { PageRoute } from '../types';
 import { responsiveImageSrcSet } from '../utils/images';
 import { GlitchText } from '../components/GlitchText';
+import { SoundCurvesWebShowcase } from '../components/SoundCurvesWebShowcase';
 
 interface ProjectCaseStudyPageProps {
   base: string;
@@ -348,11 +349,17 @@ export function ProjectCaseStudyPage({ base, slug, onNavigate }: ProjectCaseStud
               <h2 className="font-display font-extrabold uppercase tracking-tighter text-2xl sm:text-3xl md:text-4xl">The work in detail</h2>
             </div>
             <p className="font-mono text-[10px] uppercase tracking-wider text-ink/40">
-              {isBrandProject ? 'Brand applications & physical mockups' : 'Identity system & visual execution'}
+              {slug === 'sound-curves'
+                ? 'High-Fidelity Audio Platform Compositions'
+                : isBrandProject
+                ? 'Brand applications & physical mockups'
+                : 'Identity system & visual execution'}
             </p>
           </div>
 
-          {isBrandProject ? (
+          {slug === 'sound-curves' ? (
+            <SoundCurvesWebShowcase base={base} />
+          ) : isBrandProject ? (
             <div className="space-y-6 sm:space-y-8">
               {/* ROW 1: MOCKUP 01 (FULL WIDTH) */}
               <MockupSlot slotNumber={1} type="full" imageSrc={mockups?.m01} projectTitle={project.title} base={base} />
