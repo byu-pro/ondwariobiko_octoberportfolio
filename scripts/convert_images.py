@@ -46,12 +46,18 @@ def convert_image(source: Path) -> None:
         if image.width > max_w:
             height = round(image.height * max_w / image.width)
             image = image.resize((max_w, height), Image.Resampling.LANCZOS)
+        if image.height > 16000 or image.width > 16000:
+            scale = min(16000 / image.width, 16000 / image.height)
+            image = image.resize((round(image.width * scale), round(image.height * scale)), Image.Resampling.LANCZOS)
         save_webp(image, destination, icc_profile, stem)
 
         if image.width > mobile_w and needs_mobile:
             mobile = image.copy()
             height = round(mobile.height * mobile_w / mobile.width)
             mobile = mobile.resize((mobile_w, height), Image.Resampling.LANCZOS)
+            if mobile.height > 16000 or mobile.width > 16000:
+                scale = min(16000 / mobile.width, 16000 / mobile.height)
+                mobile = mobile.resize((round(mobile.width * scale), round(mobile.height * scale)), Image.Resampling.LANCZOS)
             save_webp(mobile, mobile_destination, icc_profile, stem)
 
 
